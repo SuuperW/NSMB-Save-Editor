@@ -18,45 +18,47 @@ namespace NewSuperMarioBrosSaveEditor
             InitializeComponent();
             dlg.Filter = "NSMB Savefile (*.sav)|*.sav";
 
-            comboBox1.Items.Add("Small");
-            comboBox1.Items.Add("Super");
-            comboBox1.Items.Add("Fire");
-            comboBox1.Items.Add("Mini");
-            comboBox1.Items.Add("Blue Shell");
+            powerupComboBox.Items.Add("Small");
+            powerupComboBox.Items.Add("Super");
+            powerupComboBox.Items.Add("Fire");
+            powerupComboBox.Items.Add("Mini");
+            powerupComboBox.Items.Add("Blue Shell");
 
-            comboBox2.Items.Add("Nothing");
-            comboBox2.Items.Add("Super Mushroom");
-            comboBox2.Items.Add("Fire Flower");
-            comboBox2.Items.Add("Mini Mushroom");
-            comboBox2.Items.Add("Mega Mushroom");
-            comboBox2.Items.Add("Blue Shell");
+            inventoryComboBox.Items.Add("Nothing");
+            inventoryComboBox.Items.Add("Super Mushroom");
+            inventoryComboBox.Items.Add("Fire Flower");
+            inventoryComboBox.Items.Add("Blue Shell");
+            inventoryComboBox.Items.Add("Mini Mushroom");
+            inventoryComboBox.Items.Add("Mega Mushroom");
 
-            button2.Enabled = false;
+            saveButton.Enabled = false;
             radioButton1.Enabled = false;
             radioButton2.Enabled = false;
             radioButton3.Enabled = false;
-            label9.Enabled = false;
-            label10.Enabled = false;
-            label11.Enabled = false;
-            label13.Enabled = false;
-            label14.Enabled = false;
-            label15.Enabled = false;
-            label16.Enabled = false;
-            numericUpDown1.Enabled = false;
-            numericUpDown2.Enabled = false;
-            numericUpDown3.Enabled = false;
-            numericUpDown5.Enabled = false;
-            numericUpDown6.Enabled = false;
-            comboBox1.Enabled = false;
-            comboBox2.Enabled = false;
-            pictureBox1.Enabled = false;
-            checkBox1.Enabled = false;
-            checkBox2.Enabled = false;
+            labelLives.Enabled = false;
+            labelCoins.Enabled = false;
+            labelSC.Enabled = false;
+            labelScore.Enabled = false;
+            labelPowerup.Enabled = false;
+            labelInventory.Enabled = false;
+            labelBSB.Enabled = false;
+            livesNumUpDown.Enabled = false;
+            coinsNumUpDown.Enabled = false;
+            SCNumUpDown.Enabled = false;
+            scoreNumUpDown.Enabled = false;
+            BSBNumUpDown.Enabled = false;
+            powerupComboBox.Enabled = false;
+            inventoryComboBox.Enabled = false;
+            BSBPictureBox.Enabled = false;
+            unlockLCheckBox.Enabled = false;
+            unlockWCheckBox.Enabled = false;
 
-            button2.Click += new System.EventHandler(SaveButtonClicked);
+            saveButton.Click += new System.EventHandler(SaveButtonClicked);
         }
 
         OpenFileDialog dlg = new OpenFileDialog();
+        int fileIndex = 0;
+        Bitmap[] BGs = { Properties.Resources.NSMB_BG1, Properties.Resources.NSMB_BG2, Properties.Resources.NSMB_BG3, Properties.Resources.NSMB_BG4, Properties.Resources.NSMB_BG5 };
 
         public UInt16 nsmbChecksum(byte[] data, int dataSize, int pos)
         {
@@ -101,271 +103,40 @@ namespace NewSuperMarioBrosSaveEditor
             radioButton3.Checked = false;
         }
 
+        public void RefreshFileIndex()
+        {
+            if (radioButton1.Checked) { fileIndex = 0; }
+            if (radioButton2.Checked) { fileIndex = 0x280; }
+            if (radioButton3.Checked) { fileIndex = 0x500; }
+        }
+
         public void ReadPowerups()
         {
+            RefreshFileIndex();
+
             BinaryReader bnr = new BinaryReader(File.OpenRead(dlg.FileName));
-
-            if (radioButton1.Checked == true)
-            {
-                bnr.BaseStream.Position = 0x13A;
-
-                if (bnr.ReadByte() == (0))
-                {
-                    comboBox1.SelectedItem = "Small";
-                }
-
-                bnr.BaseStream.Position = 0x13A;
-
-                if (bnr.ReadByte() == (1))
-                {
-                    comboBox1.SelectedItem = "Super";
-                }
-
-                bnr.BaseStream.Position = 0x13A;
-
-                if (bnr.ReadByte() == (2))
-                {
-                    comboBox1.SelectedItem = "Fire";
-                }
-
-                bnr.BaseStream.Position = 0x13A;
-
-                if (bnr.ReadByte() == (4))
-                {
-                    comboBox1.SelectedItem = "Mini";
-                }
-
-                bnr.BaseStream.Position = 0x13A;
-
-                if (bnr.ReadByte() == (5))
-                {
-                    comboBox1.SelectedItem = "Blue Shell";
-                }
-            }
-
-            if (radioButton2.Checked == true)
-            {
-                bnr.BaseStream.Position = 0x3BA;
-
-                if (bnr.ReadByte() == (0))
-                {
-                    comboBox1.SelectedItem = "Small";
-                }
-
-                bnr.BaseStream.Position = 0x3BA;
-
-                if (bnr.ReadByte() == (1))
-                {
-                    comboBox1.SelectedItem = "Super";
-                }
-
-                bnr.BaseStream.Position = 0x3BA;
-
-                if (bnr.ReadByte() == (2))
-                {
-                    comboBox1.SelectedItem = "Fire";
-                }
-
-                bnr.BaseStream.Position = 0x3BA;
-
-                if (bnr.ReadByte() == (4))
-                {
-                    comboBox1.SelectedItem = "Mini";
-                }
-
-                bnr.BaseStream.Position = 0x3BA;
-
-                if (bnr.ReadByte() == (5))
-                {
-                    comboBox1.SelectedItem = "Blue Shell";
-                }
-            }
-
-            if (radioButton3.Checked == true)
-            {
-                bnr.BaseStream.Position = 0x63A;
-
-                if (bnr.ReadByte() == (0))
-                {
-                    comboBox1.SelectedItem = "Small";
-                }
-
-                bnr.BaseStream.Position = 0x63A;
-
-                if (bnr.ReadByte() == (1))
-                {
-                    comboBox1.SelectedItem = "Super";
-                }
-
-                bnr.BaseStream.Position = 0x63A;
-
-                if (bnr.ReadByte() == (2))
-                {
-                    comboBox1.SelectedItem = "Fire";
-                }
-
-                bnr.BaseStream.Position = 0x63A;
-
-                if (bnr.ReadByte() == (4))
-                {
-                    comboBox1.SelectedItem = "Mini";
-                }
-
-                bnr.BaseStream.Position = 0x63A;
-
-                if (bnr.ReadByte() == (5))
-                {
-                    comboBox1.SelectedItem = "Blue Shell";
-                }
-            }
+            bnr.BaseStream.Position = 0x13A + fileIndex;
+            int pID = bnr.ReadByte();
+            powerupComboBox.SelectedIndex = ((pID > 3) ? (pID - 1) : (pID));
 
             bnr.Close();
         }
 
         public void ReadInventory()
         {
+            RefreshFileIndex();
+
             BinaryReader bnr = new BinaryReader(File.OpenRead(dlg.FileName));
-
-            if (radioButton1.Checked == true)
-            {
-                bnr.BaseStream.Position = 0x166;
-
-                if (bnr.ReadByte() == (0))
-                {
-                    comboBox2.SelectedItem = "Nothing";
-                }
-
-                bnr.BaseStream.Position = 0x166;
-
-                if (bnr.ReadByte() == (1))
-                {
-                    comboBox2.SelectedItem = "Super Mushroom";
-                }
-
-                bnr.BaseStream.Position = 0x166;
-
-                if (bnr.ReadByte() == (2))
-                {
-                    comboBox2.SelectedItem = "Fire Flower";
-                }
-
-                bnr.BaseStream.Position = 0x166;
-
-                if (bnr.ReadByte() == (3))
-                {
-                    comboBox2.SelectedItem = "Blue Shell";
-                }
-
-                bnr.BaseStream.Position = 0x166;
-
-                if (bnr.ReadByte() == (4))
-                {
-                    comboBox2.SelectedItem = "Mini Mushroom";
-                }
-
-                bnr.BaseStream.Position = 0x166;
-
-                if (bnr.ReadByte() == (5))
-                {
-                    comboBox2.SelectedItem = "Mega Mushroom";
-                }
-            }
-
-            if (radioButton2.Checked == true)
-            {
-                bnr.BaseStream.Position = 0x3E6;
-
-                if (bnr.ReadByte() == (0))
-                {
-                    comboBox2.SelectedItem = "Nothing";
-                }
-
-                bnr.BaseStream.Position = 0x3E6;
-
-                if (bnr.ReadByte() == (1))
-                {
-                    comboBox2.SelectedItem = "Super Mushroom";
-                }
-
-                bnr.BaseStream.Position = 0x3E6;
-
-                if (bnr.ReadByte() == (2))
-                {
-                    comboBox2.SelectedItem = "Fire Flower";
-                }
-
-                bnr.BaseStream.Position = 0x3E6;
-
-                if (bnr.ReadByte() == (3))
-                {
-                    comboBox2.SelectedItem = "Blue Shell";
-                }
-
-                bnr.BaseStream.Position = 0x3E6;
-
-                if (bnr.ReadByte() == (4))
-                {
-                    comboBox2.SelectedItem = "Mini Mushroom";
-                }
-
-                bnr.BaseStream.Position = 0x3E6;
-
-                if (bnr.ReadByte() == (5))
-                {
-                    comboBox2.SelectedItem = "Mega Mushroom";
-                }
-            }
-
-            if (radioButton3.Checked == true)
-            {
-                bnr.BaseStream.Position = 0x666;
-
-                if (bnr.ReadByte() == (0))
-                {
-                    comboBox2.SelectedItem = "Nothing";
-                }
-
-                bnr.BaseStream.Position = 0x666;
-
-                if (bnr.ReadByte() == (1))
-                {
-                    comboBox2.SelectedItem = "Super Mushroom";
-                }
-
-                bnr.BaseStream.Position = 0x666;
-
-                if (bnr.ReadByte() == (2))
-                {
-                    comboBox2.SelectedItem = "Fire Flower";
-                }
-
-                bnr.BaseStream.Position = 0x666;
-
-                if (bnr.ReadByte() == (3))
-                {
-                    comboBox2.SelectedItem = "Blue Shell";
-                }
-
-                bnr.BaseStream.Position = 0x666;
-
-                if (bnr.ReadByte() == (4))
-                {
-                    comboBox2.SelectedItem = "Mini Mushroom";
-                }
-
-                bnr.BaseStream.Position = 0x666;
-
-                if (bnr.ReadByte() == (5))
-                {
-                    comboBox2.SelectedItem = "Mega Mushroom";
-                }
-            }
+            bnr.BaseStream.Position = 0x166 + fileIndex;
+            inventoryComboBox.SelectedIndex = bnr.ReadByte();
 
             bnr.Close();
         }
 
         private void SaveButtonClicked(object sender, EventArgs e)
         {
+            RefreshFileIndex();
+
             byte[] fileByteRead;
 
             using (FileStream fs = new FileStream(dlg.FileName, FileMode.Open, FileAccess.Read))
@@ -375,425 +146,55 @@ namespace NewSuperMarioBrosSaveEditor
 
             BinaryWriter bnw = new BinaryWriter(new MemoryStream(fileByteRead));
 
-            if (radioButton1.Checked == true)
+
+            if (unlockLCheckBox.Checked)
             {
-                if (checkBox1.Checked)
+                int pos = 0x241 + fileIndex;
+                for (int i = 0; i <= 0x114; i++)
                 {
-                    int pos = 0x241;
-                    for (int i = 0; i <= 0x114; i++)
-                    {
-                        bnw.BaseStream.Position = pos + i;
-                        bnw.Write(0xC0);
-                    }
+                    bnw.BaseStream.Position = pos + i;
+                    bnw.Write(0xC0);
                 }
+            }
 
-                if (checkBox2.Checked)
+            if (unlockWCheckBox.Checked)
+            {
+                int pos = 0x16A + fileIndex;
+                for (int i = 0; i <= 0x10; i++)
                 {
-                    int pos = 0x16A;
-                    for (int i = 0; i <= 0x10; i++)
-                    {
-                        bnw.BaseStream.Position = pos + i;
-                        bnw.Write(0xFF);
-                    }
+                    bnw.BaseStream.Position = pos + i;
+                    bnw.Write(0xFF);
                 }
+            }
 
-                bnw.BaseStream.Position = 0x116;
-                int livesValue = Convert.ToInt32(numericUpDown1.Value);
-                bnw.Write(livesValue);
+            bnw.BaseStream.Position = 0x116 + fileIndex;
+            int livesValue = Convert.ToInt32(livesNumUpDown.Value);
+            bnw.Write(livesValue);
             
-                bnw.BaseStream.Position = 0x11A;
-                int coinsValue = Convert.ToInt32(numericUpDown2.Value);
-                bnw.Write(coinsValue);
+            bnw.BaseStream.Position = 0x11A + fileIndex;
+            int coinsValue = Convert.ToInt32(coinsNumUpDown.Value);
+            bnw.Write(coinsValue);
             
-                bnw.BaseStream.Position = 0x122;
-                int starCoinValue = Convert.ToInt32(numericUpDown3.Value);
-                bnw.Write(starCoinValue);
+            bnw.BaseStream.Position = 0x122 + fileIndex;
+            int starCoinValue = Convert.ToInt32(SCNumUpDown.Value);
+            bnw.Write(starCoinValue);
 
-                bnw.BaseStream.Position = 0x11E;
-                int scoreValue = Convert.ToInt32(numericUpDown5.Value);
-                bnw.Write(scoreValue);
+            bnw.BaseStream.Position = 0x11E + fileIndex;
+            int scoreValue = Convert.ToInt32(scoreNumUpDown.Value);
+            bnw.Write(scoreValue);
 
-                bnw.BaseStream.Position = 0x13A;
-                if (comboBox1.Text == "Small")
-                {
-                    bnw.Write(0);
-                }
+            bnw.BaseStream.Position = 0x13A + fileIndex;
+            bnw.Write(((powerupComboBox.SelectedIndex > 2) ? (powerupComboBox.SelectedIndex +1) : (powerupComboBox.SelectedIndex)));
+            Console.WriteLine(((powerupComboBox.SelectedIndex > 2) ? (powerupComboBox.SelectedIndex + 1) : (powerupComboBox.SelectedIndex)));
 
-                bnw.BaseStream.Position = 0x13A;
-                if (comboBox1.Text == "Super")
-                {
-                    bnw.Write(1);
-                }
+            bnw.BaseStream.Position = 0x166 + fileIndex;
+            bnw.Write(inventoryComboBox.SelectedIndex);
 
-                bnw.BaseStream.Position = 0x13A;
-                if (comboBox1.Text == "Fire")
-                {
-                    bnw.Write(2);
-                }
+            bnw.BaseStream.Position = 0x142 + fileIndex;
+            bnw.Write(BSBNumUpDown.Value - 1);
 
-                bnw.BaseStream.Position = 0x13A;
-                if (comboBox1.Text == "Mini")
-                {
-                    bnw.Write(4);
-                }
+            BSBPictureBox.Image = BGs[(int)BSBNumUpDown.Value - 1];
 
-                bnw.BaseStream.Position = 0x13A;
-                if (comboBox1.Text == "Blue Shell")
-                {
-                    bnw.Write(5);
-                }
-
-                bnw.BaseStream.Position = 0x166;
-                if (comboBox2.Text == "Nothing")
-                {
-                    bnw.Write(0);
-                }
-
-                bnw.BaseStream.Position = 0x166;
-                if (comboBox2.Text == "Super Mushroom")
-                {
-                    bnw.Write(1);
-                }
-
-                bnw.BaseStream.Position = 0x166;
-                if (comboBox2.Text == "Fire Flower")
-                {
-                    bnw.Write(2);
-                }
-
-                bnw.BaseStream.Position = 0x166;
-                if (comboBox2.Text == "Blue Shell")
-                {
-                    bnw.Write(3);
-                }
-
-                bnw.BaseStream.Position = 0x166;
-                if (comboBox2.Text == "Mini Mushroom")
-                {
-                    bnw.Write(4);
-                }
-
-                bnw.BaseStream.Position = 0x166;
-                if (comboBox2.Text == "Mega Mushroom")
-                {
-                    bnw.Write(5);
-                }
-
-                bnw.BaseStream.Position = 0x142;
-                if (numericUpDown6.Value == 1)
-                {
-                    bnw.Write(0);
-                    pictureBox1.Image = Properties.Resources.NSMB_BG1;
-                }
-
-                bnw.BaseStream.Position = 0x142;
-                if (numericUpDown6.Value == 2)
-                {
-                    bnw.Write(1);
-                    pictureBox1.Image = Properties.Resources.NSMB_BG2;
-                }
-
-                bnw.BaseStream.Position = 0x142;
-                if (numericUpDown6.Value == 3)
-                {
-                    bnw.Write(2);
-                    pictureBox1.Image = Properties.Resources.NSMB_BG3;
-                }
-
-                bnw.BaseStream.Position = 0x142;
-                if (numericUpDown6.Value == 4)
-                {
-                    bnw.Write(3);
-                    pictureBox1.Image = Properties.Resources.NSMB_BG4;
-                }
-
-                bnw.BaseStream.Position = 0x142;
-                if (numericUpDown6.Value == 5)
-                {
-                    bnw.Write(4);
-                    pictureBox1.Image = Properties.Resources.NSMB_BG5;
-                }
-            }
-
-            if (radioButton2.Checked == true)
-            {
-                if (checkBox1.Checked)
-                {
-                    int pos = 0x4C1;
-                    for (int i = 0; i <= 0x114; i++)
-                    {
-                        bnw.BaseStream.Position = pos + i;
-                        bnw.Write(0xC0);
-                    }
-                }
-
-                if (checkBox2.Checked)
-                {
-                    int pos = 0x3EA;
-                    for (int i = 0; i <= 0x10; i++)
-                    {
-                        bnw.BaseStream.Position = pos + i;
-                        bnw.Write(0xFF);
-                    }
-                }
-
-                bnw.BaseStream.Position = 0x396;
-                int livesValue = Convert.ToInt32(numericUpDown1.Value);
-                bnw.Write(livesValue);
-
-                bnw.BaseStream.Position = 0x39A;
-                int coinsValue = Convert.ToInt32(numericUpDown2.Value);
-                bnw.Write(coinsValue);
-
-                bnw.BaseStream.Position = 0x3A2;
-                int starCoinValue = Convert.ToInt32(numericUpDown3.Value);
-                bnw.Write(starCoinValue);
-
-                bnw.BaseStream.Position = 0x39E;
-                int scoreValue = Convert.ToInt32(numericUpDown5.Value);
-                bnw.Write(scoreValue);
-
-                bnw.BaseStream.Position = 0x3BA;
-                if (comboBox1.Text == "Small")
-                {
-                    bnw.Write(0);
-                }
-
-                bnw.BaseStream.Position = 0x3BA;
-                if (comboBox1.Text == "Super")
-                {
-                    bnw.Write(1);
-                }
-
-                bnw.BaseStream.Position = 0x3BA;
-                if (comboBox1.Text == "Fire")
-                {
-                    bnw.Write(2);
-                }
-
-                bnw.BaseStream.Position = 0x3BA;
-                if (comboBox1.Text == "Mini")
-                {
-                    bnw.Write(4);
-                }
-
-                bnw.BaseStream.Position = 0x3BA;
-                if (comboBox1.Text == "Blue Shell")
-                {
-                    bnw.Write(5);
-                }
-
-                bnw.BaseStream.Position = 0x3E6;
-                if (comboBox2.Text == "Nothing")
-                {
-                    bnw.Write(0);
-                }
-
-                bnw.BaseStream.Position = 0x3E6;
-                if (comboBox2.Text == "Super Mushroom")
-                {
-                    bnw.Write(1);
-                }
-
-                bnw.BaseStream.Position = 0x3E6;
-                if (comboBox2.Text == "Fire Flower")
-                {
-                    bnw.Write(2);
-                }
-
-                bnw.BaseStream.Position = 0x3E6;
-                if (comboBox2.Text == "Blue Shell")
-                {
-                    bnw.Write(3);
-                }
-
-                bnw.BaseStream.Position = 0x3E6;
-                if (comboBox2.Text == "Mini Mushroom")
-                {
-                    bnw.Write(4);
-                }
-
-                bnw.BaseStream.Position = 0x3E6;
-                if (comboBox2.Text == "Mega Mushroom")
-                {
-                    bnw.Write(5);
-                }
-
-                bnw.BaseStream.Position = 0x3C2;
-                if (numericUpDown6.Value == 1)
-                {
-                    bnw.Write(0);
-                    pictureBox1.Image = Properties.Resources.NSMB_BG1;
-                }
-
-                bnw.BaseStream.Position = 0x3C2;
-                if (numericUpDown6.Value == 2)
-                {
-                    bnw.Write(1);
-                    pictureBox1.Image = Properties.Resources.NSMB_BG2;
-                }
-
-                bnw.BaseStream.Position = 0x3C2;
-                if (numericUpDown6.Value == 3)
-                {
-                    bnw.Write(2);
-                    pictureBox1.Image = Properties.Resources.NSMB_BG3;
-                }
-
-                bnw.BaseStream.Position = 0x3C2;
-                if (numericUpDown6.Value == 4)
-                {
-                    bnw.Write(3);
-                    pictureBox1.Image = Properties.Resources.NSMB_BG4;
-                }
-
-                bnw.BaseStream.Position = 0x3C2;
-                if (numericUpDown6.Value == 5)
-                {
-                    bnw.Write(4);
-                    pictureBox1.Image = Properties.Resources.NSMB_BG5;
-                }
-            }
-
-            if (radioButton3.Checked == true)
-            {
-                if (checkBox1.Checked)
-                {
-                    int pos = 0x741;
-                    for (int i = 0; i <= 0x114; i++)
-                    {
-                        bnw.BaseStream.Position = pos + i;
-                        bnw.Write(0xC0);
-                    }
-                }
-
-                if (checkBox2.Checked)
-                {
-                    int pos = 0x66A;
-                    for (int i = 0; i <= 0x10; i++)
-                    {
-                        bnw.BaseStream.Position = pos + i;
-                        bnw.Write(0xFF);
-                    }
-                }
-
-                bnw.BaseStream.Position = 0x616;
-                int livesValue = Convert.ToInt32(numericUpDown1.Value);
-                bnw.Write(livesValue);
-
-                bnw.BaseStream.Position = 0x61A;
-                int coinsValue = Convert.ToInt32(numericUpDown2.Value);
-                bnw.Write(coinsValue);
-
-                bnw.BaseStream.Position = 0x622;
-                int starCoinValue = Convert.ToInt32(numericUpDown3.Value);
-                bnw.Write(starCoinValue);
-
-                bnw.BaseStream.Position = 0x61E;
-                int scoreValue = Convert.ToInt32(numericUpDown5.Value);
-                bnw.Write(scoreValue);
-
-                bnw.BaseStream.Position = 0x63A;
-                if (comboBox1.Text == "Small")
-                {
-                    bnw.Write(0);
-                }
-
-                bnw.BaseStream.Position = 0x63A;
-                if (comboBox1.Text == "Super")
-                {
-                    bnw.Write(1);
-                }
-
-                bnw.BaseStream.Position = 0x63A;
-                if (comboBox1.Text == "Fire")
-                {
-                    bnw.Write(2);
-                }
-
-                bnw.BaseStream.Position = 0x63A;
-                if (comboBox1.Text == "Mini")
-                {
-                    bnw.Write(4);
-                }
-
-                bnw.BaseStream.Position = 0x63A;
-                if (comboBox1.Text == "Blue Shell")
-                {
-                    bnw.Write(5);
-                }
-
-                bnw.BaseStream.Position = 0x666;
-                if (comboBox2.Text == "Nothing")
-                {
-                    bnw.Write(0);
-                }
-
-                bnw.BaseStream.Position = 0x666;
-                if (comboBox2.Text == "Super Mushroom")
-                {
-                    bnw.Write(1);
-                }
-
-                bnw.BaseStream.Position = 0x666;
-                if (comboBox2.Text == "Fire Flower")
-                {
-                    bnw.Write(2);
-                }
-
-                bnw.BaseStream.Position = 0x666;
-                if (comboBox2.Text == "Blue Shell")
-                {
-                    bnw.Write(3);
-                }
-
-                bnw.BaseStream.Position = 0x666;
-                if (comboBox2.Text == "Mini Mushroom")
-                {
-                    bnw.Write(4);
-                }
-
-                bnw.BaseStream.Position = 0x666;
-                if (comboBox2.Text == "Mega Mushroom")
-                {
-                    bnw.Write(5);
-                }
-
-                bnw.BaseStream.Position = 0x642;
-                if (numericUpDown6.Value == 1)
-                {
-                    bnw.Write(0);
-                    pictureBox1.Image = Properties.Resources.NSMB_BG1;
-                }
-
-                bnw.BaseStream.Position = 0x642;
-                if (numericUpDown6.Value == 2)
-                {
-                    bnw.Write(1);
-                    pictureBox1.Image = Properties.Resources.NSMB_BG2;
-                }
-
-                bnw.BaseStream.Position = 0x642;
-                if (numericUpDown6.Value == 3)
-                {
-                    bnw.Write(2);
-                    pictureBox1.Image = Properties.Resources.NSMB_BG3;
-                }
-
-                bnw.BaseStream.Position = 0x642;
-                if (numericUpDown6.Value == 4)
-                {
-                    bnw.Write(3);
-                    pictureBox1.Image = Properties.Resources.NSMB_BG4;
-                }
-
-                bnw.BaseStream.Position = 0x642;
-                if (numericUpDown6.Value == 5)
-                {
-                    bnw.Write(4);
-                    pictureBox1.Image = Properties.Resources.NSMB_BG5;
-                }
-            }
 
             bnw.Close();
 
@@ -813,259 +214,51 @@ namespace NewSuperMarioBrosSaveEditor
             radioButton2.Enabled = true;
             radioButton3.Enabled = true;
 
-            label1.Text = Path.GetFileName(dlg.FileName).ToString();
+            labelLogs.Text = Path.GetFileName(dlg.FileName).ToString();
         }
 
-        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        private void radioButton_CheckedChanged(object sender, EventArgs e)
         {
-            button2.Enabled = true;
-            label9.Enabled = true;
-            label10.Enabled = true;
-            label11.Enabled = true;
-            label13.Enabled = true;
-            label14.Enabled = true;
-            label15.Enabled = true;
-            label16.Enabled = true;
-            numericUpDown1.Enabled = true;
-            numericUpDown2.Enabled = true;
-            numericUpDown3.Enabled = true;
-            numericUpDown5.Enabled = true;
-            numericUpDown6.Enabled = true;
-            comboBox1.Enabled = true;
-            comboBox2.Enabled = true;
-            pictureBox1.Enabled = true;
-            checkBox1.Enabled = true;
-            checkBox2.Enabled = true;
+            RefreshFileIndex();
+
+            saveButton.Enabled = true;
+            labelLives.Enabled = true;
+            labelCoins.Enabled = true;
+            labelSC.Enabled = true;
+            labelScore.Enabled = true;
+            labelPowerup.Enabled = true;
+            labelInventory.Enabled = true;
+            labelBSB.Enabled = true;
+            livesNumUpDown.Enabled = true;
+            coinsNumUpDown.Enabled = true;
+            SCNumUpDown.Enabled = true;
+            scoreNumUpDown.Enabled = true;
+            BSBNumUpDown.Enabled = true;
+            powerupComboBox.Enabled = true;
+            inventoryComboBox.Enabled = true;
+            BSBPictureBox.Enabled = true;
+            unlockLCheckBox.Enabled = true;
+            unlockWCheckBox.Enabled = true;
 
             BinaryReader bnr = new BinaryReader(File.OpenRead(dlg.FileName));
 
-            bnr.BaseStream.Position = 0x142;
+            bnr.BaseStream.Position = 0x142 + fileIndex;
+            BSBNumUpDown.Value = bnr.ReadByte() + 1;
 
-            if (bnr.ReadByte() == (0))
-            {
-                numericUpDown6.Value = 1;
-                pictureBox1.Image = Properties.Resources.NSMB_BG1;
-            }
+            bnr.BaseStream.Position = 0x142 + fileIndex;
+            BSBPictureBox.Image = BGs[bnr.ReadByte()];
 
-            bnr.BaseStream.Position = 0x142;
+            bnr.BaseStream.Position = 0x116 + fileIndex;
+            livesNumUpDown.Value = bnr.ReadInt32();
 
-            if (bnr.ReadByte() == (1))
-            {
-                numericUpDown6.Value = 2;
-                pictureBox1.Image = Properties.Resources.NSMB_BG2;
-            }
+            bnr.BaseStream.Position = 0x11A + fileIndex;
+            coinsNumUpDown.Value = bnr.ReadInt32();
 
-            bnr.BaseStream.Position = 0x142;
+            bnr.BaseStream.Position = 0x122 + fileIndex;
+            SCNumUpDown.Value = bnr.ReadInt32();
 
-            if (bnr.ReadByte() == (2))
-            {
-                numericUpDown6.Value = 3;
-                pictureBox1.Image = Properties.Resources.NSMB_BG3;
-            }
-
-            bnr.BaseStream.Position = 0x142;
-
-            if (bnr.ReadByte() == (3))
-            {
-                numericUpDown6.Value = 4;
-                pictureBox1.Image = Properties.Resources.NSMB_BG4;
-            }
-
-            bnr.BaseStream.Position = 0x142;
-
-            if (bnr.ReadByte() == (4))
-            {
-                numericUpDown6.Value = 5;
-                pictureBox1.Image = Properties.Resources.NSMB_BG5;
-            }
-
-            bnr.BaseStream.Position = 0x116;
-
-            numericUpDown1.Value = bnr.ReadInt32();
-
-            bnr.BaseStream.Position = 0x11A;
-
-            numericUpDown2.Value = bnr.ReadInt32();
-
-            bnr.BaseStream.Position = 0x122;
-
-            numericUpDown3.Value = bnr.ReadInt32();
-
-            bnr.BaseStream.Position = 0x11E;
-
-            numericUpDown5.Value = bnr.ReadInt32();
-
-            ReadPowerups();
-
-            ReadInventory();
-
-            bnr.Close();
-        }
-
-        private void radioButton2_CheckedChanged(object sender, EventArgs e)
-        {
-            button2.Enabled = true;
-            label9.Enabled = true;
-            label10.Enabled = true;
-            label11.Enabled = true;
-            label13.Enabled = true;
-            label14.Enabled = true;
-            label15.Enabled = true;
-            label16.Enabled = true;
-            numericUpDown1.Enabled = true;
-            numericUpDown2.Enabled = true;
-            numericUpDown3.Enabled = true;
-            numericUpDown5.Enabled = true;
-            numericUpDown6.Enabled = true;
-            comboBox1.Enabled = true;
-            comboBox2.Enabled = true;
-            pictureBox1.Enabled = true;
-            checkBox1.Enabled = true;
-            checkBox2.Enabled = true;
-
-            BinaryReader bnr = new BinaryReader(File.OpenRead(dlg.FileName));
-
-            bnr.BaseStream.Position = 0x3C2;
-
-            if (bnr.ReadByte() == (0))
-            {
-                numericUpDown6.Value = 1;
-                pictureBox1.Image = Properties.Resources.NSMB_BG1;
-            }
-
-            bnr.BaseStream.Position = 0x3C2;
-
-            if (bnr.ReadByte() == (1))
-            {
-                numericUpDown6.Value = 2;
-                pictureBox1.Image = Properties.Resources.NSMB_BG2;
-            }
-
-            bnr.BaseStream.Position = 0x3C2;
-
-            if (bnr.ReadByte() == (2))
-            {
-                numericUpDown6.Value = 3;
-                pictureBox1.Image = Properties.Resources.NSMB_BG3;
-            }
-
-            bnr.BaseStream.Position = 0x3C2;
-
-            if (bnr.ReadByte() == (3))
-            {
-                numericUpDown6.Value = 4;
-                pictureBox1.Image = Properties.Resources.NSMB_BG4;
-            }
-
-            bnr.BaseStream.Position = 0x3C2;
-
-            if (bnr.ReadByte() == (4))
-            {
-                numericUpDown6.Value = 5;
-                pictureBox1.Image = Properties.Resources.NSMB_BG5;
-            }
-
-            bnr.BaseStream.Position = 0x396;
-
-            numericUpDown1.Value = bnr.ReadInt32();
-
-            bnr.BaseStream.Position = 0x39A;
-
-            numericUpDown2.Value = bnr.ReadInt32();
-
-            bnr.BaseStream.Position = 0x3A2;
-
-            numericUpDown3.Value = bnr.ReadInt32();
-
-            bnr.BaseStream.Position = 0x39E;
-
-            numericUpDown5.Value = bnr.ReadInt32();
-
-            ReadPowerups();
-
-            ReadInventory();
-
-            bnr.Close();
-        }
-
-        private void radioButton3_CheckedChanged(object sender, EventArgs e)
-        {
-            button2.Enabled = true;
-            label9.Enabled = true;
-            label10.Enabled = true;
-            label11.Enabled = true;
-            label13.Enabled = true;
-            label14.Enabled = true;
-            label15.Enabled = true;
-            label16.Enabled = true;
-            numericUpDown1.Enabled = true;
-            numericUpDown2.Enabled = true;
-            numericUpDown3.Enabled = true;
-            numericUpDown5.Enabled = true;
-            numericUpDown6.Enabled = true;
-            comboBox1.Enabled = true;
-            comboBox2.Enabled = true;
-            pictureBox1.Enabled = true;
-            checkBox1.Enabled = true;
-            checkBox2.Enabled = true;
-
-            BinaryReader bnr = new BinaryReader(File.OpenRead(dlg.FileName));
-
-            bnr.BaseStream.Position = 0x642;
-
-            if (bnr.ReadByte() == (0))
-            {
-                numericUpDown6.Value = 1;
-                pictureBox1.Image = Properties.Resources.NSMB_BG1;
-            }
-
-            bnr.BaseStream.Position = 0x642;
-
-            if (bnr.ReadByte() == (1))
-            {
-                numericUpDown6.Value = 2;
-                pictureBox1.Image = Properties.Resources.NSMB_BG2;
-            }
-
-            bnr.BaseStream.Position = 0x642;
-
-            if (bnr.ReadByte() == (2))
-            {
-                numericUpDown6.Value = 3;
-                pictureBox1.Image = Properties.Resources.NSMB_BG3;
-            }
-
-            bnr.BaseStream.Position = 0x642;
-
-            if (bnr.ReadByte() == (3))
-            {
-                numericUpDown6.Value = 4;
-                pictureBox1.Image = Properties.Resources.NSMB_BG4;
-            }
-
-            bnr.BaseStream.Position = 0x642;
-
-            if (bnr.ReadByte() == (4))
-            {
-                numericUpDown6.Value = 5;
-                pictureBox1.Image = Properties.Resources.NSMB_BG5;
-            }
-
-            bnr.BaseStream.Position = 0x616;
-
-            numericUpDown1.Value = bnr.ReadInt32();
-
-            bnr.BaseStream.Position = 0x61A;
-
-            numericUpDown2.Value = bnr.ReadInt32();
-
-            bnr.BaseStream.Position = 0x622;
-
-            numericUpDown3.Value = bnr.ReadInt32();
-
-            bnr.BaseStream.Position = 0x61E;
-
-            numericUpDown5.Value = bnr.ReadInt32();
+            bnr.BaseStream.Position = 0x11E + fileIndex;
+            scoreNumUpDown.Value = bnr.ReadInt32();
 
             ReadPowerups();
 
