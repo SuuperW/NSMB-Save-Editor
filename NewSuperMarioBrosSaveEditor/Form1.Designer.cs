@@ -38,11 +38,11 @@
 			this.labelLives = new System.Windows.Forms.Label();
 			this.saveBtn = new System.Windows.Forms.Button();
 			this.openBtn = new System.Windows.Forms.Button();
-			this.inventoryComboBox = new System.Windows.Forms.ComboBox();
+			this.inventoryCbx = new System.Windows.Forms.ComboBox();
 			this.BSBPictureBox = new System.Windows.Forms.PictureBox();
 			this.BSBNumUpDown = new System.Windows.Forms.NumericUpDown();
 			this.scoreNumUpDown = new System.Windows.Forms.NumericUpDown();
-			this.powerupComboBox = new System.Windows.Forms.ComboBox();
+			this.powerupCbx = new System.Windows.Forms.ComboBox();
 			this.SCNumUpDown = new System.Windows.Forms.NumericUpDown();
 			this.coinsNumUpDown = new System.Windows.Forms.NumericUpDown();
 			this.livesNumUpDown = new System.Windows.Forms.NumericUpDown();
@@ -153,14 +153,22 @@
 			this.openBtn.UseVisualStyleBackColor = true;
 			this.openBtn.Click += new System.EventHandler(this.openBtn_Clicked);
 			// 
-			// inventoryComboBox
+			// inventoryCbx
 			// 
-			this.inventoryComboBox.FormattingEnabled = true;
-			this.inventoryComboBox.Location = new System.Drawing.Point(128, 192);
-			this.inventoryComboBox.Margin = new System.Windows.Forms.Padding(2);
-			this.inventoryComboBox.Name = "inventoryComboBox";
-			this.inventoryComboBox.Size = new System.Drawing.Size(102, 21);
-			this.inventoryComboBox.TabIndex = 35;
+			this.inventoryCbx.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.inventoryCbx.FormattingEnabled = true;
+			this.inventoryCbx.Items.AddRange(new object[] {
+            "Empty",
+            "Mushroom",
+            "Fire Flower",
+            "Blue Shell",
+            "Mini Mushroom",
+            "Mega Mushroom"});
+			this.inventoryCbx.Location = new System.Drawing.Point(128, 192);
+			this.inventoryCbx.Margin = new System.Windows.Forms.Padding(2);
+			this.inventoryCbx.Name = "inventoryCbx";
+			this.inventoryCbx.Size = new System.Drawing.Size(102, 21);
+			this.inventoryCbx.TabIndex = 35;
 			// 
 			// BSBPictureBox
 			// 
@@ -206,14 +214,21 @@
 			this.scoreNumUpDown.TabIndex = 32;
 			this.scoreNumUpDown.ThousandsSeparator = true;
 			// 
-			// powerupComboBox
+			// powerupCbx
 			// 
-			this.powerupComboBox.FormattingEnabled = true;
-			this.powerupComboBox.Location = new System.Drawing.Point(128, 170);
-			this.powerupComboBox.Margin = new System.Windows.Forms.Padding(2);
-			this.powerupComboBox.Name = "powerupComboBox";
-			this.powerupComboBox.Size = new System.Drawing.Size(102, 21);
-			this.powerupComboBox.TabIndex = 31;
+			this.powerupCbx.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.powerupCbx.FormattingEnabled = true;
+			this.powerupCbx.Items.AddRange(new object[] {
+            "Small",
+            "Big",
+            "Fire",
+            "Mini",
+            "Blue Shell"});
+			this.powerupCbx.Location = new System.Drawing.Point(128, 170);
+			this.powerupCbx.Margin = new System.Windows.Forms.Padding(2);
+			this.powerupCbx.Name = "powerupCbx";
+			this.powerupCbx.Size = new System.Drawing.Size(102, 21);
+			this.powerupCbx.TabIndex = 31;
 			// 
 			// SCNumUpDown
 			// 
@@ -356,11 +371,11 @@
 			this.Controls.Add(this.labelLives);
 			this.Controls.Add(this.saveBtn);
 			this.Controls.Add(this.openBtn);
-			this.Controls.Add(this.inventoryComboBox);
+			this.Controls.Add(this.inventoryCbx);
 			this.Controls.Add(this.BSBPictureBox);
 			this.Controls.Add(this.BSBNumUpDown);
 			this.Controls.Add(this.scoreNumUpDown);
-			this.Controls.Add(this.powerupComboBox);
+			this.Controls.Add(this.powerupCbx);
 			this.Controls.Add(this.SCNumUpDown);
 			this.Controls.Add(this.coinsNumUpDown);
 			this.Controls.Add(this.livesNumUpDown);
@@ -392,11 +407,11 @@
         private System.Windows.Forms.Label labelLives;
         private System.Windows.Forms.Button saveBtn;
         private System.Windows.Forms.Button openBtn;
-        private System.Windows.Forms.ComboBox inventoryComboBox;
+        private System.Windows.Forms.ComboBox inventoryCbx;
         private System.Windows.Forms.PictureBox BSBPictureBox;
         private System.Windows.Forms.NumericUpDown BSBNumUpDown;
         private System.Windows.Forms.NumericUpDown scoreNumUpDown;
-        private System.Windows.Forms.ComboBox powerupComboBox;
+        private System.Windows.Forms.ComboBox powerupCbx;
         private System.Windows.Forms.NumericUpDown SCNumUpDown;
         private System.Windows.Forms.NumericUpDown coinsNumUpDown;
         private System.Windows.Forms.NumericUpDown livesNumUpDown;

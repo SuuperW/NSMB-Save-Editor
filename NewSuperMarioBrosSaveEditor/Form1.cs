@@ -12,19 +12,6 @@ namespace NewSuperMarioBrosSaveEditor
 			InitializeComponent();
 			dlg.Filter = "NSMB Savefile (*.sav)|*.sav";
 
-			powerupComboBox.Items.Add("Small");
-			powerupComboBox.Items.Add("Super");
-			powerupComboBox.Items.Add("Fire");
-			powerupComboBox.Items.Add("Mini");
-			powerupComboBox.Items.Add("Blue Shell");
-
-			inventoryComboBox.Items.Add("Nothing");
-			inventoryComboBox.Items.Add("Super Mushroom");
-			inventoryComboBox.Items.Add("Fire Flower");
-			inventoryComboBox.Items.Add("Blue Shell");
-			inventoryComboBox.Items.Add("Mini Mushroom");
-			inventoryComboBox.Items.Add("Mega Mushroom");
-
 			saveBtn.Enabled = false;
 			radioButton1.Enabled = false;
 			radioButton2.Enabled = false;
@@ -41,8 +28,8 @@ namespace NewSuperMarioBrosSaveEditor
 			SCNumUpDown.Enabled = false;
 			scoreNumUpDown.Enabled = false;
 			BSBNumUpDown.Enabled = false;
-			powerupComboBox.Enabled = false;
-			inventoryComboBox.Enabled = false;
+			powerupCbx.Enabled = false;
+			inventoryCbx.Enabled = false;
 			BSBPictureBox.Enabled = false;
 			unlockLCheckBox.Enabled = false;
 			unlockWCheckBox.Enabled = false;
@@ -115,7 +102,7 @@ namespace NewSuperMarioBrosSaveEditor
 			BinaryReader bnr = new BinaryReader(File.OpenRead(dlg.FileName));
 			bnr.BaseStream.Position = 0x13A + fileIndex;
 			int pID = bnr.ReadByte();
-			powerupComboBox.SelectedIndex = ((pID > 3) ? (pID - 1) : (pID));
+			powerupCbx.SelectedIndex = ((pID > 3) ? (pID - 1) : (pID));
 
 			bnr.Close();
 		}
@@ -126,7 +113,7 @@ namespace NewSuperMarioBrosSaveEditor
 
 			BinaryReader bnr = new BinaryReader(File.OpenRead(dlg.FileName));
 			bnr.BaseStream.Position = 0x166 + fileIndex;
-			inventoryComboBox.SelectedIndex = bnr.ReadByte();
+			inventoryCbx.SelectedIndex = bnr.ReadByte();
 
 			bnr.Close();
 		}
@@ -182,11 +169,11 @@ namespace NewSuperMarioBrosSaveEditor
 			bnw.Write(scoreValue);
 
 			bnw.BaseStream.Position = 0x13A + fileIndex;
-			bnw.Write(((powerupComboBox.SelectedIndex > 2) ? (powerupComboBox.SelectedIndex +1) : (powerupComboBox.SelectedIndex)));
-			Console.WriteLine(((powerupComboBox.SelectedIndex > 2) ? (powerupComboBox.SelectedIndex + 1) : (powerupComboBox.SelectedIndex)));
+			bnw.Write(((powerupCbx.SelectedIndex > 2) ? (powerupCbx.SelectedIndex +1) : (powerupCbx.SelectedIndex)));
+			Console.WriteLine(((powerupCbx.SelectedIndex > 2) ? (powerupCbx.SelectedIndex + 1) : (powerupCbx.SelectedIndex)));
 
 			bnw.BaseStream.Position = 0x166 + fileIndex;
-			bnw.Write(inventoryComboBox.SelectedIndex);
+			bnw.Write(inventoryCbx.SelectedIndex);
 
 			bnw.BaseStream.Position = 0x142 + fileIndex;
 			bnw.Write(BSBNumUpDown.Value - 1);
@@ -232,8 +219,8 @@ namespace NewSuperMarioBrosSaveEditor
 			SCNumUpDown.Enabled = true;
 			scoreNumUpDown.Enabled = true;
 			BSBNumUpDown.Enabled = true;
-			powerupComboBox.Enabled = true;
-			inventoryComboBox.Enabled = true;
+			powerupCbx.Enabled = true;
+			inventoryCbx.Enabled = true;
 			BSBPictureBox.Enabled = true;
 			unlockLCheckBox.Enabled = true;
 			unlockWCheckBox.Enabled = true;
