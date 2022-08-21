@@ -45,8 +45,6 @@ namespace NewSuperMarioBrosSaveEditor
 			Properties.Resources.NSMB_BG5,
 		};
 
-		private byte[] headerData;
-		private byte[] footerData;
 		private byte[][] filesData;
 
 		public ushort nsmbChecksum(byte[] data, int dataSize, int pos)
@@ -64,13 +62,9 @@ namespace NewSuperMarioBrosSaveEditor
 
 		public byte[] recalculateSaveFileChecksums(byte[] savefile)
 		{
-			doChecksum(savefile, 0x00, 0xF4); //Header
-
 			doChecksum(savefile, 0x100, 0x248); //Save 1
 			doChecksum(savefile, 0x380, 0x248); //Save 2
 			doChecksum(savefile, 0x600, 0x248); //Save 3
-
-			doChecksum(savefile, 0x880, 0x14); //Footer
 
 			return savefile;
 		}
@@ -195,9 +189,6 @@ namespace NewSuperMarioBrosSaveEditor
 
 					using (FileStream fs = new FileStream(dlg.FileName, FileMode.Open, FileAccess.Read))
 					{
-						headerData = new byte[0xF4];
-						fs.Read(headerData, 0, 0xF4);
-
 						filesData = new byte[3][];
 						fs.Seek(0x100, SeekOrigin.Begin);
 						for (int i = 0; i < filesData.Length; i++)
@@ -206,9 +197,6 @@ namespace NewSuperMarioBrosSaveEditor
 							fs.Read(filesData[i], 0, 0x248);
 							fs.Seek(0x280 - 0x248, SeekOrigin.Current);
 						}
-
-						footerData = new byte[0x14];
-						fs.Read(footerData, 0, 0x14);
 					}
 				}
 				else
