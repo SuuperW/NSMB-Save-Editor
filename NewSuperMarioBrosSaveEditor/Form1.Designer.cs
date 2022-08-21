@@ -191,18 +191,13 @@
 			this.BSBNumUpDown.Location = new System.Drawing.Point(166, 191);
 			this.BSBNumUpDown.Margin = new System.Windows.Forms.Padding(2);
 			this.BSBNumUpDown.Maximum = new decimal(new int[] {
-            5,
+            4,
             0,
             0,
             0});
 			this.BSBNumUpDown.Name = "BSBNumUpDown";
 			this.BSBNumUpDown.Size = new System.Drawing.Size(63, 20);
 			this.BSBNumUpDown.TabIndex = 33;
-			this.BSBNumUpDown.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
 			// 
 			// scoreNumUpDown
 			// 

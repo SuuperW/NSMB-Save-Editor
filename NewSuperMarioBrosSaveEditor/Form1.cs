@@ -23,7 +23,7 @@ namespace NewSuperMarioBrosSaveEditor
 			Properties.Resources.NSMB_BG5,
 		};
 
-		private byte[][] filesData;
+		private SaveFile[] files;
 
 		public ushort nsmbChecksum(byte[] data, int dataSize, int pos)
 		{
@@ -70,7 +70,7 @@ namespace NewSuperMarioBrosSaveEditor
 		{
 			RefreshFileIndex();
 
-			int pID = filesData[fileIndex][0x3A];
+			int pID = files[fileIndex].CurrentPowerup;
 			powerupCbx.SelectedIndex = ((pID > 3) ? (pID - 1) : (pID));
 		}
 
@@ -78,71 +78,39 @@ namespace NewSuperMarioBrosSaveEditor
 		{
 			RefreshFileIndex();
 
-			inventoryCbx.SelectedIndex = filesData[fileIndex][0x66];
+			inventoryCbx.SelectedIndex = files[fileIndex].Inventory;
 		}
 
 		private void saveBtn_Clicked(object sender, EventArgs e)
 		{
 			RefreshFileIndex();
 
-			BinaryWriter bnw = new BinaryWriter(new MemoryStream(filesData[fileIndex]));
+			SaveFile file = files[fileIndex];
 
-
+			// Quick 'unlock all' levels/worlds
 			if (unlockLCheckBox.Checked)
 			{
-				int pos = 0x141;
-				for (int i = 0; i <= 0x114; i++)
-				{
-					bnw.BaseStream.Position = pos + i;
-					bnw.Write(0xC0);
-				}
+				for (int i = 0; i < 0xE4; i++)
+					file.SetLevelFlags(i, 0xC0);
 			}
-
 			if (unlockWCheckBox.Checked)
 			{
-				int pos = 0x6A;
-				for (int i = 0; i <= 0x10; i++)
-				{
-					bnw.BaseStream.Position = pos + i;
-					bnw.Write(0xFF);
-				}
+				for (int i = 0; i < 8; i++)
+					file.SetWorldFlags(i, 0x43);
 			}
 
+			// Set other file data
+			file.Lives = (int)(livesNumUpDown.Value);
+			file.Coins = (int)(coinsNumUpDown.Value);
+			file.StarCoins = (int)(SCNumUpDown.Value);
+			file.Score = (int)(scoreNumUpDown.Value);
+			file.CurrentPowerup = powerupCbx.SelectedIndex > 2 ? powerupCbx.SelectedIndex + 1 : powerupCbx.SelectedIndex;
+			file.Inventory = inventoryCbx.SelectedIndex;
+			file.OverworldBackground = (byte)BSBNumUpDown.Value;
 
-			bnw.BaseStream.Position = 0x16;
-			int livesValue = (int)(livesNumUpDown.Value);
-
-			bnw.Write(livesValue);
-			
-			bnw.BaseStream.Position = 0x1A;
-			int coinsValue = (int)(coinsNumUpDown.Value);
-			bnw.Write(coinsValue);
-			
-			bnw.BaseStream.Position = 0x22;
-			int starCoinValue = (int)(SCNumUpDown.Value);
-			bnw.Write(starCoinValue);
-
-			bnw.BaseStream.Position = 0x1E;
-			int scoreValue = (int)(scoreNumUpDown.Value);
-			bnw.Write(scoreValue);
-
-			bnw.BaseStream.Position = 0x3A;
-			bnw.Write(((powerupCbx.SelectedIndex > 2) ? (powerupCbx.SelectedIndex +1) : (powerupCbx.SelectedIndex)));
-			Console.WriteLine(((powerupCbx.SelectedIndex > 2) ? (powerupCbx.SelectedIndex + 1) : (powerupCbx.SelectedIndex)));
-
-			bnw.BaseStream.Position = 0x66;
-			bnw.Write(inventoryCbx.SelectedIndex);
-
-			bnw.BaseStream.Position = 0x42;
-			bnw.Write(BSBNumUpDown.Value - 1);
-
-			BSBPictureBox.Image = BGs[(int)BSBNumUpDown.Value - 1];
-
-
-			bnw.Close();
-
+			// Copy data into the file, with updated checksum
 			byte[] fileByteRead = File.ReadAllBytes(dlg.FileName);
-			Array.Copy(filesData[fileIndex], 0, fileByteRead, 0x100 + fileIndex * 0x280, filesData[fileIndex].Length);
+			Array.Copy(file.GetData(), 0, fileByteRead, 0x100 + fileIndex * 0x280, SaveFile.SIZE);
 			recalculateSaveFileChecksums(fileByteRead);
 
 			using (FileStream fsWrite = new FileStream(dlg.FileName, FileMode.Open, FileAccess.Write))
@@ -163,14 +131,9 @@ namespace NewSuperMarioBrosSaveEditor
 
 					using (FileStream fs = new FileStream(dlg.FileName, FileMode.Open, FileAccess.Read))
 					{
-						filesData = new byte[3][];
-						fs.Seek(0x100, SeekOrigin.Begin);
-						for (int i = 0; i < filesData.Length; i++)
-						{
-							filesData[i] = new byte[0x248];
-							fs.Read(filesData[i], 0, 0x248);
-							fs.Seek(0x280 - 0x248, SeekOrigin.Current);
-						}
+						files = new SaveFile[3];
+						for (int i = 0; i < files.Length; i++)
+							files[i] = SaveFile.FromSav(fs, i);
 					}
 				}
 				else
@@ -184,36 +147,22 @@ namespace NewSuperMarioBrosSaveEditor
 
 		private void radioButton_CheckedChanged(object sender, EventArgs e)
 		{
-			RefreshFileIndex();
-
 			saveBtn.Enabled = true;
 			fileDataPnl.Enabled = true;
 
-			BinaryReader bnr = new BinaryReader(new MemoryStream(filesData[fileIndex]));
+			RefreshFileIndex();
+			SaveFile file = files[fileIndex];
 
-			bnr.BaseStream.Position = 0x42;
-			BSBNumUpDown.Value = bnr.ReadByte() + 1;
+			BSBNumUpDown.Value = file.OverworldBackground;
+			BSBPictureBox.Image = BGs[file.OverworldBackground];
 
-			bnr.BaseStream.Position = 0x42;
-			BSBPictureBox.Image = BGs[bnr.ReadByte()];
-
-			bnr.BaseStream.Position = 0x16;
-			livesNumUpDown.Value = bnr.ReadInt32();
-
-			bnr.BaseStream.Position = 0x1A;
-			coinsNumUpDown.Value = bnr.ReadInt32();
-
-			bnr.BaseStream.Position = 0x22;
-			SCNumUpDown.Value = bnr.ReadInt32();
-
-			bnr.BaseStream.Position = 0x1E;
-			scoreNumUpDown.Value = bnr.ReadInt32();
+			livesNumUpDown.Value = file.Lives;
+			coinsNumUpDown.Value = file.Coins;
+			SCNumUpDown.Value = file.StarCoins;
+			scoreNumUpDown.Value = file.Score;
 
 			ReadPowerups();
-
 			ReadInventory();
-
-			bnr.Close();
 		}
 	}
 }
