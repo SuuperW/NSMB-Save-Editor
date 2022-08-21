@@ -64,16 +64,13 @@ namespace NewSuperMarioBrosSaveEditor
 
 		public byte[] recalculateSaveFileChecksums(byte[] savefile)
 		{
-			for (int baseData = 0; baseData <= 0x1000; baseData += 0x1000)
-			{
-				doChecksum(savefile, baseData + 0x00, 0xF4); //Header
+			doChecksum(savefile, 0x00, 0xF4); //Header
 
-				doChecksum(savefile, baseData + 0x100, 0x248); //Save 1
-				doChecksum(savefile, baseData + 0x380, 0x248); //Save 2
-				doChecksum(savefile, baseData + 0x600, 0x248); //Save 3
+			doChecksum(savefile, 0x100, 0x248); //Save 1
+			doChecksum(savefile, 0x380, 0x248); //Save 2
+			doChecksum(savefile, 0x600, 0x248); //Save 3
 
-				doChecksum(savefile, baseData + 0x880, 0x14); //Footer
-			}
+			doChecksum(savefile, 0x880, 0x14); //Footer
 
 			return savefile;
 		}
