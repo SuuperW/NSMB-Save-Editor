@@ -10,7 +10,7 @@ namespace NewSuperMarioBrosSaveEditor
 		public Form1()
 		{
 			InitializeComponent();
-			dlg.Filter = "NSMB Savefile (*.sav)|*.sav";
+			dlg.Filter = "Raw savefile (*.sav), BizHawk save (*.SaveRAM)|*.sav;*.SaveRAM";
 
 			saveBtn.Enabled = false;
 			radioButton1.Enabled = false;
