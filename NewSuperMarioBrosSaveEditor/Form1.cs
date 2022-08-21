@@ -25,7 +25,7 @@ namespace NewSuperMarioBrosSaveEditor
 			inventoryComboBox.Items.Add("Mini Mushroom");
 			inventoryComboBox.Items.Add("Mega Mushroom");
 
-			saveButton.Enabled = false;
+			saveBtn.Enabled = false;
 			radioButton1.Enabled = false;
 			radioButton2.Enabled = false;
 			radioButton3.Enabled = false;
@@ -46,22 +46,26 @@ namespace NewSuperMarioBrosSaveEditor
 			BSBPictureBox.Enabled = false;
 			unlockLCheckBox.Enabled = false;
 			unlockWCheckBox.Enabled = false;
-
-			saveButton.Click += new System.EventHandler(SaveButtonClicked);
 		}
 
 		OpenFileDialog dlg = new OpenFileDialog();
 		int fileIndex = 0;
-		Bitmap[] BGs = { Properties.Resources.NSMB_BG1, Properties.Resources.NSMB_BG2, Properties.Resources.NSMB_BG3, Properties.Resources.NSMB_BG4, Properties.Resources.NSMB_BG5 };
+		Bitmap[] BGs = {
+			Properties.Resources.NSMB_BG1,
+			Properties.Resources.NSMB_BG2,
+			Properties.Resources.NSMB_BG3,
+			Properties.Resources.NSMB_BG4,
+			Properties.Resources.NSMB_BG5,
+		};
 
 		public ushort nsmbChecksum(byte[] data, int dataSize, int pos)
 		{
 			ushort checksum = 654;
 
-			for (int i = 0; i < dataSize; ++i)
+			for (int i = 0; i < dataSize; i++)
 			{
 				byte readByte = data[pos + i];
-				checksum = Convert.ToUInt16(readByte ^ ((2 * checksum & 0xFFFE) | (checksum >> 15) & 1));
+				checksum = (ushort)(readByte ^ ((2 * checksum & 0xFFFE) | (checksum >> 15) & 1));
 			}
 
 			return checksum;
@@ -86,8 +90,8 @@ namespace NewSuperMarioBrosSaveEditor
 		public void doChecksum(byte[] savefile, int checksumPos, int dataLen)
 		{
 			ushort checksum = nsmbChecksum(savefile, dataLen, checksumPos + 10);
-			savefile[checksumPos] = Convert.ToByte(checksum & 0xFF);
-			savefile[checksumPos + 1] = Convert.ToByte(checksum >> 8);
+			savefile[checksumPos] = (byte)(checksum & 0xFF);
+			savefile[checksumPos + 1] = (byte)(checksum >> 8);
 		}
 
 		public void UncheckFileButtons()
@@ -127,7 +131,7 @@ namespace NewSuperMarioBrosSaveEditor
 			bnr.Close();
 		}
 
-		private void SaveButtonClicked(object sender, EventArgs e)
+		private void saveBtn_Clicked(object sender, EventArgs e)
 		{
 			RefreshFileIndex();
 
@@ -162,19 +166,19 @@ namespace NewSuperMarioBrosSaveEditor
 			}
 
 			bnw.BaseStream.Position = 0x116 + fileIndex;
-			int livesValue = Convert.ToInt32(livesNumUpDown.Value);
+			int livesValue = (int)(livesNumUpDown.Value);
 			bnw.Write(livesValue);
 			
 			bnw.BaseStream.Position = 0x11A + fileIndex;
-			int coinsValue = Convert.ToInt32(coinsNumUpDown.Value);
+			int coinsValue = (int)(coinsNumUpDown.Value);
 			bnw.Write(coinsValue);
 			
 			bnw.BaseStream.Position = 0x122 + fileIndex;
-			int starCoinValue = Convert.ToInt32(SCNumUpDown.Value);
+			int starCoinValue = (int)(SCNumUpDown.Value);
 			bnw.Write(starCoinValue);
 
 			bnw.BaseStream.Position = 0x11E + fileIndex;
-			int scoreValue = Convert.ToInt32(scoreNumUpDown.Value);
+			int scoreValue = (int)(scoreNumUpDown.Value);
 			bnw.Write(scoreValue);
 
 			bnw.BaseStream.Position = 0x13A + fileIndex;
@@ -200,7 +204,7 @@ namespace NewSuperMarioBrosSaveEditor
 			}
 		}
 
-		private void button1_Click_1(object sender, EventArgs e)
+		private void openBtn_Clicked(object sender, EventArgs e)
 		{
 			dlg.ShowDialog();
 
@@ -215,7 +219,7 @@ namespace NewSuperMarioBrosSaveEditor
 		{
 			RefreshFileIndex();
 
-			saveButton.Enabled = true;
+			saveBtn.Enabled = true;
 			labelLives.Enabled = true;
 			labelCoins.Enabled = true;
 			labelSC.Enabled = true;

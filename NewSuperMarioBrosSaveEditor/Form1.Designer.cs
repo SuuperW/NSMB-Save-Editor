@@ -36,8 +36,8 @@
 			this.labelSC = new System.Windows.Forms.Label();
 			this.labelCoins = new System.Windows.Forms.Label();
 			this.labelLives = new System.Windows.Forms.Label();
-			this.saveButton = new System.Windows.Forms.Button();
-			this.browseButton = new System.Windows.Forms.Button();
+			this.saveBtn = new System.Windows.Forms.Button();
+			this.openBtn = new System.Windows.Forms.Button();
 			this.inventoryComboBox = new System.Windows.Forms.ComboBox();
 			this.BSBPictureBox = new System.Windows.Forms.PictureBox();
 			this.BSBNumUpDown = new System.Windows.Forms.NumericUpDown();
@@ -131,26 +131,27 @@
 			this.labelLives.TabIndex = 38;
 			this.labelLives.Text = "Lives:";
 			// 
-			// saveButton
+			// saveBtn
 			// 
-			this.saveButton.Location = new System.Drawing.Point(122, 374);
-			this.saveButton.Margin = new System.Windows.Forms.Padding(2);
-			this.saveButton.Name = "saveButton";
-			this.saveButton.Size = new System.Drawing.Size(72, 20);
-			this.saveButton.TabIndex = 37;
-			this.saveButton.Text = "Save";
-			this.saveButton.UseVisualStyleBackColor = true;
+			this.saveBtn.Location = new System.Drawing.Point(122, 374);
+			this.saveBtn.Margin = new System.Windows.Forms.Padding(2);
+			this.saveBtn.Name = "saveBtn";
+			this.saveBtn.Size = new System.Drawing.Size(72, 20);
+			this.saveBtn.TabIndex = 37;
+			this.saveBtn.Text = "Save";
+			this.saveBtn.UseVisualStyleBackColor = true;
+			this.saveBtn.Click += new System.EventHandler(this.saveBtn_Clicked);
 			// 
-			// browseButton
+			// openBtn
 			// 
-			this.browseButton.Location = new System.Drawing.Point(47, 374);
-			this.browseButton.Margin = new System.Windows.Forms.Padding(2);
-			this.browseButton.Name = "browseButton";
-			this.browseButton.Size = new System.Drawing.Size(72, 20);
-			this.browseButton.TabIndex = 36;
-			this.browseButton.Text = "Browse...";
-			this.browseButton.UseVisualStyleBackColor = true;
-			this.browseButton.Click += new System.EventHandler(this.button1_Click_1);
+			this.openBtn.Location = new System.Drawing.Point(47, 374);
+			this.openBtn.Margin = new System.Windows.Forms.Padding(2);
+			this.openBtn.Name = "openBtn";
+			this.openBtn.Size = new System.Drawing.Size(72, 20);
+			this.openBtn.TabIndex = 36;
+			this.openBtn.Text = "Browse...";
+			this.openBtn.UseVisualStyleBackColor = true;
+			this.openBtn.Click += new System.EventHandler(this.openBtn_Clicked);
 			// 
 			// inventoryComboBox
 			// 
@@ -353,8 +354,8 @@
 			this.Controls.Add(this.labelSC);
 			this.Controls.Add(this.labelCoins);
 			this.Controls.Add(this.labelLives);
-			this.Controls.Add(this.saveButton);
-			this.Controls.Add(this.browseButton);
+			this.Controls.Add(this.saveBtn);
+			this.Controls.Add(this.openBtn);
 			this.Controls.Add(this.inventoryComboBox);
 			this.Controls.Add(this.BSBPictureBox);
 			this.Controls.Add(this.BSBNumUpDown);
@@ -389,8 +390,8 @@
         private System.Windows.Forms.Label labelSC;
         private System.Windows.Forms.Label labelCoins;
         private System.Windows.Forms.Label labelLives;
-        private System.Windows.Forms.Button saveButton;
-        private System.Windows.Forms.Button browseButton;
+        private System.Windows.Forms.Button saveBtn;
+        private System.Windows.Forms.Button openBtn;
         private System.Windows.Forms.ComboBox inventoryComboBox;
         private System.Windows.Forms.PictureBox BSBPictureBox;
         private System.Windows.Forms.NumericUpDown BSBNumUpDown;
