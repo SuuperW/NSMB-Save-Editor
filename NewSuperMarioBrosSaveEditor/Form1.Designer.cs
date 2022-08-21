@@ -50,7 +50,6 @@
 			this.radioButton2 = new System.Windows.Forms.RadioButton();
 			this.radioButton3 = new System.Windows.Forms.RadioButton();
 			this.labelLogs = new System.Windows.Forms.Label();
-			this.labelCredits = new System.Windows.Forms.Label();
 			this.unlockLCheckBox = new System.Windows.Forms.CheckBox();
 			this.unlockWCheckBox = new System.Windows.Forms.CheckBox();
 			this.fileSelectPnl = new System.Windows.Forms.Panel();
@@ -323,16 +322,6 @@
 			this.labelLogs.TabIndex = 49;
 			this.labelLogs.Text = "No file open...";
 			// 
-			// labelCredits
-			// 
-			this.labelCredits.AutoSize = true;
-			this.labelCredits.Location = new System.Drawing.Point(141, 411);
-			this.labelCredits.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-			this.labelCredits.Name = "labelCredits";
-			this.labelCredits.Size = new System.Drawing.Size(107, 13);
-			this.labelCredits.TabIndex = 50;
-			this.labelCredits.Text = "v1.01 by newluigidev";
-			// 
 			// unlockLCheckBox
 			// 
 			this.unlockLCheckBox.AutoSize = true;
@@ -398,7 +387,6 @@
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(251, 428);
-			this.Controls.Add(this.labelCredits);
 			this.Controls.Add(this.labelLogs);
 			this.Controls.Add(this.saveBtn);
 			this.Controls.Add(this.openBtn);
@@ -448,7 +436,6 @@
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.RadioButton radioButton3;
         private System.Windows.Forms.Label labelLogs;
-        private System.Windows.Forms.Label labelCredits;
         private System.Windows.Forms.CheckBox unlockLCheckBox;
         private System.Windows.Forms.CheckBox unlockWCheckBox;
 		private System.Windows.Forms.Panel fileSelectPnl;
