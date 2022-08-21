@@ -45,6 +45,10 @@ namespace NewSuperMarioBrosSaveEditor
 			Properties.Resources.NSMB_BG5,
 		};
 
+		private byte[] headerData;
+		private byte[] footerData;
+		private byte[][] filesData;
+
 		public ushort nsmbChecksum(byte[] data, int dataSize, int pos)
 		{
 			ushort checksum = 654;
@@ -91,50 +95,35 @@ namespace NewSuperMarioBrosSaveEditor
 		public void RefreshFileIndex()
 		{
 			if (radioButton1.Checked) { fileIndex = 0; }
-			if (radioButton2.Checked) { fileIndex = 0x280; }
-			if (radioButton3.Checked) { fileIndex = 0x500; }
+			if (radioButton2.Checked) { fileIndex = 1; }
+			if (radioButton3.Checked) { fileIndex = 2; }
 		}
 
 		public void ReadPowerups()
 		{
 			RefreshFileIndex();
 
-			BinaryReader bnr = new BinaryReader(File.OpenRead(dlg.FileName));
-			bnr.BaseStream.Position = 0x13A + fileIndex;
-			int pID = bnr.ReadByte();
+			int pID = filesData[fileIndex][0x3A];
 			powerupCbx.SelectedIndex = ((pID > 3) ? (pID - 1) : (pID));
-
-			bnr.Close();
 		}
 
 		public void ReadInventory()
 		{
 			RefreshFileIndex();
 
-			BinaryReader bnr = new BinaryReader(File.OpenRead(dlg.FileName));
-			bnr.BaseStream.Position = 0x166 + fileIndex;
-			inventoryCbx.SelectedIndex = bnr.ReadByte();
-
-			bnr.Close();
+			inventoryCbx.SelectedIndex = filesData[fileIndex][0x66];
 		}
 
 		private void saveBtn_Clicked(object sender, EventArgs e)
 		{
 			RefreshFileIndex();
 
-			byte[] fileByteRead;
-
-			using (FileStream fs = new FileStream(dlg.FileName, FileMode.Open, FileAccess.Read))
-			{
-				fileByteRead = File.ReadAllBytes(dlg.FileName);
-			}
-
-			BinaryWriter bnw = new BinaryWriter(new MemoryStream(fileByteRead));
+			BinaryWriter bnw = new BinaryWriter(new MemoryStream(filesData[fileIndex]));
 
 
 			if (unlockLCheckBox.Checked)
 			{
-				int pos = 0x241 + fileIndex;
+				int pos = 0x141;
 				for (int i = 0; i <= 0x114; i++)
 				{
 					bnw.BaseStream.Position = pos + i;
@@ -144,7 +133,7 @@ namespace NewSuperMarioBrosSaveEditor
 
 			if (unlockWCheckBox.Checked)
 			{
-				int pos = 0x16A + fileIndex;
+				int pos = 0x6A;
 				for (int i = 0; i <= 0x10; i++)
 				{
 					bnw.BaseStream.Position = pos + i;
@@ -152,30 +141,32 @@ namespace NewSuperMarioBrosSaveEditor
 				}
 			}
 
-			bnw.BaseStream.Position = 0x116 + fileIndex;
+
+			bnw.BaseStream.Position = 0x16;
 			int livesValue = (int)(livesNumUpDown.Value);
+
 			bnw.Write(livesValue);
 			
-			bnw.BaseStream.Position = 0x11A + fileIndex;
+			bnw.BaseStream.Position = 0x1A;
 			int coinsValue = (int)(coinsNumUpDown.Value);
 			bnw.Write(coinsValue);
 			
-			bnw.BaseStream.Position = 0x122 + fileIndex;
+			bnw.BaseStream.Position = 0x22;
 			int starCoinValue = (int)(SCNumUpDown.Value);
 			bnw.Write(starCoinValue);
 
-			bnw.BaseStream.Position = 0x11E + fileIndex;
+			bnw.BaseStream.Position = 0x1E;
 			int scoreValue = (int)(scoreNumUpDown.Value);
 			bnw.Write(scoreValue);
 
-			bnw.BaseStream.Position = 0x13A + fileIndex;
+			bnw.BaseStream.Position = 0x3A;
 			bnw.Write(((powerupCbx.SelectedIndex > 2) ? (powerupCbx.SelectedIndex +1) : (powerupCbx.SelectedIndex)));
 			Console.WriteLine(((powerupCbx.SelectedIndex > 2) ? (powerupCbx.SelectedIndex + 1) : (powerupCbx.SelectedIndex)));
 
-			bnw.BaseStream.Position = 0x166 + fileIndex;
+			bnw.BaseStream.Position = 0x66;
 			bnw.Write(inventoryCbx.SelectedIndex);
 
-			bnw.BaseStream.Position = 0x142 + fileIndex;
+			bnw.BaseStream.Position = 0x42;
 			bnw.Write(BSBNumUpDown.Value - 1);
 
 			BSBPictureBox.Image = BGs[(int)BSBNumUpDown.Value - 1];
@@ -183,6 +174,8 @@ namespace NewSuperMarioBrosSaveEditor
 
 			bnw.Close();
 
+			byte[] fileByteRead = File.ReadAllBytes(dlg.FileName);
+			Array.Copy(filesData[fileIndex], 0, fileByteRead, 0x100 + fileIndex * 0x280, filesData[fileIndex].Length);
 			recalculateSaveFileChecksums(fileByteRead);
 
 			using (FileStream fsWrite = new FileStream(dlg.FileName, FileMode.Open, FileAccess.Write))
@@ -193,13 +186,37 @@ namespace NewSuperMarioBrosSaveEditor
 
 		private void openBtn_Clicked(object sender, EventArgs e)
 		{
-			dlg.ShowDialog();
+			if (dlg.ShowDialog() == DialogResult.OK)
+			{
+				if (File.Exists(dlg.FileName))
+				{
+					radioButton1.Enabled = true;
+					radioButton2.Enabled = true;
+					radioButton3.Enabled = true;
 
-			radioButton1.Enabled = true;
-			radioButton2.Enabled = true;
-			radioButton3.Enabled = true;
+					labelLogs.Text = Path.GetFileName(dlg.FileName).ToString();
 
-			labelLogs.Text = Path.GetFileName(dlg.FileName).ToString();
+					using (FileStream fs = new FileStream(dlg.FileName, FileMode.Open, FileAccess.Read))
+					{
+						headerData = new byte[0xF4];
+						fs.Read(headerData, 0, 0xF4);
+
+						filesData = new byte[3][];
+						fs.Seek(0x100, SeekOrigin.Begin);
+						for (int i = 0; i < filesData.Length; i++)
+						{
+							filesData[i] = new byte[0x248];
+							fs.Read(filesData[i], 0, 0x248);
+							fs.Seek(0x280 - 0x248, SeekOrigin.Current);
+						}
+
+						footerData = new byte[0x14];
+						fs.Read(footerData, 0, 0x14);
+					}
+				}
+				else
+					MessageBox.Show("File does not exist.");
+			}
 		}
 
 		private void radioButton_CheckedChanged(object sender, EventArgs e)
@@ -225,24 +242,24 @@ namespace NewSuperMarioBrosSaveEditor
 			unlockLCheckBox.Enabled = true;
 			unlockWCheckBox.Enabled = true;
 
-			BinaryReader bnr = new BinaryReader(File.OpenRead(dlg.FileName));
+			BinaryReader bnr = new BinaryReader(new MemoryStream(filesData[fileIndex]));
 
-			bnr.BaseStream.Position = 0x142 + fileIndex;
+			bnr.BaseStream.Position = 0x42;
 			BSBNumUpDown.Value = bnr.ReadByte() + 1;
 
-			bnr.BaseStream.Position = 0x142 + fileIndex;
+			bnr.BaseStream.Position = 0x42;
 			BSBPictureBox.Image = BGs[bnr.ReadByte()];
 
-			bnr.BaseStream.Position = 0x116 + fileIndex;
+			bnr.BaseStream.Position = 0x16;
 			livesNumUpDown.Value = bnr.ReadInt32();
 
-			bnr.BaseStream.Position = 0x11A + fileIndex;
+			bnr.BaseStream.Position = 0x1A;
 			coinsNumUpDown.Value = bnr.ReadInt32();
 
-			bnr.BaseStream.Position = 0x122 + fileIndex;
+			bnr.BaseStream.Position = 0x22;
 			SCNumUpDown.Value = bnr.ReadInt32();
 
-			bnr.BaseStream.Position = 0x11E + fileIndex;
+			bnr.BaseStream.Position = 0x1E;
 			scoreNumUpDown.Value = bnr.ReadInt32();
 
 			ReadPowerups();
