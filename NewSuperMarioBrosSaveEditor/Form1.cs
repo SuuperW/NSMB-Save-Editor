@@ -11,28 +11,6 @@ namespace NewSuperMarioBrosSaveEditor
 		{
 			InitializeComponent();
 			dlg.Filter = "Raw savefile (*.sav), BizHawk save (*.SaveRAM)|*.sav;*.SaveRAM";
-
-			saveBtn.Enabled = false;
-			radioButton1.Enabled = false;
-			radioButton2.Enabled = false;
-			radioButton3.Enabled = false;
-			labelLives.Enabled = false;
-			labelCoins.Enabled = false;
-			labelSC.Enabled = false;
-			labelScore.Enabled = false;
-			labelPowerup.Enabled = false;
-			labelInventory.Enabled = false;
-			labelBSB.Enabled = false;
-			livesNumUpDown.Enabled = false;
-			coinsNumUpDown.Enabled = false;
-			SCNumUpDown.Enabled = false;
-			scoreNumUpDown.Enabled = false;
-			BSBNumUpDown.Enabled = false;
-			powerupCbx.Enabled = false;
-			inventoryCbx.Enabled = false;
-			BSBPictureBox.Enabled = false;
-			unlockLCheckBox.Enabled = false;
-			unlockWCheckBox.Enabled = false;
 		}
 
 		OpenFileDialog dlg = new OpenFileDialog();
@@ -78,9 +56,7 @@ namespace NewSuperMarioBrosSaveEditor
 
 		public void UncheckFileButtons()
 		{
-			radioButton1.Checked = false;
-			radioButton2.Checked = false;
-			radioButton3.Checked = false;
+			fileSelectPnl.Enabled = false;
 		}
 
 		public void RefreshFileIndex()
@@ -181,9 +157,7 @@ namespace NewSuperMarioBrosSaveEditor
 			{
 				if (File.Exists(dlg.FileName))
 				{
-					radioButton1.Enabled = true;
-					radioButton2.Enabled = true;
-					radioButton3.Enabled = true;
+					fileSelectPnl.Enabled = true;
 
 					labelLogs.Text = Path.GetFileName(dlg.FileName).ToString();
 
@@ -200,7 +174,11 @@ namespace NewSuperMarioBrosSaveEditor
 					}
 				}
 				else
+				{
+					fileSelectPnl.Enabled = false;
+					fileDataPnl.Enabled = false;
 					MessageBox.Show("File does not exist.");
+				}
 			}
 		}
 
@@ -209,23 +187,7 @@ namespace NewSuperMarioBrosSaveEditor
 			RefreshFileIndex();
 
 			saveBtn.Enabled = true;
-			labelLives.Enabled = true;
-			labelCoins.Enabled = true;
-			labelSC.Enabled = true;
-			labelScore.Enabled = true;
-			labelPowerup.Enabled = true;
-			labelInventory.Enabled = true;
-			labelBSB.Enabled = true;
-			livesNumUpDown.Enabled = true;
-			coinsNumUpDown.Enabled = true;
-			SCNumUpDown.Enabled = true;
-			scoreNumUpDown.Enabled = true;
-			BSBNumUpDown.Enabled = true;
-			powerupCbx.Enabled = true;
-			inventoryCbx.Enabled = true;
-			BSBPictureBox.Enabled = true;
-			unlockLCheckBox.Enabled = true;
-			unlockWCheckBox.Enabled = true;
+			fileDataPnl.Enabled = true;
 
 			BinaryReader bnr = new BinaryReader(new MemoryStream(filesData[fileIndex]));
 

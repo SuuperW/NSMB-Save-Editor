@@ -53,18 +53,22 @@
 			this.labelCredits = new System.Windows.Forms.Label();
 			this.unlockLCheckBox = new System.Windows.Forms.CheckBox();
 			this.unlockWCheckBox = new System.Windows.Forms.CheckBox();
+			this.fileSelectPnl = new System.Windows.Forms.Panel();
+			this.fileDataPnl = new System.Windows.Forms.Panel();
 			((System.ComponentModel.ISupportInitialize)(this.BSBPictureBox)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.BSBNumUpDown)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.scoreNumUpDown)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.SCNumUpDown)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.coinsNumUpDown)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.livesNumUpDown)).BeginInit();
+			this.fileSelectPnl.SuspendLayout();
+			this.fileDataPnl.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// labelBSB
 			// 
 			this.labelBSB.AutoSize = true;
-			this.labelBSB.Location = new System.Drawing.Point(22, 228);
+			this.labelBSB.Location = new System.Drawing.Point(22, 192);
 			this.labelBSB.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
 			this.labelBSB.Name = "labelBSB";
 			this.labelBSB.Size = new System.Drawing.Size(141, 13);
@@ -74,7 +78,7 @@
 			// labelInventory
 			// 
 			this.labelInventory.AutoSize = true;
-			this.labelInventory.Location = new System.Drawing.Point(22, 194);
+			this.labelInventory.Location = new System.Drawing.Point(22, 158);
 			this.labelInventory.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
 			this.labelInventory.Name = "labelInventory";
 			this.labelInventory.Size = new System.Drawing.Size(77, 13);
@@ -84,7 +88,7 @@
 			// labelPowerup
 			// 
 			this.labelPowerup.AutoSize = true;
-			this.labelPowerup.Location = new System.Drawing.Point(22, 171);
+			this.labelPowerup.Location = new System.Drawing.Point(22, 135);
 			this.labelPowerup.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
 			this.labelPowerup.Name = "labelPowerup";
 			this.labelPowerup.Size = new System.Drawing.Size(52, 13);
@@ -94,7 +98,7 @@
 			// labelScore
 			// 
 			this.labelScore.AutoSize = true;
-			this.labelScore.Location = new System.Drawing.Point(22, 100);
+			this.labelScore.Location = new System.Drawing.Point(22, 64);
 			this.labelScore.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
 			this.labelScore.Name = "labelScore";
 			this.labelScore.Size = new System.Drawing.Size(38, 13);
@@ -104,7 +108,7 @@
 			// labelSC
 			// 
 			this.labelSC.AutoSize = true;
-			this.labelSC.Location = new System.Drawing.Point(22, 81);
+			this.labelSC.Location = new System.Drawing.Point(22, 45);
 			this.labelSC.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
 			this.labelSC.Name = "labelSC";
 			this.labelSC.Size = new System.Drawing.Size(58, 13);
@@ -114,7 +118,7 @@
 			// labelCoins
 			// 
 			this.labelCoins.AutoSize = true;
-			this.labelCoins.Location = new System.Drawing.Point(22, 62);
+			this.labelCoins.Location = new System.Drawing.Point(22, 26);
 			this.labelCoins.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
 			this.labelCoins.Name = "labelCoins";
 			this.labelCoins.Size = new System.Drawing.Size(36, 13);
@@ -124,7 +128,7 @@
 			// labelLives
 			// 
 			this.labelLives.AutoSize = true;
-			this.labelLives.Location = new System.Drawing.Point(22, 42);
+			this.labelLives.Location = new System.Drawing.Point(22, 6);
 			this.labelLives.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
 			this.labelLives.Name = "labelLives";
 			this.labelLives.Size = new System.Drawing.Size(35, 13);
@@ -133,6 +137,7 @@
 			// 
 			// saveBtn
 			// 
+			this.saveBtn.Enabled = false;
 			this.saveBtn.Location = new System.Drawing.Point(122, 374);
 			this.saveBtn.Margin = new System.Windows.Forms.Padding(2);
 			this.saveBtn.Name = "saveBtn";
@@ -164,7 +169,7 @@
             "Blue Shell",
             "Mini Mushroom",
             "Mega Mushroom"});
-			this.inventoryCbx.Location = new System.Drawing.Point(128, 192);
+			this.inventoryCbx.Location = new System.Drawing.Point(128, 156);
 			this.inventoryCbx.Margin = new System.Windows.Forms.Padding(2);
 			this.inventoryCbx.Name = "inventoryCbx";
 			this.inventoryCbx.Size = new System.Drawing.Size(102, 21);
@@ -174,7 +179,7 @@
 			// 
 			this.BSBPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
 			this.BSBPictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.BSBPictureBox.Location = new System.Drawing.Point(56, 259);
+			this.BSBPictureBox.Location = new System.Drawing.Point(56, 223);
 			this.BSBPictureBox.Margin = new System.Windows.Forms.Padding(2);
 			this.BSBPictureBox.Name = "BSBPictureBox";
 			this.BSBPictureBox.Size = new System.Drawing.Size(130, 101);
@@ -184,7 +189,7 @@
 			// 
 			// BSBNumUpDown
 			// 
-			this.BSBNumUpDown.Location = new System.Drawing.Point(166, 227);
+			this.BSBNumUpDown.Location = new System.Drawing.Point(166, 191);
 			this.BSBNumUpDown.Margin = new System.Windows.Forms.Padding(2);
 			this.BSBNumUpDown.Maximum = new decimal(new int[] {
             5,
@@ -202,7 +207,7 @@
 			// 
 			// scoreNumUpDown
 			// 
-			this.scoreNumUpDown.Location = new System.Drawing.Point(128, 99);
+			this.scoreNumUpDown.Location = new System.Drawing.Point(128, 63);
 			this.scoreNumUpDown.Margin = new System.Windows.Forms.Padding(2);
 			this.scoreNumUpDown.Maximum = new decimal(new int[] {
             9999950,
@@ -224,7 +229,7 @@
             "Fire",
             "Mini",
             "Blue Shell"});
-			this.powerupCbx.Location = new System.Drawing.Point(128, 170);
+			this.powerupCbx.Location = new System.Drawing.Point(128, 134);
 			this.powerupCbx.Margin = new System.Windows.Forms.Padding(2);
 			this.powerupCbx.Name = "powerupCbx";
 			this.powerupCbx.Size = new System.Drawing.Size(102, 21);
@@ -232,7 +237,7 @@
 			// 
 			// SCNumUpDown
 			// 
-			this.SCNumUpDown.Location = new System.Drawing.Point(128, 80);
+			this.SCNumUpDown.Location = new System.Drawing.Point(128, 44);
 			this.SCNumUpDown.Margin = new System.Windows.Forms.Padding(2);
 			this.SCNumUpDown.Maximum = new decimal(new int[] {
             240,
@@ -245,7 +250,7 @@
 			// 
 			// coinsNumUpDown
 			// 
-			this.coinsNumUpDown.Location = new System.Drawing.Point(128, 61);
+			this.coinsNumUpDown.Location = new System.Drawing.Point(128, 25);
 			this.coinsNumUpDown.Margin = new System.Windows.Forms.Padding(2);
 			this.coinsNumUpDown.Maximum = new decimal(new int[] {
             99,
@@ -258,7 +263,7 @@
 			// 
 			// livesNumUpDown
 			// 
-			this.livesNumUpDown.Location = new System.Drawing.Point(128, 42);
+			this.livesNumUpDown.Location = new System.Drawing.Point(128, 6);
 			this.livesNumUpDown.Margin = new System.Windows.Forms.Padding(2);
 			this.livesNumUpDown.Maximum = new decimal(new int[] {
             99,
@@ -331,7 +336,7 @@
 			// unlockLCheckBox
 			// 
 			this.unlockLCheckBox.AutoSize = true;
-			this.unlockLCheckBox.Location = new System.Drawing.Point(25, 147);
+			this.unlockLCheckBox.Location = new System.Drawing.Point(25, 111);
 			this.unlockLCheckBox.Margin = new System.Windows.Forms.Padding(2);
 			this.unlockLCheckBox.Name = "unlockLCheckBox";
 			this.unlockLCheckBox.Size = new System.Drawing.Size(107, 17);
@@ -342,7 +347,7 @@
 			// unlockWCheckBox
 			// 
 			this.unlockWCheckBox.AutoSize = true;
-			this.unlockWCheckBox.Location = new System.Drawing.Point(25, 124);
+			this.unlockWCheckBox.Location = new System.Drawing.Point(25, 88);
 			this.unlockWCheckBox.Margin = new System.Windows.Forms.Padding(2);
 			this.unlockWCheckBox.Name = "unlockWCheckBox";
 			this.unlockWCheckBox.Size = new System.Drawing.Size(109, 17);
@@ -350,35 +355,55 @@
 			this.unlockWCheckBox.Text = "Unlock all Worlds";
 			this.unlockWCheckBox.UseVisualStyleBackColor = true;
 			// 
+			// fileSelectPnl
+			// 
+			this.fileSelectPnl.Controls.Add(this.radioButton1);
+			this.fileSelectPnl.Controls.Add(this.radioButton2);
+			this.fileSelectPnl.Controls.Add(this.radioButton3);
+			this.fileSelectPnl.Dock = System.Windows.Forms.DockStyle.Top;
+			this.fileSelectPnl.Enabled = false;
+			this.fileSelectPnl.Location = new System.Drawing.Point(0, 0);
+			this.fileSelectPnl.Name = "fileSelectPnl";
+			this.fileSelectPnl.Size = new System.Drawing.Size(251, 37);
+			this.fileSelectPnl.TabIndex = 53;
+			// 
+			// fileDataPnl
+			// 
+			this.fileDataPnl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.fileDataPnl.Controls.Add(this.unlockWCheckBox);
+			this.fileDataPnl.Controls.Add(this.labelLives);
+			this.fileDataPnl.Controls.Add(this.unlockLCheckBox);
+			this.fileDataPnl.Controls.Add(this.livesNumUpDown);
+			this.fileDataPnl.Controls.Add(this.coinsNumUpDown);
+			this.fileDataPnl.Controls.Add(this.SCNumUpDown);
+			this.fileDataPnl.Controls.Add(this.labelBSB);
+			this.fileDataPnl.Controls.Add(this.powerupCbx);
+			this.fileDataPnl.Controls.Add(this.labelInventory);
+			this.fileDataPnl.Controls.Add(this.scoreNumUpDown);
+			this.fileDataPnl.Controls.Add(this.labelPowerup);
+			this.fileDataPnl.Controls.Add(this.BSBNumUpDown);
+			this.fileDataPnl.Controls.Add(this.labelScore);
+			this.fileDataPnl.Controls.Add(this.BSBPictureBox);
+			this.fileDataPnl.Controls.Add(this.labelSC);
+			this.fileDataPnl.Controls.Add(this.inventoryCbx);
+			this.fileDataPnl.Controls.Add(this.labelCoins);
+			this.fileDataPnl.Enabled = false;
+			this.fileDataPnl.Location = new System.Drawing.Point(0, 36);
+			this.fileDataPnl.Name = "fileDataPnl";
+			this.fileDataPnl.Size = new System.Drawing.Size(251, 333);
+			this.fileDataPnl.TabIndex = 54;
+			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(251, 428);
-			this.Controls.Add(this.unlockWCheckBox);
-			this.Controls.Add(this.unlockLCheckBox);
 			this.Controls.Add(this.labelCredits);
 			this.Controls.Add(this.labelLogs);
-			this.Controls.Add(this.radioButton3);
-			this.Controls.Add(this.radioButton2);
-			this.Controls.Add(this.radioButton1);
-			this.Controls.Add(this.labelBSB);
-			this.Controls.Add(this.labelInventory);
-			this.Controls.Add(this.labelPowerup);
-			this.Controls.Add(this.labelScore);
-			this.Controls.Add(this.labelSC);
-			this.Controls.Add(this.labelCoins);
-			this.Controls.Add(this.labelLives);
 			this.Controls.Add(this.saveBtn);
 			this.Controls.Add(this.openBtn);
-			this.Controls.Add(this.inventoryCbx);
-			this.Controls.Add(this.BSBPictureBox);
-			this.Controls.Add(this.BSBNumUpDown);
-			this.Controls.Add(this.scoreNumUpDown);
-			this.Controls.Add(this.powerupCbx);
-			this.Controls.Add(this.SCNumUpDown);
-			this.Controls.Add(this.coinsNumUpDown);
-			this.Controls.Add(this.livesNumUpDown);
+			this.Controls.Add(this.fileSelectPnl);
+			this.Controls.Add(this.fileDataPnl);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Margin = new System.Windows.Forms.Padding(2);
@@ -391,6 +416,10 @@
 			((System.ComponentModel.ISupportInitialize)(this.SCNumUpDown)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.coinsNumUpDown)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.livesNumUpDown)).EndInit();
+			this.fileSelectPnl.ResumeLayout(false);
+			this.fileSelectPnl.PerformLayout();
+			this.fileDataPnl.ResumeLayout(false);
+			this.fileDataPnl.PerformLayout();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -422,6 +451,8 @@
         private System.Windows.Forms.Label labelCredits;
         private System.Windows.Forms.CheckBox unlockLCheckBox;
         private System.Windows.Forms.CheckBox unlockWCheckBox;
-    }
+		private System.Windows.Forms.Panel fileSelectPnl;
+		private System.Windows.Forms.Panel fileDataPnl;
+	}
 }
 
