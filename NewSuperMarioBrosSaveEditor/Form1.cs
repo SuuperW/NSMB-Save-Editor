@@ -25,35 +25,6 @@ namespace NewSuperMarioBrosSaveEditor
 
 		private SaveFile[] files;
 
-		public ushort nsmbChecksum(byte[] data, int dataSize, int pos)
-		{
-			ushort checksum = 654;
-
-			for (int i = 0; i < dataSize; i++)
-			{
-				byte readByte = data[pos + i];
-				checksum = (ushort)(readByte ^ ((2 * checksum & 0xFFFE) | (checksum >> 15) & 1));
-			}
-
-			return checksum;
-		}
-
-		public byte[] recalculateSaveFileChecksums(byte[] savefile)
-		{
-			doChecksum(savefile, 0x100, 0x248); //Save 1
-			doChecksum(savefile, 0x380, 0x248); //Save 2
-			doChecksum(savefile, 0x600, 0x248); //Save 3
-
-			return savefile;
-		}
-
-		public void doChecksum(byte[] savefile, int checksumPos, int dataLen)
-		{
-			ushort checksum = nsmbChecksum(savefile, dataLen, checksumPos + 10);
-			savefile[checksumPos] = (byte)(checksum & 0xFF);
-			savefile[checksumPos + 1] = (byte)(checksum >> 8);
-		}
-
 		public void UncheckFileButtons()
 		{
 			fileSelectPnl.Enabled = false;
@@ -108,10 +79,9 @@ namespace NewSuperMarioBrosSaveEditor
 			file.Inventory = inventoryCbx.SelectedIndex;
 			file.OverworldBackground = (byte)BSBNumUpDown.Value;
 
-			// Copy data into the file, with updated checksum
+			// Copy data into the file
 			byte[] fileByteRead = File.ReadAllBytes(dlg.FileName);
 			Array.Copy(file.GetData(), 0, fileByteRead, 0x100 + fileIndex * 0x280, SaveFile.SIZE);
-			recalculateSaveFileChecksums(fileByteRead);
 
 			using (FileStream fsWrite = new FileStream(dlg.FileName, FileMode.Open, FileAccess.Write))
 			{
@@ -133,7 +103,11 @@ namespace NewSuperMarioBrosSaveEditor
 					{
 						files = new SaveFile[3];
 						for (int i = 0; i < files.Length; i++)
+						{
 							files[i] = SaveFile.FromSav(fs, i);
+							if (!files[i].ChecksumWasValid)
+								MessageBox.Show("The checksum for file " + (i + 1).ToString() + " was invalid.");
+						}
 					}
 				}
 				else
