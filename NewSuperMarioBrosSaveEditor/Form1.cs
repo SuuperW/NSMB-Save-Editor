@@ -28,8 +28,7 @@ namespace NewSuperMarioBrosSaveEditor
 
 		public void ReadPowerups()
 		{
-			int pID = files[fileIndex].CurrentPowerup;
-			powerupCbx.SelectedIndex = ((pID > 3) ? (pID - 1) : (pID));
+			powerupCbx.SelectedIndex = files[fileIndex].CurrentPowerup;
 		}
 
 		public void ReadInventory()

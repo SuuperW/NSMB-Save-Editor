@@ -221,6 +221,7 @@
             "Small",
             "Big",
             "Fire",
+            "Mega",
             "Mini",
             "Blue Shell"});
 			this.powerupCbx.Location = new System.Drawing.Point(128, 134);
