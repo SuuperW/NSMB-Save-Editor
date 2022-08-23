@@ -26,16 +26,6 @@ namespace NewSuperMarioBrosSaveEditor
 		};
 
 
-		public void ReadPowerups()
-		{
-			powerupCbx.SelectedIndex = files[fileIndex].CurrentPowerup;
-		}
-
-		public void ReadInventory()
-		{
-			inventoryCbx.SelectedIndex = files[fileIndex].Inventory;
-		}
-
 		private void saveBtn_Clicked(object sender, EventArgs e)
 		{
 			SaveFile file = files[fileIndex];
@@ -121,8 +111,8 @@ namespace NewSuperMarioBrosSaveEditor
 			SCNumUpDown.Value = file.StarCoins;
 			scoreNumUpDown.Value = file.Score;
 
-			ReadPowerups();
-			ReadInventory();
+			powerupCbx.SelectedIndex = files[fileIndex].CurrentPowerup;
+			inventoryCbx.SelectedIndex = files[fileIndex].Inventory;
 		}
 	}
 }
