@@ -22,11 +22,72 @@ namespace NewSuperMarioBrosSaveEditor
 			get => BitConverter.ToUInt32(data, 0x00E) != 0;
 			set => BitConverter.GetBytes(value ? 1 : 0).CopyTo(data, 0x00E);
 		}
+
+		/// <summary>
+		/// Data about file progress, which is mostly but not all re-calculated upon loading the file.
+		/// Known flags & values have their own properties. Unknown bits, big endian: D8 FF 87 FF 
+		/// Thus, many of the flags here wouldn't actually do anything if we set them here.
+		/// </summary>
 		public uint StarsByFileSelect
 		{
 			get => BitConverter.ToUInt32(data, 0x012);
 			set => BitConverter.GetBytes(value).CopyTo(data, 0x012);
 		}
+		/// <summary>
+		/// The allows the user to save at any time in the overworld, is required for the file to show any stars on file select screen, and gives 1 star.
+		/// </summary>
+		public bool PlayerHasSeenCredits
+		{
+			get => (data[0x012] & 0x20) != 0;
+			set => data[0x012] = (byte)((data[0x012] & 0xDF) | (value ? 0x20 : 0));
+		}
+		/// <summary>
+		/// The second star is awarded when all star coins have been collected.
+		/// The game will re-calculate this after loading the file, so if you only set this you will lose the star upon re-saving the file.
+		/// </summary>
+		public bool SecondStar
+		{
+			get => (data[0x012] & 0x01) != 0;
+			set => data[0x012] = (byte)((data[0x012] & 0xFE) | (value ? 0x01 : 0));
+		}
+		/// <summary>
+		/// The third star is awarded when all star coins have been collected and spent.
+		/// The game will re-calculate this after loading the file, so if you only set this you will lose the star upon re-saving the file.
+		/// </summary>
+		public bool ThirdStar
+		{
+			get => (data[0x012] & 0x02) != 0;
+			set => data[0x012] = (byte)((data[0x012] & 0xFD) | (value ? 0x02 : 0));
+		}
+		/// <summary>
+		/// The last overworld background must be unlocked. (by completing all levels?)
+		/// The game re-calculates this when the file is loaded, so there's no point in setting it.
+		/// </summary>
+		public bool RetroBackgroundUnlocked
+		{
+			get => (data[0x012] & 0x02) != 0;
+		}
+		public bool BlueBricksBackgroundBought
+		{
+			get => (data[0x014] & 0x08) != 0;
+			set => data[0x014] = (byte)((data[0x014] & 0xF7) | (value ? 0x08 : 0));
+		}
+		public bool StarsBackgroundBought
+		{
+			get => (data[0x014] & 0x10) != 0;
+			set => data[0x014] = (byte)((data[0x014] & 0xEF) | (value ? 0x10 : 0));
+		}
+		public bool MarioBackgroundBought
+		{
+			get => (data[0x014] & 0x20) != 0;
+			set => data[0x014] = (byte)((data[0x014] & 0xDF) | (value ? 0x20 : 0));
+		}
+		public bool RetroBackgroundBought
+		{
+			get => (data[0x014] & 0x40) != 0;
+			set => data[0x014] = (byte)((data[0x014] & 0xBF) | (value ? 0x40 : 0));
+		}
+
 		public int Lives
 		{
 			get => BitConverter.ToInt32(data, 0x016);
