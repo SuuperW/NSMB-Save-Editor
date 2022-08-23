@@ -26,37 +26,19 @@ namespace NewSuperMarioBrosSaveEditor
 		};
 
 
-		public void UncheckFileButtons()
-		{
-			fileSelectPnl.Enabled = false;
-		}
-
-		public void RefreshFileIndex()
-		{
-			if (radioButton1.Checked) { fileIndex = 0; }
-			if (radioButton2.Checked) { fileIndex = 1; }
-			if (radioButton3.Checked) { fileIndex = 2; }
-		}
-
 		public void ReadPowerups()
 		{
-			RefreshFileIndex();
-
 			int pID = files[fileIndex].CurrentPowerup;
 			powerupCbx.SelectedIndex = ((pID > 3) ? (pID - 1) : (pID));
 		}
 
 		public void ReadInventory()
 		{
-			RefreshFileIndex();
-
 			inventoryCbx.SelectedIndex = files[fileIndex].Inventory;
 		}
 
 		private void saveBtn_Clicked(object sender, EventArgs e)
 		{
-			RefreshFileIndex();
-
 			SaveFile file = files[fileIndex];
 
 			// Quick 'unlock all' levels/worlds
@@ -127,7 +109,9 @@ namespace NewSuperMarioBrosSaveEditor
 			saveBtn.Enabled = true;
 			fileDataPnl.Enabled = true;
 
-			RefreshFileIndex();
+			if      (radioButton1.Checked) { fileIndex = 0; }
+			else if (radioButton2.Checked) { fileIndex = 1; }
+			else if (radioButton3.Checked) { fileIndex = 2; }
 			SaveFile file = files[fileIndex];
 
 			BSBNumUpDown.Value = file.OverworldBackground;
