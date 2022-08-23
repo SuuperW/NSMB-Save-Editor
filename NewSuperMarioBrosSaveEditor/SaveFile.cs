@@ -115,6 +115,17 @@ namespace NewSuperMarioBrosSaveEditor
 			get => BitConverter.ToInt32(data, 0x026);
 			set => BitConverter.GetBytes(value).CopyTo(data, 0x026);
 		}
+		public int WorldId
+		{
+			get => BitConverter.ToInt32(data, 0x02A);
+			set => BitConverter.GetBytes(value).CopyTo(data, 0x02A);
+		}
+		// TODO: 0x02E unknown
+		public int LevelIdByWorld
+		{
+			get => BitConverter.ToInt32(data, 0x032);
+			set => BitConverter.GetBytes(value).CopyTo(data, 0x032);
+		}
 		// TODO: missing stuff
 		public int CurrentPowerup
 		{
@@ -163,9 +174,7 @@ namespace NewSuperMarioBrosSaveEditor
 		}
 		// TODO: What's after this?
 		/*0x00 - 0x04   "7000" in ASCII. (7001 in NewerDS)
-0x20 - 0x24   Current world.Setting byte 2 of this field will play the warp animation.
 0x24 - 0x28   Unknown.
-0x28 - 0x2C   Current world map node.
 0x2C - 0x30   Unknown.
 0x3C - 0x40   Current world possible duplicate.This value changes when 0x20 changes, and cannot be edited because 0x20 automatically sets it back to the previous value.
 0x40 - 0x44   Unknown.
