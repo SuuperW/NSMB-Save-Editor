@@ -10,11 +10,13 @@ namespace NewSuperMarioBrosSaveEditor
 		public Form1()
 		{
 			InitializeComponent();
-			dlg.Filter = "Raw savefile (*.sav), BizHawk save (*.SaveRAM)|*.sav;*.SaveRAM";
 		}
 
-		OpenFileDialog dlg = new OpenFileDialog();
-		int fileIndex = 0;
+		private SaveFile[] files = null;
+		private int fileIndex = 0;
+
+		private string savFileName = null;
+
 		Bitmap[] BGs = {
 			Properties.Resources.NSMB_BG1,
 			Properties.Resources.NSMB_BG2,
@@ -23,7 +25,6 @@ namespace NewSuperMarioBrosSaveEditor
 			Properties.Resources.NSMB_BG5,
 		};
 
-		private SaveFile[] files;
 
 		public void UncheckFileButtons()
 		{
@@ -80,26 +81,28 @@ namespace NewSuperMarioBrosSaveEditor
 			file.OverworldBackground = (byte)BSBNumUpDown.Value;
 
 			// Copy data into the file
-			byte[] fileByteRead = File.ReadAllBytes(dlg.FileName);
+			byte[] fileByteRead = File.ReadAllBytes(savFileName);
 			Array.Copy(file.GetData(), 0, fileByteRead, 0x100 + fileIndex * 0x280, SaveFile.SIZE);
 
-			using (FileStream fsWrite = new FileStream(dlg.FileName, FileMode.Open, FileAccess.Write))
-			{
+			using (FileStream fsWrite = new FileStream(savFileName, FileMode.Open, FileAccess.Write))
 				fsWrite.Write(fileByteRead, 0, fileByteRead.Length);
-			}
 		}
 
 		private void openBtn_Clicked(object sender, EventArgs e)
 		{
+			OpenFileDialog dlg = new OpenFileDialog();
+			dlg.Filter = "Raw savefile (*.sav), BizHawk save (*.SaveRAM)|*.sav;*.SaveRAM";
+
 			if (dlg.ShowDialog() == DialogResult.OK)
 			{
 				if (File.Exists(dlg.FileName))
 				{
 					fileSelectPnl.Enabled = true;
 
-					labelLogs.Text = Path.GetFileName(dlg.FileName).ToString();
+					savFileName = dlg.FileName;
+					labelLogs.Text = Path.GetFileName(savFileName);
 
-					using (FileStream fs = new FileStream(dlg.FileName, FileMode.Open, FileAccess.Read))
+					using (FileStream fs = new FileStream(savFileName, FileMode.Open, FileAccess.Read))
 					{
 						files = new SaveFile[3];
 						for (int i = 0; i < files.Length; i++)
