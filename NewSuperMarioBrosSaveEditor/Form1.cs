@@ -86,6 +86,8 @@ namespace NewSuperMarioBrosSaveEditor
 								MessageBox.Show("The checksum for file " + (i + 1).ToString() + " was invalid.");
 						}
 					}
+
+					radioButton1.Checked = true;
 				}
 				else
 				{
