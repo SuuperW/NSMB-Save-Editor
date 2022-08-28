@@ -3,6 +3,8 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.IO;
 
+using Newtonsoft.Json.Linq;
+
 namespace NewSuperMarioBrosSaveEditor
 {
 	public partial class Form1 : Form
@@ -10,6 +12,7 @@ namespace NewSuperMarioBrosSaveEditor
 		public Form1()
 		{
 			InitializeComponent();
+			worldNum_ValueChanged(null, null);
 		}
 
 		private SaveFile[] files = null;
@@ -113,6 +116,12 @@ namespace NewSuperMarioBrosSaveEditor
 
 			powerupCbx.SelectedIndex = files[fileIndex].CurrentPowerup;
 			inventoryCbx.SelectedIndex = files[fileIndex].Inventory;
+		}
+
+		private void worldNum_ValueChanged(object sender, EventArgs e)
+		{
+			JToken jArray = JToken.Parse(File.ReadAllText("data.json"));
+			overworldViewer1.LoadOverworld((JObject)jArray[(int)worldNum.Value - 1]);
 		}
 	}
 }

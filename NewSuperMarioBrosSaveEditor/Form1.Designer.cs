@@ -54,6 +54,9 @@
 			this.unlockWCheckBox = new System.Windows.Forms.CheckBox();
 			this.fileSelectPnl = new System.Windows.Forms.Panel();
 			this.fileDataPnl = new System.Windows.Forms.Panel();
+			this.label1 = new System.Windows.Forms.Label();
+			this.worldNum = new System.Windows.Forms.NumericUpDown();
+			this.overworldViewer1 = new NewSuperMarioBrosSaveEditor.OverworldViewer();
 			((System.ComponentModel.ISupportInitialize)(this.BSBPictureBox)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.BSBNumUpDown)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.scoreNumUpDown)).BeginInit();
@@ -62,12 +65,13 @@
 			((System.ComponentModel.ISupportInitialize)(this.livesNumUpDown)).BeginInit();
 			this.fileSelectPnl.SuspendLayout();
 			this.fileDataPnl.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.worldNum)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// labelBSB
 			// 
 			this.labelBSB.AutoSize = true;
-			this.labelBSB.Location = new System.Drawing.Point(22, 192);
+			this.labelBSB.Location = new System.Drawing.Point(156, 57);
 			this.labelBSB.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
 			this.labelBSB.Name = "labelBSB";
 			this.labelBSB.Size = new System.Drawing.Size(141, 13);
@@ -77,7 +81,7 @@
 			// labelInventory
 			// 
 			this.labelInventory.AutoSize = true;
-			this.labelInventory.Location = new System.Drawing.Point(22, 158);
+			this.labelInventory.Location = new System.Drawing.Point(156, 33);
 			this.labelInventory.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
 			this.labelInventory.Name = "labelInventory";
 			this.labelInventory.Size = new System.Drawing.Size(77, 13);
@@ -87,7 +91,7 @@
 			// labelPowerup
 			// 
 			this.labelPowerup.AutoSize = true;
-			this.labelPowerup.Location = new System.Drawing.Point(22, 135);
+			this.labelPowerup.Location = new System.Drawing.Point(156, 8);
 			this.labelPowerup.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
 			this.labelPowerup.Name = "labelPowerup";
 			this.labelPowerup.Size = new System.Drawing.Size(52, 13);
@@ -97,7 +101,7 @@
 			// labelScore
 			// 
 			this.labelScore.AutoSize = true;
-			this.labelScore.Location = new System.Drawing.Point(22, 64);
+			this.labelScore.Location = new System.Drawing.Point(11, 57);
 			this.labelScore.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
 			this.labelScore.Name = "labelScore";
 			this.labelScore.Size = new System.Drawing.Size(38, 13);
@@ -107,7 +111,7 @@
 			// labelSC
 			// 
 			this.labelSC.AutoSize = true;
-			this.labelSC.Location = new System.Drawing.Point(22, 45);
+			this.labelSC.Location = new System.Drawing.Point(11, 81);
 			this.labelSC.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
 			this.labelSC.Name = "labelSC";
 			this.labelSC.Size = new System.Drawing.Size(58, 13);
@@ -117,7 +121,7 @@
 			// labelCoins
 			// 
 			this.labelCoins.AutoSize = true;
-			this.labelCoins.Location = new System.Drawing.Point(22, 26);
+			this.labelCoins.Location = new System.Drawing.Point(11, 33);
 			this.labelCoins.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
 			this.labelCoins.Name = "labelCoins";
 			this.labelCoins.Size = new System.Drawing.Size(36, 13);
@@ -127,7 +131,7 @@
 			// labelLives
 			// 
 			this.labelLives.AutoSize = true;
-			this.labelLives.Location = new System.Drawing.Point(22, 6);
+			this.labelLives.Location = new System.Drawing.Point(11, 8);
 			this.labelLives.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
 			this.labelLives.Name = "labelLives";
 			this.labelLives.Size = new System.Drawing.Size(35, 13);
@@ -136,8 +140,9 @@
 			// 
 			// saveBtn
 			// 
+			this.saveBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
 			this.saveBtn.Enabled = false;
-			this.saveBtn.Location = new System.Drawing.Point(122, 374);
+			this.saveBtn.Location = new System.Drawing.Point(122, 341);
 			this.saveBtn.Margin = new System.Windows.Forms.Padding(2);
 			this.saveBtn.Name = "saveBtn";
 			this.saveBtn.Size = new System.Drawing.Size(72, 20);
@@ -148,7 +153,8 @@
 			// 
 			// openBtn
 			// 
-			this.openBtn.Location = new System.Drawing.Point(47, 374);
+			this.openBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+			this.openBtn.Location = new System.Drawing.Point(47, 341);
 			this.openBtn.Margin = new System.Windows.Forms.Padding(2);
 			this.openBtn.Name = "openBtn";
 			this.openBtn.Size = new System.Drawing.Size(72, 20);
@@ -168,7 +174,7 @@
             "Blue Shell",
             "Mini Mushroom",
             "Mega Mushroom"});
-			this.inventoryCbx.Location = new System.Drawing.Point(128, 156);
+			this.inventoryCbx.Location = new System.Drawing.Point(237, 29);
 			this.inventoryCbx.Margin = new System.Windows.Forms.Padding(2);
 			this.inventoryCbx.Name = "inventoryCbx";
 			this.inventoryCbx.Size = new System.Drawing.Size(102, 21);
@@ -178,7 +184,7 @@
 			// 
 			this.BSBPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
 			this.BSBPictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.BSBPictureBox.Location = new System.Drawing.Point(56, 223);
+			this.BSBPictureBox.Location = new System.Drawing.Point(343, 5);
 			this.BSBPictureBox.Margin = new System.Windows.Forms.Padding(2);
 			this.BSBPictureBox.Name = "BSBPictureBox";
 			this.BSBPictureBox.Size = new System.Drawing.Size(130, 101);
@@ -188,7 +194,7 @@
 			// 
 			// BSBNumUpDown
 			// 
-			this.BSBNumUpDown.Location = new System.Drawing.Point(166, 191);
+			this.BSBNumUpDown.Location = new System.Drawing.Point(300, 56);
 			this.BSBNumUpDown.Margin = new System.Windows.Forms.Padding(2);
 			this.BSBNumUpDown.Maximum = new decimal(new int[] {
             4,
@@ -196,20 +202,20 @@
             0,
             0});
 			this.BSBNumUpDown.Name = "BSBNumUpDown";
-			this.BSBNumUpDown.Size = new System.Drawing.Size(63, 20);
+			this.BSBNumUpDown.Size = new System.Drawing.Size(39, 20);
 			this.BSBNumUpDown.TabIndex = 33;
 			// 
 			// scoreNumUpDown
 			// 
-			this.scoreNumUpDown.Location = new System.Drawing.Point(128, 63);
+			this.scoreNumUpDown.Location = new System.Drawing.Point(73, 54);
 			this.scoreNumUpDown.Margin = new System.Windows.Forms.Padding(2);
 			this.scoreNumUpDown.Maximum = new decimal(new int[] {
-            9999950,
+            99999999,
             0,
             0,
             0});
 			this.scoreNumUpDown.Name = "scoreNumUpDown";
-			this.scoreNumUpDown.Size = new System.Drawing.Size(100, 20);
+			this.scoreNumUpDown.Size = new System.Drawing.Size(79, 20);
 			this.scoreNumUpDown.TabIndex = 32;
 			this.scoreNumUpDown.ThousandsSeparator = true;
 			// 
@@ -224,7 +230,7 @@
             "Mega",
             "Mini",
             "Blue Shell"});
-			this.powerupCbx.Location = new System.Drawing.Point(128, 134);
+			this.powerupCbx.Location = new System.Drawing.Point(237, 5);
 			this.powerupCbx.Margin = new System.Windows.Forms.Padding(2);
 			this.powerupCbx.Name = "powerupCbx";
 			this.powerupCbx.Size = new System.Drawing.Size(102, 21);
@@ -232,7 +238,7 @@
 			// 
 			// SCNumUpDown
 			// 
-			this.SCNumUpDown.Location = new System.Drawing.Point(128, 44);
+			this.SCNumUpDown.Location = new System.Drawing.Point(73, 78);
 			this.SCNumUpDown.Margin = new System.Windows.Forms.Padding(2);
 			this.SCNumUpDown.Maximum = new decimal(new int[] {
             240,
@@ -240,12 +246,12 @@
             0,
             0});
 			this.SCNumUpDown.Name = "SCNumUpDown";
-			this.SCNumUpDown.Size = new System.Drawing.Size(100, 20);
+			this.SCNumUpDown.Size = new System.Drawing.Size(79, 20);
 			this.SCNumUpDown.TabIndex = 29;
 			// 
 			// coinsNumUpDown
 			// 
-			this.coinsNumUpDown.Location = new System.Drawing.Point(128, 25);
+			this.coinsNumUpDown.Location = new System.Drawing.Point(73, 30);
 			this.coinsNumUpDown.Margin = new System.Windows.Forms.Padding(2);
 			this.coinsNumUpDown.Maximum = new decimal(new int[] {
             99,
@@ -253,12 +259,12 @@
             0,
             0});
 			this.coinsNumUpDown.Name = "coinsNumUpDown";
-			this.coinsNumUpDown.Size = new System.Drawing.Size(100, 20);
+			this.coinsNumUpDown.Size = new System.Drawing.Size(79, 20);
 			this.coinsNumUpDown.TabIndex = 28;
 			// 
 			// livesNumUpDown
 			// 
-			this.livesNumUpDown.Location = new System.Drawing.Point(128, 6);
+			this.livesNumUpDown.Location = new System.Drawing.Point(73, 6);
 			this.livesNumUpDown.Margin = new System.Windows.Forms.Padding(2);
 			this.livesNumUpDown.Maximum = new decimal(new int[] {
             99,
@@ -266,7 +272,7 @@
             0,
             0});
 			this.livesNumUpDown.Name = "livesNumUpDown";
-			this.livesNumUpDown.Size = new System.Drawing.Size(100, 20);
+			this.livesNumUpDown.Size = new System.Drawing.Size(79, 20);
 			this.livesNumUpDown.TabIndex = 27;
 			// 
 			// radioButton1
@@ -310,8 +316,9 @@
 			// 
 			// labelLogs
 			// 
+			this.labelLogs.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
 			this.labelLogs.AutoSize = true;
-			this.labelLogs.Location = new System.Drawing.Point(6, 411);
+			this.labelLogs.Location = new System.Drawing.Point(6, 378);
 			this.labelLogs.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
 			this.labelLogs.Name = "labelLogs";
 			this.labelLogs.Size = new System.Drawing.Size(73, 13);
@@ -321,7 +328,7 @@
 			// unlockLCheckBox
 			// 
 			this.unlockLCheckBox.AutoSize = true;
-			this.unlockLCheckBox.Location = new System.Drawing.Point(25, 111);
+			this.unlockLCheckBox.Location = new System.Drawing.Point(269, 89);
 			this.unlockLCheckBox.Margin = new System.Windows.Forms.Padding(2);
 			this.unlockLCheckBox.Name = "unlockLCheckBox";
 			this.unlockLCheckBox.Size = new System.Drawing.Size(107, 17);
@@ -332,7 +339,7 @@
 			// unlockWCheckBox
 			// 
 			this.unlockWCheckBox.AutoSize = true;
-			this.unlockWCheckBox.Location = new System.Drawing.Point(25, 88);
+			this.unlockWCheckBox.Location = new System.Drawing.Point(156, 89);
 			this.unlockWCheckBox.Margin = new System.Windows.Forms.Padding(2);
 			this.unlockWCheckBox.Name = "unlockWCheckBox";
 			this.unlockWCheckBox.Size = new System.Drawing.Size(109, 17);
@@ -349,12 +356,16 @@
 			this.fileSelectPnl.Enabled = false;
 			this.fileSelectPnl.Location = new System.Drawing.Point(0, 0);
 			this.fileSelectPnl.Name = "fileSelectPnl";
-			this.fileSelectPnl.Size = new System.Drawing.Size(251, 37);
+			this.fileSelectPnl.Size = new System.Drawing.Size(482, 37);
 			this.fileSelectPnl.TabIndex = 53;
 			// 
 			// fileDataPnl
 			// 
-			this.fileDataPnl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.fileDataPnl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.fileDataPnl.Controls.Add(this.label1);
+			this.fileDataPnl.Controls.Add(this.overworldViewer1);
 			this.fileDataPnl.Controls.Add(this.unlockWCheckBox);
 			this.fileDataPnl.Controls.Add(this.labelLives);
 			this.fileDataPnl.Controls.Add(this.unlockLCheckBox);
@@ -366,6 +377,7 @@
 			this.fileDataPnl.Controls.Add(this.labelInventory);
 			this.fileDataPnl.Controls.Add(this.scoreNumUpDown);
 			this.fileDataPnl.Controls.Add(this.labelPowerup);
+			this.fileDataPnl.Controls.Add(this.worldNum);
 			this.fileDataPnl.Controls.Add(this.BSBNumUpDown);
 			this.fileDataPnl.Controls.Add(this.labelScore);
 			this.fileDataPnl.Controls.Add(this.BSBPictureBox);
@@ -375,14 +387,59 @@
 			this.fileDataPnl.Enabled = false;
 			this.fileDataPnl.Location = new System.Drawing.Point(0, 36);
 			this.fileDataPnl.Name = "fileDataPnl";
-			this.fileDataPnl.Size = new System.Drawing.Size(251, 333);
+			this.fileDataPnl.Size = new System.Drawing.Size(482, 300);
 			this.fileDataPnl.TabIndex = 54;
+			// 
+			// label1
+			// 
+			this.label1.AutoSize = true;
+			this.label1.Location = new System.Drawing.Point(11, 124);
+			this.label1.Name = "label1";
+			this.label1.Size = new System.Drawing.Size(38, 13);
+			this.label1.TabIndex = 54;
+			this.label1.Text = "World:";
+			// 
+			// worldNum
+			// 
+			this.worldNum.Location = new System.Drawing.Point(54, 122);
+			this.worldNum.Margin = new System.Windows.Forms.Padding(2);
+			this.worldNum.Maximum = new decimal(new int[] {
+            8,
+            0,
+            0,
+            0});
+			this.worldNum.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+			this.worldNum.Name = "worldNum";
+			this.worldNum.Size = new System.Drawing.Size(39, 20);
+			this.worldNum.TabIndex = 33;
+			this.worldNum.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+			this.worldNum.ValueChanged += new System.EventHandler(this.worldNum_ValueChanged);
+			// 
+			// overworldViewer1
+			// 
+			this.overworldViewer1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.overworldViewer1.AutoScroll = true;
+			this.overworldViewer1.BackColor = System.Drawing.SystemColors.ControlDark;
+			this.overworldViewer1.Location = new System.Drawing.Point(0, 147);
+			this.overworldViewer1.Name = "overworldViewer1";
+			this.overworldViewer1.Size = new System.Drawing.Size(482, 153);
+			this.overworldViewer1.TabIndex = 53;
 			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(251, 428);
+			this.ClientSize = new System.Drawing.Size(482, 395);
 			this.Controls.Add(this.labelLogs);
 			this.Controls.Add(this.saveBtn);
 			this.Controls.Add(this.openBtn);
@@ -404,6 +461,7 @@
 			this.fileSelectPnl.PerformLayout();
 			this.fileDataPnl.ResumeLayout(false);
 			this.fileDataPnl.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.worldNum)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -436,6 +494,9 @@
         private System.Windows.Forms.CheckBox unlockWCheckBox;
 		private System.Windows.Forms.Panel fileSelectPnl;
 		private System.Windows.Forms.Panel fileDataPnl;
+		private System.Windows.Forms.Label label1;
+		private OverworldViewer overworldViewer1;
+		private System.Windows.Forms.NumericUpDown worldNum;
 	}
 }
 
