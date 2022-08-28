@@ -16,6 +16,7 @@ namespace NewSuperMarioBrosSaveEditor
 	{
 		ToolTip ttip;
 		List<Panel> overworldControls = new List<Panel>();
+		int worldId;
 
 		public OverworldViewer()
 		{
@@ -25,15 +26,18 @@ namespace NewSuperMarioBrosSaveEditor
 
 		public void LoadOverworld(JObject jObject)
 		{
+			// Remove previous nodes
 			foreach (Panel p in overworldControls)
 			{
 				p.Dispose();
 				Controls.Remove(p);
 			}
+			overworldControls.Clear();
 			// Scroll to 0, 0 so that locations that are set later on are correct.
 			AutoScrollPosition = new Point(AutoScrollPosition.X, -AutoScrollPosition.Y);
 
-			string worldPrefix = ((int)jObject["id"] + 1).ToString() + "-";
+			worldId = (int)jObject["id"];
+			string worldPrefix = (worldId + 1).ToString() + "-";
 			JToken nodes = jObject["nodes"];
 			JToken paths = jObject["paths"];
 			// Create nodes
@@ -69,6 +73,26 @@ namespace NewSuperMarioBrosSaveEditor
 			foreach (Panel p in overworldControls)
 				p.Location = new Point(p.Location.X - minX + padding, p.Location.Y - minY + padding);
 			paddingLbl.Location = new Point(maxX - minX + 2 * padding, maxY - minY + 2 * padding);
+		}
+
+		public void ApplySave(SaveFile saveFile)
+		{
+			SuspendLayout();
+
+			int baseId = 0x18 * worldId;
+			for (int i = 1; i < overworldControls.Count; i++)
+			{
+				Panel p = overworldControls[i];
+				int flags = saveFile.GetNodeFlags(baseId + i);
+				if ((flags & SaveFile.NodeFlags.Unlocked) == 0)
+					p.BackgroundImage = Properties.Resources.Node_Locked;
+				else if ((flags & SaveFile.NodeFlags.Completed) == 0)
+					p.BackgroundImage = Properties.Resources.Node_Unlocked;
+				else
+					p.BackgroundImage = Properties.Resources.Node_Complete;
+			}
+
+			ResumeLayout();
 		}
 	}
 }

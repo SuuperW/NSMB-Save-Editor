@@ -6,7 +6,7 @@ namespace NewSuperMarioBrosSaveEditor
 	/// <summary>
 	/// Represents an in-game "file". That is, one of the three files that the user can select to start the game.
 	/// </summary>
-	class SaveFile
+	public class SaveFile
 	{
 		// Note: We keep the entire data buffer, including checksum and the c-string identifier "Mario2d".
 		// The game's structure does not include these. So, we add 0xA to all our offsets.
@@ -161,8 +161,10 @@ namespace NewSuperMarioBrosSaveEditor
 			else
 				throw new IndexOutOfRangeException();
 		}
-		// There are 0x18 per world, though not all worlds actually have 0x18 nodes.
-		// Also, there are an extra 8 at the end, Idk why. First 4 are 0xD7, last 4 0xC0 on a 100% file.
+		/// <summary>
+		/// There are 0x18 per world, though not all worlds actually have 0x18 nodes.
+		/// Also, there are an extra 8 at the end, Idk why. First 4 are 0xD7, last 4 0xC0 on a 100% file.
+		/// </summary>
 		public byte GetNodeFlags(int index)
 		{
 			if (index >= 0 && index < 0xC8)
@@ -210,6 +212,19 @@ namespace NewSuperMarioBrosSaveEditor
 
 		private byte[] data = new byte[0x252];
 		
+		public static class NodeFlags
+		{
+			public static int StarCoin1 = 0x01;
+			public static int StarCoin2 = 0x02;
+			public static int StarCoin3 = 0x04;
+			public static int Unlocked = 0x40;
+			public static int Completed = 0x90;
+		}
+		public static class PathFlags
+		{
+			public static int Unlocked = 0x40;
+			public static int Completed = 0x80;
+		}
 
 		private SaveFile() { }
 
@@ -262,4 +277,5 @@ namespace NewSuperMarioBrosSaveEditor
 			return data.Clone() as byte[];
 		}
 	}
+
 }

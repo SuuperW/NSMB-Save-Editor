@@ -12,7 +12,6 @@ namespace NewSuperMarioBrosSaveEditor
 		public Form1()
 		{
 			InitializeComponent();
-			worldNum_ValueChanged(null, null);
 		}
 
 		private SaveFile[] files = null;
@@ -88,6 +87,7 @@ namespace NewSuperMarioBrosSaveEditor
 					}
 
 					radioButton1.Checked = true;
+					worldNum_ValueChanged(null, null);
 				}
 				else
 				{
@@ -124,6 +124,7 @@ namespace NewSuperMarioBrosSaveEditor
 		{
 			JToken jArray = JToken.Parse(File.ReadAllText("data.json"));
 			overworldViewer1.LoadOverworld((JObject)jArray[(int)worldNum.Value - 1]);
+			overworldViewer1.ApplySave(files[fileIndex]);
 		}
 	}
 }
