@@ -46,6 +46,7 @@ namespace NewSuperMarioBrosSaveEditor
 		/// <summary>
 		/// The second star is awarded when all star coins have been collected.
 		/// The game will re-calculate this after loading the file, so if you only set this you will lose the star upon re-saving the file.
+		/// TODO: Actually... this is NOT based on having collected all star coins. A hacked file can have not all star coins but keep 2 stars.
 		/// </summary>
 		public bool SecondStar
 		{
@@ -160,18 +161,34 @@ namespace NewSuperMarioBrosSaveEditor
 			else
 				throw new IndexOutOfRangeException();
 		}
-		// TODO: Node flags
+		// There are 0x18 per world, though not all worlds actually have 0x18 nodes.
+		// Also, there are an extra 8 at the end, Idk why. First 4 are 0xD7, last 4 0xC0 on a 100% file.
+		public byte GetNodeFlags(int index)
+		{
+			if (index >= 0 && index < 0xC8)
+				return data[0x70 + 0xA + index];
+			else
+				throw new IndexOutOfRangeException();
+		}
+		public void SetNodeFlags(int index, byte flags)
+		{
+			if (index >= 0 && index < 0xC8)
+				data[0x70 + 0xA + index] = flags;
+			else
+				throw new IndexOutOfRangeException();
+		}
 		// Note: The link above says this begins at 0x137. It's off by one.
+		// There are 0x1E per world, though not all worlds actually have 0x1E paths.
 		public byte GetPathFlags(int index)
 		{
-			if (index >= 0 && index < 0xE4)
+			if (index >= 0 && index < 0xF0)
 				return data[0x138 + 0xA + index];
 			else
 				throw new IndexOutOfRangeException();
 		}
 		public void SetPathFlags(int index, byte flags)
 		{
-			if (index >= 0 && index < 0xE4)
+			if (index >= 0 && index < 0xF0)
 				data[0x138 + 0xA + index] = flags;
 			else
 				throw new IndexOutOfRangeException();
