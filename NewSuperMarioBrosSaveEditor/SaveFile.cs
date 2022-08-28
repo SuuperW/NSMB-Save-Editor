@@ -160,16 +160,16 @@ namespace NewSuperMarioBrosSaveEditor
 			else
 				throw new IndexOutOfRangeException();
 		}
-		// TODO: Star coin flags
+		// TODO: Node flags
 		// Note: The link above says this begins at 0x137. It's off by one.
-		public byte GetLevelFlags(int index)
+		public byte GetPathFlags(int index)
 		{
 			if (index >= 0 && index < 0xE4)
 				return data[0x138 + 0xA + index];
 			else
 				throw new IndexOutOfRangeException();
 		}
-		public void SetLevelFlags(int index, byte flags)
+		public void SetPathFlags(int index, byte flags)
 		{
 			if (index >= 0 && index < 0xE4)
 				data[0x138 + 0xA + index] = flags;

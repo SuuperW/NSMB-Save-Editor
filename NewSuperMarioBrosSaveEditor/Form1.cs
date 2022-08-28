@@ -34,7 +34,7 @@ namespace NewSuperMarioBrosSaveEditor
 			if (unlockLCheckBox.Checked)
 			{
 				for (int i = 0; i < 0xE4; i++)
-					file.SetLevelFlags(i, 0xC0);
+					file.SetPathFlags(i, 0xC0);
 			}
 			if (unlockWCheckBox.Checked)
 			{
