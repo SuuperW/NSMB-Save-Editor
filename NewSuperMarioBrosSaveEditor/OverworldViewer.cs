@@ -37,8 +37,8 @@ namespace NewSuperMarioBrosSaveEditor
 			JToken nodes = jObject["nodes"];
 			JToken paths = jObject["paths"];
 			// Create nodes
-			const int nodeSeparation = 20;
-			const int nodeSize = 10;
+			const int nodeSeparation = 24;
+			const int nodeSize = 16;
 			int minX = int.MaxValue;
 			int minY = int.MaxValue;
 			int maxX = int.MinValue;
@@ -48,7 +48,10 @@ namespace NewSuperMarioBrosSaveEditor
 				Panel p = new Panel();
 				p.Location = new Point((int)node["location"][0] * nodeSeparation, (int)node["location"][2] * nodeSeparation);
 				p.Size = new Size(nodeSize, nodeSize);
-				p.BackColor = Color.Blue;
+				p.BackColor = Color.Transparent;
+				p.BackgroundImage = (string)node["name"] == "Start" ? Properties.Resources.Node_Start : Properties.Resources.Node_Locked;
+				p.BackgroundImageLayout = ImageLayout.Stretch;
+				p.Visible = (bool)node["isVisible"];
 				p.Tag = (int)node["idInWorld"];
 				ttip.SetToolTip(p, worldPrefix + (string)node["name"]);
 				p.Parent = this;

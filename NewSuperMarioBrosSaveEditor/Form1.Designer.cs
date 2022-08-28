@@ -55,8 +55,8 @@
 			this.fileSelectPnl = new System.Windows.Forms.Panel();
 			this.fileDataPnl = new System.Windows.Forms.Panel();
 			this.label1 = new System.Windows.Forms.Label();
-			this.worldNum = new System.Windows.Forms.NumericUpDown();
 			this.overworldViewer1 = new NewSuperMarioBrosSaveEditor.OverworldViewer();
+			this.worldNum = new System.Windows.Forms.NumericUpDown();
 			((System.ComponentModel.ISupportInitialize)(this.BSBPictureBox)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.BSBNumUpDown)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.scoreNumUpDown)).BeginInit();
@@ -142,7 +142,7 @@
 			// 
 			this.saveBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
 			this.saveBtn.Enabled = false;
-			this.saveBtn.Location = new System.Drawing.Point(122, 341);
+			this.saveBtn.Location = new System.Drawing.Point(122, 354);
 			this.saveBtn.Margin = new System.Windows.Forms.Padding(2);
 			this.saveBtn.Name = "saveBtn";
 			this.saveBtn.Size = new System.Drawing.Size(72, 20);
@@ -154,7 +154,7 @@
 			// openBtn
 			// 
 			this.openBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-			this.openBtn.Location = new System.Drawing.Point(47, 341);
+			this.openBtn.Location = new System.Drawing.Point(47, 354);
 			this.openBtn.Margin = new System.Windows.Forms.Padding(2);
 			this.openBtn.Name = "openBtn";
 			this.openBtn.Size = new System.Drawing.Size(72, 20);
@@ -318,7 +318,7 @@
 			// 
 			this.labelLogs.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
 			this.labelLogs.AutoSize = true;
-			this.labelLogs.Location = new System.Drawing.Point(6, 378);
+			this.labelLogs.Location = new System.Drawing.Point(6, 391);
 			this.labelLogs.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
 			this.labelLogs.Name = "labelLogs";
 			this.labelLogs.Size = new System.Drawing.Size(73, 13);
@@ -387,7 +387,7 @@
 			this.fileDataPnl.Enabled = false;
 			this.fileDataPnl.Location = new System.Drawing.Point(0, 36);
 			this.fileDataPnl.Name = "fileDataPnl";
-			this.fileDataPnl.Size = new System.Drawing.Size(482, 300);
+			this.fileDataPnl.Size = new System.Drawing.Size(482, 313);
 			this.fileDataPnl.TabIndex = 54;
 			// 
 			// label1
@@ -398,6 +398,18 @@
 			this.label1.Size = new System.Drawing.Size(38, 13);
 			this.label1.TabIndex = 54;
 			this.label1.Text = "World:";
+			// 
+			// overworldViewer1
+			// 
+			this.overworldViewer1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.overworldViewer1.AutoScroll = true;
+			this.overworldViewer1.BackColor = System.Drawing.SystemColors.ControlDark;
+			this.overworldViewer1.Location = new System.Drawing.Point(0, 147);
+			this.overworldViewer1.Name = "overworldViewer1";
+			this.overworldViewer1.Size = new System.Drawing.Size(482, 166);
+			this.overworldViewer1.TabIndex = 53;
 			// 
 			// worldNum
 			// 
@@ -423,23 +435,11 @@
             0});
 			this.worldNum.ValueChanged += new System.EventHandler(this.worldNum_ValueChanged);
 			// 
-			// overworldViewer1
-			// 
-			this.overworldViewer1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.overworldViewer1.AutoScroll = true;
-			this.overworldViewer1.BackColor = System.Drawing.SystemColors.ControlDark;
-			this.overworldViewer1.Location = new System.Drawing.Point(0, 147);
-			this.overworldViewer1.Name = "overworldViewer1";
-			this.overworldViewer1.Size = new System.Drawing.Size(482, 153);
-			this.overworldViewer1.TabIndex = 53;
-			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(482, 395);
+			this.ClientSize = new System.Drawing.Size(482, 408);
 			this.Controls.Add(this.labelLogs);
 			this.Controls.Add(this.saveBtn);
 			this.Controls.Add(this.openBtn);

@@ -112,5 +112,11 @@
   <ItemGroup>
     <None Include="Resources\NSMB_BG5.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\Node_Locked.png" />
+    <Content Include="Resources\Node_Complete.png" />
+    <Content Include="Resources\Node_Unlocked.png" />
+    <Content Include="Resources\Node_Start.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
