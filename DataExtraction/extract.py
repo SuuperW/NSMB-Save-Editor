@@ -86,9 +86,10 @@ class Node:
 				raise Exception('Invalid data: too many paths connecting a node.')
 
 class Path:
-	def __init__(self, worldId: int, bytes: 'list[int]'):
+	def __init__(self, worldId: int, id: int, bytes: 'list[int]'):
 		self.worldId = worldId
-		self.idInWorld = bytes[0]
+		self.idInWorld = id
+		self.animationId = bytes[0]
 		self.cost = bytes[1]
 		# Are these flags? They seem mutually exclusive.
 		self.isUnlockedBySecretGoal = bool(bytes[2] & 0x01)
@@ -128,16 +129,8 @@ if __name__ == '__main__':
 		invalidCount = 0
 		f.seek(pathUnlockAddr - MainRAMBase)
 		for i in range(pathCount):
-			path = Path(world, f.read(pathUnlockLength))
+			path = Path(world, i, f.read(pathUnlockLength))
 			paths.append(path)
-			# Idk what's up with this flag, but when it is set the IDs in this
-			# array do not increment. Yet, they are accessed by their index in
-			# the array, and the "ID" inside this array seems unused.
-			if path.isInvalid:
-				invalidCount += 1
-			path.idInWorld += invalidCount
-			if path.idInWorld != i:
-				raise Exception('Invalid data: unexpected path ID.')
 		
 		worlds.append({
 			'id': world,
