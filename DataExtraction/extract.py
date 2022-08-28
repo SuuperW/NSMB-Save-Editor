@@ -120,7 +120,7 @@ if __name__ == '__main__':
 		for node in nodes:
 			for i in range(3):
 				value = ReadSInt32(f, nodeLocationAddr + 0x0C + i * 4)
-				node.location.append(round(value / 64))
+				node.location.append(round(value / 32))
 			nodeLocationAddr += nodeLocationLength
 
 		# Paths
