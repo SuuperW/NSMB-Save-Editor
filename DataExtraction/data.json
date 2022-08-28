@@ -1,0 +1,7110 @@
+[
+	{
+		"id": 0,
+		"nodes": [
+			{
+				"worldId": 0,
+				"idInWorld": 0,
+				"location": [
+					-6,
+					0,
+					0
+				],
+				"connections": [
+					{
+						"destinationNodeId": 1,
+						"pathIdInWorld": 0,
+						"direction": "Right",
+						"isBackwards": false
+					}
+				],
+				"areaId": 185,
+				"name": "Start",
+				"hasStarCoins": false,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": true,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 0,
+				"idInWorld": 1,
+				"location": [
+					-4,
+					0,
+					0
+				],
+				"connections": [
+					{
+						"destinationNodeId": 0,
+						"pathIdInWorld": 0,
+						"direction": "Left",
+						"isBackwards": true
+					},
+					{
+						"destinationNodeId": 2,
+						"pathIdInWorld": 1,
+						"direction": "Right",
+						"isBackwards": false
+					},
+					{
+						"destinationNodeId": 17,
+						"pathIdInWorld": 21,
+						"direction": "Up",
+						"isBackwards": false
+					}
+				],
+				"areaId": 0,
+				"name": "1",
+				"hasStarCoins": true,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": true,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 0,
+				"idInWorld": 2,
+				"location": [
+					-4,
+					0,
+					0
+				],
+				"connections": [
+					{
+						"destinationNodeId": 1,
+						"pathIdInWorld": 1,
+						"direction": "Left",
+						"isBackwards": true
+					},
+					{
+						"destinationNodeId": 3,
+						"pathIdInWorld": 2,
+						"direction": "Right",
+						"isBackwards": false
+					},
+					{
+						"destinationNodeId": 18,
+						"pathIdInWorld": 10,
+						"direction": "Down",
+						"isBackwards": false
+					}
+				],
+				"areaId": 3,
+				"name": "2",
+				"hasStarCoins": true,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": true,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 0,
+				"idInWorld": 3,
+				"location": [
+					-2,
+					0,
+					0
+				],
+				"connections": [
+					{
+						"destinationNodeId": 2,
+						"pathIdInWorld": 2,
+						"direction": "Left",
+						"isBackwards": true
+					},
+					{
+						"destinationNodeId": 14,
+						"pathIdInWorld": 3,
+						"direction": "Right",
+						"isBackwards": false
+					},
+					{
+						"destinationNodeId": 8,
+						"pathIdInWorld": 11,
+						"direction": "Up",
+						"isBackwards": false
+					}
+				],
+				"areaId": 6,
+				"name": "3",
+				"hasStarCoins": true,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": true,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 0,
+				"idInWorld": 4,
+				"location": [
+					0,
+					0,
+					0
+				],
+				"connections": [
+					{
+						"destinationNodeId": 14,
+						"pathIdInWorld": 4,
+						"direction": "Left",
+						"isBackwards": true
+					},
+					{
+						"destinationNodeId": 5,
+						"pathIdInWorld": 5,
+						"direction": "Right",
+						"isBackwards": false
+					},
+					{
+						"destinationNodeId": 9,
+						"pathIdInWorld": 12,
+						"direction": "Down",
+						"isBackwards": false
+					}
+				],
+				"areaId": 14,
+				"name": "Tower",
+				"hasStarCoins": true,
+				"isFirstTower": true,
+				"isCastle": false,
+				"isVisible": true,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 0,
+				"idInWorld": 5,
+				"location": [
+					2,
+					0,
+					0
+				],
+				"connections": [
+					{
+						"destinationNodeId": 4,
+						"pathIdInWorld": 5,
+						"direction": "Left",
+						"isBackwards": true
+					},
+					{
+						"destinationNodeId": 15,
+						"pathIdInWorld": 6,
+						"direction": "Right",
+						"isBackwards": false
+					},
+					{
+						"destinationNodeId": 10,
+						"pathIdInWorld": 13,
+						"direction": "Up",
+						"isBackwards": false
+					}
+				],
+				"areaId": 7,
+				"name": "4",
+				"hasStarCoins": true,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": true,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 0,
+				"idInWorld": 6,
+				"location": [
+					6,
+					0,
+					-1
+				],
+				"connections": [
+					{
+						"destinationNodeId": 15,
+						"pathIdInWorld": 7,
+						"direction": "Left",
+						"isBackwards": true
+					},
+					{
+						"destinationNodeId": 16,
+						"pathIdInWorld": 8,
+						"direction": "Right",
+						"isBackwards": false
+					},
+					{
+						"destinationNodeId": 13,
+						"pathIdInWorld": 17,
+						"direction": "Down",
+						"isBackwards": false
+					}
+				],
+				"areaId": 10,
+				"name": "5",
+				"hasStarCoins": true,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": true,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 0,
+				"idInWorld": 7,
+				"location": [
+					8,
+					0,
+					0
+				],
+				"connections": [
+					{
+						"destinationNodeId": 16,
+						"pathIdInWorld": 9,
+						"direction": "Left",
+						"isBackwards": true
+					}
+				],
+				"areaId": 17,
+				"name": "Castle",
+				"hasStarCoins": true,
+				"isFirstTower": false,
+				"isCastle": true,
+				"isVisible": true,
+				"isLastLevelInWorld": true,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 0,
+				"idInWorld": 8,
+				"location": [
+					-2,
+					0,
+					-1
+				],
+				"connections": [
+					{
+						"destinationNodeId": 3,
+						"pathIdInWorld": 11,
+						"direction": "Down",
+						"isBackwards": true
+					}
+				],
+				"areaId": 176,
+				"name": "GreenMushroom",
+				"hasStarCoins": false,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": true,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 0,
+				"idInWorld": 9,
+				"location": [
+					2,
+					0,
+					1
+				],
+				"connections": [
+					{
+						"destinationNodeId": 4,
+						"pathIdInWorld": 12,
+						"direction": "Left",
+						"isBackwards": true
+					}
+				],
+				"areaId": 20,
+				"name": "Cannon",
+				"hasStarCoins": false,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": true,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 0,
+				"idInWorld": 10,
+				"location": [
+					2,
+					0,
+					-1
+				],
+				"connections": [
+					{
+						"destinationNodeId": 5,
+						"pathIdInWorld": 13,
+						"direction": "Down",
+						"isBackwards": true
+					}
+				],
+				"areaId": 178,
+				"name": "MegaMushroom",
+				"hasStarCoins": false,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": true,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 0,
+				"idInWorld": 11,
+				"location": [
+					4,
+					0,
+					1
+				],
+				"connections": [
+					{
+						"destinationNodeId": 12,
+						"pathIdInWorld": 14,
+						"direction": "Right",
+						"isBackwards": true
+					}
+				],
+				"areaId": 177,
+				"name": "RedMushroom",
+				"hasStarCoins": false,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": true,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 0,
+				"idInWorld": 12,
+				"location": [
+					4,
+					0,
+					1
+				],
+				"connections": [
+					{
+						"destinationNodeId": 15,
+						"pathIdInWorld": 15,
+						"direction": "Up",
+						"isBackwards": true
+					},
+					{
+						"destinationNodeId": 11,
+						"pathIdInWorld": 14,
+						"direction": "Left",
+						"isBackwards": false
+					},
+					{
+						"destinationNodeId": 16,
+						"pathIdInWorld": 16,
+						"direction": "Right",
+						"isBackwards": false
+					}
+				],
+				"areaId": 12,
+				"name": "A",
+				"hasStarCoins": true,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": true,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 0,
+				"idInWorld": 13,
+				"location": [
+					6,
+					0,
+					0
+				],
+				"connections": [
+					{
+						"destinationNodeId": 6,
+						"pathIdInWorld": 17,
+						"direction": "Left",
+						"isBackwards": true
+					}
+				],
+				"areaId": 176,
+				"name": "GreenMushroom",
+				"hasStarCoins": false,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": true,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 0,
+				"idInWorld": 14,
+				"location": [
+					0,
+					0,
+					0
+				],
+				"connections": [
+					{
+						"destinationNodeId": 3,
+						"pathIdInWorld": 3,
+						"direction": "Left",
+						"isBackwards": true
+					},
+					{
+						"destinationNodeId": 4,
+						"pathIdInWorld": 4,
+						"direction": "Right",
+						"isBackwards": false
+					},
+					{
+						"destinationNodeId": 18,
+						"pathIdInWorld": 22,
+						"direction": "Down",
+						"isBackwards": true
+					}
+				],
+				"areaId": 185,
+				"name": "dot",
+				"hasStarCoins": false,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": false,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 0,
+				"idInWorld": 15,
+				"location": [
+					4,
+					0,
+					0
+				],
+				"connections": [
+					{
+						"destinationNodeId": 5,
+						"pathIdInWorld": 6,
+						"direction": "Left",
+						"isBackwards": true
+					},
+					{
+						"destinationNodeId": 6,
+						"pathIdInWorld": 7,
+						"direction": "Up",
+						"isBackwards": false
+					},
+					{
+						"destinationNodeId": 12,
+						"pathIdInWorld": 15,
+						"direction": "Down",
+						"isBackwards": false
+					}
+				],
+				"areaId": 185,
+				"name": "dot",
+				"hasStarCoins": false,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": false,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 0,
+				"idInWorld": 16,
+				"location": [
+					8,
+					0,
+					0
+				],
+				"connections": [
+					{
+						"destinationNodeId": 6,
+						"pathIdInWorld": 8,
+						"direction": "Up",
+						"isBackwards": true
+					},
+					{
+						"destinationNodeId": 12,
+						"pathIdInWorld": 16,
+						"direction": "Down",
+						"isBackwards": true
+					},
+					{
+						"destinationNodeId": 7,
+						"pathIdInWorld": 9,
+						"direction": "Right",
+						"isBackwards": false
+					}
+				],
+				"areaId": 185,
+				"name": "dot",
+				"hasStarCoins": false,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": false,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 0,
+				"idInWorld": 17,
+				"location": [
+					-4,
+					0,
+					-1
+				],
+				"connections": [
+					{
+						"destinationNodeId": 1,
+						"pathIdInWorld": 21,
+						"direction": "Down",
+						"isBackwards": true
+					}
+				],
+				"areaId": 179,
+				"name": "PurpleMushroom",
+				"hasStarCoins": false,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": true,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 0,
+				"idInWorld": 18,
+				"location": [
+					-2,
+					0,
+					1
+				],
+				"connections": [
+					{
+						"destinationNodeId": 2,
+						"pathIdInWorld": 10,
+						"direction": "Left",
+						"isBackwards": true
+					},
+					{
+						"destinationNodeId": 14,
+						"pathIdInWorld": 22,
+						"direction": "Right",
+						"isBackwards": false
+					}
+				],
+				"areaId": 177,
+				"name": "RedMushroom",
+				"hasStarCoins": false,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": true,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			}
+		],
+		"paths": [
+			{
+				"worldId": 0,
+				"idInWorld": 0,
+				"cost": 0,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 0,
+				"idInWorld": 1,
+				"cost": 0,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 0,
+				"idInWorld": 2,
+				"cost": 0,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 0,
+				"idInWorld": 3,
+				"cost": 0,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 0,
+				"idInWorld": 4,
+				"cost": 0,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 0,
+				"idInWorld": 5,
+				"cost": 0,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 0,
+				"idInWorld": 6,
+				"cost": 0,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 0,
+				"idInWorld": 7,
+				"cost": 0,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 0,
+				"idInWorld": 8,
+				"cost": 0,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 0,
+				"idInWorld": 9,
+				"cost": 0,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 0,
+				"idInWorld": 10,
+				"cost": 0,
+				"isUnlockedBySecretGoal": true,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 0,
+				"idInWorld": 11,
+				"cost": 5,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": true,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 0,
+				"idInWorld": 12,
+				"cost": 0,
+				"isUnlockedBySecretGoal": true,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 0,
+				"idInWorld": 13,
+				"cost": 5,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": true,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 0,
+				"idInWorld": 14,
+				"cost": 0,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 0,
+				"idInWorld": 15,
+				"cost": 5,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": true,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 0,
+				"idInWorld": 16,
+				"cost": 0,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 0,
+				"idInWorld": 17,
+				"cost": 5,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": true,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 0,
+				"idInWorld": 18,
+				"cost": 0,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": false,
+				"exists": true,
+				"isInvalid": false
+			},
+			{
+				"worldId": 0,
+				"idInWorld": 19,
+				"cost": 0,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": false,
+				"exists": true,
+				"isInvalid": false
+			},
+			{
+				"worldId": 0,
+				"idInWorld": 20,
+				"cost": 0,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": false,
+				"exists": true,
+				"isInvalid": false
+			},
+			{
+				"worldId": 0,
+				"idInWorld": 21,
+				"cost": 0,
+				"isUnlockedBySecretGoal": true,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 0,
+				"idInWorld": 22,
+				"cost": 0,
+				"isUnlockedBySecretGoal": true,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": false
+			}
+		]
+	},
+	{
+		"id": 1,
+		"nodes": [
+			{
+				"worldId": 1,
+				"idInWorld": 0,
+				"location": [
+					-4,
+					0,
+					0
+				],
+				"connections": [
+					{
+						"destinationNodeId": 1,
+						"pathIdInWorld": 0,
+						"direction": "Right",
+						"isBackwards": false
+					}
+				],
+				"areaId": 185,
+				"name": "Start",
+				"hasStarCoins": false,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": true,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 1,
+				"idInWorld": 1,
+				"location": [
+					-4,
+					0,
+					0
+				],
+				"connections": [
+					{
+						"destinationNodeId": 0,
+						"pathIdInWorld": 0,
+						"direction": "Left",
+						"isBackwards": true
+					},
+					{
+						"destinationNodeId": 2,
+						"pathIdInWorld": 1,
+						"direction": "Right",
+						"isBackwards": false
+					}
+				],
+				"areaId": 21,
+				"name": "1",
+				"hasStarCoins": true,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": true,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 1,
+				"idInWorld": 2,
+				"location": [
+					-2,
+					0,
+					0
+				],
+				"connections": [
+					{
+						"destinationNodeId": 1,
+						"pathIdInWorld": 1,
+						"direction": "Left",
+						"isBackwards": true
+					},
+					{
+						"destinationNodeId": 3,
+						"pathIdInWorld": 2,
+						"direction": "Right",
+						"isBackwards": false
+					},
+					{
+						"destinationNodeId": 11,
+						"pathIdInWorld": 10,
+						"direction": "Up",
+						"isBackwards": false
+					}
+				],
+				"areaId": 24,
+				"name": "2",
+				"hasStarCoins": true,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": true,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 1,
+				"idInWorld": 3,
+				"location": [
+					0,
+					0,
+					0
+				],
+				"connections": [
+					{
+						"destinationNodeId": 2,
+						"pathIdInWorld": 2,
+						"direction": "Left",
+						"isBackwards": true
+					},
+					{
+						"destinationNodeId": 4,
+						"pathIdInWorld": 3,
+						"direction": "Right",
+						"isBackwards": false
+					},
+					{
+						"destinationNodeId": 12,
+						"pathIdInWorld": 11,
+						"direction": "Down",
+						"isBackwards": false
+					}
+				],
+				"areaId": 26,
+				"name": "3",
+				"hasStarCoins": true,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": true,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 1,
+				"idInWorld": 4,
+				"location": [
+					2,
+					0,
+					0
+				],
+				"connections": [
+					{
+						"destinationNodeId": 3,
+						"pathIdInWorld": 3,
+						"direction": "Left",
+						"isBackwards": true
+					},
+					{
+						"destinationNodeId": 5,
+						"pathIdInWorld": 4,
+						"direction": "Right",
+						"isBackwards": false
+					},
+					{
+						"destinationNodeId": 15,
+						"pathIdInWorld": 14,
+						"direction": "Up",
+						"isBackwards": false
+					},
+					{
+						"destinationNodeId": 16,
+						"pathIdInWorld": 15,
+						"direction": "Down",
+						"isBackwards": false
+					}
+				],
+				"areaId": 28,
+				"name": "4",
+				"hasStarCoins": true,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": true,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 1,
+				"idInWorld": 5,
+				"location": [
+					2,
+					0,
+					0
+				],
+				"connections": [
+					{
+						"destinationNodeId": 4,
+						"pathIdInWorld": 4,
+						"direction": "Left",
+						"isBackwards": true
+					},
+					{
+						"destinationNodeId": 6,
+						"pathIdInWorld": 5,
+						"direction": "Right",
+						"isBackwards": false
+					}
+				],
+				"areaId": 37,
+				"name": "Tower",
+				"hasStarCoins": true,
+				"isFirstTower": true,
+				"isCastle": false,
+				"isVisible": true,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 1,
+				"idInWorld": 6,
+				"location": [
+					4,
+					0,
+					0
+				],
+				"connections": [
+					{
+						"destinationNodeId": 5,
+						"pathIdInWorld": 5,
+						"direction": "Left",
+						"isBackwards": true
+					},
+					{
+						"destinationNodeId": 7,
+						"pathIdInWorld": 6,
+						"direction": "Right",
+						"isBackwards": false
+					},
+					{
+						"destinationNodeId": 17,
+						"pathIdInWorld": 17,
+						"direction": "Up",
+						"isBackwards": false
+					}
+				],
+				"areaId": 185,
+				"name": "dot",
+				"hasStarCoins": false,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": false,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 1,
+				"idInWorld": 7,
+				"location": [
+					6,
+					0,
+					0
+				],
+				"connections": [
+					{
+						"destinationNodeId": 6,
+						"pathIdInWorld": 6,
+						"direction": "Left",
+						"isBackwards": true
+					},
+					{
+						"destinationNodeId": 8,
+						"pathIdInWorld": 7,
+						"direction": "Right",
+						"isBackwards": false
+					}
+				],
+				"areaId": 30,
+				"name": "5",
+				"hasStarCoins": true,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": true,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 1,
+				"idInWorld": 8,
+				"location": [
+					6,
+					0,
+					0
+				],
+				"connections": [
+					{
+						"destinationNodeId": 7,
+						"pathIdInWorld": 7,
+						"direction": "Left",
+						"isBackwards": true
+					},
+					{
+						"destinationNodeId": 9,
+						"pathIdInWorld": 8,
+						"direction": "Right",
+						"isBackwards": false
+					},
+					{
+						"destinationNodeId": 18,
+						"pathIdInWorld": 18,
+						"direction": "Up",
+						"isBackwards": false
+					}
+				],
+				"areaId": 185,
+				"name": "dot",
+				"hasStarCoins": false,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": false,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 1,
+				"idInWorld": 9,
+				"location": [
+					8,
+					0,
+					0
+				],
+				"connections": [
+					{
+						"destinationNodeId": 8,
+						"pathIdInWorld": 8,
+						"direction": "Left",
+						"isBackwards": true
+					},
+					{
+						"destinationNodeId": 10,
+						"pathIdInWorld": 9,
+						"direction": "Right",
+						"isBackwards": false
+					},
+					{
+						"destinationNodeId": 16,
+						"pathIdInWorld": 16,
+						"direction": "Down",
+						"isBackwards": true
+					}
+				],
+				"areaId": 32,
+				"name": "6",
+				"hasStarCoins": true,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": true,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 1,
+				"idInWorld": 10,
+				"location": [
+					8,
+					0,
+					0
+				],
+				"connections": [
+					{
+						"destinationNodeId": 9,
+						"pathIdInWorld": 9,
+						"direction": "Left",
+						"isBackwards": true
+					},
+					{
+						"destinationNodeId": 19,
+						"pathIdInWorld": 19,
+						"direction": "Down",
+						"isBackwards": true
+					}
+				],
+				"areaId": 40,
+				"name": "Castle",
+				"hasStarCoins": true,
+				"isFirstTower": false,
+				"isCastle": true,
+				"isVisible": true,
+				"isLastLevelInWorld": true,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 1,
+				"idInWorld": 11,
+				"location": [
+					-2,
+					0,
+					-1
+				],
+				"connections": [
+					{
+						"destinationNodeId": 2,
+						"pathIdInWorld": 10,
+						"direction": "Down",
+						"isBackwards": true
+					}
+				],
+				"areaId": 177,
+				"name": "RedMushroom",
+				"hasStarCoins": false,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": true,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 1,
+				"idInWorld": 12,
+				"location": [
+					0,
+					0,
+					1
+				],
+				"connections": [
+					{
+						"destinationNodeId": 3,
+						"pathIdInWorld": 11,
+						"direction": "Up",
+						"isBackwards": true
+					},
+					{
+						"destinationNodeId": 13,
+						"pathIdInWorld": 12,
+						"direction": "Left",
+						"isBackwards": false
+					},
+					{
+						"destinationNodeId": 14,
+						"pathIdInWorld": 13,
+						"direction": "Right",
+						"isBackwards": false
+					}
+				],
+				"areaId": 34,
+				"name": "A",
+				"hasStarCoins": true,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": true,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 1,
+				"idInWorld": 13,
+				"location": [
+					-2,
+					0,
+					1
+				],
+				"connections": [
+					{
+						"destinationNodeId": 12,
+						"pathIdInWorld": 12,
+						"direction": "Right",
+						"isBackwards": true
+					}
+				],
+				"areaId": 43,
+				"name": "Cannon",
+				"hasStarCoins": false,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": true,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 1,
+				"idInWorld": 14,
+				"location": [
+					0,
+					0,
+					1
+				],
+				"connections": [
+					{
+						"destinationNodeId": 12,
+						"pathIdInWorld": 13,
+						"direction": "Left",
+						"isBackwards": true
+					},
+					{
+						"destinationNodeId": 19,
+						"pathIdInWorld": 20,
+						"direction": "Pipe",
+						"isBackwards": false
+					}
+				],
+				"areaId": 185,
+				"name": "Pipe",
+				"hasStarCoins": false,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": false,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 1,
+				"idInWorld": 15,
+				"location": [
+					2,
+					0,
+					-1
+				],
+				"connections": [
+					{
+						"destinationNodeId": 4,
+						"pathIdInWorld": 14,
+						"direction": "Down",
+						"isBackwards": true
+					}
+				],
+				"areaId": 178,
+				"name": "MegaMushroom",
+				"hasStarCoins": false,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": true,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 1,
+				"idInWorld": 16,
+				"location": [
+					4,
+					0,
+					1
+				],
+				"connections": [
+					{
+						"destinationNodeId": 4,
+						"pathIdInWorld": 15,
+						"direction": "Left",
+						"isBackwards": true
+					},
+					{
+						"destinationNodeId": 9,
+						"pathIdInWorld": 16,
+						"direction": "Right",
+						"isBackwards": false
+					}
+				],
+				"areaId": 177,
+				"name": "RedMushroom",
+				"hasStarCoins": false,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": true,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 1,
+				"idInWorld": 17,
+				"location": [
+					4,
+					0,
+					-1
+				],
+				"connections": [
+					{
+						"destinationNodeId": 6,
+						"pathIdInWorld": 17,
+						"direction": "Down",
+						"isBackwards": true
+					}
+				],
+				"areaId": 176,
+				"name": "GreenMushroom",
+				"hasStarCoins": false,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": true,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 1,
+				"idInWorld": 18,
+				"location": [
+					6,
+					0,
+					-1
+				],
+				"connections": [
+					{
+						"destinationNodeId": 8,
+						"pathIdInWorld": 18,
+						"direction": "Down",
+						"isBackwards": true
+					}
+				],
+				"areaId": 177,
+				"name": "RedMushroom",
+				"hasStarCoins": false,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": true,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 1,
+				"idInWorld": 19,
+				"location": [
+					8,
+					0,
+					1
+				],
+				"connections": [
+					{
+						"destinationNodeId": 10,
+						"pathIdInWorld": 19,
+						"direction": "Up",
+						"isBackwards": false
+					},
+					{
+						"destinationNodeId": 14,
+						"pathIdInWorld": 20,
+						"direction": "Pipe",
+						"isBackwards": true
+					}
+				],
+				"areaId": 185,
+				"name": "Pipe",
+				"hasStarCoins": false,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": false,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			}
+		],
+		"paths": [
+			{
+				"worldId": 1,
+				"idInWorld": 0,
+				"cost": 0,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 1,
+				"idInWorld": 1,
+				"cost": 0,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 1,
+				"idInWorld": 2,
+				"cost": 0,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 1,
+				"idInWorld": 3,
+				"cost": 0,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 1,
+				"idInWorld": 4,
+				"cost": 0,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 1,
+				"idInWorld": 5,
+				"cost": 0,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 1,
+				"idInWorld": 6,
+				"cost": 0,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 1,
+				"idInWorld": 7,
+				"cost": 0,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 1,
+				"idInWorld": 8,
+				"cost": 0,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 1,
+				"idInWorld": 9,
+				"cost": 0,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 1,
+				"idInWorld": 10,
+				"cost": 5,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": true,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 1,
+				"idInWorld": 11,
+				"cost": 0,
+				"isUnlockedBySecretGoal": true,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 1,
+				"idInWorld": 12,
+				"cost": 0,
+				"isUnlockedBySecretGoal": true,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 1,
+				"idInWorld": 13,
+				"cost": 0,
+				"isUnlockedBySecretGoal": true,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 1,
+				"idInWorld": 14,
+				"cost": 5,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": true,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 1,
+				"idInWorld": 15,
+				"cost": 0,
+				"isUnlockedBySecretGoal": true,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 1,
+				"idInWorld": 16,
+				"cost": 0,
+				"isUnlockedBySecretGoal": true,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 1,
+				"idInWorld": 17,
+				"cost": 5,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": true,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 1,
+				"idInWorld": 18,
+				"cost": 5,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": true,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 1,
+				"idInWorld": 19,
+				"cost": 0,
+				"isUnlockedBySecretGoal": true,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 1,
+				"idInWorld": 20,
+				"cost": 0,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 1,
+				"idInWorld": 21,
+				"cost": 0,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": false,
+				"exists": true,
+				"isInvalid": false
+			},
+			{
+				"worldId": 1,
+				"idInWorld": 22,
+				"cost": 0,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": false,
+				"exists": true,
+				"isInvalid": false
+			},
+			{
+				"worldId": 1,
+				"idInWorld": 23,
+				"cost": 0,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": false,
+				"exists": true,
+				"isInvalid": false
+			}
+		]
+	},
+	{
+		"id": 2,
+		"nodes": [
+			{
+				"worldId": 2,
+				"idInWorld": 0,
+				"location": [
+					-4,
+					0,
+					0
+				],
+				"connections": [
+					{
+						"destinationNodeId": 1,
+						"pathIdInWorld": 0,
+						"direction": "Right",
+						"isBackwards": false
+					}
+				],
+				"areaId": 185,
+				"name": "Start",
+				"hasStarCoins": false,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": true,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 2,
+				"idInWorld": 1,
+				"location": [
+					-4,
+					0,
+					0
+				],
+				"connections": [
+					{
+						"destinationNodeId": 0,
+						"pathIdInWorld": 0,
+						"direction": "Left",
+						"isBackwards": true
+					},
+					{
+						"destinationNodeId": 2,
+						"pathIdInWorld": 1,
+						"direction": "Up",
+						"isBackwards": false
+					},
+					{
+						"destinationNodeId": 11,
+						"pathIdInWorld": 10,
+						"direction": "Down",
+						"isBackwards": false
+					}
+				],
+				"areaId": 185,
+				"name": "dot",
+				"hasStarCoins": false,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": false,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 2,
+				"idInWorld": 2,
+				"location": [
+					-2,
+					0,
+					-1
+				],
+				"connections": [
+					{
+						"destinationNodeId": 1,
+						"pathIdInWorld": 1,
+						"direction": "Left",
+						"isBackwards": true
+					},
+					{
+						"destinationNodeId": 3,
+						"pathIdInWorld": 2,
+						"direction": "Right",
+						"isBackwards": false
+					}
+				],
+				"areaId": 44,
+				"name": "1",
+				"hasStarCoins": true,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": true,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 2,
+				"idInWorld": 3,
+				"location": [
+					0,
+					0,
+					0
+				],
+				"connections": [
+					{
+						"destinationNodeId": 2,
+						"pathIdInWorld": 2,
+						"direction": "Up",
+						"isBackwards": true
+					},
+					{
+						"destinationNodeId": 4,
+						"pathIdInWorld": 3,
+						"direction": "Right",
+						"isBackwards": false
+					},
+					{
+						"destinationNodeId": 11,
+						"pathIdInWorld": 12,
+						"direction": "Down",
+						"isBackwards": true
+					}
+				],
+				"areaId": 185,
+				"name": "dot",
+				"hasStarCoins": false,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": false,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 2,
+				"idInWorld": 4,
+				"location": [
+					0,
+					0,
+					0
+				],
+				"connections": [
+					{
+						"destinationNodeId": 3,
+						"pathIdInWorld": 3,
+						"direction": "Left",
+						"isBackwards": true
+					},
+					{
+						"destinationNodeId": 5,
+						"pathIdInWorld": 4,
+						"direction": "Right",
+						"isBackwards": false
+					},
+					{
+						"destinationNodeId": 13,
+						"pathIdInWorld": 13,
+						"direction": "Down",
+						"isBackwards": false
+					}
+				],
+				"areaId": 46,
+				"name": "2",
+				"hasStarCoins": true,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": true,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 2,
+				"idInWorld": 5,
+				"location": [
+					2,
+					0,
+					0
+				],
+				"connections": [
+					{
+						"destinationNodeId": 4,
+						"pathIdInWorld": 4,
+						"direction": "Left",
+						"isBackwards": true
+					},
+					{
+						"destinationNodeId": 7,
+						"pathIdInWorld": 5,
+						"direction": "Right",
+						"isBackwards": false
+					}
+				],
+				"areaId": 61,
+				"name": "Tower",
+				"hasStarCoins": true,
+				"isFirstTower": true,
+				"isCastle": false,
+				"isVisible": true,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 2,
+				"idInWorld": 6,
+				"location": [
+					0,
+					0,
+					0
+				],
+				"connections": [],
+				"areaId": 185,
+				"name": "dot",
+				"hasStarCoins": false,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": false,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 2,
+				"idInWorld": 7,
+				"location": [
+					4,
+					0,
+					-1
+				],
+				"connections": [
+					{
+						"destinationNodeId": 5,
+						"pathIdInWorld": 5,
+						"direction": "Down",
+						"isBackwards": true
+					},
+					{
+						"destinationNodeId": 8,
+						"pathIdInWorld": 7,
+						"direction": "Right",
+						"isBackwards": false
+					},
+					{
+						"destinationNodeId": 14,
+						"pathIdInWorld": 15,
+						"direction": "Left",
+						"isBackwards": false
+					}
+				],
+				"areaId": 48,
+				"name": "3",
+				"hasStarCoins": true,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": true,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 2,
+				"idInWorld": 8,
+				"location": [
+					6,
+					0,
+					-1
+				],
+				"connections": [
+					{
+						"destinationNodeId": 7,
+						"pathIdInWorld": 7,
+						"direction": "Left",
+						"isBackwards": true
+					},
+					{
+						"destinationNodeId": 9,
+						"pathIdInWorld": 8,
+						"direction": "Right",
+						"isBackwards": false
+					},
+					{
+						"destinationNodeId": 17,
+						"pathIdInWorld": 19,
+						"direction": "Down",
+						"isBackwards": false
+					}
+				],
+				"areaId": 58,
+				"name": "GhostHosue",
+				"hasStarCoins": true,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": true,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 2,
+				"idInWorld": 9,
+				"location": [
+					8,
+					0,
+					0
+				],
+				"connections": [
+					{
+						"destinationNodeId": 8,
+						"pathIdInWorld": 8,
+						"direction": "Up",
+						"isBackwards": true
+					},
+					{
+						"destinationNodeId": 10,
+						"pathIdInWorld": 9,
+						"direction": "Right",
+						"isBackwards": false
+					},
+					{
+						"destinationNodeId": 15,
+						"pathIdInWorld": 18,
+						"direction": "Down",
+						"isBackwards": true
+					}
+				],
+				"areaId": 185,
+				"name": "dot",
+				"hasStarCoins": false,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": false,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 2,
+				"idInWorld": 10,
+				"location": [
+					8,
+					0,
+					0
+				],
+				"connections": [
+					{
+						"destinationNodeId": 9,
+						"pathIdInWorld": 9,
+						"direction": "Left",
+						"isBackwards": true
+					}
+				],
+				"areaId": 63,
+				"name": "Castle",
+				"hasStarCoins": true,
+				"isFirstTower": false,
+				"isCastle": true,
+				"isVisible": true,
+				"isLastLevelInWorld": true,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 2,
+				"idInWorld": 11,
+				"location": [
+					-2,
+					0,
+					1
+				],
+				"connections": [
+					{
+						"destinationNodeId": 1,
+						"pathIdInWorld": 10,
+						"direction": "Left",
+						"isBackwards": true
+					},
+					{
+						"destinationNodeId": 12,
+						"pathIdInWorld": 11,
+						"direction": "Up",
+						"isBackwards": false
+					},
+					{
+						"destinationNodeId": 3,
+						"pathIdInWorld": 12,
+						"direction": "Right",
+						"isBackwards": false
+					}
+				],
+				"areaId": 51,
+				"name": "A",
+				"hasStarCoins": true,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": true,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 2,
+				"idInWorld": 12,
+				"location": [
+					-2,
+					0,
+					0
+				],
+				"connections": [
+					{
+						"destinationNodeId": 11,
+						"pathIdInWorld": 11,
+						"direction": "Down",
+						"isBackwards": true
+					}
+				],
+				"areaId": 177,
+				"name": "RedMushroom",
+				"hasStarCoins": false,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": true,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 2,
+				"idInWorld": 13,
+				"location": [
+					2,
+					0,
+					1
+				],
+				"connections": [
+					{
+						"destinationNodeId": 4,
+						"pathIdInWorld": 13,
+						"direction": "Left",
+						"isBackwards": true
+					},
+					{
+						"destinationNodeId": 15,
+						"pathIdInWorld": 16,
+						"direction": "Right",
+						"isBackwards": false
+					}
+				],
+				"areaId": 54,
+				"name": "B",
+				"hasStarCoins": true,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": true,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 2,
+				"idInWorld": 14,
+				"location": [
+					2,
+					0,
+					-1
+				],
+				"connections": [
+					{
+						"destinationNodeId": 7,
+						"pathIdInWorld": 15,
+						"direction": "Right",
+						"isBackwards": true
+					}
+				],
+				"areaId": 178,
+				"name": "MegaMushroom",
+				"hasStarCoins": false,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": true,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 2,
+				"idInWorld": 15,
+				"location": [
+					4,
+					0,
+					1
+				],
+				"connections": [
+					{
+						"destinationNodeId": 13,
+						"pathIdInWorld": 16,
+						"direction": "Left",
+						"isBackwards": true
+					},
+					{
+						"destinationNodeId": 16,
+						"pathIdInWorld": 17,
+						"direction": "Up",
+						"isBackwards": false
+					},
+					{
+						"destinationNodeId": 9,
+						"pathIdInWorld": 18,
+						"direction": "Right",
+						"isBackwards": false
+					}
+				],
+				"areaId": 56,
+				"name": "C",
+				"hasStarCoins": true,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": true,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 2,
+				"idInWorld": 16,
+				"location": [
+					4,
+					0,
+					0
+				],
+				"connections": [
+					{
+						"destinationNodeId": 15,
+						"pathIdInWorld": 17,
+						"direction": "Down",
+						"isBackwards": true
+					}
+				],
+				"areaId": 176,
+				"name": "GreenMushroom",
+				"hasStarCoins": false,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": true,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 2,
+				"idInWorld": 17,
+				"location": [
+					6,
+					0,
+					0
+				],
+				"connections": [
+					{
+						"destinationNodeId": 8,
+						"pathIdInWorld": 19,
+						"direction": "Left",
+						"isBackwards": true
+					}
+				],
+				"areaId": 65,
+				"name": "Cannon",
+				"hasStarCoins": false,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": true,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			}
+		],
+		"paths": [
+			{
+				"worldId": 2,
+				"idInWorld": 0,
+				"cost": 0,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 2,
+				"idInWorld": 1,
+				"cost": 0,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 2,
+				"idInWorld": 2,
+				"cost": 0,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 2,
+				"idInWorld": 3,
+				"cost": 0,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 2,
+				"idInWorld": 4,
+				"cost": 0,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 2,
+				"idInWorld": 5,
+				"cost": 0,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 2,
+				"idInWorld": 6,
+				"cost": 0,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": true
+			},
+			{
+				"worldId": 2,
+				"idInWorld": 7,
+				"cost": 0,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 2,
+				"idInWorld": 8,
+				"cost": 0,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 2,
+				"idInWorld": 9,
+				"cost": 0,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 2,
+				"idInWorld": 10,
+				"cost": 5,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": true,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 2,
+				"idInWorld": 11,
+				"cost": 0,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 2,
+				"idInWorld": 12,
+				"cost": 0,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 2,
+				"idInWorld": 13,
+				"cost": 0,
+				"isUnlockedBySecretGoal": true,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 2,
+				"idInWorld": 14,
+				"cost": 0,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": true
+			},
+			{
+				"worldId": 2,
+				"idInWorld": 15,
+				"cost": 5,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": true,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 2,
+				"idInWorld": 16,
+				"cost": 0,
+				"isUnlockedBySecretGoal": true,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 2,
+				"idInWorld": 17,
+				"cost": 5,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": true,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 2,
+				"idInWorld": 18,
+				"cost": 0,
+				"isUnlockedBySecretGoal": true,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 2,
+				"idInWorld": 19,
+				"cost": 0,
+				"isUnlockedBySecretGoal": true,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 2,
+				"idInWorld": 20,
+				"cost": 0,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": false,
+				"exists": true,
+				"isInvalid": false
+			},
+			{
+				"worldId": 2,
+				"idInWorld": 21,
+				"cost": 0,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": false,
+				"exists": true,
+				"isInvalid": false
+			},
+			{
+				"worldId": 2,
+				"idInWorld": 22,
+				"cost": 0,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": false,
+				"exists": true,
+				"isInvalid": false
+			}
+		]
+	},
+	{
+		"id": 3,
+		"nodes": [
+			{
+				"worldId": 3,
+				"idInWorld": 0,
+				"location": [
+					-4,
+					0,
+					0
+				],
+				"connections": [
+					{
+						"destinationNodeId": 1,
+						"pathIdInWorld": 0,
+						"direction": "Right",
+						"isBackwards": false
+					}
+				],
+				"areaId": 185,
+				"name": "Start",
+				"hasStarCoins": false,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": true,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 3,
+				"idInWorld": 1,
+				"location": [
+					-4,
+					0,
+					0
+				],
+				"connections": [
+					{
+						"destinationNodeId": 0,
+						"pathIdInWorld": 0,
+						"direction": "Left",
+						"isBackwards": true
+					},
+					{
+						"destinationNodeId": 2,
+						"pathIdInWorld": 1,
+						"direction": "Right",
+						"isBackwards": false
+					},
+					{
+						"destinationNodeId": 13,
+						"pathIdInWorld": 12,
+						"direction": "Down",
+						"isBackwards": false
+					}
+				],
+				"areaId": 66,
+				"name": "1",
+				"hasStarCoins": true,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": true,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 3,
+				"idInWorld": 2,
+				"location": [
+					-2,
+					0,
+					0
+				],
+				"connections": [
+					{
+						"destinationNodeId": 1,
+						"pathIdInWorld": 1,
+						"direction": "Left",
+						"isBackwards": true
+					},
+					{
+						"destinationNodeId": 3,
+						"pathIdInWorld": 2,
+						"direction": "Right",
+						"isBackwards": false
+					},
+					{
+						"destinationNodeId": 12,
+						"pathIdInWorld": 11,
+						"direction": "Up",
+						"isBackwards": false
+					}
+				],
+				"areaId": 67,
+				"name": "2",
+				"hasStarCoins": true,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": true,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 3,
+				"idInWorld": 3,
+				"location": [
+					0,
+					0,
+					0
+				],
+				"connections": [
+					{
+						"destinationNodeId": 2,
+						"pathIdInWorld": 2,
+						"direction": "Left",
+						"isBackwards": true
+					},
+					{
+						"destinationNodeId": 4,
+						"pathIdInWorld": 3,
+						"direction": "Right",
+						"isBackwards": false
+					}
+				],
+				"areaId": 69,
+				"name": "3",
+				"hasStarCoins": true,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": true,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 3,
+				"idInWorld": 4,
+				"location": [
+					0,
+					0,
+					0
+				],
+				"connections": [
+					{
+						"destinationNodeId": 3,
+						"pathIdInWorld": 3,
+						"direction": "Left",
+						"isBackwards": true
+					},
+					{
+						"destinationNodeId": 5,
+						"pathIdInWorld": 4,
+						"direction": "Right",
+						"isBackwards": false
+					},
+					{
+						"destinationNodeId": 13,
+						"pathIdInWorld": 13,
+						"direction": "Down",
+						"isBackwards": true
+					}
+				],
+				"areaId": 83,
+				"name": "Tower",
+				"hasStarCoins": true,
+				"isFirstTower": true,
+				"isCastle": false,
+				"isVisible": true,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 3,
+				"idInWorld": 5,
+				"location": [
+					2,
+					0,
+					0
+				],
+				"connections": [
+					{
+						"destinationNodeId": 4,
+						"pathIdInWorld": 4,
+						"direction": "Left",
+						"isBackwards": true
+					},
+					{
+						"destinationNodeId": 6,
+						"pathIdInWorld": 5,
+						"direction": "Down",
+						"isBackwards": false
+					},
+					{
+						"destinationNodeId": 14,
+						"pathIdInWorld": 14,
+						"direction": "Up",
+						"isBackwards": false
+					}
+				],
+				"areaId": 185,
+				"name": "dot",
+				"hasStarCoins": false,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": false,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 3,
+				"idInWorld": 6,
+				"location": [
+					4,
+					0,
+					1
+				],
+				"connections": [
+					{
+						"destinationNodeId": 5,
+						"pathIdInWorld": 5,
+						"direction": "Left",
+						"isBackwards": true
+					},
+					{
+						"destinationNodeId": 7,
+						"pathIdInWorld": 6,
+						"direction": "Up",
+						"isBackwards": false
+					}
+				],
+				"areaId": 71,
+				"name": "4",
+				"hasStarCoins": true,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": true,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 3,
+				"idInWorld": 7,
+				"location": [
+					4,
+					0,
+					0
+				],
+				"connections": [
+					{
+						"destinationNodeId": 6,
+						"pathIdInWorld": 6,
+						"direction": "Down",
+						"isBackwards": true
+					},
+					{
+						"destinationNodeId": 8,
+						"pathIdInWorld": 7,
+						"direction": "Right",
+						"isBackwards": false
+					},
+					{
+						"destinationNodeId": 14,
+						"pathIdInWorld": 16,
+						"direction": "Up",
+						"isBackwards": true
+					}
+				],
+				"areaId": 185,
+				"name": "dot",
+				"hasStarCoins": false,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": false,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 3,
+				"idInWorld": 8,
+				"location": [
+					4,
+					0,
+					0
+				],
+				"connections": [
+					{
+						"destinationNodeId": 7,
+						"pathIdInWorld": 7,
+						"direction": "Left",
+						"isBackwards": true
+					},
+					{
+						"destinationNodeId": 9,
+						"pathIdInWorld": 8,
+						"direction": "Right",
+						"isBackwards": false
+					},
+					{
+						"destinationNodeId": 16,
+						"pathIdInWorld": 17,
+						"direction": "Down",
+						"isBackwards": false
+					}
+				],
+				"areaId": 80,
+				"name": "GhostHosue",
+				"hasStarCoins": true,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": true,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 3,
+				"idInWorld": 9,
+				"location": [
+					6,
+					0,
+					0
+				],
+				"connections": [
+					{
+						"destinationNodeId": 8,
+						"pathIdInWorld": 8,
+						"direction": "Left",
+						"isBackwards": true
+					},
+					{
+						"destinationNodeId": 10,
+						"pathIdInWorld": 9,
+						"direction": "Right",
+						"isBackwards": false
+					},
+					{
+						"destinationNodeId": 17,
+						"pathIdInWorld": 18,
+						"direction": "Up",
+						"isBackwards": false
+					}
+				],
+				"areaId": 73,
+				"name": "5",
+				"hasStarCoins": true,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": true,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 3,
+				"idInWorld": 10,
+				"location": [
+					8,
+					0,
+					0
+				],
+				"connections": [
+					{
+						"destinationNodeId": 9,
+						"pathIdInWorld": 9,
+						"direction": "Left",
+						"isBackwards": true
+					},
+					{
+						"destinationNodeId": 11,
+						"pathIdInWorld": 10,
+						"direction": "Right",
+						"isBackwards": false
+					},
+					{
+						"destinationNodeId": 18,
+						"pathIdInWorld": 19,
+						"direction": "Up",
+						"isBackwards": false
+					}
+				],
+				"areaId": 76,
+				"name": "6",
+				"hasStarCoins": true,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": true,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 3,
+				"idInWorld": 11,
+				"location": [
+					8,
+					0,
+					0
+				],
+				"connections": [
+					{
+						"destinationNodeId": 10,
+						"pathIdInWorld": 10,
+						"direction": "Left",
+						"isBackwards": true
+					}
+				],
+				"areaId": 85,
+				"name": "Castle",
+				"hasStarCoins": true,
+				"isFirstTower": false,
+				"isCastle": true,
+				"isVisible": true,
+				"isLastLevelInWorld": true,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 3,
+				"idInWorld": 12,
+				"location": [
+					-2,
+					0,
+					-1
+				],
+				"connections": [
+					{
+						"destinationNodeId": 2,
+						"pathIdInWorld": 11,
+						"direction": "Down",
+						"isBackwards": true
+					}
+				],
+				"areaId": 177,
+				"name": "RedMushroom",
+				"hasStarCoins": false,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": true,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 3,
+				"idInWorld": 13,
+				"location": [
+					-2,
+					0,
+					1
+				],
+				"connections": [
+					{
+						"destinationNodeId": 1,
+						"pathIdInWorld": 12,
+						"direction": "Left",
+						"isBackwards": true
+					},
+					{
+						"destinationNodeId": 4,
+						"pathIdInWorld": 13,
+						"direction": "Right",
+						"isBackwards": false
+					}
+				],
+				"areaId": 176,
+				"name": "GreenMushroom",
+				"hasStarCoins": false,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": true,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 3,
+				"idInWorld": 14,
+				"location": [
+					2,
+					0,
+					-1
+				],
+				"connections": [
+					{
+						"destinationNodeId": 5,
+						"pathIdInWorld": 14,
+						"direction": "Down",
+						"isBackwards": true
+					},
+					{
+						"destinationNodeId": 7,
+						"pathIdInWorld": 16,
+						"direction": "Right",
+						"isBackwards": false
+					},
+					{
+						"destinationNodeId": 15,
+						"pathIdInWorld": 15,
+						"direction": "Left",
+						"isBackwards": false
+					}
+				],
+				"areaId": 78,
+				"name": "A",
+				"hasStarCoins": true,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": true,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 3,
+				"idInWorld": 15,
+				"location": [
+					2,
+					0,
+					-1
+				],
+				"connections": [
+					{
+						"destinationNodeId": 14,
+						"pathIdInWorld": 15,
+						"direction": "Right",
+						"isBackwards": true
+					}
+				],
+				"areaId": 178,
+				"name": "MegaMushroom",
+				"hasStarCoins": false,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": true,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 3,
+				"idInWorld": 16,
+				"location": [
+					6,
+					0,
+					1
+				],
+				"connections": [
+					{
+						"destinationNodeId": 8,
+						"pathIdInWorld": 17,
+						"direction": "Left",
+						"isBackwards": true
+					}
+				],
+				"areaId": 87,
+				"name": "Cannon",
+				"hasStarCoins": false,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": true,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 3,
+				"idInWorld": 17,
+				"location": [
+					6,
+					0,
+					-1
+				],
+				"connections": [
+					{
+						"destinationNodeId": 9,
+						"pathIdInWorld": 18,
+						"direction": "Down",
+						"isBackwards": true
+					}
+				],
+				"areaId": 176,
+				"name": "GreenMushroom",
+				"hasStarCoins": false,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": true,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 3,
+				"idInWorld": 18,
+				"location": [
+					8,
+					0,
+					-1
+				],
+				"connections": [
+					{
+						"destinationNodeId": 10,
+						"pathIdInWorld": 19,
+						"direction": "Down",
+						"isBackwards": true
+					}
+				],
+				"areaId": 177,
+				"name": "RedMushroom",
+				"hasStarCoins": false,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": true,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			}
+		],
+		"paths": [
+			{
+				"worldId": 3,
+				"idInWorld": 0,
+				"cost": 0,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 3,
+				"idInWorld": 1,
+				"cost": 0,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 3,
+				"idInWorld": 2,
+				"cost": 0,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 3,
+				"idInWorld": 3,
+				"cost": 0,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 3,
+				"idInWorld": 4,
+				"cost": 0,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 3,
+				"idInWorld": 5,
+				"cost": 0,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 3,
+				"idInWorld": 6,
+				"cost": 0,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 3,
+				"idInWorld": 7,
+				"cost": 0,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 3,
+				"idInWorld": 8,
+				"cost": 0,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 3,
+				"idInWorld": 9,
+				"cost": 0,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 3,
+				"idInWorld": 10,
+				"cost": 0,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 3,
+				"idInWorld": 11,
+				"cost": 5,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": true,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 3,
+				"idInWorld": 12,
+				"cost": 0,
+				"isUnlockedBySecretGoal": true,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 3,
+				"idInWorld": 13,
+				"cost": 0,
+				"isUnlockedBySecretGoal": true,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 3,
+				"idInWorld": 14,
+				"cost": 5,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": true,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 3,
+				"idInWorld": 15,
+				"cost": 5,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": true,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 3,
+				"idInWorld": 16,
+				"cost": 0,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 3,
+				"idInWorld": 17,
+				"cost": 0,
+				"isUnlockedBySecretGoal": true,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 3,
+				"idInWorld": 18,
+				"cost": 5,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": true,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 3,
+				"idInWorld": 19,
+				"cost": 5,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": true,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 3,
+				"idInWorld": 20,
+				"cost": 0,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": false,
+				"exists": true,
+				"isInvalid": false
+			},
+			{
+				"worldId": 3,
+				"idInWorld": 21,
+				"cost": 0,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": false,
+				"exists": true,
+				"isInvalid": false
+			},
+			{
+				"worldId": 3,
+				"idInWorld": 22,
+				"cost": 0,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": false,
+				"exists": true,
+				"isInvalid": false
+			}
+		]
+	},
+	{
+		"id": 4,
+		"nodes": [
+			{
+				"worldId": 4,
+				"idInWorld": 0,
+				"location": [
+					-4,
+					0,
+					0
+				],
+				"connections": [
+					{
+						"destinationNodeId": 1,
+						"pathIdInWorld": 0,
+						"direction": "Right",
+						"isBackwards": false
+					}
+				],
+				"areaId": 185,
+				"name": "Start",
+				"hasStarCoins": false,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": true,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 4,
+				"idInWorld": 1,
+				"location": [
+					-4,
+					0,
+					0
+				],
+				"connections": [
+					{
+						"destinationNodeId": 0,
+						"pathIdInWorld": 0,
+						"direction": "Left",
+						"isBackwards": true
+					},
+					{
+						"destinationNodeId": 2,
+						"pathIdInWorld": 1,
+						"direction": "Right",
+						"isBackwards": false
+					}
+				],
+				"areaId": 88,
+				"name": "1",
+				"hasStarCoins": true,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": true,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 4,
+				"idInWorld": 2,
+				"location": [
+					-2,
+					0,
+					0
+				],
+				"connections": [
+					{
+						"destinationNodeId": 1,
+						"pathIdInWorld": 1,
+						"direction": "Left",
+						"isBackwards": true
+					},
+					{
+						"destinationNodeId": 3,
+						"pathIdInWorld": 2,
+						"direction": "Up",
+						"isBackwards": false
+					},
+					{
+						"destinationNodeId": 13,
+						"pathIdInWorld": 12,
+						"direction": "Down",
+						"isBackwards": false
+					}
+				],
+				"areaId": 185,
+				"name": "dot",
+				"hasStarCoins": false,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": false,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 4,
+				"idInWorld": 3,
+				"location": [
+					-2,
+					0,
+					-1
+				],
+				"connections": [
+					{
+						"destinationNodeId": 2,
+						"pathIdInWorld": 2,
+						"direction": "Left",
+						"isBackwards": true
+					},
+					{
+						"destinationNodeId": 4,
+						"pathIdInWorld": 3,
+						"direction": "Right",
+						"isBackwards": false
+					},
+					{
+						"destinationNodeId": 12,
+						"pathIdInWorld": 11,
+						"direction": "Down",
+						"isBackwards": false
+					}
+				],
+				"areaId": 89,
+				"name": "2",
+				"hasStarCoins": true,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": true,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 4,
+				"idInWorld": 4,
+				"location": [
+					0,
+					0,
+					0
+				],
+				"connections": [
+					{
+						"destinationNodeId": 3,
+						"pathIdInWorld": 3,
+						"direction": "Up",
+						"isBackwards": true
+					},
+					{
+						"destinationNodeId": 5,
+						"pathIdInWorld": 4,
+						"direction": "Right",
+						"isBackwards": false
+					},
+					{
+						"destinationNodeId": 13,
+						"pathIdInWorld": 13,
+						"direction": "Down",
+						"isBackwards": true
+					}
+				],
+				"areaId": 185,
+				"name": "dot",
+				"hasStarCoins": false,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": false,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 4,
+				"idInWorld": 5,
+				"location": [
+					0,
+					0,
+					0
+				],
+				"connections": [
+					{
+						"destinationNodeId": 4,
+						"pathIdInWorld": 4,
+						"direction": "Left",
+						"isBackwards": true
+					},
+					{
+						"destinationNodeId": 6,
+						"pathIdInWorld": 5,
+						"direction": "Right",
+						"isBackwards": false
+					},
+					{
+						"destinationNodeId": 14,
+						"pathIdInWorld": 14,
+						"direction": "Down",
+						"isBackwards": false
+					}
+				],
+				"areaId": 102,
+				"name": "Tower",
+				"hasStarCoins": true,
+				"isFirstTower": true,
+				"isCastle": false,
+				"isVisible": true,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 4,
+				"idInWorld": 6,
+				"location": [
+					2,
+					0,
+					0
+				],
+				"connections": [
+					{
+						"destinationNodeId": 5,
+						"pathIdInWorld": 5,
+						"direction": "Left",
+						"isBackwards": true
+					},
+					{
+						"destinationNodeId": 7,
+						"pathIdInWorld": 6,
+						"direction": "Up",
+						"isBackwards": false
+					},
+					{
+						"destinationNodeId": 16,
+						"pathIdInWorld": 16,
+						"direction": "Down",
+						"isBackwards": false
+					}
+				],
+				"areaId": 185,
+				"name": "dot",
+				"hasStarCoins": false,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": false,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 4,
+				"idInWorld": 7,
+				"location": [
+					2,
+					0,
+					-1
+				],
+				"connections": [
+					{
+						"destinationNodeId": 6,
+						"pathIdInWorld": 6,
+						"direction": "Down",
+						"isBackwards": true
+					},
+					{
+						"destinationNodeId": 8,
+						"pathIdInWorld": 7,
+						"direction": "Right",
+						"isBackwards": false
+					},
+					{
+						"destinationNodeId": 15,
+						"pathIdInWorld": 15,
+						"direction": "Left",
+						"isBackwards": false
+					}
+				],
+				"areaId": 91,
+				"name": "3",
+				"hasStarCoins": true,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": true,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 4,
+				"idInWorld": 8,
+				"location": [
+					6,
+					0,
+					-1
+				],
+				"connections": [
+					{
+						"destinationNodeId": 7,
+						"pathIdInWorld": 7,
+						"direction": "Left",
+						"isBackwards": true
+					},
+					{
+						"destinationNodeId": 9,
+						"pathIdInWorld": 8,
+						"direction": "Right",
+						"isBackwards": false
+					},
+					{
+						"destinationNodeId": 20,
+						"pathIdInWorld": 21,
+						"direction": "Down",
+						"isBackwards": false
+					}
+				],
+				"areaId": 99,
+				"name": "GhostHosue",
+				"hasStarCoins": true,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": true,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 4,
+				"idInWorld": 9,
+				"location": [
+					6,
+					0,
+					-1
+				],
+				"connections": [
+					{
+						"destinationNodeId": 8,
+						"pathIdInWorld": 8,
+						"direction": "Left",
+						"isBackwards": true
+					},
+					{
+						"destinationNodeId": 10,
+						"pathIdInWorld": 9,
+						"direction": "Right",
+						"isBackwards": false
+					},
+					{
+						"destinationNodeId": 18,
+						"pathIdInWorld": 19,
+						"direction": "Down",
+						"isBackwards": true
+					}
+				],
+				"areaId": 185,
+				"name": "dot",
+				"hasStarCoins": false,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": false,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 4,
+				"idInWorld": 10,
+				"location": [
+					10,
+					0,
+					0
+				],
+				"connections": [
+					{
+						"destinationNodeId": 9,
+						"pathIdInWorld": 9,
+						"direction": "Up",
+						"isBackwards": true
+					},
+					{
+						"destinationNodeId": 11,
+						"pathIdInWorld": 10,
+						"direction": "Right",
+						"isBackwards": false
+					},
+					{
+						"destinationNodeId": 22,
+						"pathIdInWorld": 23,
+						"direction": "Left",
+						"isBackwards": false
+					}
+				],
+				"areaId": 93,
+				"name": "4",
+				"hasStarCoins": true,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": true,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 4,
+				"idInWorld": 11,
+				"location": [
+					10,
+					0,
+					0
+				],
+				"connections": [
+					{
+						"destinationNodeId": 10,
+						"pathIdInWorld": 10,
+						"direction": "Left",
+						"isBackwards": true
+					},
+					{
+						"destinationNodeId": 23,
+						"pathIdInWorld": 24,
+						"direction": "Down",
+						"isBackwards": false
+					}
+				],
+				"areaId": 104,
+				"name": "Castle",
+				"hasStarCoins": true,
+				"isFirstTower": false,
+				"isCastle": true,
+				"isVisible": true,
+				"isLastLevelInWorld": true,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 4,
+				"idInWorld": 12,
+				"location": [
+					-2,
+					0,
+					0
+				],
+				"connections": [
+					{
+						"destinationNodeId": 3,
+						"pathIdInWorld": 11,
+						"direction": "Up",
+						"isBackwards": true
+					},
+					{
+						"destinationNodeId": 15,
+						"pathIdInWorld": 25,
+						"direction": "Pipe",
+						"isBackwards": false
+					}
+				],
+				"areaId": 185,
+				"name": "Pipe",
+				"hasStarCoins": false,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": false,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 4,
+				"idInWorld": 13,
+				"location": [
+					-2,
+					0,
+					1
+				],
+				"connections": [
+					{
+						"destinationNodeId": 2,
+						"pathIdInWorld": 12,
+						"direction": "Left",
+						"isBackwards": true
+					},
+					{
+						"destinationNodeId": 4,
+						"pathIdInWorld": 13,
+						"direction": "Right",
+						"isBackwards": false
+					}
+				],
+				"areaId": 94,
+				"name": "A",
+				"hasStarCoins": true,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": true,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 4,
+				"idInWorld": 14,
+				"location": [
+					2,
+					0,
+					1
+				],
+				"connections": [
+					{
+						"destinationNodeId": 5,
+						"pathIdInWorld": 14,
+						"direction": "Left",
+						"isBackwards": true
+					}
+				],
+				"areaId": 177,
+				"name": "RedMushroom",
+				"hasStarCoins": false,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": true,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 4,
+				"idInWorld": 15,
+				"location": [
+					2,
+					0,
+					-1
+				],
+				"connections": [
+					{
+						"destinationNodeId": 7,
+						"pathIdInWorld": 15,
+						"direction": "Right",
+						"isBackwards": true
+					},
+					{
+						"destinationNodeId": 12,
+						"pathIdInWorld": 25,
+						"direction": "Pipe",
+						"isBackwards": true
+					}
+				],
+				"areaId": 185,
+				"name": "Pipe",
+				"hasStarCoins": false,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": false,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 4,
+				"idInWorld": 16,
+				"location": [
+					4,
+					0,
+					1
+				],
+				"connections": [
+					{
+						"destinationNodeId": 6,
+						"pathIdInWorld": 16,
+						"direction": "Left",
+						"isBackwards": true
+					},
+					{
+						"destinationNodeId": 17,
+						"pathIdInWorld": 17,
+						"direction": "Right",
+						"isBackwards": false
+					},
+					{
+						"destinationNodeId": 19,
+						"pathIdInWorld": 20,
+						"direction": "Up",
+						"isBackwards": false
+					}
+				],
+				"areaId": 96,
+				"name": "B",
+				"hasStarCoins": true,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": true,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 4,
+				"idInWorld": 17,
+				"location": [
+					6,
+					0,
+					1
+				],
+				"connections": [
+					{
+						"destinationNodeId": 16,
+						"pathIdInWorld": 17,
+						"direction": "Left",
+						"isBackwards": true
+					},
+					{
+						"destinationNodeId": 18,
+						"pathIdInWorld": 18,
+						"direction": "Up",
+						"isBackwards": false
+					},
+					{
+						"destinationNodeId": 21,
+						"pathIdInWorld": 22,
+						"direction": "Right",
+						"isBackwards": false
+					}
+				],
+				"areaId": 185,
+				"name": "dot",
+				"hasStarCoins": false,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": false,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 4,
+				"idInWorld": 18,
+				"location": [
+					6,
+					0,
+					0
+				],
+				"connections": [
+					{
+						"destinationNodeId": 9,
+						"pathIdInWorld": 19,
+						"direction": "Up",
+						"isBackwards": false
+					},
+					{
+						"destinationNodeId": 17,
+						"pathIdInWorld": 18,
+						"direction": "Down",
+						"isBackwards": true
+					}
+				],
+				"areaId": 97,
+				"name": "C",
+				"hasStarCoins": true,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": true,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 4,
+				"idInWorld": 19,
+				"location": [
+					4,
+					0,
+					0
+				],
+				"connections": [
+					{
+						"destinationNodeId": 16,
+						"pathIdInWorld": 20,
+						"direction": "Down",
+						"isBackwards": true
+					},
+					{
+						"destinationNodeId": 23,
+						"pathIdInWorld": 26,
+						"direction": "Pipe",
+						"isBackwards": false
+					}
+				],
+				"areaId": 185,
+				"name": "Pipe",
+				"hasStarCoins": false,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": false,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 4,
+				"idInWorld": 20,
+				"location": [
+					4,
+					0,
+					0
+				],
+				"connections": [
+					{
+						"destinationNodeId": 8,
+						"pathIdInWorld": 21,
+						"direction": "Right",
+						"isBackwards": true
+					}
+				],
+				"areaId": 106,
+				"name": "Cannon",
+				"hasStarCoins": false,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": true,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 4,
+				"idInWorld": 21,
+				"location": [
+					8,
+					0,
+					1
+				],
+				"connections": [
+					{
+						"destinationNodeId": 17,
+						"pathIdInWorld": 22,
+						"direction": "Left",
+						"isBackwards": true
+					}
+				],
+				"areaId": 178,
+				"name": "MegaMushroom",
+				"hasStarCoins": false,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": true,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 4,
+				"idInWorld": 22,
+				"location": [
+					8,
+					0,
+					0
+				],
+				"connections": [
+					{
+						"destinationNodeId": 10,
+						"pathIdInWorld": 23,
+						"direction": "Right",
+						"isBackwards": true
+					}
+				],
+				"areaId": 176,
+				"name": "GreenMushroom",
+				"hasStarCoins": false,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": true,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 4,
+				"idInWorld": 23,
+				"location": [
+					10,
+					0,
+					1
+				],
+				"connections": [
+					{
+						"destinationNodeId": 11,
+						"pathIdInWorld": 24,
+						"direction": "Up",
+						"isBackwards": true
+					},
+					{
+						"destinationNodeId": 19,
+						"pathIdInWorld": 26,
+						"direction": "Pipe",
+						"isBackwards": true
+					}
+				],
+				"areaId": 185,
+				"name": "Pipe",
+				"hasStarCoins": false,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": false,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			}
+		],
+		"paths": [
+			{
+				"worldId": 4,
+				"idInWorld": 0,
+				"cost": 0,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 4,
+				"idInWorld": 1,
+				"cost": 0,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 4,
+				"idInWorld": 2,
+				"cost": 0,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 4,
+				"idInWorld": 3,
+				"cost": 0,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 4,
+				"idInWorld": 4,
+				"cost": 0,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 4,
+				"idInWorld": 5,
+				"cost": 0,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 4,
+				"idInWorld": 6,
+				"cost": 0,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 4,
+				"idInWorld": 7,
+				"cost": 0,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 4,
+				"idInWorld": 8,
+				"cost": 0,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 4,
+				"idInWorld": 9,
+				"cost": 0,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 4,
+				"idInWorld": 10,
+				"cost": 0,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 4,
+				"idInWorld": 11,
+				"cost": 0,
+				"isUnlockedBySecretGoal": true,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 4,
+				"idInWorld": 12,
+				"cost": 5,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": true,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 4,
+				"idInWorld": 13,
+				"cost": 0,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 4,
+				"idInWorld": 14,
+				"cost": 5,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": true,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 4,
+				"idInWorld": 15,
+				"cost": 0,
+				"isUnlockedBySecretGoal": true,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 4,
+				"idInWorld": 16,
+				"cost": 5,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": true,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 4,
+				"idInWorld": 17,
+				"cost": 0,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 4,
+				"idInWorld": 18,
+				"cost": 0,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 4,
+				"idInWorld": 19,
+				"cost": 0,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 4,
+				"idInWorld": 20,
+				"cost": 0,
+				"isUnlockedBySecretGoal": true,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 4,
+				"idInWorld": 21,
+				"cost": 0,
+				"isUnlockedBySecretGoal": true,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 4,
+				"idInWorld": 22,
+				"cost": 5,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": true,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 4,
+				"idInWorld": 23,
+				"cost": 5,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": true,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 4,
+				"idInWorld": 24,
+				"cost": 0,
+				"isUnlockedBySecretGoal": true,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 4,
+				"idInWorld": 25,
+				"cost": 0,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 4,
+				"idInWorld": 26,
+				"cost": 0,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 4,
+				"idInWorld": 27,
+				"cost": 0,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": false,
+				"exists": true,
+				"isInvalid": false
+			},
+			{
+				"worldId": 4,
+				"idInWorld": 28,
+				"cost": 0,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": false,
+				"exists": true,
+				"isInvalid": false
+			},
+			{
+				"worldId": 4,
+				"idInWorld": 29,
+				"cost": 0,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": false,
+				"exists": true,
+				"isInvalid": false
+			}
+		]
+	},
+	{
+		"id": 5,
+		"nodes": [
+			{
+				"worldId": 5,
+				"idInWorld": 0,
+				"location": [
+					-4,
+					0,
+					0
+				],
+				"connections": [
+					{
+						"destinationNodeId": 1,
+						"pathIdInWorld": 0,
+						"direction": "Right",
+						"isBackwards": false
+					}
+				],
+				"areaId": 185,
+				"name": "Start",
+				"hasStarCoins": false,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": true,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 5,
+				"idInWorld": 1,
+				"location": [
+					-4,
+					0,
+					0
+				],
+				"connections": [
+					{
+						"destinationNodeId": 0,
+						"pathIdInWorld": 0,
+						"direction": "Left",
+						"isBackwards": true
+					},
+					{
+						"destinationNodeId": 2,
+						"pathIdInWorld": 1,
+						"direction": "Up",
+						"isBackwards": false
+					},
+					{
+						"destinationNodeId": 13,
+						"pathIdInWorld": 12,
+						"direction": "Down",
+						"isBackwards": false
+					}
+				],
+				"areaId": 185,
+				"name": "dot",
+				"hasStarCoins": false,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": false,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 5,
+				"idInWorld": 2,
+				"location": [
+					-4,
+					0,
+					-1
+				],
+				"connections": [
+					{
+						"destinationNodeId": 1,
+						"pathIdInWorld": 1,
+						"direction": "Down",
+						"isBackwards": true
+					},
+					{
+						"destinationNodeId": 3,
+						"pathIdInWorld": 2,
+						"direction": "Right",
+						"isBackwards": false
+					}
+				],
+				"areaId": 107,
+				"name": "1",
+				"hasStarCoins": true,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": true,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 5,
+				"idInWorld": 3,
+				"location": [
+					-2,
+					0,
+					0
+				],
+				"connections": [
+					{
+						"destinationNodeId": 2,
+						"pathIdInWorld": 2,
+						"direction": "Up",
+						"isBackwards": true
+					},
+					{
+						"destinationNodeId": 4,
+						"pathIdInWorld": 3,
+						"direction": "Right",
+						"isBackwards": false
+					},
+					{
+						"destinationNodeId": 13,
+						"pathIdInWorld": 14,
+						"direction": "Down",
+						"isBackwards": true
+					}
+				],
+				"areaId": 185,
+				"name": "dot",
+				"hasStarCoins": false,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": false,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 5,
+				"idInWorld": 4,
+				"location": [
+					0,
+					0,
+					0
+				],
+				"connections": [
+					{
+						"destinationNodeId": 3,
+						"pathIdInWorld": 3,
+						"direction": "Left",
+						"isBackwards": true
+					},
+					{
+						"destinationNodeId": 5,
+						"pathIdInWorld": 4,
+						"direction": "Right",
+						"isBackwards": false
+					},
+					{
+						"destinationNodeId": 15,
+						"pathIdInWorld": 15,
+						"direction": "Up",
+						"isBackwards": false
+					}
+				],
+				"areaId": 109,
+				"name": "2",
+				"hasStarCoins": true,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": true,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 5,
+				"idInWorld": 5,
+				"location": [
+					0,
+					0,
+					0
+				],
+				"connections": [
+					{
+						"destinationNodeId": 4,
+						"pathIdInWorld": 4,
+						"direction": "Left",
+						"isBackwards": true
+					},
+					{
+						"destinationNodeId": 6,
+						"pathIdInWorld": 5,
+						"direction": "Right",
+						"isBackwards": false
+					}
+				],
+				"areaId": 122,
+				"name": "Tower",
+				"hasStarCoins": true,
+				"isFirstTower": true,
+				"isCastle": false,
+				"isVisible": true,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 5,
+				"idInWorld": 6,
+				"location": [
+					2,
+					0,
+					0
+				],
+				"connections": [
+					{
+						"destinationNodeId": 5,
+						"pathIdInWorld": 5,
+						"direction": "Left",
+						"isBackwards": true
+					},
+					{
+						"destinationNodeId": 7,
+						"pathIdInWorld": 6,
+						"direction": "Right",
+						"isBackwards": false
+					},
+					{
+						"destinationNodeId": 17,
+						"pathIdInWorld": 17,
+						"direction": "Up",
+						"isBackwards": false
+					}
+				],
+				"areaId": 111,
+				"name": "3",
+				"hasStarCoins": true,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": true,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 5,
+				"idInWorld": 7,
+				"location": [
+					4,
+					0,
+					0
+				],
+				"connections": [
+					{
+						"destinationNodeId": 6,
+						"pathIdInWorld": 6,
+						"direction": "Left",
+						"isBackwards": true
+					},
+					{
+						"destinationNodeId": 8,
+						"pathIdInWorld": 7,
+						"direction": "Right",
+						"isBackwards": false
+					},
+					{
+						"destinationNodeId": 18,
+						"pathIdInWorld": 18,
+						"direction": "Up",
+						"isBackwards": false
+					}
+				],
+				"areaId": 113,
+				"name": "4",
+				"hasStarCoins": true,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": true,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 5,
+				"idInWorld": 8,
+				"location": [
+					4,
+					0,
+					0
+				],
+				"connections": [
+					{
+						"destinationNodeId": 7,
+						"pathIdInWorld": 7,
+						"direction": "Left",
+						"isBackwards": true
+					},
+					{
+						"destinationNodeId": 9,
+						"pathIdInWorld": 8,
+						"direction": "Right",
+						"isBackwards": false
+					}
+				],
+				"areaId": 124,
+				"name": "Tower2",
+				"hasStarCoins": true,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": true,
+				"isLastLevelInWorld": false,
+				"isSecondTower": true,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 5,
+				"idInWorld": 9,
+				"location": [
+					6,
+					0,
+					0
+				],
+				"connections": [
+					{
+						"destinationNodeId": 8,
+						"pathIdInWorld": 8,
+						"direction": "Left",
+						"isBackwards": true
+					},
+					{
+						"destinationNodeId": 10,
+						"pathIdInWorld": 9,
+						"direction": "Up",
+						"isBackwards": false
+					},
+					{
+						"destinationNodeId": 19,
+						"pathIdInWorld": 19,
+						"direction": "Down",
+						"isBackwards": false
+					}
+				],
+				"areaId": 185,
+				"name": "dot",
+				"hasStarCoins": false,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": false,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 5,
+				"idInWorld": 10,
+				"location": [
+					6,
+					0,
+					-1
+				],
+				"connections": [
+					{
+						"destinationNodeId": 9,
+						"pathIdInWorld": 9,
+						"direction": "Down",
+						"isBackwards": true
+					},
+					{
+						"destinationNodeId": 11,
+						"pathIdInWorld": 10,
+						"direction": "Right",
+						"isBackwards": false
+					}
+				],
+				"areaId": 114,
+				"name": "5",
+				"hasStarCoins": true,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": true,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 5,
+				"idInWorld": 11,
+				"location": [
+					8,
+					0,
+					0
+				],
+				"connections": [
+					{
+						"destinationNodeId": 10,
+						"pathIdInWorld": 10,
+						"direction": "Up",
+						"isBackwards": true
+					},
+					{
+						"destinationNodeId": 12,
+						"pathIdInWorld": 11,
+						"direction": "Right",
+						"isBackwards": false
+					},
+					{
+						"destinationNodeId": 19,
+						"pathIdInWorld": 21,
+						"direction": "Down",
+						"isBackwards": true
+					}
+				],
+				"areaId": 116,
+				"name": "6",
+				"hasStarCoins": true,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": true,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 5,
+				"idInWorld": 12,
+				"location": [
+					8,
+					0,
+					0
+				],
+				"connections": [
+					{
+						"destinationNodeId": 11,
+						"pathIdInWorld": 11,
+						"direction": "Left",
+						"isBackwards": true
+					}
+				],
+				"areaId": 126,
+				"name": "Castle",
+				"hasStarCoins": true,
+				"isFirstTower": false,
+				"isCastle": true,
+				"isVisible": true,
+				"isLastLevelInWorld": true,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 5,
+				"idInWorld": 13,
+				"location": [
+					-2,
+					0,
+					1
+				],
+				"connections": [
+					{
+						"destinationNodeId": 1,
+						"pathIdInWorld": 12,
+						"direction": "Left",
+						"isBackwards": true
+					},
+					{
+						"destinationNodeId": 3,
+						"pathIdInWorld": 14,
+						"direction": "Right",
+						"isBackwards": false
+					},
+					{
+						"destinationNodeId": 14,
+						"pathIdInWorld": 13,
+						"direction": "Up",
+						"isBackwards": false
+					}
+				],
+				"areaId": 119,
+				"name": "A",
+				"hasStarCoins": true,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": true,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 5,
+				"idInWorld": 14,
+				"location": [
+					-2,
+					0,
+					0
+				],
+				"connections": [
+					{
+						"destinationNodeId": 13,
+						"pathIdInWorld": 13,
+						"direction": "Down",
+						"isBackwards": true
+					}
+				],
+				"areaId": 177,
+				"name": "RedMushroom",
+				"hasStarCoins": false,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": true,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 5,
+				"idInWorld": 15,
+				"location": [
+					0,
+					0,
+					-1
+				],
+				"connections": [
+					{
+						"destinationNodeId": 4,
+						"pathIdInWorld": 15,
+						"direction": "Down",
+						"isBackwards": true
+					}
+				],
+				"areaId": 176,
+				"name": "GreenMushroom",
+				"hasStarCoins": false,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": true,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 5,
+				"idInWorld": 16,
+				"location": [
+					0,
+					0,
+					0
+				],
+				"connections": [
+					{
+						"destinationNodeId": 5,
+						"pathIdInWorld": 16,
+						"direction": "Up",
+						"isBackwards": true
+					}
+				],
+				"areaId": 128,
+				"name": "dot",
+				"hasStarCoins": false,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": false,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 5,
+				"idInWorld": 17,
+				"location": [
+					2,
+					0,
+					-1
+				],
+				"connections": [
+					{
+						"destinationNodeId": 6,
+						"pathIdInWorld": 17,
+						"direction": "Down",
+						"isBackwards": true
+					}
+				],
+				"areaId": 178,
+				"name": "MegaMushroom",
+				"hasStarCoins": false,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": true,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 5,
+				"idInWorld": 18,
+				"location": [
+					4,
+					0,
+					-1
+				],
+				"connections": [
+					{
+						"destinationNodeId": 7,
+						"pathIdInWorld": 18,
+						"direction": "Down",
+						"isBackwards": true
+					}
+				],
+				"areaId": 177,
+				"name": "RedMushroom",
+				"hasStarCoins": false,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": true,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 5,
+				"idInWorld": 19,
+				"location": [
+					6,
+					0,
+					1
+				],
+				"connections": [
+					{
+						"destinationNodeId": 9,
+						"pathIdInWorld": 19,
+						"direction": "Left",
+						"isBackwards": true
+					},
+					{
+						"destinationNodeId": 11,
+						"pathIdInWorld": 21,
+						"direction": "Right",
+						"isBackwards": false
+					},
+					{
+						"destinationNodeId": 20,
+						"pathIdInWorld": 20,
+						"direction": "Up",
+						"isBackwards": false
+					}
+				],
+				"areaId": 121,
+				"name": "B",
+				"hasStarCoins": true,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": true,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 5,
+				"idInWorld": 20,
+				"location": [
+					6,
+					0,
+					0
+				],
+				"connections": [
+					{
+						"destinationNodeId": 19,
+						"pathIdInWorld": 20,
+						"direction": "Down",
+						"isBackwards": true
+					}
+				],
+				"areaId": 176,
+				"name": "GreenMushroom",
+				"hasStarCoins": false,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": true,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			}
+		],
+		"paths": [
+			{
+				"worldId": 5,
+				"idInWorld": 0,
+				"cost": 0,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 5,
+				"idInWorld": 1,
+				"cost": 0,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 5,
+				"idInWorld": 2,
+				"cost": 0,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 5,
+				"idInWorld": 3,
+				"cost": 0,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 5,
+				"idInWorld": 4,
+				"cost": 0,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 5,
+				"idInWorld": 5,
+				"cost": 0,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 5,
+				"idInWorld": 6,
+				"cost": 0,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 5,
+				"idInWorld": 7,
+				"cost": 0,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 5,
+				"idInWorld": 8,
+				"cost": 0,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 5,
+				"idInWorld": 9,
+				"cost": 0,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 5,
+				"idInWorld": 10,
+				"cost": 0,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 5,
+				"idInWorld": 11,
+				"cost": 0,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 5,
+				"idInWorld": 12,
+				"cost": 5,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": true,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 5,
+				"idInWorld": 13,
+				"cost": 0,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 5,
+				"idInWorld": 14,
+				"cost": 0,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 5,
+				"idInWorld": 15,
+				"cost": 5,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": true,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 5,
+				"idInWorld": 16,
+				"cost": 0,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": true
+			},
+			{
+				"worldId": 5,
+				"idInWorld": 17,
+				"cost": 5,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": true,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 5,
+				"idInWorld": 18,
+				"cost": 5,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": true,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 5,
+				"idInWorld": 19,
+				"cost": 5,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": true,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 5,
+				"idInWorld": 20,
+				"cost": 0,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 5,
+				"idInWorld": 21,
+				"cost": 0,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 5,
+				"idInWorld": 22,
+				"cost": 0,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": false,
+				"exists": true,
+				"isInvalid": false
+			},
+			{
+				"worldId": 5,
+				"idInWorld": 23,
+				"cost": 0,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": false,
+				"exists": true,
+				"isInvalid": false
+			},
+			{
+				"worldId": 5,
+				"idInWorld": 24,
+				"cost": 0,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": false,
+				"exists": true,
+				"isInvalid": false
+			},
+			{
+				"worldId": 5,
+				"idInWorld": 25,
+				"cost": 0,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": false,
+				"exists": true,
+				"isInvalid": false
+			}
+		]
+	},
+	{
+		"id": 6,
+		"nodes": [
+			{
+				"worldId": 6,
+				"idInWorld": 0,
+				"location": [
+					-4,
+					0,
+					0
+				],
+				"connections": [
+					{
+						"destinationNodeId": 1,
+						"pathIdInWorld": 0,
+						"direction": "Right",
+						"isBackwards": false
+					}
+				],
+				"areaId": 185,
+				"name": "Start",
+				"hasStarCoins": false,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": true,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 6,
+				"idInWorld": 1,
+				"location": [
+					-4,
+					0,
+					0
+				],
+				"connections": [
+					{
+						"destinationNodeId": 0,
+						"pathIdInWorld": 0,
+						"direction": "Left",
+						"isBackwards": true
+					},
+					{
+						"destinationNodeId": 2,
+						"pathIdInWorld": 1,
+						"direction": "Right",
+						"isBackwards": false
+					},
+					{
+						"destinationNodeId": 11,
+						"pathIdInWorld": 10,
+						"direction": "Up",
+						"isBackwards": false
+					}
+				],
+				"areaId": 129,
+				"name": "1",
+				"hasStarCoins": true,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": true,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 6,
+				"idInWorld": 2,
+				"location": [
+					-2,
+					0,
+					0
+				],
+				"connections": [
+					{
+						"destinationNodeId": 1,
+						"pathIdInWorld": 1,
+						"direction": "Left",
+						"isBackwards": true
+					},
+					{
+						"destinationNodeId": 3,
+						"pathIdInWorld": 2,
+						"direction": "Right",
+						"isBackwards": false
+					},
+					{
+						"destinationNodeId": 14,
+						"pathIdInWorld": 13,
+						"direction": "Down",
+						"isBackwards": false
+					}
+				],
+				"areaId": 144,
+				"name": "GhostHosue",
+				"hasStarCoins": true,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": true,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 6,
+				"idInWorld": 3,
+				"location": [
+					-2,
+					0,
+					0
+				],
+				"connections": [
+					{
+						"destinationNodeId": 2,
+						"pathIdInWorld": 2,
+						"direction": "Left",
+						"isBackwards": true
+					},
+					{
+						"destinationNodeId": 4,
+						"pathIdInWorld": 3,
+						"direction": "Right",
+						"isBackwards": false
+					},
+					{
+						"destinationNodeId": 12,
+						"pathIdInWorld": 11,
+						"direction": "Up",
+						"isBackwards": false
+					}
+				],
+				"areaId": 130,
+				"name": "2",
+				"hasStarCoins": true,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": true,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 6,
+				"idInWorld": 4,
+				"location": [
+					0,
+					0,
+					0
+				],
+				"connections": [
+					{
+						"destinationNodeId": 3,
+						"pathIdInWorld": 3,
+						"direction": "Left",
+						"isBackwards": true
+					},
+					{
+						"destinationNodeId": 5,
+						"pathIdInWorld": 4,
+						"direction": "Right",
+						"isBackwards": false
+					},
+					{
+						"destinationNodeId": 13,
+						"pathIdInWorld": 12,
+						"direction": "Up",
+						"isBackwards": false
+					}
+				],
+				"areaId": 132,
+				"name": "3",
+				"hasStarCoins": true,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": true,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 6,
+				"idInWorld": 5,
+				"location": [
+					2,
+					0,
+					0
+				],
+				"connections": [
+					{
+						"destinationNodeId": 4,
+						"pathIdInWorld": 4,
+						"direction": "Left",
+						"isBackwards": true
+					},
+					{
+						"destinationNodeId": 6,
+						"pathIdInWorld": 5,
+						"direction": "Right",
+						"isBackwards": false
+					},
+					{
+						"destinationNodeId": 14,
+						"pathIdInWorld": 14,
+						"direction": "Down",
+						"isBackwards": true
+					}
+				],
+				"areaId": 147,
+				"name": "Tower",
+				"hasStarCoins": true,
+				"isFirstTower": true,
+				"isCastle": false,
+				"isVisible": true,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 6,
+				"idInWorld": 6,
+				"location": [
+					2,
+					0,
+					0
+				],
+				"connections": [
+					{
+						"destinationNodeId": 5,
+						"pathIdInWorld": 5,
+						"direction": "Left",
+						"isBackwards": true
+					},
+					{
+						"destinationNodeId": 7,
+						"pathIdInWorld": 6,
+						"direction": "Right",
+						"isBackwards": false
+					},
+					{
+						"destinationNodeId": 15,
+						"pathIdInWorld": 15,
+						"direction": "Up",
+						"isBackwards": false
+					},
+					{
+						"destinationNodeId": 16,
+						"pathIdInWorld": 17,
+						"direction": "Down",
+						"isBackwards": false
+					}
+				],
+				"areaId": 134,
+				"name": "4",
+				"hasStarCoins": true,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": true,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 6,
+				"idInWorld": 7,
+				"location": [
+					4,
+					0,
+					0
+				],
+				"connections": [
+					{
+						"destinationNodeId": 6,
+						"pathIdInWorld": 6,
+						"direction": "Left",
+						"isBackwards": true
+					},
+					{
+						"destinationNodeId": 8,
+						"pathIdInWorld": 7,
+						"direction": "Right",
+						"isBackwards": false
+					},
+					{
+						"destinationNodeId": 16,
+						"pathIdInWorld": 18,
+						"direction": "Down",
+						"isBackwards": true
+					}
+				],
+				"areaId": 135,
+				"name": "5",
+				"hasStarCoins": true,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": true,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 6,
+				"idInWorld": 8,
+				"location": [
+					4,
+					0,
+					0
+				],
+				"connections": [
+					{
+						"destinationNodeId": 7,
+						"pathIdInWorld": 7,
+						"direction": "Left",
+						"isBackwards": true
+					},
+					{
+						"destinationNodeId": 9,
+						"pathIdInWorld": 8,
+						"direction": "Right",
+						"isBackwards": false
+					}
+				],
+				"areaId": 142,
+				"name": "A",
+				"hasStarCoins": true,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": true,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 6,
+				"idInWorld": 9,
+				"location": [
+					6,
+					0,
+					0
+				],
+				"connections": [
+					{
+						"destinationNodeId": 8,
+						"pathIdInWorld": 8,
+						"direction": "Left",
+						"isBackwards": true
+					},
+					{
+						"destinationNodeId": 10,
+						"pathIdInWorld": 9,
+						"direction": "Right",
+						"isBackwards": false
+					},
+					{
+						"destinationNodeId": 15,
+						"pathIdInWorld": 16,
+						"direction": "Up",
+						"isBackwards": true
+					},
+					{
+						"destinationNodeId": 17,
+						"pathIdInWorld": 20,
+						"direction": "Down",
+						"isBackwards": true
+					}
+				],
+				"areaId": 185,
+				"name": "dot",
+				"hasStarCoins": false,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": false,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 6,
+				"idInWorld": 10,
+				"location": [
+					6,
+					0,
+					0
+				],
+				"connections": [
+					{
+						"destinationNodeId": 9,
+						"pathIdInWorld": 9,
+						"direction": "Left",
+						"isBackwards": true
+					}
+				],
+				"areaId": 149,
+				"name": "Castle",
+				"hasStarCoins": true,
+				"isFirstTower": false,
+				"isCastle": true,
+				"isVisible": true,
+				"isLastLevelInWorld": true,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 6,
+				"idInWorld": 11,
+				"location": [
+					-4,
+					0,
+					-1
+				],
+				"connections": [
+					{
+						"destinationNodeId": 1,
+						"pathIdInWorld": 10,
+						"direction": "Down",
+						"isBackwards": true
+					}
+				],
+				"areaId": 178,
+				"name": "MegaMushroom",
+				"hasStarCoins": false,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": true,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 6,
+				"idInWorld": 12,
+				"location": [
+					-2,
+					0,
+					-1
+				],
+				"connections": [
+					{
+						"destinationNodeId": 3,
+						"pathIdInWorld": 11,
+						"direction": "Down",
+						"isBackwards": true
+					}
+				],
+				"areaId": 177,
+				"name": "RedMushroom",
+				"hasStarCoins": false,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": true,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 6,
+				"idInWorld": 13,
+				"location": [
+					0,
+					0,
+					-1
+				],
+				"connections": [
+					{
+						"destinationNodeId": 4,
+						"pathIdInWorld": 12,
+						"direction": "Down",
+						"isBackwards": true
+					}
+				],
+				"areaId": 176,
+				"name": "GreenMushroom",
+				"hasStarCoins": false,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": true,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 6,
+				"idInWorld": 14,
+				"location": [
+					0,
+					0,
+					1
+				],
+				"connections": [
+					{
+						"destinationNodeId": 2,
+						"pathIdInWorld": 13,
+						"direction": "Left",
+						"isBackwards": true
+					},
+					{
+						"destinationNodeId": 5,
+						"pathIdInWorld": 14,
+						"direction": "Right",
+						"isBackwards": false
+					}
+				],
+				"areaId": 176,
+				"name": "GreenMushroom",
+				"hasStarCoins": false,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": true,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 6,
+				"idInWorld": 15,
+				"location": [
+					4,
+					0,
+					-1
+				],
+				"connections": [
+					{
+						"destinationNodeId": 6,
+						"pathIdInWorld": 15,
+						"direction": "Left",
+						"isBackwards": true
+					},
+					{
+						"destinationNodeId": 9,
+						"pathIdInWorld": 16,
+						"direction": "Right",
+						"isBackwards": false
+					}
+				],
+				"areaId": 176,
+				"name": "GreenMushroom",
+				"hasStarCoins": false,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": true,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 6,
+				"idInWorld": 16,
+				"location": [
+					4,
+					0,
+					1
+				],
+				"connections": [
+					{
+						"destinationNodeId": 6,
+						"pathIdInWorld": 17,
+						"direction": "Left",
+						"isBackwards": true
+					},
+					{
+						"destinationNodeId": 17,
+						"pathIdInWorld": 19,
+						"direction": "Right",
+						"isBackwards": false
+					},
+					{
+						"destinationNodeId": 7,
+						"pathIdInWorld": 18,
+						"direction": "Up",
+						"isBackwards": false
+					}
+				],
+				"areaId": 138,
+				"name": "6",
+				"hasStarCoins": true,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": true,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 6,
+				"idInWorld": 17,
+				"location": [
+					4,
+					0,
+					1
+				],
+				"connections": [
+					{
+						"destinationNodeId": 16,
+						"pathIdInWorld": 19,
+						"direction": "Left",
+						"isBackwards": true
+					},
+					{
+						"destinationNodeId": 9,
+						"pathIdInWorld": 20,
+						"direction": "Right",
+						"isBackwards": false
+					}
+				],
+				"areaId": 141,
+				"name": "7",
+				"hasStarCoins": true,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": true,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			}
+		],
+		"paths": [
+			{
+				"worldId": 6,
+				"idInWorld": 0,
+				"cost": 0,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 6,
+				"idInWorld": 1,
+				"cost": 0,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 6,
+				"idInWorld": 2,
+				"cost": 0,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 6,
+				"idInWorld": 3,
+				"cost": 0,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 6,
+				"idInWorld": 4,
+				"cost": 0,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 6,
+				"idInWorld": 5,
+				"cost": 0,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 6,
+				"idInWorld": 6,
+				"cost": 0,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 6,
+				"idInWorld": 7,
+				"cost": 0,
+				"isUnlockedBySecretGoal": true,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 6,
+				"idInWorld": 8,
+				"cost": 0,
+				"isUnlockedBySecretGoal": true,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 6,
+				"idInWorld": 9,
+				"cost": 0,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 6,
+				"idInWorld": 10,
+				"cost": 5,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": true,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 6,
+				"idInWorld": 11,
+				"cost": 5,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": true,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 6,
+				"idInWorld": 12,
+				"cost": 5,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": true,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 6,
+				"idInWorld": 13,
+				"cost": 0,
+				"isUnlockedBySecretGoal": true,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 6,
+				"idInWorld": 14,
+				"cost": 0,
+				"isUnlockedBySecretGoal": true,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 6,
+				"idInWorld": 15,
+				"cost": 0,
+				"isUnlockedBySecretGoal": true,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 6,
+				"idInWorld": 16,
+				"cost": 0,
+				"isUnlockedBySecretGoal": true,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 6,
+				"idInWorld": 17,
+				"cost": 0,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 6,
+				"idInWorld": 18,
+				"cost": 0,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 6,
+				"idInWorld": 19,
+				"cost": 0,
+				"isUnlockedBySecretGoal": true,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 6,
+				"idInWorld": 20,
+				"cost": 0,
+				"isUnlockedBySecretGoal": true,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 6,
+				"idInWorld": 21,
+				"cost": 0,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": false,
+				"exists": true,
+				"isInvalid": false
+			},
+			{
+				"worldId": 6,
+				"idInWorld": 22,
+				"cost": 0,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": false,
+				"exists": true,
+				"isInvalid": false
+			},
+			{
+				"worldId": 6,
+				"idInWorld": 23,
+				"cost": 0,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": false,
+				"exists": true,
+				"isInvalid": false
+			}
+		]
+	},
+	{
+		"id": 7,
+		"nodes": [
+			{
+				"worldId": 7,
+				"idInWorld": 0,
+				"location": [
+					-4,
+					0,
+					0
+				],
+				"connections": [
+					{
+						"destinationNodeId": 1,
+						"pathIdInWorld": 0,
+						"direction": "Right",
+						"isBackwards": false
+					}
+				],
+				"areaId": 185,
+				"name": "Start",
+				"hasStarCoins": false,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": true,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 7,
+				"idInWorld": 1,
+				"location": [
+					-4,
+					0,
+					0
+				],
+				"connections": [
+					{
+						"destinationNodeId": 0,
+						"pathIdInWorld": 0,
+						"direction": "Left",
+						"isBackwards": true
+					},
+					{
+						"destinationNodeId": 2,
+						"pathIdInWorld": 1,
+						"direction": "Right",
+						"isBackwards": false
+					}
+				],
+				"areaId": 151,
+				"name": "1",
+				"hasStarCoins": true,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": true,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 7,
+				"idInWorld": 2,
+				"location": [
+					-2,
+					0,
+					0
+				],
+				"connections": [
+					{
+						"destinationNodeId": 1,
+						"pathIdInWorld": 1,
+						"direction": "Left",
+						"isBackwards": true
+					},
+					{
+						"destinationNodeId": 3,
+						"pathIdInWorld": 2,
+						"direction": "Right",
+						"isBackwards": false
+					},
+					{
+						"destinationNodeId": 16,
+						"pathIdInWorld": 15,
+						"direction": "Up",
+						"isBackwards": false
+					}
+				],
+				"areaId": 153,
+				"name": "2",
+				"hasStarCoins": true,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": true,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 7,
+				"idInWorld": 3,
+				"location": [
+					0,
+					0,
+					0
+				],
+				"connections": [
+					{
+						"destinationNodeId": 2,
+						"pathIdInWorld": 2,
+						"direction": "Left",
+						"isBackwards": true
+					},
+					{
+						"destinationNodeId": 4,
+						"pathIdInWorld": 3,
+						"direction": "Right",
+						"isBackwards": false
+					}
+				],
+				"areaId": 167,
+				"name": "Tower",
+				"hasStarCoins": true,
+				"isFirstTower": true,
+				"isCastle": false,
+				"isVisible": true,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 7,
+				"idInWorld": 4,
+				"location": [
+					0,
+					0,
+					0
+				],
+				"connections": [
+					{
+						"destinationNodeId": 3,
+						"pathIdInWorld": 3,
+						"direction": "Left",
+						"isBackwards": true
+					},
+					{
+						"destinationNodeId": 5,
+						"pathIdInWorld": 4,
+						"direction": "Right",
+						"isBackwards": false
+					},
+					{
+						"destinationNodeId": 17,
+						"pathIdInWorld": 16,
+						"direction": "Up",
+						"isBackwards": false
+					}
+				],
+				"areaId": 156,
+				"name": "3",
+				"hasStarCoins": true,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": true,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 7,
+				"idInWorld": 5,
+				"location": [
+					2,
+					0,
+					0
+				],
+				"connections": [
+					{
+						"destinationNodeId": 4,
+						"pathIdInWorld": 4,
+						"direction": "Left",
+						"isBackwards": true
+					},
+					{
+						"destinationNodeId": 6,
+						"pathIdInWorld": 5,
+						"direction": "Right",
+						"isBackwards": false
+					},
+					{
+						"destinationNodeId": 13,
+						"pathIdInWorld": 12,
+						"direction": "Down",
+						"isBackwards": false
+					}
+				],
+				"areaId": 158,
+				"name": "4",
+				"hasStarCoins": true,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": true,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 7,
+				"idInWorld": 6,
+				"location": [
+					4,
+					0,
+					0
+				],
+				"connections": [
+					{
+						"destinationNodeId": 5,
+						"pathIdInWorld": 5,
+						"direction": "Left",
+						"isBackwards": true
+					},
+					{
+						"destinationNodeId": 7,
+						"pathIdInWorld": 6,
+						"direction": "Right",
+						"isBackwards": false
+					}
+				],
+				"areaId": 171,
+				"name": "Castle",
+				"hasStarCoins": true,
+				"isFirstTower": false,
+				"isCastle": true,
+				"isVisible": true,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": true
+			},
+			{
+				"worldId": 7,
+				"idInWorld": 7,
+				"location": [
+					8,
+					0,
+					0
+				],
+				"connections": [
+					{
+						"destinationNodeId": 6,
+						"pathIdInWorld": 6,
+						"direction": "Left",
+						"isBackwards": true
+					},
+					{
+						"destinationNodeId": 8,
+						"pathIdInWorld": 7,
+						"direction": "Right",
+						"isBackwards": false
+					}
+				],
+				"areaId": 160,
+				"name": "5",
+				"hasStarCoins": true,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": true,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 7,
+				"idInWorld": 8,
+				"location": [
+					10,
+					0,
+					0
+				],
+				"connections": [
+					{
+						"destinationNodeId": 7,
+						"pathIdInWorld": 7,
+						"direction": "Left",
+						"isBackwards": true
+					},
+					{
+						"destinationNodeId": 9,
+						"pathIdInWorld": 8,
+						"direction": "Right",
+						"isBackwards": false
+					}
+				],
+				"areaId": 162,
+				"name": "6",
+				"hasStarCoins": true,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": true,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 7,
+				"idInWorld": 9,
+				"location": [
+					10,
+					0,
+					0
+				],
+				"connections": [
+					{
+						"destinationNodeId": 8,
+						"pathIdInWorld": 8,
+						"direction": "Left",
+						"isBackwards": true
+					},
+					{
+						"destinationNodeId": 10,
+						"pathIdInWorld": 9,
+						"direction": "Right",
+						"isBackwards": false
+					}
+				],
+				"areaId": 164,
+				"name": "7",
+				"hasStarCoins": true,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": true,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 7,
+				"idInWorld": 10,
+				"location": [
+					12,
+					0,
+					0
+				],
+				"connections": [
+					{
+						"destinationNodeId": 9,
+						"pathIdInWorld": 9,
+						"direction": "Left",
+						"isBackwards": true
+					},
+					{
+						"destinationNodeId": 11,
+						"pathIdInWorld": 10,
+						"direction": "Right",
+						"isBackwards": false
+					}
+				],
+				"areaId": 165,
+				"name": "8",
+				"hasStarCoins": true,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": true,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 7,
+				"idInWorld": 11,
+				"location": [
+					12,
+					0,
+					0
+				],
+				"connections": [
+					{
+						"destinationNodeId": 10,
+						"pathIdInWorld": 10,
+						"direction": "Left",
+						"isBackwards": true
+					},
+					{
+						"destinationNodeId": 12,
+						"pathIdInWorld": 11,
+						"direction": "Down",
+						"isBackwards": false
+					}
+				],
+				"areaId": 169,
+				"name": "Tower2",
+				"hasStarCoins": true,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": true,
+				"isLastLevelInWorld": false,
+				"isSecondTower": true,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 7,
+				"idInWorld": 12,
+				"location": [
+					16,
+					0,
+					0
+				],
+				"connections": [
+					{
+						"destinationNodeId": 11,
+						"pathIdInWorld": 11,
+						"direction": "Down",
+						"isBackwards": true
+					}
+				],
+				"areaId": 173,
+				"name": "BowserCastle",
+				"hasStarCoins": true,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": true,
+				"isLastLevelInWorld": true,
+				"isSecondTower": false,
+				"isBowserCastle": true,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 7,
+				"idInWorld": 13,
+				"location": [
+					2,
+					0,
+					1
+				],
+				"connections": [
+					{
+						"destinationNodeId": 5,
+						"pathIdInWorld": 12,
+						"direction": "Right",
+						"isBackwards": true
+					}
+				],
+				"areaId": 176,
+				"name": "GreenMushroom",
+				"hasStarCoins": false,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": true,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 7,
+				"idInWorld": 14,
+				"location": [
+					8,
+					0,
+					-1
+				],
+				"connections": [
+					{
+						"destinationNodeId": 7,
+						"pathIdInWorld": 13,
+						"direction": "Down",
+						"isBackwards": true
+					}
+				],
+				"areaId": 177,
+				"name": "dot",
+				"hasStarCoins": false,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": false,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 7,
+				"idInWorld": 15,
+				"location": [
+					0,
+					0,
+					0
+				],
+				"connections": [
+					{
+						"destinationNodeId": 9,
+						"pathIdInWorld": 14,
+						"direction": "Up",
+						"isBackwards": true
+					}
+				],
+				"areaId": 178,
+				"name": "dot",
+				"hasStarCoins": false,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": false,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 7,
+				"idInWorld": 16,
+				"location": [
+					-2,
+					0,
+					-1
+				],
+				"connections": [
+					{
+						"destinationNodeId": 2,
+						"pathIdInWorld": 15,
+						"direction": "Left",
+						"isBackwards": true
+					}
+				],
+				"areaId": 178,
+				"name": "MegaMushroom",
+				"hasStarCoins": false,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": true,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 7,
+				"idInWorld": 17,
+				"location": [
+					0,
+					0,
+					-1
+				],
+				"connections": [
+					{
+						"destinationNodeId": 4,
+						"pathIdInWorld": 16,
+						"direction": "Down",
+						"isBackwards": true
+					}
+				],
+				"areaId": 177,
+				"name": "RedMushroom",
+				"hasStarCoins": false,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": true,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			},
+			{
+				"worldId": 7,
+				"idInWorld": 18,
+				"location": [
+					14,
+					0,
+					1
+				],
+				"connections": [
+					{
+						"destinationNodeId": 11,
+						"pathIdInWorld": 17,
+						"direction": "Left",
+						"isBackwards": true
+					}
+				],
+				"areaId": 176,
+				"name": "dot",
+				"hasStarCoins": false,
+				"isFirstTower": false,
+				"isCastle": false,
+				"isVisible": false,
+				"isLastLevelInWorld": false,
+				"isSecondTower": false,
+				"isBowserCastle": false,
+				"is8DashCastle": false
+			}
+		],
+		"paths": [
+			{
+				"worldId": 7,
+				"idInWorld": 0,
+				"cost": 0,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 7,
+				"idInWorld": 1,
+				"cost": 0,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 7,
+				"idInWorld": 2,
+				"cost": 0,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 7,
+				"idInWorld": 3,
+				"cost": 0,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 7,
+				"idInWorld": 4,
+				"cost": 0,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 7,
+				"idInWorld": 5,
+				"cost": 0,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 7,
+				"idInWorld": 6,
+				"cost": 0,
+				"isUnlockedBySecretGoal": true,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 7,
+				"idInWorld": 7,
+				"cost": 0,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 7,
+				"idInWorld": 8,
+				"cost": 0,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 7,
+				"idInWorld": 9,
+				"cost": 0,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 7,
+				"idInWorld": 10,
+				"cost": 0,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 7,
+				"idInWorld": 11,
+				"cost": 0,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 7,
+				"idInWorld": 12,
+				"cost": 5,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": true,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 7,
+				"idInWorld": 13,
+				"cost": 0,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": true
+			},
+			{
+				"worldId": 7,
+				"idInWorld": 14,
+				"cost": 0,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": true
+			},
+			{
+				"worldId": 7,
+				"idInWorld": 15,
+				"cost": 5,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": true,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 7,
+				"idInWorld": 16,
+				"cost": 5,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": true,
+				"exists": false,
+				"isInvalid": false
+			},
+			{
+				"worldId": 7,
+				"idInWorld": 17,
+				"cost": 0,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": false,
+				"exists": false,
+				"isInvalid": true
+			},
+			{
+				"worldId": 7,
+				"idInWorld": 18,
+				"cost": 0,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": false,
+				"exists": true,
+				"isInvalid": false
+			},
+			{
+				"worldId": 7,
+				"idInWorld": 19,
+				"cost": 0,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": false,
+				"exists": true,
+				"isInvalid": false
+			},
+			{
+				"worldId": 7,
+				"idInWorld": 20,
+				"cost": 0,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": false,
+				"exists": true,
+				"isInvalid": false
+			},
+			{
+				"worldId": 7,
+				"idInWorld": 21,
+				"cost": 0,
+				"isUnlockedBySecretGoal": false,
+				"isUnlockedBySign": false,
+				"exists": true,
+				"isInvalid": false
+			}
+		]
+	}
+]
