@@ -9,3 +9,4 @@ RedStoneMatt for cleaning the code a bit and updating the UI
 RoadRunnerWMC for the checksum reverse-engineering (and other help)
 shibboleet for documenting the save file structure
 Suuper for cleaning up the code
+RicBent for creating Goombatlas, which helped me find in-game data
