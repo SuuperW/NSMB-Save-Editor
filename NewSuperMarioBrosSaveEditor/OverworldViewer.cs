@@ -78,10 +78,10 @@ namespace NewSuperMarioBrosSaveEditor
 				maxY = Math.Max(maxY, p.Location.Y);
 			}
 
-			const int padding = 20;
+			const int padding = 18;
 			foreach (Panel p in nodeControls)
 				p.Location = new Point(p.Location.X - minX + padding, p.Location.Y - minY + padding);
-			paddingLbl.Location = new Point(maxX - minX + 2 * padding, maxY - minY + 2 * padding);
+			paddingLbl.Location = new Point(maxX - minX + 2 * padding + nodeSize, maxY - minY + 2 * padding + nodeSize);
 
 			const int lineHalfWidth = 3;
 			foreach (JToken node in nodes)

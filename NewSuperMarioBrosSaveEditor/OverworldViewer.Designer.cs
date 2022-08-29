@@ -33,10 +33,9 @@
 			// 
 			// paddingLbl
 			// 
-			this.paddingLbl.AutoSize = true;
 			this.paddingLbl.Location = new System.Drawing.Point(3, 0);
 			this.paddingLbl.Name = "paddingLbl";
-			this.paddingLbl.Size = new System.Drawing.Size(0, 13);
+			this.paddingLbl.Size = new System.Drawing.Size(0, 0);
 			this.paddingLbl.TabIndex = 0;
 			// 
 			// OverworldViewer
@@ -48,7 +47,6 @@
 			this.Name = "OverworldViewer";
 			this.Size = new System.Drawing.Size(380, 150);
 			this.ResumeLayout(false);
-			this.PerformLayout();
 
 		}
 
