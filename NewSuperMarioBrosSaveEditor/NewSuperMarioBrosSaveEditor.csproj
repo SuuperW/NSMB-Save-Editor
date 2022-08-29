@@ -117,6 +117,7 @@
     <Content Include="Resources\Node_Complete.png" />
     <Content Include="Resources\Node_Unlocked.png" />
     <Content Include="Resources\Node_Start.png" />
+    <None Include="Resources\Pipe2d.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

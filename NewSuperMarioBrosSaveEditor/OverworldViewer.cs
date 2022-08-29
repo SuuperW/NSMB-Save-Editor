@@ -64,13 +64,19 @@ namespace NewSuperMarioBrosSaveEditor
 				p.Location = new Point((int)node["location"][0] * nodeSeparation, (int)node["location"][2] * nodeSeparation);
 				p.Size = new Size(nodeSize, nodeSize);
 				p.BackColor = Color.Transparent;
-				p.BackgroundImage = (string)node["name"] == "Start" ? Properties.Resources.Node_Start : Properties.Resources.Node_Locked;
-				p.BackgroundImageLayout = ImageLayout.Stretch;
+				p.BackgroundImage = (string)node["name"] == "Start" ? Properties.Resources.Node_Start :Properties.Resources.Node_Locked;
+				p.BackgroundImageLayout = ImageLayout.Zoom;
 				p.Visible = (bool)node["isVisible"];
 				p.Tag = (int)node["idInWorld"];
 				ttip.SetToolTip(p, worldPrefix + (string)node["name"]);
 				p.Parent = this;
 				nodeControls.Add(p);
+				// Pipes are a bit special, at least to us
+				if ((string)node["name"] == "Pipe")
+				{
+					p.BackgroundImage = Properties.Resources.Pipe2d;
+					p.Visible = true;
+				}
 
 				// The control's AutoScroll property does not support scrolling to negative locations.
 				// So, we must adjust all locations so that they are positive.
@@ -85,6 +91,7 @@ namespace NewSuperMarioBrosSaveEditor
 				p.Location = new Point(p.Location.X - minX + padding, p.Location.Y - minY + padding);
 			paddingLbl.Location = new Point(maxX - minX + 2 * padding + nodeSize, maxY - minY + 2 * padding + nodeSize);
 
+			// Create paths
 			const int lineHalfWidth = 3;
 			foreach (JToken node in nodes)
 			{
@@ -195,6 +202,8 @@ namespace NewSuperMarioBrosSaveEditor
 			baseId = 0x18 * worldId;
 			for (int i = 1; i < nodeControls.Count; i++)
 			{
+				if (!(bool)nodes[i]["isVisible"]) continue;
+
 				Panel p = nodeControls[i];
 				// Is it unlocked?
 				JToken connections = nodes[i]["connections"];
