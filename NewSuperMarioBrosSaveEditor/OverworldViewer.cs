@@ -19,6 +19,8 @@ namespace NewSuperMarioBrosSaveEditor
 		List<Panel> pathControls = new List<Panel>();
 		int worldId;
 
+		JToken nodes, paths;
+
 		public OverworldViewer()
 		{
 			InitializeComponent();
@@ -45,10 +47,10 @@ namespace NewSuperMarioBrosSaveEditor
 			// Scroll to 0, 0 so that locations that are set later on are correct.
 			AutoScrollPosition = new Point(AutoScrollPosition.X, -AutoScrollPosition.Y);
 
+			nodes = jObject["nodes"];
+			paths = jObject["paths"];
 			worldId = (int)jObject["id"];
 			string worldPrefix = (worldId + 1).ToString() + "-";
-			JToken nodes = jObject["nodes"];
-			JToken paths = jObject["paths"];
 			// Create nodes
 			const int nodeSeparation = 24;
 			const int nodeSize = 16;
@@ -175,30 +177,40 @@ namespace NewSuperMarioBrosSaveEditor
 		{
 			SuspendLayout();
 
+			// paths
+			int baseId = 0x1E * worldId;
+			bool[] unlocked = new bool[0x1E];
+			foreach (Panel p in pathControls)
+			{
+				int id = (int)p.Tag;
+				int flags = saveFile.GetPathFlags(baseId + id);
+				unlocked[id] = (flags & SaveFile.PathFlags.Unlocked) != 0;
+				if (unlocked[id])
+					p.BackColor = Color.Black;
+				else
+					p.BackColor = Color.DarkGray;
+			}
+
 			// nodes
-			int baseId = 0x18 * worldId;
+			baseId = 0x18 * worldId;
 			for (int i = 1; i < nodeControls.Count; i++)
 			{
 				Panel p = nodeControls[i];
-				int flags = saveFile.GetNodeFlags(baseId + i);
-				if ((flags & SaveFile.NodeFlags.Unlocked) == 0)
-					p.BackgroundImage = Properties.Resources.Node_Locked;
-				else if ((flags & SaveFile.NodeFlags.Completed) == 0)
-					p.BackgroundImage = Properties.Resources.Node_Unlocked;
+				// Is it unlocked?
+				JToken connections = nodes[i]["connections"];
+				bool levelUnlocked = connections.Any((c) => (bool)c["isBackwards"] == true && unlocked[(int)c["pathIdInWorld"]]);
+				if (levelUnlocked)
+				{
+					int flags = saveFile.GetNodeFlags(baseId + i);
+					if ((flags & SaveFile.NodeFlags.Completed) == 0)
+						p.BackgroundImage = Properties.Resources.Node_Unlocked;
+					else
+						p.BackgroundImage = Properties.Resources.Node_Complete;
+				}
 				else
-					p.BackgroundImage = Properties.Resources.Node_Complete;
+					p.BackgroundImage = Properties.Resources.Node_Locked;
 			}
 
-			// paths
-			baseId = 0x1E * worldId;
-			foreach (Panel p in pathControls)
-			{
-				int flags = saveFile.GetPathFlags(baseId + (int)p.Tag);
-				if ((flags & SaveFile.PathFlags.Unlocked) == 0)
-					p.BackColor = Color.DarkGray;
-				else
-					p.BackColor = Color.Black;
-			}
 
 			ResumeLayout();
 		}

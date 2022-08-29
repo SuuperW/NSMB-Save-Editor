@@ -217,8 +217,7 @@ namespace NewSuperMarioBrosSaveEditor
 			public static int StarCoin1 = 0x01;
 			public static int StarCoin2 = 0x02;
 			public static int StarCoin3 = 0x04;
-			public static int Unlocked = 0x40;
-			public static int Completed = 0x90;
+			public static int Completed = 0x80;
 		}
 		public static class PathFlags
 		{
