@@ -222,8 +222,7 @@ namespace NewSuperMarioBrosSaveEditor
 		}
 		public static class PathFlags
 		{
-			public static int Unlocked = 0x40;
-			public static int Completed = 0x80;
+			public static int Unlocked = 0xC0;
 		}
 
 		private SaveFile() { }

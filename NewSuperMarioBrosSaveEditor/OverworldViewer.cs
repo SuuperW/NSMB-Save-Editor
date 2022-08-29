@@ -175,6 +175,7 @@ namespace NewSuperMarioBrosSaveEditor
 		{
 			SuspendLayout();
 
+			// nodes
 			int baseId = 0x18 * worldId;
 			for (int i = 1; i < nodeControls.Count; i++)
 			{
@@ -186,6 +187,17 @@ namespace NewSuperMarioBrosSaveEditor
 					p.BackgroundImage = Properties.Resources.Node_Unlocked;
 				else
 					p.BackgroundImage = Properties.Resources.Node_Complete;
+			}
+
+			// paths
+			baseId = 0x1E * worldId;
+			foreach (Panel p in pathControls)
+			{
+				int flags = saveFile.GetPathFlags(baseId + (int)p.Tag);
+				if ((flags & SaveFile.PathFlags.Unlocked) == 0)
+					p.BackColor = Color.DarkGray;
+				else
+					p.BackColor = Color.Black;
 			}
 
 			ResumeLayout();
