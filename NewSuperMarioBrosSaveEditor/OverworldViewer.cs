@@ -205,19 +205,20 @@ namespace NewSuperMarioBrosSaveEditor
 				if (!(bool)nodes[i]["isVisible"]) continue;
 
 				Panel p = nodeControls[i];
-				// Is it unlocked?
-				JToken connections = nodes[i]["connections"];
-				bool levelUnlocked = connections.Any((c) => (bool)c["isBackwards"] == true && unlocked[(int)c["pathIdInWorld"]]);
-				if (levelUnlocked)
+				// Is it completed? The game checks that first.
+				int flags = saveFile.GetNodeFlags(baseId + i);
+				if ((flags & SaveFile.NodeFlags.Completed) != 0)
+					p.BackgroundImage = Properties.Resources.Node_Complete;
+				else
 				{
-					int flags = saveFile.GetNodeFlags(baseId + i);
-					if ((flags & SaveFile.NodeFlags.Completed) == 0)
+					// Is it unlocked?
+					JToken connections = nodes[i]["connections"];
+					bool levelUnlocked = connections.Any((c) => (bool)c["isBackwards"] == true && unlocked[(int)c["pathIdInWorld"]]);
+					if (levelUnlocked)
 						p.BackgroundImage = Properties.Resources.Node_Unlocked;
 					else
-						p.BackgroundImage = Properties.Resources.Node_Complete;
+						p.BackgroundImage = Properties.Resources.Node_Locked;
 				}
-				else
-					p.BackgroundImage = Properties.Resources.Node_Locked;
 			}
 
 
