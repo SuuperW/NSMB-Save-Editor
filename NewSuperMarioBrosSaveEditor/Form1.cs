@@ -118,13 +118,14 @@ namespace NewSuperMarioBrosSaveEditor
 
 			powerupCbx.SelectedIndex = files[fileIndex].CurrentPowerup;
 			inventoryCbx.SelectedIndex = files[fileIndex].Inventory;
+
+			overworldViewer1.ApplySave(files[fileIndex]);
 		}
 
 		private void worldNum_ValueChanged(object sender, EventArgs e)
 		{
 			JToken jArray = JToken.Parse(File.ReadAllText("data.json"));
 			overworldViewer1.LoadOverworld((JObject)jArray[(int)worldNum.Value - 1]);
-			overworldViewer1.ApplySave(files[fileIndex]);
 		}
 	}
 }

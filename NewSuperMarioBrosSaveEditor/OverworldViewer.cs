@@ -1,13 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Drawing;
 using System.Data;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
-using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
 namespace NewSuperMarioBrosSaveEditor
@@ -19,7 +16,10 @@ namespace NewSuperMarioBrosSaveEditor
 		List<Panel> pathControls = new List<Panel>();
 		int worldId;
 
+		SaveFile saveFile;
 		JToken nodes, paths;
+		Color unlockedPathColor = Color.Black;
+		Color lockedPathColor = Color.DarkGray;
 
 		public OverworldViewer()
 		{
@@ -173,40 +173,67 @@ namespace NewSuperMarioBrosSaveEditor
 					}
 
 					foreach (Panel p in pathsForConnection)
+					{
 						pathControls.Add(p);
+						p.Click += PathClicked;
+					}
 				}
 			}
+
+			if (saveFile != null)
+				UpdateLocks();
 
 			ResumeLayout();
 		}
 
+		private void PathClicked(object sender, EventArgs e)
+		{
+			// Display
+			Panel clicked = sender as Panel;
+			int id = (int)(sender as Panel).Tag;
+			bool newUnlockStatus = clicked.BackColor != unlockedPathColor;
+			foreach (Panel p in pathControls)
+				if ((int)p.Tag == id) p.BackColor = newUnlockStatus ? unlockedPathColor : lockedPathColor;
+
+			// Save file
+			byte flags = saveFile.GetPathFlags(worldId, id);
+			if (newUnlockStatus)
+				flags |= (byte)SaveFile.PathFlags.Unlocked;
+			else
+				flags &= (byte)~SaveFile.PathFlags.Unlocked;
+			saveFile.SetPathFlags(worldId, id, flags);
+		}
+
 		public void ApplySave(SaveFile saveFile)
 		{
+			this.saveFile = saveFile;
+		}
+
+		private void UpdateLocks()
+		{ 
 			SuspendLayout();
 
 			// paths
-			int baseId = 0x1E * worldId;
 			bool[] unlocked = new bool[0x1E];
 			foreach (Panel p in pathControls)
 			{
 				int id = (int)p.Tag;
-				int flags = saveFile.GetPathFlags(baseId + id);
+				int flags = saveFile.GetPathFlags(worldId, id);
 				unlocked[id] = (flags & SaveFile.PathFlags.Unlocked) != 0;
 				if (unlocked[id])
-					p.BackColor = Color.Black;
+					p.BackColor = unlockedPathColor;
 				else
-					p.BackColor = Color.DarkGray;
+					p.BackColor = lockedPathColor;
 			}
-
+		
 			// nodes
-			baseId = 0x18 * worldId;
 			for (int i = 1; i < nodeControls.Count; i++)
 			{
 				if (!(bool)nodes[i]["isVisible"]) continue;
 
 				Panel p = nodeControls[i];
 				// Is it completed? The game checks that first.
-				int flags = saveFile.GetNodeFlags(baseId + i);
+				int flags = saveFile.GetNodeFlags(worldId, i);
 				if ((flags & SaveFile.NodeFlags.Completed) != 0)
 					p.BackgroundImage = Properties.Resources.Node_Complete;
 				else
@@ -220,7 +247,6 @@ namespace NewSuperMarioBrosSaveEditor
 						p.BackgroundImage = Properties.Resources.Node_Locked;
 				}
 			}
-
 
 			ResumeLayout();
 		}

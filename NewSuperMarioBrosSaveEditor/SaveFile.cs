@@ -172,6 +172,7 @@ namespace NewSuperMarioBrosSaveEditor
 			else
 				throw new IndexOutOfRangeException();
 		}
+		public byte GetNodeFlags(int world, int index) => GetNodeFlags(0x18 * world + index);
 		public void SetNodeFlags(int index, byte flags)
 		{
 			if (index >= 0 && index < 0xC8)
@@ -179,6 +180,7 @@ namespace NewSuperMarioBrosSaveEditor
 			else
 				throw new IndexOutOfRangeException();
 		}
+		public void SetNodeFlags(int world, int index, byte flags) => SetNodeFlags(0x18 * world + index, flags);
 		// Note: The link above says this begins at 0x137. It's off by one.
 		// There are 0x1E per world, though not all worlds actually have 0x1E paths.
 		public byte GetPathFlags(int index)
@@ -188,6 +190,7 @@ namespace NewSuperMarioBrosSaveEditor
 			else
 				throw new IndexOutOfRangeException();
 		}
+		public byte GetPathFlags(int world, int index) => GetPathFlags(0x1E * world + index);
 		public void SetPathFlags(int index, byte flags)
 		{
 			if (index >= 0 && index < 0xF0)
@@ -195,6 +198,7 @@ namespace NewSuperMarioBrosSaveEditor
 			else
 				throw new IndexOutOfRangeException();
 		}
+		public void SetPathFlags(int world, int index, byte flags) => SetPathFlags(0x1E * world + index, flags);
 		// TODO: What's after this?
 		/*0x00 - 0x04   "7000" in ASCII. (7001 in NewerDS)
 0x24 - 0x28   Unknown.
