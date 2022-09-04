@@ -280,7 +280,7 @@ namespace NewSuperMarioBrosSaveEditor
 							JToken destConnections = destination["connections"];
 							unlockNext = !destConnections
 								.Where((dc) => (bool)dc["isBackwards"])
-								.Any((dc) => (saveFile.GetPathFlags((int)dc["pathIdInWorld"]) & SaveFile.PathFlags.Unlocked) != 0);
+								.Any((dc) => (saveFile.GetPathFlags(worldId, (int)dc["pathIdInWorld"]) & SaveFile.PathFlags.Unlocked) != 0);
 						}
 
 						if (unlockNext)
