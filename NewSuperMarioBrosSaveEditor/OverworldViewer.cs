@@ -71,6 +71,7 @@ namespace NewSuperMarioBrosSaveEditor
 				ttip.SetToolTip(p, worldPrefix + (string)node["name"]);
 				p.Parent = this;
 				p.Click += NodeClicked;
+				p.DoubleClick += NodeClicked;
 				nodeControls.Add(p);
 				// Pipes are a bit special, at least to us
 				if ((string)node["name"] == "Pipe")
@@ -123,11 +124,15 @@ namespace NewSuperMarioBrosSaveEditor
 						p.Parent = this;
 						ttip.SetToolTip(p, "Path " + p.Tag);
 						pathsForConnection.Add(p);
+						pathControls.Add(p);
 
 						if (w < 0) { x += w; w = -w; }
 						if (h < 0) { y += h; h = -h; }
 						p.Location = new Point(x, y);
 						p.Size = new Size(w, h);
+
+						p.Click += PathClicked;
+						p.DoubleClick += PathClicked;
 
 						return p;
 					};
@@ -182,12 +187,6 @@ namespace NewSuperMarioBrosSaveEditor
 							p.Location = new Point(l.Y, l.X);
 							p.Size = new Size(p.Height, p.Width);
 						}
-					}
-
-					foreach (Panel p in pathsForConnection)
-					{
-						pathControls.Add(p);
-						p.Click += PathClicked;
 					}
 				}
 			}
