@@ -94,7 +94,7 @@ class Path:
 		# Are these flags? They seem mutually exclusive.
 		self.isUnlockedBySecretGoal = bool(bytes[2] & 0x01)
 		self.isUnlockedBySign = bool(bytes[2] & 0x02)
-		self.exists = bool(bytes[2] & 0x40) # Idk
+		self.exists = not bool(bytes[2] & 0x40) # Idk
 		self.isInvalid = bool(bytes[2] & 0x80) # ???
 
 if __name__ == '__main__':
