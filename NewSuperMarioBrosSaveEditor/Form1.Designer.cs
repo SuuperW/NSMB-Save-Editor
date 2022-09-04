@@ -36,10 +36,7 @@
 			this.labelSC = new System.Windows.Forms.Label();
 			this.labelCoins = new System.Windows.Forms.Label();
 			this.labelLives = new System.Windows.Forms.Label();
-			this.saveBtn = new System.Windows.Forms.Button();
-			this.openBtn = new System.Windows.Forms.Button();
 			this.inventoryCbx = new System.Windows.Forms.ComboBox();
-			this.BSBPictureBox = new System.Windows.Forms.PictureBox();
 			this.BSBNumUpDown = new System.Windows.Forms.NumericUpDown();
 			this.scoreNumUpDown = new System.Windows.Forms.NumericUpDown();
 			this.powerupCbx = new System.Windows.Forms.ComboBox();
@@ -49,7 +46,6 @@
 			this.radioButton1 = new System.Windows.Forms.RadioButton();
 			this.radioButton2 = new System.Windows.Forms.RadioButton();
 			this.radioButton3 = new System.Windows.Forms.RadioButton();
-			this.labelLogs = new System.Windows.Forms.Label();
 			this.unlockLCheckBox = new System.Windows.Forms.CheckBox();
 			this.unlockWCheckBox = new System.Windows.Forms.CheckBox();
 			this.fileSelectPnl = new System.Windows.Forms.Panel();
@@ -57,7 +53,13 @@
 			this.label1 = new System.Windows.Forms.Label();
 			this.overworldViewer1 = new NewSuperMarioBrosSaveEditor.OverworldViewer();
 			this.worldNum = new System.Windows.Forms.NumericUpDown();
-			((System.ComponentModel.ISupportInitialize)(this.BSBPictureBox)).BeginInit();
+			this.BSBPictureBox = new System.Windows.Forms.PictureBox();
+			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+			this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.saveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			((System.ComponentModel.ISupportInitialize)(this.BSBNumUpDown)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.scoreNumUpDown)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.SCNumUpDown)).BeginInit();
@@ -66,6 +68,8 @@
 			this.fileSelectPnl.SuspendLayout();
 			this.fileDataPnl.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.worldNum)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.BSBPictureBox)).BeginInit();
+			this.menuStrip1.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// labelBSB
@@ -138,31 +142,6 @@
 			this.labelLives.TabIndex = 38;
 			this.labelLives.Text = "Lives:";
 			// 
-			// saveBtn
-			// 
-			this.saveBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-			this.saveBtn.Enabled = false;
-			this.saveBtn.Location = new System.Drawing.Point(122, 354);
-			this.saveBtn.Margin = new System.Windows.Forms.Padding(2);
-			this.saveBtn.Name = "saveBtn";
-			this.saveBtn.Size = new System.Drawing.Size(72, 20);
-			this.saveBtn.TabIndex = 37;
-			this.saveBtn.Text = "Save";
-			this.saveBtn.UseVisualStyleBackColor = true;
-			this.saveBtn.Click += new System.EventHandler(this.saveBtn_Clicked);
-			// 
-			// openBtn
-			// 
-			this.openBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-			this.openBtn.Location = new System.Drawing.Point(47, 354);
-			this.openBtn.Margin = new System.Windows.Forms.Padding(2);
-			this.openBtn.Name = "openBtn";
-			this.openBtn.Size = new System.Drawing.Size(72, 20);
-			this.openBtn.TabIndex = 36;
-			this.openBtn.Text = "Browse...";
-			this.openBtn.UseVisualStyleBackColor = true;
-			this.openBtn.Click += new System.EventHandler(this.openBtn_Clicked);
-			// 
 			// inventoryCbx
 			// 
 			this.inventoryCbx.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -179,18 +158,7 @@
 			this.inventoryCbx.Name = "inventoryCbx";
 			this.inventoryCbx.Size = new System.Drawing.Size(102, 21);
 			this.inventoryCbx.TabIndex = 35;
-			// 
-			// BSBPictureBox
-			// 
-			this.BSBPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-			this.BSBPictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.BSBPictureBox.Location = new System.Drawing.Point(343, 5);
-			this.BSBPictureBox.Margin = new System.Windows.Forms.Padding(2);
-			this.BSBPictureBox.Name = "BSBPictureBox";
-			this.BSBPictureBox.Size = new System.Drawing.Size(130, 101);
-			this.BSBPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-			this.BSBPictureBox.TabIndex = 34;
-			this.BSBPictureBox.TabStop = false;
+			this.inventoryCbx.SelectedIndexChanged += new System.EventHandler(this.fileModified);
 			// 
 			// BSBNumUpDown
 			// 
@@ -204,6 +172,7 @@
 			this.BSBNumUpDown.Name = "BSBNumUpDown";
 			this.BSBNumUpDown.Size = new System.Drawing.Size(39, 20);
 			this.BSBNumUpDown.TabIndex = 33;
+			this.BSBNumUpDown.ValueChanged += new System.EventHandler(this.fileModified);
 			// 
 			// scoreNumUpDown
 			// 
@@ -218,6 +187,7 @@
 			this.scoreNumUpDown.Size = new System.Drawing.Size(79, 20);
 			this.scoreNumUpDown.TabIndex = 32;
 			this.scoreNumUpDown.ThousandsSeparator = true;
+			this.scoreNumUpDown.ValueChanged += new System.EventHandler(this.fileModified);
 			// 
 			// powerupCbx
 			// 
@@ -235,6 +205,7 @@
 			this.powerupCbx.Name = "powerupCbx";
 			this.powerupCbx.Size = new System.Drawing.Size(102, 21);
 			this.powerupCbx.TabIndex = 31;
+			this.powerupCbx.SelectedIndexChanged += new System.EventHandler(this.fileModified);
 			// 
 			// SCNumUpDown
 			// 
@@ -261,6 +232,7 @@
 			this.coinsNumUpDown.Name = "coinsNumUpDown";
 			this.coinsNumUpDown.Size = new System.Drawing.Size(79, 20);
 			this.coinsNumUpDown.TabIndex = 28;
+			this.coinsNumUpDown.ValueChanged += new System.EventHandler(this.fileModified);
 			// 
 			// livesNumUpDown
 			// 
@@ -274,10 +246,12 @@
 			this.livesNumUpDown.Name = "livesNumUpDown";
 			this.livesNumUpDown.Size = new System.Drawing.Size(79, 20);
 			this.livesNumUpDown.TabIndex = 27;
+			this.livesNumUpDown.ValueChanged += new System.EventHandler(this.fileModified);
 			// 
 			// radioButton1
 			// 
 			this.radioButton1.AutoSize = true;
+			this.radioButton1.Checked = true;
 			this.radioButton1.Location = new System.Drawing.Point(47, 12);
 			this.radioButton1.Margin = new System.Windows.Forms.Padding(2);
 			this.radioButton1.Name = "radioButton1";
@@ -296,7 +270,6 @@
 			this.radioButton2.Name = "radioButton2";
 			this.radioButton2.Size = new System.Drawing.Size(50, 17);
 			this.radioButton2.TabIndex = 47;
-			this.radioButton2.TabStop = true;
 			this.radioButton2.Text = "File 2";
 			this.radioButton2.UseVisualStyleBackColor = true;
 			this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton_CheckedChanged);
@@ -309,21 +282,9 @@
 			this.radioButton3.Name = "radioButton3";
 			this.radioButton3.Size = new System.Drawing.Size(50, 17);
 			this.radioButton3.TabIndex = 48;
-			this.radioButton3.TabStop = true;
 			this.radioButton3.Text = "File 3";
 			this.radioButton3.UseVisualStyleBackColor = true;
 			this.radioButton3.CheckedChanged += new System.EventHandler(this.radioButton_CheckedChanged);
-			// 
-			// labelLogs
-			// 
-			this.labelLogs.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-			this.labelLogs.AutoSize = true;
-			this.labelLogs.Location = new System.Drawing.Point(6, 391);
-			this.labelLogs.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-			this.labelLogs.Name = "labelLogs";
-			this.labelLogs.Size = new System.Drawing.Size(73, 13);
-			this.labelLogs.TabIndex = 49;
-			this.labelLogs.Text = "No file open...";
 			// 
 			// unlockLCheckBox
 			// 
@@ -354,15 +315,14 @@
 			this.fileSelectPnl.Controls.Add(this.radioButton3);
 			this.fileSelectPnl.Dock = System.Windows.Forms.DockStyle.Top;
 			this.fileSelectPnl.Enabled = false;
-			this.fileSelectPnl.Location = new System.Drawing.Point(0, 0);
+			this.fileSelectPnl.Location = new System.Drawing.Point(0, 24);
 			this.fileSelectPnl.Name = "fileSelectPnl";
 			this.fileSelectPnl.Size = new System.Drawing.Size(482, 37);
 			this.fileSelectPnl.TabIndex = 53;
 			// 
 			// fileDataPnl
 			// 
-			this.fileDataPnl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+			this.fileDataPnl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.fileDataPnl.Controls.Add(this.label1);
 			this.fileDataPnl.Controls.Add(this.overworldViewer1);
@@ -385,7 +345,7 @@
 			this.fileDataPnl.Controls.Add(this.inventoryCbx);
 			this.fileDataPnl.Controls.Add(this.labelCoins);
 			this.fileDataPnl.Enabled = false;
-			this.fileDataPnl.Location = new System.Drawing.Point(0, 36);
+			this.fileDataPnl.Location = new System.Drawing.Point(0, 60);
 			this.fileDataPnl.Name = "fileDataPnl";
 			this.fileDataPnl.Size = new System.Drawing.Size(482, 313);
 			this.fileDataPnl.TabIndex = 54;
@@ -435,23 +395,88 @@
             0});
 			this.worldNum.ValueChanged += new System.EventHandler(this.worldNum_ValueChanged);
 			// 
+			// BSBPictureBox
+			// 
+			this.BSBPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+			this.BSBPictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.BSBPictureBox.Location = new System.Drawing.Point(343, 5);
+			this.BSBPictureBox.Margin = new System.Windows.Forms.Padding(2);
+			this.BSBPictureBox.Name = "BSBPictureBox";
+			this.BSBPictureBox.Size = new System.Drawing.Size(130, 101);
+			this.BSBPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+			this.BSBPictureBox.TabIndex = 34;
+			this.BSBPictureBox.TabStop = false;
+			// 
+			// menuStrip1
+			// 
+			this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fileToolStripMenuItem,
+            this.aboutToolStripMenuItem});
+			this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+			this.menuStrip1.Name = "menuStrip1";
+			this.menuStrip1.Size = new System.Drawing.Size(482, 24);
+			this.menuStrip1.TabIndex = 55;
+			this.menuStrip1.Text = "menuStrip1";
+			// 
+			// fileToolStripMenuItem
+			// 
+			this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.openToolStripMenuItem,
+            this.saveToolStripMenuItem,
+            this.saveAsToolStripMenuItem});
+			this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+			this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+			this.fileToolStripMenuItem.Text = "&File";
+			// 
+			// openToolStripMenuItem
+			// 
+			this.openToolStripMenuItem.Name = "openToolStripMenuItem";
+			this.openToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
+			this.openToolStripMenuItem.Size = new System.Drawing.Size(193, 22);
+			this.openToolStripMenuItem.Text = "&Open...";
+			this.openToolStripMenuItem.Click += new System.EventHandler(this.openBtn_Clicked);
+			// 
+			// saveToolStripMenuItem
+			// 
+			this.saveToolStripMenuItem.Enabled = false;
+			this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
+			this.saveToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
+			this.saveToolStripMenuItem.Size = new System.Drawing.Size(193, 22);
+			this.saveToolStripMenuItem.Text = "&Save";
+			this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveBtn_Clicked);
+			// 
+			// saveAsToolStripMenuItem
+			// 
+			this.saveAsToolStripMenuItem.Enabled = false;
+			this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
+			this.saveAsToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.S)));
+			this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(193, 22);
+			this.saveAsToolStripMenuItem.Text = "Save &as...";
+			this.saveAsToolStripMenuItem.Click += new System.EventHandler(this.saveAsToolStripMenuItem_Click);
+			// 
+			// aboutToolStripMenuItem
+			// 
+			this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+			this.aboutToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
+			this.aboutToolStripMenuItem.Text = "&About";
+			this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
+			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(482, 408);
-			this.Controls.Add(this.labelLogs);
-			this.Controls.Add(this.saveBtn);
-			this.Controls.Add(this.openBtn);
+			this.ClientSize = new System.Drawing.Size(482, 373);
 			this.Controls.Add(this.fileSelectPnl);
 			this.Controls.Add(this.fileDataPnl);
+			this.Controls.Add(this.menuStrip1);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+			this.MainMenuStrip = this.menuStrip1;
 			this.Margin = new System.Windows.Forms.Padding(2);
 			this.MaximizeBox = false;
 			this.Name = "Form1";
-			this.Text = "NSMBDS SE";
-			((System.ComponentModel.ISupportInitialize)(this.BSBPictureBox)).EndInit();
+			this.Text = "NSMB Save Editor";
 			((System.ComponentModel.ISupportInitialize)(this.BSBNumUpDown)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.scoreNumUpDown)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.SCNumUpDown)).EndInit();
@@ -462,6 +487,9 @@
 			this.fileDataPnl.ResumeLayout(false);
 			this.fileDataPnl.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.worldNum)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.BSBPictureBox)).EndInit();
+			this.menuStrip1.ResumeLayout(false);
+			this.menuStrip1.PerformLayout();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -476,8 +504,6 @@
         private System.Windows.Forms.Label labelSC;
         private System.Windows.Forms.Label labelCoins;
         private System.Windows.Forms.Label labelLives;
-        private System.Windows.Forms.Button saveBtn;
-        private System.Windows.Forms.Button openBtn;
         private System.Windows.Forms.ComboBox inventoryCbx;
         private System.Windows.Forms.PictureBox BSBPictureBox;
         private System.Windows.Forms.NumericUpDown BSBNumUpDown;
@@ -489,7 +515,6 @@
         private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.RadioButton radioButton3;
-        private System.Windows.Forms.Label labelLogs;
         private System.Windows.Forms.CheckBox unlockLCheckBox;
         private System.Windows.Forms.CheckBox unlockWCheckBox;
 		private System.Windows.Forms.Panel fileSelectPnl;
@@ -497,6 +522,12 @@
 		private System.Windows.Forms.Label label1;
 		private OverworldViewer overworldViewer1;
 		private System.Windows.Forms.NumericUpDown worldNum;
+		private System.Windows.Forms.MenuStrip menuStrip1;
+		private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem saveAsToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
 	}
 }
 

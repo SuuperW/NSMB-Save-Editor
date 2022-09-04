@@ -9,6 +9,8 @@ namespace NewSuperMarioBrosSaveEditor
 {
 	public partial class Form1 : Form
 	{
+		private static string WindowTitle = "NSMB Save Editor";
+
 		public Form1()
 		{
 			InitializeComponent();
@@ -60,7 +62,18 @@ namespace NewSuperMarioBrosSaveEditor
 			using (FileStream fsWrite = new FileStream(savFileName, FileMode.Open, FileAccess.Write))
 				fsWrite.Write(fileByteRead, 0, fileByteRead.Length);
 		}
+		private void saveAsToolStripMenuItem1_Click(object sender, EventArgs e)
+		{
+			SaveFileDialog dlg = new SaveFileDialog();
+			dlg.Filter = "Raw savefile (*.sav), BizHawk save (*.SaveRAM)|*.sav;*.SaveRAM";
 
+			if (dlg.ShowDialog() == DialogResult.OK)
+			{
+				savFileName = dlg.FileName;
+				this.Text = WindowTitle + " - " + Path.GetFileName(savFileName);
+				saveBtn_Clicked(sender, e);
+			}
+		}
 		private void openBtn_Clicked(object sender, EventArgs e)
 		{
 			OpenFileDialog dlg = new OpenFileDialog();
@@ -71,9 +84,11 @@ namespace NewSuperMarioBrosSaveEditor
 				if (File.Exists(dlg.FileName))
 				{
 					fileSelectPnl.Enabled = true;
+					saveToolStripMenuItem.Enabled = true;
+					saveAsToolStripMenuItem.Enabled = true;
 
 					savFileName = dlg.FileName;
-					labelLogs.Text = Path.GetFileName(savFileName);
+					this.Text = WindowTitle + " - " + Path.GetFileName(savFileName);
 
 					using (FileStream fs = new FileStream(savFileName, FileMode.Open, FileAccess.Read))
 					{
@@ -86,7 +101,7 @@ namespace NewSuperMarioBrosSaveEditor
 						}
 					}
 
-					radioButton1.Checked = true;
+					radioButton_CheckedChanged(null, null);
 					worldNum_ValueChanged(null, null);
 				}
 				else
@@ -100,7 +115,6 @@ namespace NewSuperMarioBrosSaveEditor
 
 		private void radioButton_CheckedChanged(object sender, EventArgs e)
 		{
-			saveBtn.Enabled = true;
 			fileDataPnl.Enabled = true;
 
 			if      (radioButton1.Checked) { fileIndex = 0; }
@@ -126,6 +140,20 @@ namespace NewSuperMarioBrosSaveEditor
 		{
 			JToken jArray = JToken.Parse(File.ReadAllText("data.json"));
 			overworldViewer1.LoadOverworld((JObject)jArray[(int)worldNum.Value - 1]);
+		}
+
+		private void aboutToolStripMenuItem1_Click(object sender, EventArgs e)
+		{
+			MessageBox.Show("New Super Mario Bros. Save Editor\n" +
+				"\n" +
+				"Credits:\n" +
+				"Dev: newluigidev, RedStoneMatt, Suuper\n" +
+				"Special thanks: RoadRunnerWMC, shibboleet, RicBent\n" +
+				"\n" +
+				"See README file for more details.\n" + 
+				"\n" +
+				"Version: 0.1 (beta)"
+			);
 		}
 	}
 }
