@@ -139,6 +139,17 @@ namespace NewSuperMarioBrosSaveEditor
 					if (length == 0) // 8-Bowser does this!
 						length = nodeSeparation * (isRight ? 2 : -2);
 					makeNewPanel(startX, startY - lineHalfWidth, length, lineHalfWidth * 2);
+					
+					// Sign?
+					if ((bool)paths[(int)connection["pathIdInWorld"]]["isUnlockedBySign"])
+					{
+						Panel p = makeNewPanel(startX - nodeSize / 2 + length / 2, startY - nodeSize / 2, nodeSize, nodeSize);
+						p.BackgroundImage = Properties.Resources.Starcoin_Sign;
+						p.BackgroundImageLayout = ImageLayout.Zoom;
+						p.BackColor = Color.Transparent;
+						p.BringToFront();
+					}
+
 					// Second segment?
 					if (nodeControls[nodeId].Location.Y != nodeControls[otherNode].Location.Y)
 					{
@@ -195,10 +206,18 @@ namespace NewSuperMarioBrosSaveEditor
 			SetPathLock(id, newUnlockStatus);
 		}
 		private void SetPathLock(int id, bool unlockStatus)
-		{ 
+		{
 			// Display
 			foreach (Panel p in pathControls)
-				if ((int)p.Tag == id) p.BackColor = unlockStatus ? unlockedPathColor : lockedPathColor;
+			{
+				if ((int)p.Tag == id)
+				{
+					if (p.BackgroundImage == null)
+						p.BackColor = unlockStatus ? unlockedPathColor : lockedPathColor;
+					else
+						p.Visible = !unlockStatus;
+				}
+			}
 
 			// Save file
 			byte flags = saveFile.GetPathFlags(worldId, id);
@@ -293,10 +312,15 @@ namespace NewSuperMarioBrosSaveEditor
 				int id = (int)p.Tag;
 				int flags = saveFile.GetPathFlags(worldId, id);
 				unlocked[id] = (flags & SaveFile.PathFlags.Unlocked) != 0;
-				if (unlocked[id])
-					p.BackColor = unlockedPathColor;
+				if (p.BackgroundImage == null)
+				{
+					if (unlocked[id])
+						p.BackColor = unlockedPathColor;
+					else
+						p.BackColor = lockedPathColor;
+				}
 				else
-					p.BackColor = lockedPathColor;
+					p.Visible = !unlocked[id];
 			}
 		
 			// nodes
