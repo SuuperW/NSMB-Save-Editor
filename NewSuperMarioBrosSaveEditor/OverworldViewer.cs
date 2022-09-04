@@ -70,6 +70,7 @@ namespace NewSuperMarioBrosSaveEditor
 				p.Tag = (int)node["idInWorld"];
 				ttip.SetToolTip(p, worldPrefix + (string)node["name"]);
 				p.Parent = this;
+				p.Click += NodeClicked;
 				nodeControls.Add(p);
 				// Pipes are a bit special, at least to us
 				if ((string)node["name"] == "Pipe")
@@ -181,27 +182,99 @@ namespace NewSuperMarioBrosSaveEditor
 			}
 
 			if (saveFile != null)
-				UpdateLocks();
+				UpdateDisplay();
 
 			ResumeLayout();
 		}
 
 		private void PathClicked(object sender, EventArgs e)
 		{
-			// Display
 			Panel clicked = sender as Panel;
-			int id = (int)(sender as Panel).Tag;
+			int id = (int)clicked.Tag;
 			bool newUnlockStatus = clicked.BackColor != unlockedPathColor;
+			SetPathLock(id, newUnlockStatus);
+		}
+		private void SetPathLock(int id, bool unlockStatus)
+		{ 
+			// Display
 			foreach (Panel p in pathControls)
-				if ((int)p.Tag == id) p.BackColor = newUnlockStatus ? unlockedPathColor : lockedPathColor;
+				if ((int)p.Tag == id) p.BackColor = unlockStatus ? unlockedPathColor : lockedPathColor;
 
 			// Save file
 			byte flags = saveFile.GetPathFlags(worldId, id);
-			if (newUnlockStatus)
+			if (unlockStatus)
 				flags |= (byte)SaveFile.PathFlags.Unlocked;
 			else
 				flags &= (byte)~SaveFile.PathFlags.Unlocked;
 			saveFile.SetPathFlags(worldId, id, flags);
+		}
+
+		private void NodeClicked(object sender, EventArgs e)
+		{
+			// Get node
+			Panel clicked = sender as Panel;
+			int id = (int)clicked.Tag;
+			byte flags = saveFile.GetNodeFlags(worldId, id);
+			// Set completion for node
+			bool newCompleteStatus = (flags & SaveFile.NodeFlags.Completed) == 0;
+			SetNodeCompletion(id, newCompleteStatus);
+			// Paths from the node too
+			UnlockPathsFrom(id, newCompleteStatus, true, true);
+
+			// Display
+			UpdateDisplay();
+		}
+		private void SetNodeCompletion(int id, bool completed)
+		{
+			byte flags = saveFile.GetNodeFlags(worldId, id);
+			if (completed)
+				flags |= (byte)SaveFile.NodeFlags.Completed;
+			else
+				flags &= (byte)~SaveFile.NodeFlags.Completed;
+			saveFile.SetNodeFlags(worldId, id, flags);
+		}
+		private void UnlockPathsFrom(int id, bool unlocked, bool normalExit, bool secretExit)
+		{ 
+			JToken connections = nodes[id]["connections"];
+			foreach (JToken c in connections.Where((c) => !(bool)c["isBackwards"]))
+			{
+				int pathId = (int)c["pathIdInWorld"];
+				JToken path = paths[pathId];
+				// If unlocking, don't clear signs.
+				// If locking, do put signs back.
+				if (!(bool)path["isUnlockedBySign"] || !unlocked)
+				{
+					// Un/lock this path.
+					SetPathLock(pathId, unlocked);
+					// Where does it lead?
+					int destinationId = (int)c["destinationNodeId"];
+					JToken destination = nodes[destinationId];
+					// If it leads to a main level, we're done. (has star coins should work)
+					// If it leads to a non-playable level, un/lock paths from that one.
+					if (!(bool)destination["hasStarCoins"])
+					{
+						// We also need to make sure we're not locking a path that a different level unlocked.
+						// E.g., un-completing 1-3 while 1-2 secret goal is cleared should not lock 1-Tower.
+						bool unlockNext = true;
+						if (!unlocked)
+						{
+							JToken destConnections = destination["connections"];
+							unlockNext = !destConnections
+								.Where((dc) => (bool)dc["isBackwards"])
+								.Any((dc) => (saveFile.GetPathFlags((int)dc["pathIdInWorld"]) & SaveFile.PathFlags.Unlocked) != 0);
+						}
+
+						if (unlockNext)
+						{
+							UnlockPathsFrom(destinationId, unlocked, normalExit, secretExit);
+							// We also want to mark this node complete if it's an empty node.
+							// (but not if it's a mushroom house)
+							if ((string)destination["name"] == "dot")
+								SetNodeCompletion(destinationId, unlocked);
+						}
+					}
+				}
+			}
 		}
 
 		public void ApplySave(SaveFile saveFile)
@@ -209,7 +282,7 @@ namespace NewSuperMarioBrosSaveEditor
 			this.saveFile = saveFile;
 		}
 
-		private void UpdateLocks()
+		private void UpdateDisplay()
 		{ 
 			SuspendLayout();
 
