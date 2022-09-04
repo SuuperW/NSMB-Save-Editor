@@ -21,6 +21,8 @@ namespace NewSuperMarioBrosSaveEditor
 		Color unlockedPathColor = Color.Black;
 		Color lockedPathColor = Color.DarkGray;
 
+		public event Action LocksChanged;
+
 		public OverworldViewer()
 		{
 			InitializeComponent();
@@ -203,6 +205,9 @@ namespace NewSuperMarioBrosSaveEditor
 			int id = (int)clicked.Tag;
 			bool newUnlockStatus = clicked.BackColor != unlockedPathColor;
 			SetPathLock(id, newUnlockStatus);
+
+			if (LocksChanged != null)
+				LocksChanged.Invoke();
 		}
 		private void SetPathLock(int id, bool unlockStatus)
 		{
@@ -225,6 +230,10 @@ namespace NewSuperMarioBrosSaveEditor
 			else
 				flags &= (byte)~SaveFile.PathFlags.Unlocked;
 			saveFile.SetPathFlags(worldId, id, flags);
+
+			// Tell parent
+			if (LocksChanged != null)
+				LocksChanged.Invoke();
 		}
 
 		private void NodeClicked(object sender, EventArgs e)

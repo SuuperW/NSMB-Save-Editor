@@ -14,6 +14,7 @@ namespace NewSuperMarioBrosSaveEditor
 		public Form1()
 		{
 			InitializeComponent();
+			overworldViewer1.LocksChanged += () => fileModified(overworldViewer1, null);
 		}
 
 		private SaveFile[] files = null;
@@ -61,8 +62,11 @@ namespace NewSuperMarioBrosSaveEditor
 
 			using (FileStream fsWrite = new FileStream(savFileName, FileMode.Open, FileAccess.Write))
 				fsWrite.Write(fileByteRead, 0, fileByteRead.Length);
+
+			// Remove asterisk from title
+			this.Text = WindowTitle + " - " + Path.GetFileName(savFileName);
 		}
-		private void saveAsToolStripMenuItem1_Click(object sender, EventArgs e)
+		private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			SaveFileDialog dlg = new SaveFileDialog();
 			dlg.Filter = "Raw savefile (*.sav), BizHawk save (*.SaveRAM)|*.sav;*.SaveRAM";
@@ -83,8 +87,11 @@ namespace NewSuperMarioBrosSaveEditor
 			{
 				if (File.Exists(dlg.FileName))
 				{
+					openingFile = true;
+
 					fileSelectPnl.Enabled = true;
 					saveToolStripMenuItem.Enabled = true;
+					
 					saveAsToolStripMenuItem.Enabled = true;
 
 					savFileName = dlg.FileName;
@@ -103,6 +110,8 @@ namespace NewSuperMarioBrosSaveEditor
 
 					radioButton_CheckedChanged(null, null);
 					worldNum_ValueChanged(null, null);
+
+					openingFile = false;
 				}
 				else
 				{
@@ -142,7 +151,7 @@ namespace NewSuperMarioBrosSaveEditor
 			overworldViewer1.LoadOverworld((JObject)jArray[(int)worldNum.Value - 1]);
 		}
 
-		private void aboutToolStripMenuItem1_Click(object sender, EventArgs e)
+		private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			MessageBox.Show("New Super Mario Bros. Save Editor\n" +
 				"\n" +
@@ -154,6 +163,13 @@ namespace NewSuperMarioBrosSaveEditor
 				"\n" +
 				"Version: 0.1 (beta)"
 			);
+		}
+
+		private bool openingFile = false;
+		private void fileModified(object sender, EventArgs e)
+		{
+			if (!openingFile)
+				this.Text = WindowTitle + " - *" + Path.GetFileName(savFileName);
 		}
 	}
 }
