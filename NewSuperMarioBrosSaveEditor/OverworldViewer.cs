@@ -23,6 +23,10 @@ namespace NewSuperMarioBrosSaveEditor
 
 		public event Action LocksChanged;
 
+		public enum NodeAction { Normal = 0, Secret, All }
+		public NodeAction NodeClickAction;
+		public bool NodeActionOnDoubleClickOnly = false;
+
 		public OverworldViewer()
 		{
 			InitializeComponent();
@@ -73,7 +77,7 @@ namespace NewSuperMarioBrosSaveEditor
 				ttip.SetToolTip(p, worldPrefix + (string)node["name"]);
 				p.Parent = this;
 				p.Click += NodeClicked;
-				p.DoubleClick += NodeClicked;
+				p.DoubleClick += NodeDoubleClicked;
 				nodeControls.Add(p);
 				// Pipes are a bit special, at least to us
 				if ((string)node["name"] == "Pipe")
@@ -226,9 +230,9 @@ namespace NewSuperMarioBrosSaveEditor
 			// Save file
 			byte flags = saveFile.GetPathFlags(worldId, id);
 			if (unlockStatus)
-				flags |= (byte)SaveFile.PathFlags.Unlocked;
+				flags |= SaveFile.PathFlags.Unlocked;
 			else
-				flags &= (byte)~SaveFile.PathFlags.Unlocked;
+				flags = 0;
 			saveFile.SetPathFlags(worldId, id, flags);
 
 			// Tell parent
@@ -238,15 +242,39 @@ namespace NewSuperMarioBrosSaveEditor
 
 		private void NodeClicked(object sender, EventArgs e)
 		{
+			if (!NodeActionOnDoubleClickOnly)
+				NodeDoubleClicked(sender, e);
+		}
+		private void NodeDoubleClicked(object sender, EventArgs e)
+		{
 			// Get node
 			Panel clicked = sender as Panel;
 			int id = (int)clicked.Tag;
 			byte flags = saveFile.GetNodeFlags(worldId, id);
-			// Set completion for node
-			bool newCompleteStatus = (flags & SaveFile.NodeFlags.Completed) == 0;
+			// Are we clearing or unclearing?
+			bool levelWasCompleted = (flags & SaveFile.NodeFlags.Completed) != 0;
+			bool newCompleteStatus;
+			if (!levelWasCompleted)
+				newCompleteStatus = true;
+			else if (NodeClickAction == NodeAction.All)
+			{
+				newCompleteStatus = (flags & SaveFile.NodeFlags.AllStarCoins) != SaveFile.NodeFlags.AllStarCoins ||
+					nodes[id]["connections"]
+					.Where((c) => !(bool)c["isBackwards"])
+					.Where((c) => !(bool)paths[(int)c["pathIdInWorld"]]["isUnlockedBySign"])
+					.Any((c) => !saveFile.IsPathUnlocked(worldId, (int)c["pathIdInWorld"]));
+			}
+			else
+			{
+				newCompleteStatus = nodes[id]["connections"]
+					.Where((c) => !(bool)c["isBackwards"])
+					.Where((c) => !(bool)paths[(int)c["pathIdInWorld"]]["isUnlockedBySign"])
+					.Where((c) => (bool)paths[(int)c["pathIdInWorld"]]["isUnlockedBySecretGoal"] ^ (NodeClickAction == NodeAction.Normal))
+					.Any((c) => !saveFile.IsPathUnlocked(worldId, (int)c["pathIdInWorld"]));
+			}
 			SetNodeCompletion(id, newCompleteStatus);
 			// Paths from the node too
-			UnlockPathsFrom(id, newCompleteStatus, true, true);
+			UnlockPathsFrom(id, newCompleteStatus, NodeClickAction != NodeAction.Secret, NodeClickAction != NodeAction.Normal);
 
 			// Display
 			UpdateDisplay();
@@ -255,9 +283,13 @@ namespace NewSuperMarioBrosSaveEditor
 		{
 			byte flags = saveFile.GetNodeFlags(worldId, id);
 			if (completed)
-				flags |= (byte)SaveFile.NodeFlags.Completed;
+			{
+				flags |= SaveFile.NodeFlags.Completed;
+				if (NodeClickAction == NodeAction.All)
+					flags |= SaveFile.NodeFlags.AllStarCoins;
+			}
 			else
-				flags &= (byte)~SaveFile.NodeFlags.Completed;
+				flags = 0;
 			saveFile.SetNodeFlags(worldId, id, flags);
 		}
 		private void UnlockPathsFrom(int id, bool unlocked, bool normalExit, bool secretExit)
@@ -267,8 +299,20 @@ namespace NewSuperMarioBrosSaveEditor
 			{
 				int pathId = (int)c["pathIdInWorld"];
 				JToken path = paths[pathId];
-				// If unlocking, don't clear signs.
-				// If locking, do put signs back.
+
+				bool shouldSet;
+				if (unlocked)
+				{
+					// If we're unlocking, only get paths that match the exit we're clearing
+					if (normalExit && !(bool)path["isUnlockedBySecretGoal"] ||
+						secretExit && (bool)path["isUnlockedBySecretGoal"])
+						// and aren't signs
+						shouldSet = !(bool)path["isUnlockedBySign"];
+				}
+				else
+					// If we're locking, always lock.
+					shouldSet = true;
+
 				if (!(bool)path["isUnlockedBySign"] || !unlocked)
 				{
 					// Un/lock this path.

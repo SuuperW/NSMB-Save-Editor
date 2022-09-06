@@ -51,15 +51,18 @@
 			this.fileSelectPnl = new System.Windows.Forms.Panel();
 			this.fileDataPnl = new System.Windows.Forms.Panel();
 			this.label1 = new System.Windows.Forms.Label();
-			this.overworldViewer1 = new NewSuperMarioBrosSaveEditor.OverworldViewer();
 			this.worldNum = new System.Windows.Forms.NumericUpDown();
 			this.BSBPictureBox = new System.Windows.Forms.PictureBox();
 			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
 			this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.saveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.label2 = new System.Windows.Forms.Label();
+			this.nodeClickCbx = new System.Windows.Forms.ComboBox();
+			this.doubleClickNodeCbx = new System.Windows.Forms.CheckBox();
+			this.overworldViewer1 = new NewSuperMarioBrosSaveEditor.OverworldViewer();
 			((System.ComponentModel.ISupportInitialize)(this.BSBNumUpDown)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.scoreNumUpDown)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.SCNumUpDown)).BeginInit();
@@ -322,7 +325,8 @@
 			// 
 			// fileDataPnl
 			// 
-			this.fileDataPnl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+			this.fileDataPnl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.fileDataPnl.Controls.Add(this.label1);
 			this.fileDataPnl.Controls.Add(this.overworldViewer1);
@@ -358,18 +362,6 @@
 			this.label1.Size = new System.Drawing.Size(38, 13);
 			this.label1.TabIndex = 54;
 			this.label1.Text = "World:";
-			// 
-			// overworldViewer1
-			// 
-			this.overworldViewer1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.overworldViewer1.AutoScroll = true;
-			this.overworldViewer1.BackColor = System.Drawing.SystemColors.ControlDark;
-			this.overworldViewer1.Location = new System.Drawing.Point(0, 147);
-			this.overworldViewer1.Name = "overworldViewer1";
-			this.overworldViewer1.Size = new System.Drawing.Size(482, 166);
-			this.overworldViewer1.TabIndex = 53;
 			// 
 			// worldNum
 			// 
@@ -462,11 +454,60 @@
 			this.aboutToolStripMenuItem.Text = "&About";
 			this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
 			// 
+			// label2
+			// 
+			this.label2.AutoSize = true;
+			this.label2.Location = new System.Drawing.Point(12, 380);
+			this.label2.Name = "label2";
+			this.label2.Size = new System.Drawing.Size(70, 13);
+			this.label2.TabIndex = 56;
+			this.label2.Text = "Click level to:";
+			// 
+			// nodeClickCbx
+			// 
+			this.nodeClickCbx.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.nodeClickCbx.FormattingEnabled = true;
+			this.nodeClickCbx.Items.AddRange(new object[] {
+            "Clear normal goal",
+            "Clear secret goal",
+            "100% clear"});
+			this.nodeClickCbx.Location = new System.Drawing.Point(87, 377);
+			this.nodeClickCbx.Name = "nodeClickCbx";
+			this.nodeClickCbx.Size = new System.Drawing.Size(108, 21);
+			this.nodeClickCbx.TabIndex = 57;
+			this.nodeClickCbx.SelectedIndexChanged += new System.EventHandler(this.nodeClickCbx_SelectedIndexChanged);
+			// 
+			// doubleClickNodeCbx
+			// 
+			this.doubleClickNodeCbx.AutoSize = true;
+			this.doubleClickNodeCbx.Location = new System.Drawing.Point(201, 379);
+			this.doubleClickNodeCbx.Name = "doubleClickNodeCbx";
+			this.doubleClickNodeCbx.Size = new System.Drawing.Size(118, 17);
+			this.doubleClickNodeCbx.TabIndex = 58;
+			this.doubleClickNodeCbx.Text = "require double-click";
+			this.doubleClickNodeCbx.UseVisualStyleBackColor = true;
+			this.doubleClickNodeCbx.CheckedChanged += new System.EventHandler(this.doubleClickNodeCbx_CheckedChanged);
+			// 
+			// overworldViewer1
+			// 
+			this.overworldViewer1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.overworldViewer1.AutoScroll = true;
+			this.overworldViewer1.BackColor = System.Drawing.SystemColors.ControlDark;
+			this.overworldViewer1.Location = new System.Drawing.Point(0, 147);
+			this.overworldViewer1.Name = "overworldViewer1";
+			this.overworldViewer1.Size = new System.Drawing.Size(482, 166);
+			this.overworldViewer1.TabIndex = 53;
+			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(482, 373);
+			this.ClientSize = new System.Drawing.Size(482, 402);
+			this.Controls.Add(this.doubleClickNodeCbx);
+			this.Controls.Add(this.nodeClickCbx);
+			this.Controls.Add(this.label2);
 			this.Controls.Add(this.fileSelectPnl);
 			this.Controls.Add(this.fileDataPnl);
 			this.Controls.Add(this.menuStrip1);
@@ -528,6 +569,9 @@
 		private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem saveAsToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
+		private System.Windows.Forms.Label label2;
+		private System.Windows.Forms.ComboBox nodeClickCbx;
+		private System.Windows.Forms.CheckBox doubleClickNodeCbx;
 	}
 }
 

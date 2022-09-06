@@ -218,14 +218,15 @@ namespace NewSuperMarioBrosSaveEditor
 		
 		public static class NodeFlags
 		{
-			public static int StarCoin1 = 0x01;
-			public static int StarCoin2 = 0x02;
-			public static int StarCoin3 = 0x04;
-			public static int Completed = 0x80;
+			public static byte StarCoin1 = 0x01;
+			public static byte StarCoin2 = 0x02;
+			public static byte StarCoin3 = 0x04;
+			public static byte AllStarCoins = 0x07;
+			public static byte Completed = 0x80;
 		}
 		public static class PathFlags
 		{
-			public static int Unlocked = 0xC0;
+			public static byte Unlocked = 0xC0;
 		}
 
 		private SaveFile() { }
@@ -278,6 +279,8 @@ namespace NewSuperMarioBrosSaveEditor
 			Checksum = Util.Checksum(data, 10, 0x248);
 			return data.Clone() as byte[];
 		}
+
+		public bool IsPathUnlocked(int world, int index) => (GetPathFlags(world, index) & PathFlags.Unlocked) != 0;
 	}
 
 }

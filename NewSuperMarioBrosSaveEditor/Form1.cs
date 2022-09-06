@@ -19,6 +19,7 @@ namespace NewSuperMarioBrosSaveEditor
 		{
 			InitializeComponent();
 			overworldViewer1.LocksChanged += () => fileModified(overworldViewer1, null);
+			nodeClickCbx.SelectedIndex = 2;
 		}
 
 		private SaveFile[] files = null;
@@ -175,5 +176,11 @@ namespace NewSuperMarioBrosSaveEditor
 			if (!openingFile)
 				this.Text = WindowTitle + " - *" + Path.GetFileName(savFileName);
 		}
+
+		private void nodeClickCbx_SelectedIndexChanged(object sender, EventArgs e) =>
+			overworldViewer1.NodeClickAction = (OverworldViewer.NodeAction)nodeClickCbx.SelectedIndex;
+		private void doubleClickNodeCbx_CheckedChanged(object sender, EventArgs e) =>
+			overworldViewer1.NodeActionOnDoubleClickOnly = doubleClickNodeCbx.Checked;
+
 	}
 }
