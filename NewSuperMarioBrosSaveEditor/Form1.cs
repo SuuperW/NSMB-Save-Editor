@@ -10,6 +10,10 @@ namespace NewSuperMarioBrosSaveEditor
 	public partial class Form1 : Form
 	{
 		private static string WindowTitle = "NSMB Save Editor";
+		private static string FileFilter = "All supported types|*.sav;*.SaveRAM;*.dsv|" +
+			"Raw savefile (*.sav)|*.sav|" +
+			"BizHawk save (*.SaveRAM)|*.SaveRAM|" +
+			"DeSmuME save (*.dsv)|*.dsv";
 
 		public Form1()
 		{
@@ -69,7 +73,7 @@ namespace NewSuperMarioBrosSaveEditor
 		private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			SaveFileDialog dlg = new SaveFileDialog();
-			dlg.Filter = "Raw savefile (*.sav), BizHawk save (*.SaveRAM)|*.sav;*.SaveRAM";
+			dlg.Filter = FileFilter;
 
 			if (dlg.ShowDialog() == DialogResult.OK)
 			{
@@ -81,7 +85,7 @@ namespace NewSuperMarioBrosSaveEditor
 		private void openBtn_Clicked(object sender, EventArgs e)
 		{
 			OpenFileDialog dlg = new OpenFileDialog();
-			dlg.Filter = "Raw savefile (*.sav), BizHawk save (*.SaveRAM)|*.sav;*.SaveRAM";
+			dlg.Filter = FileFilter;
 
 			if (dlg.ShowDialog() == DialogResult.OK)
 			{
