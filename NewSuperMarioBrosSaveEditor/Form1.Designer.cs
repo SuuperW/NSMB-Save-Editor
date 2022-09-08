@@ -493,7 +493,6 @@
 			this.overworldViewer1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.overworldViewer1.AutoScroll = true;
 			this.overworldViewer1.BackColor = System.Drawing.SystemColors.ControlDark;
 			this.overworldViewer1.Location = new System.Drawing.Point(0, 147);
 			this.overworldViewer1.Name = "overworldViewer1";

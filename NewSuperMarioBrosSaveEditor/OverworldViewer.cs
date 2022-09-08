@@ -27,6 +27,8 @@ namespace NewSuperMarioBrosSaveEditor
 		public NodeAction NodeClickAction;
 		public bool NodeActionOnDoubleClickOnly = false;
 
+		private int selectedNode = 0;
+
 		public OverworldViewer()
 		{
 			InitializeComponent();
@@ -51,7 +53,7 @@ namespace NewSuperMarioBrosSaveEditor
 			}
 			pathControls.Clear();
 			// Scroll to 0, 0 so that locations that are set later on are correct.
-			AutoScrollPosition = new Point(AutoScrollPosition.X, -AutoScrollPosition.Y);
+			mainPanel.AutoScrollPosition = new Point(mainPanel.AutoScrollPosition.X, -mainPanel.AutoScrollPosition.Y);
 
 			nodes = jObject["nodes"];
 			paths = jObject["paths"];
@@ -75,7 +77,7 @@ namespace NewSuperMarioBrosSaveEditor
 				p.Visible = (bool)node["isVisible"];
 				p.Tag = (int)node["idInWorld"];
 				ttip.SetToolTip(p, worldPrefix + (string)node["name"]);
-				p.Parent = this;
+				p.Parent = mainPanel;
 				p.Click += NodeClicked;
 				p.DoubleClick += NodeDoubleClicked;
 				nodeControls.Add(p);
@@ -127,7 +129,7 @@ namespace NewSuperMarioBrosSaveEditor
 						Panel p = new Panel();
 						p.BackColor = Color.Black;
 						p.Tag = (int)connection["pathIdInWorld"];
-						p.Parent = this;
+						p.Parent = mainPanel;
 						ttip.SetToolTip(p, "Path " + p.Tag);
 						pathsForConnection.Add(p);
 						pathControls.Add(p);
@@ -244,13 +246,19 @@ namespace NewSuperMarioBrosSaveEditor
 		{
 			if (!NodeActionOnDoubleClickOnly)
 				NodeDoubleClicked(sender, e);
+			else
+			{
+				// We still want to select it
+				selectedNode = (int)(sender as Panel).Tag;
+				UpdateDisplay(false);
+			}
 		}
 		private void NodeDoubleClicked(object sender, EventArgs e)
 		{
 			// Get node
 			Panel clicked = sender as Panel;
-			int id = (int)clicked.Tag;
-			byte flags = saveFile.GetNodeFlags(worldId, id);
+			selectedNode = (int)clicked.Tag;
+			byte flags = saveFile.GetNodeFlags(worldId, selectedNode);
 			// Are we clearing or unclearing?
 			bool levelWasCompleted = (flags & SaveFile.NodeFlags.Completed) != 0;
 			bool newCompleteStatus;
@@ -259,22 +267,22 @@ namespace NewSuperMarioBrosSaveEditor
 			else if (NodeClickAction == NodeAction.All)
 			{
 				newCompleteStatus = (flags & SaveFile.NodeFlags.AllStarCoins) != SaveFile.NodeFlags.AllStarCoins ||
-					nodes[id]["connections"]
+					nodes[selectedNode]["connections"]
 					.Where((c) => !(bool)c["isBackwards"])
 					.Where((c) => !(bool)paths[(int)c["pathIdInWorld"]]["isUnlockedBySign"])
 					.Any((c) => !saveFile.IsPathUnlocked(worldId, (int)c["pathIdInWorld"]));
 			}
 			else
 			{
-				newCompleteStatus = nodes[id]["connections"]
+				newCompleteStatus = nodes[selectedNode]["connections"]
 					.Where((c) => !(bool)c["isBackwards"])
 					.Where((c) => !(bool)paths[(int)c["pathIdInWorld"]]["isUnlockedBySign"])
 					.Where((c) => (bool)paths[(int)c["pathIdInWorld"]]["isUnlockedBySecretGoal"] ^ (NodeClickAction == NodeAction.Normal))
 					.Any((c) => !saveFile.IsPathUnlocked(worldId, (int)c["pathIdInWorld"]));
 			}
-			SetNodeCompletion(id, newCompleteStatus);
+			SetNodeCompletion(selectedNode, newCompleteStatus);
 			// Paths from the node too
-			UnlockPathsFrom(id, newCompleteStatus, NodeClickAction != NodeAction.Secret, NodeClickAction != NodeAction.Normal);
+			UnlockPathsFrom(selectedNode, newCompleteStatus, NodeClickAction != NodeAction.Secret, NodeClickAction != NodeAction.Normal);
 
 			// Display
 			UpdateDisplay();
@@ -353,49 +361,73 @@ namespace NewSuperMarioBrosSaveEditor
 			this.saveFile = saveFile;
 		}
 
-		private void UpdateDisplay()
+		private void starCoinPbx_Click(object sender, EventArgs e)
+		{
+			if (saveFile != null)
+			{
+				byte flags = saveFile.GetNodeFlags(worldId, selectedNode);
+				int starCoinShift = (int)(sender as Control).Tag;
+				saveFile.SetNodeFlags(worldId, selectedNode, (byte)(flags ^ (SaveFile.NodeFlags.StarCoin1 << starCoinShift)));
+				UpdateDisplay(false);
+			}
+		}
+
+		private void UpdateDisplay(bool updatePathsAndNodes = true)
 		{ 
 			SuspendLayout();
 
-			// paths
-			bool[] unlocked = new bool[0x1E];
-			foreach (Panel p in pathControls)
+			if (updatePathsAndNodes)
 			{
-				int id = (int)p.Tag;
-				int flags = saveFile.GetPathFlags(worldId, id);
-				unlocked[id] = (flags & SaveFile.PathFlags.Unlocked) != 0;
-				if (p.BackgroundImage == null)
+				// paths
+				bool[] unlocked = new bool[0x1E];
+				foreach (Panel p in pathControls)
 				{
-					if (unlocked[id])
-						p.BackColor = unlockedPathColor;
+					int id = (int)p.Tag;
+					int flags = saveFile.GetPathFlags(worldId, id);
+					unlocked[id] = (flags & SaveFile.PathFlags.Unlocked) != 0;
+					if (p.BackgroundImage == null)
+					{
+						if (unlocked[id])
+							p.BackColor = unlockedPathColor;
+						else
+							p.BackColor = lockedPathColor;
+					}
 					else
-						p.BackColor = lockedPathColor;
+						p.Visible = !unlocked[id];
 				}
-				else
-					p.Visible = !unlocked[id];
-			}
-		
-			// nodes
-			for (int i = 1; i < nodeControls.Count; i++)
-			{
-				if (!(bool)nodes[i]["isVisible"]) continue;
 
-				Panel p = nodeControls[i];
-				// Is it completed? The game checks that first.
-				int flags = saveFile.GetNodeFlags(worldId, i);
-				if ((flags & SaveFile.NodeFlags.Completed) != 0)
-					p.BackgroundImage = Properties.Resources.Node_Complete;
-				else
+				// nodes
+				for (int i = 1; i < nodeControls.Count; i++)
 				{
-					// Is it unlocked?
-					JToken connections = nodes[i]["connections"];
-					bool levelUnlocked = connections.Any((c) => (bool)c["isBackwards"] == true && unlocked[(int)c["pathIdInWorld"]]);
-					if (levelUnlocked)
-						p.BackgroundImage = Properties.Resources.Node_Unlocked;
+					if (!(bool)nodes[i]["isVisible"]) continue;
+
+					Panel p = nodeControls[i];
+					// Is it completed? The game checks that first.
+					int flags = saveFile.GetNodeFlags(worldId, i);
+					if ((flags & SaveFile.NodeFlags.Completed) != 0)
+						p.BackgroundImage = Properties.Resources.Node_Complete;
 					else
-						p.BackgroundImage = Properties.Resources.Node_Locked;
+					{
+						// Is it unlocked?
+						JToken connections = nodes[i]["connections"];
+						bool levelUnlocked = connections.Any((c) => (bool)c["isBackwards"] == true && unlocked[(int)c["pathIdInWorld"]]);
+						if (levelUnlocked)
+							p.BackgroundImage = Properties.Resources.Node_Unlocked;
+						else
+							p.BackgroundImage = Properties.Resources.Node_Locked;
+					}
 				}
 			}
+
+			// node info
+			nodeNameLbl.Text = "W" + (worldId + 1).ToString() + "-" + nodes[selectedNode]["name"];
+			starCoin1Pbx.Visible = starCoin2Pbx.Visible = starCoin3Pbx.Visible =
+				(bool)nodes[selectedNode]["hasStarCoins"];
+
+			byte nodeFlags = saveFile.GetNodeFlags(worldId, selectedNode);
+			starCoin1Pbx.BackgroundImage = (nodeFlags & SaveFile.NodeFlags.StarCoin1) != 0 ? Properties.Resources.StarCoin : Properties.Resources.NoStarCoin;
+			starCoin2Pbx.BackgroundImage = (nodeFlags & SaveFile.NodeFlags.StarCoin2) != 0 ? Properties.Resources.StarCoin : Properties.Resources.NoStarCoin;
+			starCoin3Pbx.BackgroundImage = (nodeFlags & SaveFile.NodeFlags.StarCoin3) != 0 ? Properties.Resources.StarCoin : Properties.Resources.NoStarCoin;
 
 			ResumeLayout();
 		}
