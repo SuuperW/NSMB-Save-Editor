@@ -5,11 +5,6 @@
 			{
 				"worldId": 0,
 				"idInWorld": 0,
-				"location": [
-					-11,
-					0,
-					0
-				],
 				"connections": [
 					{
 						"destinationNodeId": 1,
@@ -27,16 +22,20 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [],
+				"pathsBySecretExit": [],
+				"zoomToNormalExit": 0,
+				"zoomToSecretExit": 0,
+				"location": [
+					-11,
+					0,
+					0
+				]
 			},
 			{
 				"worldId": 0,
 				"idInWorld": 1,
-				"location": [
-					-9,
-					0,
-					0
-				],
 				"connections": [
 					{
 						"destinationNodeId": 0,
@@ -66,16 +65,24 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [
+					1
+				],
+				"pathsBySecretExit": [
+					1
+				],
+				"zoomToNormalExit": 2,
+				"zoomToSecretExit": 2,
+				"location": [
+					-9,
+					0,
+					0
+				]
 			},
 			{
 				"worldId": 0,
 				"idInWorld": 2,
-				"location": [
-					-7,
-					0,
-					0
-				],
 				"connections": [
 					{
 						"destinationNodeId": 1,
@@ -105,16 +112,26 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [
+					2
+				],
+				"pathsBySecretExit": [
+					10,
+					22,
+					4
+				],
+				"zoomToNormalExit": 3,
+				"zoomToSecretExit": 4,
+				"location": [
+					-7,
+					0,
+					0
+				]
 			},
 			{
 				"worldId": 0,
 				"idInWorld": 3,
-				"location": [
-					-3,
-					0,
-					0
-				],
 				"connections": [
 					{
 						"destinationNodeId": 2,
@@ -144,16 +161,28 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [
+					3,
+					4,
+					11
+				],
+				"pathsBySecretExit": [
+					3,
+					4,
+					11
+				],
+				"zoomToNormalExit": 4,
+				"zoomToSecretExit": 4,
+				"location": [
+					-3,
+					0,
+					0
+				]
 			},
 			{
 				"worldId": 0,
 				"idInWorld": 4,
-				"location": [
-					1,
-					0,
-					0
-				],
 				"connections": [
 					{
 						"destinationNodeId": 14,
@@ -183,16 +212,24 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [
+					5
+				],
+				"pathsBySecretExit": [
+					12
+				],
+				"zoomToNormalExit": 5,
+				"zoomToSecretExit": 9,
+				"location": [
+					1,
+					0,
+					0
+				]
 			},
 			{
 				"worldId": 0,
 				"idInWorld": 5,
-				"location": [
-					5,
-					0,
-					0
-				],
 				"connections": [
 					{
 						"destinationNodeId": 4,
@@ -222,16 +259,30 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [
+					6,
+					7,
+					13,
+					15
+				],
+				"pathsBySecretExit": [
+					6,
+					7,
+					13,
+					15
+				],
+				"zoomToNormalExit": 6,
+				"zoomToSecretExit": 6,
+				"location": [
+					5,
+					0,
+					0
+				]
 			},
 			{
 				"worldId": 0,
 				"idInWorld": 6,
-				"location": [
-					11,
-					0,
-					-2
-				],
 				"connections": [
 					{
 						"destinationNodeId": 15,
@@ -261,16 +312,28 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [
+					8,
+					17,
+					9
+				],
+				"pathsBySecretExit": [
+					8,
+					17,
+					9
+				],
+				"zoomToNormalExit": 7,
+				"zoomToSecretExit": 7,
+				"location": [
+					11,
+					0,
+					-2
+				]
 			},
 			{
 				"worldId": 0,
 				"idInWorld": 7,
-				"location": [
-					17,
-					0,
-					0
-				],
 				"connections": [
 					{
 						"destinationNodeId": 16,
@@ -288,16 +351,20 @@
 				"isLastLevelInWorld": true,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [],
+				"pathsBySecretExit": [],
+				"zoomToNormalExit": 0,
+				"zoomToSecretExit": 0,
+				"location": [
+					17,
+					0,
+					0
+				]
 			},
 			{
 				"worldId": 0,
 				"idInWorld": 8,
-				"location": [
-					-3,
-					0,
-					-2
-				],
 				"connections": [
 					{
 						"destinationNodeId": 3,
@@ -315,16 +382,20 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [],
+				"pathsBySecretExit": [],
+				"zoomToNormalExit": 0,
+				"zoomToSecretExit": 0,
+				"location": [
+					-3,
+					0,
+					-2
+				]
 			},
 			{
 				"worldId": 0,
 				"idInWorld": 9,
-				"location": [
-					3,
-					0,
-					2
-				],
 				"connections": [
 					{
 						"destinationNodeId": 4,
@@ -342,16 +413,20 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [],
+				"pathsBySecretExit": [],
+				"zoomToNormalExit": 0,
+				"zoomToSecretExit": 0,
+				"location": [
+					3,
+					0,
+					2
+				]
 			},
 			{
 				"worldId": 0,
 				"idInWorld": 10,
-				"location": [
-					5,
-					0,
-					-2
-				],
 				"connections": [
 					{
 						"destinationNodeId": 5,
@@ -369,16 +444,20 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [],
+				"pathsBySecretExit": [],
+				"zoomToNormalExit": 0,
+				"zoomToSecretExit": 0,
+				"location": [
+					5,
+					0,
+					-2
+				]
 			},
 			{
 				"worldId": 0,
 				"idInWorld": 11,
-				"location": [
-					7,
-					0,
-					2
-				],
 				"connections": [
 					{
 						"destinationNodeId": 12,
@@ -396,16 +475,20 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [],
+				"pathsBySecretExit": [],
+				"zoomToNormalExit": 0,
+				"zoomToSecretExit": 0,
+				"location": [
+					7,
+					0,
+					2
+				]
 			},
 			{
 				"worldId": 0,
 				"idInWorld": 12,
-				"location": [
-					9,
-					0,
-					2
-				],
 				"connections": [
 					{
 						"destinationNodeId": 15,
@@ -435,16 +518,28 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [
+					14,
+					16,
+					9
+				],
+				"pathsBySecretExit": [
+					14,
+					16,
+					9
+				],
+				"zoomToNormalExit": 7,
+				"zoomToSecretExit": 7,
+				"location": [
+					9,
+					0,
+					2
+				]
 			},
 			{
 				"worldId": 0,
 				"idInWorld": 13,
-				"location": [
-					13,
-					0,
-					0
-				],
 				"connections": [
 					{
 						"destinationNodeId": 6,
@@ -462,16 +557,20 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [],
+				"pathsBySecretExit": [],
+				"zoomToNormalExit": 0,
+				"zoomToSecretExit": 0,
+				"location": [
+					13,
+					0,
+					0
+				]
 			},
 			{
 				"worldId": 0,
 				"idInWorld": 14,
-				"location": [
-					-1,
-					0,
-					0
-				],
 				"connections": [
 					{
 						"destinationNodeId": 3,
@@ -501,16 +600,20 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [],
+				"pathsBySecretExit": [],
+				"zoomToNormalExit": 0,
+				"zoomToSecretExit": 0,
+				"location": [
+					-1,
+					0,
+					0
+				]
 			},
 			{
 				"worldId": 0,
 				"idInWorld": 15,
-				"location": [
-					9,
-					0,
-					0
-				],
 				"connections": [
 					{
 						"destinationNodeId": 5,
@@ -540,16 +643,20 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [],
+				"pathsBySecretExit": [],
+				"zoomToNormalExit": 0,
+				"zoomToSecretExit": 0,
+				"location": [
+					9,
+					0,
+					0
+				]
 			},
 			{
 				"worldId": 0,
 				"idInWorld": 16,
-				"location": [
-					15,
-					0,
-					0
-				],
 				"connections": [
 					{
 						"destinationNodeId": 6,
@@ -579,16 +686,20 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [],
+				"pathsBySecretExit": [],
+				"zoomToNormalExit": 0,
+				"zoomToSecretExit": 0,
+				"location": [
+					15,
+					0,
+					0
+				]
 			},
 			{
 				"worldId": 0,
 				"idInWorld": 17,
-				"location": [
-					-9,
-					0,
-					-2
-				],
 				"connections": [
 					{
 						"destinationNodeId": 1,
@@ -606,16 +717,20 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [],
+				"pathsBySecretExit": [],
+				"zoomToNormalExit": 0,
+				"zoomToSecretExit": 0,
+				"location": [
+					-9,
+					0,
+					-2
+				]
 			},
 			{
 				"worldId": 0,
 				"idInWorld": 18,
-				"location": [
-					-5,
-					0,
-					2
-				],
 				"connections": [
 					{
 						"destinationNodeId": 2,
@@ -639,7 +754,16 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [],
+				"pathsBySecretExit": [],
+				"zoomToNormalExit": 0,
+				"zoomToSecretExit": 0,
+				"location": [
+					-5,
+					0,
+					2
+				]
 			}
 		],
 		"paths": [
@@ -881,11 +1005,6 @@
 			{
 				"worldId": 1,
 				"idInWorld": 0,
-				"location": [
-					-9,
-					0,
-					0
-				],
 				"connections": [
 					{
 						"destinationNodeId": 1,
@@ -903,16 +1022,20 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [],
+				"pathsBySecretExit": [],
+				"zoomToNormalExit": 0,
+				"zoomToSecretExit": 0,
+				"location": [
+					-9,
+					0,
+					0
+				]
 			},
 			{
 				"worldId": 1,
 				"idInWorld": 1,
-				"location": [
-					-7,
-					0,
-					0
-				],
 				"connections": [
 					{
 						"destinationNodeId": 0,
@@ -936,16 +1059,24 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [
+					1
+				],
+				"pathsBySecretExit": [
+					1
+				],
+				"zoomToNormalExit": 2,
+				"zoomToSecretExit": 2,
+				"location": [
+					-7,
+					0,
+					0
+				]
 			},
 			{
 				"worldId": 1,
 				"idInWorld": 2,
-				"location": [
-					-5,
-					0,
-					0
-				],
 				"connections": [
 					{
 						"destinationNodeId": 1,
@@ -975,16 +1106,26 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [
+					2,
+					10
+				],
+				"pathsBySecretExit": [
+					2,
+					10
+				],
+				"zoomToNormalExit": 3,
+				"zoomToSecretExit": 3,
+				"location": [
+					-5,
+					0,
+					0
+				]
 			},
 			{
 				"worldId": 1,
 				"idInWorld": 3,
-				"location": [
-					-1,
-					0,
-					0
-				],
 				"connections": [
 					{
 						"destinationNodeId": 2,
@@ -1014,16 +1155,24 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [
+					3
+				],
+				"pathsBySecretExit": [
+					11
+				],
+				"zoomToNormalExit": 4,
+				"zoomToSecretExit": 12,
+				"location": [
+					-1,
+					0,
+					0
+				]
 			},
 			{
 				"worldId": 1,
 				"idInWorld": 4,
-				"location": [
-					3,
-					0,
-					0
-				],
 				"connections": [
 					{
 						"destinationNodeId": 3,
@@ -1059,16 +1208,26 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [
+					4,
+					14
+				],
+				"pathsBySecretExit": [
+					15,
+					16
+				],
+				"zoomToNormalExit": 5,
+				"zoomToSecretExit": 9,
+				"location": [
+					3,
+					0,
+					0
+				]
 			},
 			{
 				"worldId": 1,
 				"idInWorld": 5,
-				"location": [
-					5,
-					0,
-					0
-				],
 				"connections": [
 					{
 						"destinationNodeId": 4,
@@ -1092,16 +1251,28 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [
+					5,
+					6,
+					17
+				],
+				"pathsBySecretExit": [
+					5,
+					6,
+					17
+				],
+				"zoomToNormalExit": 7,
+				"zoomToSecretExit": 7,
+				"location": [
+					5,
+					0,
+					0
+				]
 			},
 			{
 				"worldId": 1,
 				"idInWorld": 6,
-				"location": [
-					7,
-					0,
-					0
-				],
 				"connections": [
 					{
 						"destinationNodeId": 5,
@@ -1131,16 +1302,20 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [],
+				"pathsBySecretExit": [],
+				"zoomToNormalExit": 0,
+				"zoomToSecretExit": 0,
+				"location": [
+					7,
+					0,
+					0
+				]
 			},
 			{
 				"worldId": 1,
 				"idInWorld": 7,
-				"location": [
-					11,
-					0,
-					0
-				],
 				"connections": [
 					{
 						"destinationNodeId": 6,
@@ -1164,16 +1339,28 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [
+					7,
+					8,
+					18
+				],
+				"pathsBySecretExit": [
+					7,
+					8,
+					18
+				],
+				"zoomToNormalExit": 9,
+				"zoomToSecretExit": 9,
+				"location": [
+					11,
+					0,
+					0
+				]
 			},
 			{
 				"worldId": 1,
 				"idInWorld": 8,
-				"location": [
-					13,
-					0,
-					0
-				],
 				"connections": [
 					{
 						"destinationNodeId": 7,
@@ -1203,16 +1390,20 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [],
+				"pathsBySecretExit": [],
+				"zoomToNormalExit": 0,
+				"zoomToSecretExit": 0,
+				"location": [
+					13,
+					0,
+					0
+				]
 			},
 			{
 				"worldId": 1,
 				"idInWorld": 9,
-				"location": [
-					15,
-					0,
-					0
-				],
 				"connections": [
 					{
 						"destinationNodeId": 8,
@@ -1242,16 +1433,24 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [
+					9
+				],
+				"pathsBySecretExit": [
+					9
+				],
+				"zoomToNormalExit": 10,
+				"zoomToSecretExit": 10,
+				"location": [
+					15,
+					0,
+					0
+				]
 			},
 			{
 				"worldId": 1,
 				"idInWorld": 10,
-				"location": [
-					17,
-					0,
-					0
-				],
 				"connections": [
 					{
 						"destinationNodeId": 9,
@@ -1275,16 +1474,20 @@
 				"isLastLevelInWorld": true,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [],
+				"pathsBySecretExit": [],
+				"zoomToNormalExit": 0,
+				"zoomToSecretExit": 0,
+				"location": [
+					17,
+					0,
+					0
+				]
 			},
 			{
 				"worldId": 1,
 				"idInWorld": 11,
-				"location": [
-					-5,
-					0,
-					-2
-				],
 				"connections": [
 					{
 						"destinationNodeId": 2,
@@ -1302,16 +1505,20 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [],
+				"pathsBySecretExit": [],
+				"zoomToNormalExit": 0,
+				"zoomToSecretExit": 0,
+				"location": [
+					-5,
+					0,
+					-2
+				]
 			},
 			{
 				"worldId": 1,
 				"idInWorld": 12,
-				"location": [
-					-1,
-					0,
-					2
-				],
 				"connections": [
 					{
 						"destinationNodeId": 3,
@@ -1341,16 +1548,26 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [
+					13,
+					19,
+					20
+				],
+				"pathsBySecretExit": [
+					12
+				],
+				"zoomToNormalExit": 14,
+				"zoomToSecretExit": 13,
+				"location": [
+					-1,
+					0,
+					2
+				]
 			},
 			{
 				"worldId": 1,
 				"idInWorld": 13,
-				"location": [
-					-3,
-					0,
-					2
-				],
 				"connections": [
 					{
 						"destinationNodeId": 12,
@@ -1368,16 +1585,20 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [],
+				"pathsBySecretExit": [],
+				"zoomToNormalExit": 0,
+				"zoomToSecretExit": 0,
+				"location": [
+					-3,
+					0,
+					2
+				]
 			},
 			{
 				"worldId": 1,
 				"idInWorld": 14,
-				"location": [
-					1,
-					1,
-					2
-				],
 				"connections": [
 					{
 						"destinationNodeId": 12,
@@ -1401,16 +1622,20 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [],
+				"pathsBySecretExit": [],
+				"zoomToNormalExit": 0,
+				"zoomToSecretExit": 0,
+				"location": [
+					1,
+					1,
+					2
+				]
 			},
 			{
 				"worldId": 1,
 				"idInWorld": 15,
-				"location": [
-					3,
-					0,
-					-2
-				],
 				"connections": [
 					{
 						"destinationNodeId": 4,
@@ -1428,16 +1653,20 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [],
+				"pathsBySecretExit": [],
+				"zoomToNormalExit": 0,
+				"zoomToSecretExit": 0,
+				"location": [
+					3,
+					0,
+					-2
+				]
 			},
 			{
 				"worldId": 1,
 				"idInWorld": 16,
-				"location": [
-					9,
-					0,
-					2
-				],
 				"connections": [
 					{
 						"destinationNodeId": 4,
@@ -1461,16 +1690,20 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [],
+				"pathsBySecretExit": [],
+				"zoomToNormalExit": 0,
+				"zoomToSecretExit": 0,
+				"location": [
+					9,
+					0,
+					2
+				]
 			},
 			{
 				"worldId": 1,
 				"idInWorld": 17,
-				"location": [
-					7,
-					0,
-					-2
-				],
 				"connections": [
 					{
 						"destinationNodeId": 6,
@@ -1488,16 +1721,20 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [],
+				"pathsBySecretExit": [],
+				"zoomToNormalExit": 0,
+				"zoomToSecretExit": 0,
+				"location": [
+					7,
+					0,
+					-2
+				]
 			},
 			{
 				"worldId": 1,
 				"idInWorld": 18,
-				"location": [
-					13,
-					0,
-					-2
-				],
 				"connections": [
 					{
 						"destinationNodeId": 8,
@@ -1515,16 +1752,20 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [],
+				"pathsBySecretExit": [],
+				"zoomToNormalExit": 0,
+				"zoomToSecretExit": 0,
+				"location": [
+					13,
+					0,
+					-2
+				]
 			},
 			{
 				"worldId": 1,
 				"idInWorld": 19,
-				"location": [
-					17,
-					1,
-					2
-				],
 				"connections": [
 					{
 						"destinationNodeId": 10,
@@ -1548,7 +1789,16 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [],
+				"pathsBySecretExit": [],
+				"zoomToNormalExit": 0,
+				"zoomToSecretExit": 0,
+				"location": [
+					17,
+					1,
+					2
+				]
 			}
 		],
 		"paths": [
@@ -1800,11 +2050,6 @@
 			{
 				"worldId": 2,
 				"idInWorld": 0,
-				"location": [
-					-9,
-					0,
-					0
-				],
 				"connections": [
 					{
 						"destinationNodeId": 1,
@@ -1822,16 +2067,24 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [
+					1
+				],
+				"pathsBySecretExit": [
+					1
+				],
+				"zoomToNormalExit": 0,
+				"zoomToSecretExit": 0,
+				"location": [
+					-9,
+					0,
+					0
+				]
 			},
 			{
 				"worldId": 2,
 				"idInWorld": 1,
-				"location": [
-					-7,
-					-1,
-					0
-				],
 				"connections": [
 					{
 						"destinationNodeId": 0,
@@ -1861,16 +2114,24 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [
+					1
+				],
+				"pathsBySecretExit": [
+					1
+				],
+				"zoomToNormalExit": 0,
+				"zoomToSecretExit": 0,
+				"location": [
+					-7,
+					-1,
+					0
+				]
 			},
 			{
 				"worldId": 2,
 				"idInWorld": 2,
-				"location": [
-					-5,
-					-1,
-					-2
-				],
 				"connections": [
 					{
 						"destinationNodeId": 1,
@@ -1894,16 +2155,26 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [
+					2,
+					3
+				],
+				"pathsBySecretExit": [
+					2,
+					3
+				],
+				"zoomToNormalExit": 4,
+				"zoomToSecretExit": 4,
+				"location": [
+					-5,
+					-1,
+					-2
+				]
 			},
 			{
 				"worldId": 2,
 				"idInWorld": 3,
-				"location": [
-					-1,
-					-1,
-					0
-				],
 				"connections": [
 					{
 						"destinationNodeId": 2,
@@ -1933,16 +2204,20 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [],
+				"pathsBySecretExit": [],
+				"zoomToNormalExit": 0,
+				"zoomToSecretExit": 0,
+				"location": [
+					-1,
+					-1,
+					0
+				]
 			},
 			{
 				"worldId": 2,
 				"idInWorld": 4,
-				"location": [
-					1,
-					0,
-					0
-				],
 				"connections": [
 					{
 						"destinationNodeId": 3,
@@ -1972,16 +2247,24 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [
+					4
+				],
+				"pathsBySecretExit": [
+					13
+				],
+				"zoomToNormalExit": 5,
+				"zoomToSecretExit": 13,
+				"location": [
+					1,
+					0,
+					0
+				]
 			},
 			{
 				"worldId": 2,
 				"idInWorld": 5,
-				"location": [
-					3,
-					0,
-					0
-				],
 				"connections": [
 					{
 						"destinationNodeId": 4,
@@ -2005,16 +2288,24 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [
+					5
+				],
+				"pathsBySecretExit": [
+					5
+				],
+				"zoomToNormalExit": 7,
+				"zoomToSecretExit": 7,
+				"location": [
+					3,
+					0,
+					0
+				]
 			},
 			{
 				"worldId": 2,
 				"idInWorld": 6,
-				"location": [
-					0,
-					0,
-					0
-				],
 				"connections": [],
 				"areaId": 185,
 				"name": "dot",
@@ -2025,16 +2316,20 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [],
+				"pathsBySecretExit": [],
+				"zoomToNormalExit": 0,
+				"zoomToSecretExit": 0,
+				"location": [
+					0,
+					0,
+					0
+				]
 			},
 			{
 				"worldId": 2,
 				"idInWorld": 7,
-				"location": [
-					7,
-					-1,
-					-2
-				],
 				"connections": [
 					{
 						"destinationNodeId": 5,
@@ -2064,16 +2359,26 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [
+					7,
+					15
+				],
+				"pathsBySecretExit": [
+					7,
+					15
+				],
+				"zoomToNormalExit": 8,
+				"zoomToSecretExit": 8,
+				"location": [
+					7,
+					-1,
+					-2
+				]
 			},
 			{
 				"worldId": 2,
 				"idInWorld": 8,
-				"location": [
-					11,
-					0,
-					-2
-				],
 				"connections": [
 					{
 						"destinationNodeId": 7,
@@ -2103,16 +2408,25 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [
+					8,
+					9
+				],
+				"pathsBySecretExit": [
+					19
+				],
+				"zoomToNormalExit": 10,
+				"zoomToSecretExit": 17,
+				"location": [
+					11,
+					0,
+					-2
+				]
 			},
 			{
 				"worldId": 2,
 				"idInWorld": 9,
-				"location": [
-					15,
-					0,
-					0
-				],
 				"connections": [
 					{
 						"destinationNodeId": 8,
@@ -2142,16 +2456,20 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [],
+				"pathsBySecretExit": [],
+				"zoomToNormalExit": 0,
+				"zoomToSecretExit": 0,
+				"location": [
+					15,
+					0,
+					0
+				]
 			},
 			{
 				"worldId": 2,
 				"idInWorld": 10,
-				"location": [
-					17,
-					0,
-					0
-				],
 				"connections": [
 					{
 						"destinationNodeId": 9,
@@ -2169,16 +2487,20 @@
 				"isLastLevelInWorld": true,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [],
+				"pathsBySecretExit": [],
+				"zoomToNormalExit": 0,
+				"zoomToSecretExit": 0,
+				"location": [
+					17,
+					0,
+					0
+				]
 			},
 			{
 				"worldId": 2,
 				"idInWorld": 11,
-				"location": [
-					-3,
-					-1,
-					2
-				],
 				"connections": [
 					{
 						"destinationNodeId": 1,
@@ -2208,16 +2530,28 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [
+					11,
+					12,
+					3
+				],
+				"pathsBySecretExit": [
+					11,
+					12,
+					3
+				],
+				"zoomToNormalExit": 4,
+				"zoomToSecretExit": 4,
+				"location": [
+					-3,
+					-1,
+					2
+				]
 			},
 			{
 				"worldId": 2,
 				"idInWorld": 12,
-				"location": [
-					-3,
-					0,
-					0
-				],
 				"connections": [
 					{
 						"destinationNodeId": 11,
@@ -2235,16 +2569,20 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [],
+				"pathsBySecretExit": [],
+				"zoomToNormalExit": 0,
+				"zoomToSecretExit": 0,
+				"location": [
+					-3,
+					0,
+					0
+				]
 			},
 			{
 				"worldId": 2,
 				"idInWorld": 13,
-				"location": [
-					5,
-					0,
-					2
-				],
 				"connections": [
 					{
 						"destinationNodeId": 4,
@@ -2268,16 +2606,24 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [
+					16
+				],
+				"pathsBySecretExit": [
+					16
+				],
+				"zoomToNormalExit": 15,
+				"zoomToSecretExit": 15,
+				"location": [
+					5,
+					0,
+					2
+				]
 			},
 			{
 				"worldId": 2,
 				"idInWorld": 14,
-				"location": [
-					5,
-					0,
-					-2
-				],
 				"connections": [
 					{
 						"destinationNodeId": 7,
@@ -2295,16 +2641,20 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [],
+				"pathsBySecretExit": [],
+				"zoomToNormalExit": 0,
+				"zoomToSecretExit": 0,
+				"location": [
+					5,
+					0,
+					-2
+				]
 			},
 			{
 				"worldId": 2,
 				"idInWorld": 15,
-				"location": [
-					9,
-					-1,
-					2
-				],
 				"connections": [
 					{
 						"destinationNodeId": 13,
@@ -2334,16 +2684,28 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [
+					17,
+					18,
+					9
+				],
+				"pathsBySecretExit": [
+					17,
+					18,
+					9
+				],
+				"zoomToNormalExit": 10,
+				"zoomToSecretExit": 10,
+				"location": [
+					9,
+					-1,
+					2
+				]
 			},
 			{
 				"worldId": 2,
 				"idInWorld": 16,
-				"location": [
-					9,
-					0,
-					0
-				],
 				"connections": [
 					{
 						"destinationNodeId": 15,
@@ -2361,16 +2723,20 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [],
+				"pathsBySecretExit": [],
+				"zoomToNormalExit": 0,
+				"zoomToSecretExit": 0,
+				"location": [
+					9,
+					0,
+					0
+				]
 			},
 			{
 				"worldId": 2,
 				"idInWorld": 17,
-				"location": [
-					13,
-					0,
-					0
-				],
 				"connections": [
 					{
 						"destinationNodeId": 8,
@@ -2388,7 +2754,16 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [],
+				"pathsBySecretExit": [],
+				"zoomToNormalExit": 0,
+				"zoomToSecretExit": 0,
+				"location": [
+					13,
+					0,
+					0
+				]
 			}
 		],
 		"paths": [
@@ -2630,11 +3005,6 @@
 			{
 				"worldId": 3,
 				"idInWorld": 0,
-				"location": [
-					-9,
-					0,
-					0
-				],
 				"connections": [
 					{
 						"destinationNodeId": 1,
@@ -2652,16 +3022,20 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [],
+				"pathsBySecretExit": [],
+				"zoomToNormalExit": 0,
+				"zoomToSecretExit": 0,
+				"location": [
+					-9,
+					0,
+					0
+				]
 			},
 			{
 				"worldId": 3,
 				"idInWorld": 1,
-				"location": [
-					-7,
-					0,
-					0
-				],
 				"connections": [
 					{
 						"destinationNodeId": 0,
@@ -2691,16 +3065,25 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [
+					1
+				],
+				"pathsBySecretExit": [
+					12,
+					13
+				],
+				"zoomToNormalExit": 2,
+				"zoomToSecretExit": 4,
+				"location": [
+					-7,
+					0,
+					0
+				]
 			},
 			{
 				"worldId": 3,
 				"idInWorld": 2,
-				"location": [
-					-5,
-					0,
-					0
-				],
 				"connections": [
 					{
 						"destinationNodeId": 1,
@@ -2730,16 +3113,26 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [
+					2,
+					11
+				],
+				"pathsBySecretExit": [
+					2,
+					11
+				],
+				"zoomToNormalExit": 3,
+				"zoomToSecretExit": 3,
+				"location": [
+					-5,
+					0,
+					0
+				]
 			},
 			{
 				"worldId": 3,
 				"idInWorld": 3,
-				"location": [
-					-1,
-					0,
-					0
-				],
 				"connections": [
 					{
 						"destinationNodeId": 2,
@@ -2763,16 +3156,24 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [
+					3
+				],
+				"pathsBySecretExit": [
+					3
+				],
+				"zoomToNormalExit": 4,
+				"zoomToSecretExit": 4,
+				"location": [
+					-1,
+					0,
+					0
+				]
 			},
 			{
 				"worldId": 3,
 				"idInWorld": 4,
-				"location": [
-					1,
-					0,
-					0
-				],
 				"connections": [
 					{
 						"destinationNodeId": 3,
@@ -2802,16 +3203,28 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [
+					4,
+					5,
+					14
+				],
+				"pathsBySecretExit": [
+					4,
+					5,
+					14
+				],
+				"zoomToNormalExit": 6,
+				"zoomToSecretExit": 6,
+				"location": [
+					1,
+					0,
+					0
+				]
 			},
 			{
 				"worldId": 3,
 				"idInWorld": 5,
-				"location": [
-					5,
-					0,
-					0
-				],
 				"connections": [
 					{
 						"destinationNodeId": 4,
@@ -2841,16 +3254,20 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [],
+				"pathsBySecretExit": [],
+				"zoomToNormalExit": 0,
+				"zoomToSecretExit": 0,
+				"location": [
+					5,
+					0,
+					0
+				]
 			},
 			{
 				"worldId": 3,
 				"idInWorld": 6,
-				"location": [
-					7,
-					0,
-					2
-				],
 				"connections": [
 					{
 						"destinationNodeId": 5,
@@ -2874,16 +3291,26 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [
+					6,
+					7
+				],
+				"pathsBySecretExit": [
+					6,
+					7
+				],
+				"zoomToNormalExit": 8,
+				"zoomToSecretExit": 8,
+				"location": [
+					7,
+					0,
+					2
+				]
 			},
 			{
 				"worldId": 3,
 				"idInWorld": 7,
-				"location": [
-					7,
-					0,
-					0
-				],
 				"connections": [
 					{
 						"destinationNodeId": 6,
@@ -2913,16 +3340,20 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [],
+				"pathsBySecretExit": [],
+				"zoomToNormalExit": 0,
+				"zoomToSecretExit": 0,
+				"location": [
+					7,
+					0,
+					0
+				]
 			},
 			{
 				"worldId": 3,
 				"idInWorld": 8,
-				"location": [
-					9,
-					0,
-					0
-				],
 				"connections": [
 					{
 						"destinationNodeId": 7,
@@ -2952,16 +3383,24 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [
+					8
+				],
+				"pathsBySecretExit": [
+					17
+				],
+				"zoomToNormalExit": 9,
+				"zoomToSecretExit": 16,
+				"location": [
+					9,
+					0,
+					0
+				]
 			},
 			{
 				"worldId": 3,
 				"idInWorld": 9,
-				"location": [
-					13,
-					0,
-					0
-				],
 				"connections": [
 					{
 						"destinationNodeId": 8,
@@ -2991,16 +3430,26 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [
+					9,
+					18
+				],
+				"pathsBySecretExit": [
+					9,
+					18
+				],
+				"zoomToNormalExit": 10,
+				"zoomToSecretExit": 10,
+				"location": [
+					13,
+					0,
+					0
+				]
 			},
 			{
 				"worldId": 3,
 				"idInWorld": 10,
-				"location": [
-					15,
-					0,
-					0
-				],
 				"connections": [
 					{
 						"destinationNodeId": 9,
@@ -3030,16 +3479,26 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [
+					10,
+					19
+				],
+				"pathsBySecretExit": [
+					10,
+					19
+				],
+				"zoomToNormalExit": 11,
+				"zoomToSecretExit": 11,
+				"location": [
+					15,
+					0,
+					0
+				]
 			},
 			{
 				"worldId": 3,
 				"idInWorld": 11,
-				"location": [
-					17,
-					0,
-					0
-				],
 				"connections": [
 					{
 						"destinationNodeId": 10,
@@ -3057,16 +3516,20 @@
 				"isLastLevelInWorld": true,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [],
+				"pathsBySecretExit": [],
+				"zoomToNormalExit": 0,
+				"zoomToSecretExit": 0,
+				"location": [
+					17,
+					0,
+					0
+				]
 			},
 			{
 				"worldId": 3,
 				"idInWorld": 12,
-				"location": [
-					-5,
-					0,
-					-2
-				],
 				"connections": [
 					{
 						"destinationNodeId": 2,
@@ -3084,16 +3547,20 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [],
+				"pathsBySecretExit": [],
+				"zoomToNormalExit": 0,
+				"zoomToSecretExit": 0,
+				"location": [
+					-5,
+					0,
+					-2
+				]
 			},
 			{
 				"worldId": 3,
 				"idInWorld": 13,
-				"location": [
-					-3,
-					0,
-					2
-				],
 				"connections": [
 					{
 						"destinationNodeId": 1,
@@ -3117,16 +3584,20 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [],
+				"pathsBySecretExit": [],
+				"zoomToNormalExit": 0,
+				"zoomToSecretExit": 0,
+				"location": [
+					-3,
+					0,
+					2
+				]
 			},
 			{
 				"worldId": 3,
 				"idInWorld": 14,
-				"location": [
-					5,
-					0,
-					-2
-				],
 				"connections": [
 					{
 						"destinationNodeId": 5,
@@ -3156,16 +3627,28 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [
+					15,
+					16,
+					7
+				],
+				"pathsBySecretExit": [
+					15,
+					16,
+					7
+				],
+				"zoomToNormalExit": 8,
+				"zoomToSecretExit": 8,
+				"location": [
+					5,
+					0,
+					-2
+				]
 			},
 			{
 				"worldId": 3,
 				"idInWorld": 15,
-				"location": [
-					3,
-					0,
-					-2
-				],
 				"connections": [
 					{
 						"destinationNodeId": 14,
@@ -3183,16 +3666,20 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [],
+				"pathsBySecretExit": [],
+				"zoomToNormalExit": 0,
+				"zoomToSecretExit": 0,
+				"location": [
+					3,
+					0,
+					-2
+				]
 			},
 			{
 				"worldId": 3,
 				"idInWorld": 16,
-				"location": [
-					11,
-					0,
-					2
-				],
 				"connections": [
 					{
 						"destinationNodeId": 8,
@@ -3210,16 +3697,20 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [],
+				"pathsBySecretExit": [],
+				"zoomToNormalExit": 0,
+				"zoomToSecretExit": 0,
+				"location": [
+					11,
+					0,
+					2
+				]
 			},
 			{
 				"worldId": 3,
 				"idInWorld": 17,
-				"location": [
-					13,
-					0,
-					-2
-				],
 				"connections": [
 					{
 						"destinationNodeId": 9,
@@ -3237,16 +3728,20 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [],
+				"pathsBySecretExit": [],
+				"zoomToNormalExit": 0,
+				"zoomToSecretExit": 0,
+				"location": [
+					13,
+					0,
+					-2
+				]
 			},
 			{
 				"worldId": 3,
 				"idInWorld": 18,
-				"location": [
-					15,
-					0,
-					-2
-				],
 				"connections": [
 					{
 						"destinationNodeId": 10,
@@ -3264,7 +3759,16 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [],
+				"pathsBySecretExit": [],
+				"zoomToNormalExit": 0,
+				"zoomToSecretExit": 0,
+				"location": [
+					15,
+					0,
+					-2
+				]
 			}
 		],
 		"paths": [
@@ -3506,11 +4010,6 @@
 			{
 				"worldId": 4,
 				"idInWorld": 0,
-				"location": [
-					-9,
-					0,
-					0
-				],
 				"connections": [
 					{
 						"destinationNodeId": 1,
@@ -3528,16 +4027,20 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [],
+				"pathsBySecretExit": [],
+				"zoomToNormalExit": 0,
+				"zoomToSecretExit": 0,
+				"location": [
+					-9,
+					0,
+					0
+				]
 			},
 			{
 				"worldId": 4,
 				"idInWorld": 1,
-				"location": [
-					-7,
-					0,
-					0
-				],
 				"connections": [
 					{
 						"destinationNodeId": 0,
@@ -3561,16 +4064,28 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [
+					1,
+					2,
+					12
+				],
+				"pathsBySecretExit": [
+					1,
+					2,
+					12
+				],
+				"zoomToNormalExit": 3,
+				"zoomToSecretExit": 3,
+				"location": [
+					-7,
+					0,
+					0
+				]
 			},
 			{
 				"worldId": 4,
 				"idInWorld": 2,
-				"location": [
-					-5,
-					0,
-					0
-				],
 				"connections": [
 					{
 						"destinationNodeId": 1,
@@ -3600,16 +4115,20 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [],
+				"pathsBySecretExit": [],
+				"zoomToNormalExit": 0,
+				"zoomToSecretExit": 0,
+				"location": [
+					-5,
+					0,
+					0
+				]
 			},
 			{
 				"worldId": 4,
 				"idInWorld": 3,
-				"location": [
-					-3,
-					0,
-					-2
-				],
 				"connections": [
 					{
 						"destinationNodeId": 2,
@@ -3639,16 +4158,27 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [
+					3,
+					4
+				],
+				"pathsBySecretExit": [
+					11,
+					25,
+					15
+				],
+				"zoomToNormalExit": 5,
+				"zoomToSecretExit": 12,
+				"location": [
+					-3,
+					0,
+					-2
+				]
 			},
 			{
 				"worldId": 4,
 				"idInWorld": 4,
-				"location": [
-					-1,
-					0,
-					0
-				],
 				"connections": [
 					{
 						"destinationNodeId": 3,
@@ -3678,16 +4208,20 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [],
+				"pathsBySecretExit": [],
+				"zoomToNormalExit": 0,
+				"zoomToSecretExit": 0,
+				"location": [
+					-1,
+					0,
+					0
+				]
 			},
 			{
 				"worldId": 4,
 				"idInWorld": 5,
-				"location": [
-					1,
-					0,
-					0
-				],
 				"connections": [
 					{
 						"destinationNodeId": 4,
@@ -3717,16 +4251,25 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [
+					5,
+					14,
+					6,
+					16
+				],
+				"pathsBySecretExit": [],
+				"zoomToNormalExit": 7,
+				"zoomToSecretExit": 7,
+				"location": [
+					1,
+					0,
+					0
+				]
 			},
 			{
 				"worldId": 4,
 				"idInWorld": 6,
-				"location": [
-					5,
-					0,
-					0
-				],
 				"connections": [
 					{
 						"destinationNodeId": 5,
@@ -3756,16 +4299,20 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [],
+				"pathsBySecretExit": [],
+				"zoomToNormalExit": 0,
+				"zoomToSecretExit": 0,
+				"location": [
+					5,
+					0,
+					0
+				]
 			},
 			{
 				"worldId": 4,
 				"idInWorld": 7,
-				"location": [
-					5,
-					0,
-					-2
-				],
 				"connections": [
 					{
 						"destinationNodeId": 6,
@@ -3795,16 +4342,22 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [
+					7
+				],
+				"pathsBySecretExit": [],
+				"zoomToNormalExit": 8,
+				"zoomToSecretExit": 8,
+				"location": [
+					5,
+					0,
+					-2
+				]
 			},
 			{
 				"worldId": 4,
 				"idInWorld": 8,
-				"location": [
-					11,
-					0,
-					-2
-				],
 				"connections": [
 					{
 						"destinationNodeId": 7,
@@ -3834,16 +4387,25 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [
+					8,
+					9
+				],
+				"pathsBySecretExit": [
+					21
+				],
+				"zoomToNormalExit": 10,
+				"zoomToSecretExit": 20,
+				"location": [
+					11,
+					0,
+					-2
+				]
 			},
 			{
 				"worldId": 4,
 				"idInWorld": 9,
-				"location": [
-					13,
-					0,
-					-2
-				],
 				"connections": [
 					{
 						"destinationNodeId": 8,
@@ -3873,16 +4435,20 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [],
+				"pathsBySecretExit": [],
+				"zoomToNormalExit": 0,
+				"zoomToSecretExit": 0,
+				"location": [
+					13,
+					0,
+					-2
+				]
 			},
 			{
 				"worldId": 4,
 				"idInWorld": 10,
-				"location": [
-					19,
-					0,
-					0
-				],
 				"connections": [
 					{
 						"destinationNodeId": 9,
@@ -3912,16 +4478,23 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [
+					10,
+					23
+				],
+				"pathsBySecretExit": [],
+				"zoomToNormalExit": 11,
+				"zoomToSecretExit": 11,
+				"location": [
+					19,
+					0,
+					0
+				]
 			},
 			{
 				"worldId": 4,
 				"idInWorld": 11,
-				"location": [
-					21,
-					0,
-					0
-				],
 				"connections": [
 					{
 						"destinationNodeId": 10,
@@ -3945,16 +4518,20 @@
 				"isLastLevelInWorld": true,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [],
+				"pathsBySecretExit": [],
+				"zoomToNormalExit": 0,
+				"zoomToSecretExit": 0,
+				"location": [
+					21,
+					0,
+					0
+				]
 			},
 			{
 				"worldId": 4,
 				"idInWorld": 12,
-				"location": [
-					-3,
-					1,
-					0
-				],
 				"connections": [
 					{
 						"destinationNodeId": 3,
@@ -3978,16 +4555,20 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [],
+				"pathsBySecretExit": [],
+				"zoomToNormalExit": 0,
+				"zoomToSecretExit": 0,
+				"location": [
+					-3,
+					1,
+					0
+				]
 			},
 			{
 				"worldId": 4,
 				"idInWorld": 13,
-				"location": [
-					-3,
-					0,
-					2
-				],
 				"connections": [
 					{
 						"destinationNodeId": 2,
@@ -4011,16 +4592,23 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [
+					13,
+					4
+				],
+				"pathsBySecretExit": [],
+				"zoomToNormalExit": 5,
+				"zoomToSecretExit": 5,
+				"location": [
+					-3,
+					0,
+					2
+				]
 			},
 			{
 				"worldId": 4,
 				"idInWorld": 14,
-				"location": [
-					3,
-					0,
-					2
-				],
 				"connections": [
 					{
 						"destinationNodeId": 5,
@@ -4038,16 +4626,20 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [],
+				"pathsBySecretExit": [],
+				"zoomToNormalExit": 0,
+				"zoomToSecretExit": 0,
+				"location": [
+					3,
+					0,
+					2
+				]
 			},
 			{
 				"worldId": 4,
 				"idInWorld": 15,
-				"location": [
-					3,
-					1,
-					-2
-				],
 				"connections": [
 					{
 						"destinationNodeId": 7,
@@ -4071,16 +4663,20 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [],
+				"pathsBySecretExit": [],
+				"zoomToNormalExit": 0,
+				"zoomToSecretExit": 0,
+				"location": [
+					3,
+					1,
+					-2
+				]
 			},
 			{
 				"worldId": 4,
 				"idInWorld": 16,
-				"location": [
-					7,
-					0,
-					2
-				],
 				"connections": [
 					{
 						"destinationNodeId": 6,
@@ -4110,16 +4706,28 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [
+					17,
+					18,
+					22
+				],
+				"pathsBySecretExit": [
+					20,
+					26,
+					24
+				],
+				"zoomToNormalExit": 18,
+				"zoomToSecretExit": 19,
+				"location": [
+					7,
+					0,
+					2
+				]
 			},
 			{
 				"worldId": 4,
 				"idInWorld": 17,
-				"location": [
-					13,
-					0,
-					2
-				],
 				"connections": [
 					{
 						"destinationNodeId": 16,
@@ -4149,16 +4757,20 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [],
+				"pathsBySecretExit": [],
+				"zoomToNormalExit": 0,
+				"zoomToSecretExit": 0,
+				"location": [
+					13,
+					0,
+					2
+				]
 			},
 			{
 				"worldId": 4,
 				"idInWorld": 18,
-				"location": [
-					13,
-					0,
-					0
-				],
 				"connections": [
 					{
 						"destinationNodeId": 9,
@@ -4182,16 +4794,23 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [
+					19,
+					9
+				],
+				"pathsBySecretExit": [],
+				"zoomToNormalExit": 10,
+				"zoomToSecretExit": 10,
+				"location": [
+					13,
+					0,
+					0
+				]
 			},
 			{
 				"worldId": 4,
 				"idInWorld": 19,
-				"location": [
-					7,
-					1,
-					0
-				],
 				"connections": [
 					{
 						"destinationNodeId": 16,
@@ -4215,16 +4834,20 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [],
+				"pathsBySecretExit": [],
+				"zoomToNormalExit": 0,
+				"zoomToSecretExit": 0,
+				"location": [
+					7,
+					1,
+					0
+				]
 			},
 			{
 				"worldId": 4,
 				"idInWorld": 20,
-				"location": [
-					9,
-					0,
-					0
-				],
 				"connections": [
 					{
 						"destinationNodeId": 8,
@@ -4242,16 +4865,20 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [],
+				"pathsBySecretExit": [],
+				"zoomToNormalExit": 0,
+				"zoomToSecretExit": 0,
+				"location": [
+					9,
+					0,
+					0
+				]
 			},
 			{
 				"worldId": 4,
 				"idInWorld": 21,
-				"location": [
-					15,
-					0,
-					2
-				],
 				"connections": [
 					{
 						"destinationNodeId": 17,
@@ -4269,16 +4896,20 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [],
+				"pathsBySecretExit": [],
+				"zoomToNormalExit": 0,
+				"zoomToSecretExit": 0,
+				"location": [
+					15,
+					0,
+					2
+				]
 			},
 			{
 				"worldId": 4,
 				"idInWorld": 22,
-				"location": [
-					17,
-					0,
-					0
-				],
 				"connections": [
 					{
 						"destinationNodeId": 10,
@@ -4296,16 +4927,20 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [],
+				"pathsBySecretExit": [],
+				"zoomToNormalExit": 0,
+				"zoomToSecretExit": 0,
+				"location": [
+					17,
+					0,
+					0
+				]
 			},
 			{
 				"worldId": 4,
 				"idInWorld": 23,
-				"location": [
-					21,
-					1,
-					2
-				],
 				"connections": [
 					{
 						"destinationNodeId": 11,
@@ -4329,7 +4964,16 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [],
+				"pathsBySecretExit": [],
+				"zoomToNormalExit": 0,
+				"zoomToSecretExit": 0,
+				"location": [
+					21,
+					1,
+					2
+				]
 			}
 		],
 		"paths": [
@@ -4641,11 +5285,6 @@
 			{
 				"worldId": 5,
 				"idInWorld": 0,
-				"location": [
-					-9,
-					0,
-					0
-				],
 				"connections": [
 					{
 						"destinationNodeId": 1,
@@ -4663,16 +5302,24 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [
+					1
+				],
+				"pathsBySecretExit": [
+					1
+				],
+				"zoomToNormalExit": 0,
+				"zoomToSecretExit": 0,
+				"location": [
+					-9,
+					0,
+					0
+				]
 			},
 			{
 				"worldId": 5,
 				"idInWorld": 1,
-				"location": [
-					-7,
-					0,
-					0
-				],
 				"connections": [
 					{
 						"destinationNodeId": 0,
@@ -4702,16 +5349,20 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [],
+				"pathsBySecretExit": [],
+				"zoomToNormalExit": 0,
+				"zoomToSecretExit": 0,
+				"location": [
+					-7,
+					0,
+					0
+				]
 			},
 			{
 				"worldId": 5,
 				"idInWorld": 2,
-				"location": [
-					-7,
-					0,
-					-2
-				],
 				"connections": [
 					{
 						"destinationNodeId": 1,
@@ -4735,16 +5386,26 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [
+					2,
+					3
+				],
+				"pathsBySecretExit": [
+					2,
+					3
+				],
+				"zoomToNormalExit": 4,
+				"zoomToSecretExit": 4,
+				"location": [
+					-7,
+					0,
+					-2
+				]
 			},
 			{
 				"worldId": 5,
 				"idInWorld": 3,
-				"location": [
-					-3,
-					0,
-					0
-				],
 				"connections": [
 					{
 						"destinationNodeId": 2,
@@ -4774,16 +5435,20 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [],
+				"pathsBySecretExit": [],
+				"zoomToNormalExit": 0,
+				"zoomToSecretExit": 0,
+				"location": [
+					-3,
+					0,
+					0
+				]
 			},
 			{
 				"worldId": 5,
 				"idInWorld": 4,
-				"location": [
-					-1,
-					0,
-					0
-				],
 				"connections": [
 					{
 						"destinationNodeId": 3,
@@ -4813,16 +5478,26 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [
+					4,
+					15
+				],
+				"pathsBySecretExit": [
+					4,
+					15
+				],
+				"zoomToNormalExit": 5,
+				"zoomToSecretExit": 5,
+				"location": [
+					-1,
+					0,
+					0
+				]
 			},
 			{
 				"worldId": 5,
 				"idInWorld": 5,
-				"location": [
-					1,
-					0,
-					0
-				],
 				"connections": [
 					{
 						"destinationNodeId": 4,
@@ -4846,16 +5521,24 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [
+					5
+				],
+				"pathsBySecretExit": [
+					5
+				],
+				"zoomToNormalExit": 6,
+				"zoomToSecretExit": 6,
+				"location": [
+					1,
+					0,
+					0
+				]
 			},
 			{
 				"worldId": 5,
 				"idInWorld": 6,
-				"location": [
-					3,
-					0,
-					0
-				],
 				"connections": [
 					{
 						"destinationNodeId": 5,
@@ -4885,16 +5568,26 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [
+					6,
+					17
+				],
+				"pathsBySecretExit": [
+					6,
+					17
+				],
+				"zoomToNormalExit": 7,
+				"zoomToSecretExit": 7,
+				"location": [
+					3,
+					0,
+					0
+				]
 			},
 			{
 				"worldId": 5,
 				"idInWorld": 7,
-				"location": [
-					7,
-					0,
-					0
-				],
 				"connections": [
 					{
 						"destinationNodeId": 6,
@@ -4924,16 +5617,26 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [
+					7,
+					18
+				],
+				"pathsBySecretExit": [
+					7,
+					18
+				],
+				"zoomToNormalExit": 8,
+				"zoomToSecretExit": 8,
+				"location": [
+					7,
+					0,
+					0
+				]
 			},
 			{
 				"worldId": 5,
 				"idInWorld": 8,
-				"location": [
-					9,
-					0,
-					0
-				],
 				"connections": [
 					{
 						"destinationNodeId": 7,
@@ -4957,16 +5660,28 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": true,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [
+					8,
+					9,
+					19
+				],
+				"pathsBySecretExit": [
+					8,
+					9,
+					19
+				],
+				"zoomToNormalExit": 10,
+				"zoomToSecretExit": 10,
+				"location": [
+					9,
+					0,
+					0
+				]
 			},
 			{
 				"worldId": 5,
 				"idInWorld": 9,
-				"location": [
-					11,
-					0,
-					0
-				],
 				"connections": [
 					{
 						"destinationNodeId": 8,
@@ -4996,16 +5711,20 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [],
+				"pathsBySecretExit": [],
+				"zoomToNormalExit": 0,
+				"zoomToSecretExit": 0,
+				"location": [
+					11,
+					0,
+					0
+				]
 			},
 			{
 				"worldId": 5,
 				"idInWorld": 10,
-				"location": [
-					11,
-					0,
-					-2
-				],
 				"connections": [
 					{
 						"destinationNodeId": 9,
@@ -5029,16 +5748,24 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [
+					10
+				],
+				"pathsBySecretExit": [
+					10
+				],
+				"zoomToNormalExit": 11,
+				"zoomToSecretExit": 11,
+				"location": [
+					11,
+					0,
+					-2
+				]
 			},
 			{
 				"worldId": 5,
 				"idInWorld": 11,
-				"location": [
-					15,
-					0,
-					0
-				],
 				"connections": [
 					{
 						"destinationNodeId": 10,
@@ -5068,16 +5795,24 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [
+					11
+				],
+				"pathsBySecretExit": [
+					11
+				],
+				"zoomToNormalExit": 12,
+				"zoomToSecretExit": 12,
+				"location": [
+					15,
+					0,
+					0
+				]
 			},
 			{
 				"worldId": 5,
 				"idInWorld": 12,
-				"location": [
-					17,
-					0,
-					0
-				],
 				"connections": [
 					{
 						"destinationNodeId": 11,
@@ -5095,16 +5830,20 @@
 				"isLastLevelInWorld": true,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [],
+				"pathsBySecretExit": [],
+				"zoomToNormalExit": 0,
+				"zoomToSecretExit": 0,
+				"location": [
+					17,
+					0,
+					0
+				]
 			},
 			{
 				"worldId": 5,
 				"idInWorld": 13,
-				"location": [
-					-5,
-					0,
-					2
-				],
 				"connections": [
 					{
 						"destinationNodeId": 1,
@@ -5134,16 +5873,28 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [
+					13,
+					14,
+					3
+				],
+				"pathsBySecretExit": [
+					13,
+					14,
+					3
+				],
+				"zoomToNormalExit": 4,
+				"zoomToSecretExit": 4,
+				"location": [
+					-5,
+					0,
+					2
+				]
 			},
 			{
 				"worldId": 5,
 				"idInWorld": 14,
-				"location": [
-					-5,
-					0,
-					0
-				],
 				"connections": [
 					{
 						"destinationNodeId": 13,
@@ -5161,16 +5912,20 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [],
+				"pathsBySecretExit": [],
+				"zoomToNormalExit": 0,
+				"zoomToSecretExit": 0,
+				"location": [
+					-5,
+					0,
+					0
+				]
 			},
 			{
 				"worldId": 5,
 				"idInWorld": 15,
-				"location": [
-					-1,
-					0,
-					-2
-				],
 				"connections": [
 					{
 						"destinationNodeId": 4,
@@ -5188,16 +5943,20 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [],
+				"pathsBySecretExit": [],
+				"zoomToNormalExit": 0,
+				"zoomToSecretExit": 0,
+				"location": [
+					-1,
+					0,
+					-2
+				]
 			},
 			{
 				"worldId": 5,
 				"idInWorld": 16,
-				"location": [
-					0,
-					0,
-					0
-				],
 				"connections": [
 					{
 						"destinationNodeId": 5,
@@ -5215,16 +5974,20 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [],
+				"pathsBySecretExit": [],
+				"zoomToNormalExit": 0,
+				"zoomToSecretExit": 0,
+				"location": [
+					0,
+					0,
+					0
+				]
 			},
 			{
 				"worldId": 5,
 				"idInWorld": 17,
-				"location": [
-					3,
-					0,
-					-2
-				],
 				"connections": [
 					{
 						"destinationNodeId": 6,
@@ -5242,16 +6005,20 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [],
+				"pathsBySecretExit": [],
+				"zoomToNormalExit": 0,
+				"zoomToSecretExit": 0,
+				"location": [
+					3,
+					0,
+					-2
+				]
 			},
 			{
 				"worldId": 5,
 				"idInWorld": 18,
-				"location": [
-					7,
-					0,
-					-2
-				],
 				"connections": [
 					{
 						"destinationNodeId": 7,
@@ -5269,16 +6036,20 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [],
+				"pathsBySecretExit": [],
+				"zoomToNormalExit": 0,
+				"zoomToSecretExit": 0,
+				"location": [
+					7,
+					0,
+					-2
+				]
 			},
 			{
 				"worldId": 5,
 				"idInWorld": 19,
-				"location": [
-					13,
-					0,
-					2
-				],
 				"connections": [
 					{
 						"destinationNodeId": 9,
@@ -5308,16 +6079,26 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [
+					20,
+					21
+				],
+				"pathsBySecretExit": [
+					20,
+					21
+				],
+				"zoomToNormalExit": 11,
+				"zoomToSecretExit": 11,
+				"location": [
+					13,
+					0,
+					2
+				]
 			},
 			{
 				"worldId": 5,
 				"idInWorld": 20,
-				"location": [
-					13,
-					0,
-					0
-				],
 				"connections": [
 					{
 						"destinationNodeId": 19,
@@ -5335,7 +6116,16 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [],
+				"pathsBySecretExit": [],
+				"zoomToNormalExit": 0,
+				"zoomToSecretExit": 0,
+				"location": [
+					13,
+					0,
+					0
+				]
 			}
 		],
 		"paths": [
@@ -5607,11 +6397,6 @@
 			{
 				"worldId": 6,
 				"idInWorld": 0,
-				"location": [
-					-9,
-					0,
-					0
-				],
 				"connections": [
 					{
 						"destinationNodeId": 1,
@@ -5629,16 +6414,20 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [],
+				"pathsBySecretExit": [],
+				"zoomToNormalExit": 0,
+				"zoomToSecretExit": 0,
+				"location": [
+					-9,
+					0,
+					0
+				]
 			},
 			{
 				"worldId": 6,
 				"idInWorld": 1,
-				"location": [
-					-7,
-					0,
-					0
-				],
 				"connections": [
 					{
 						"destinationNodeId": 0,
@@ -5668,16 +6457,26 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [
+					1,
+					10
+				],
+				"pathsBySecretExit": [
+					1,
+					10
+				],
+				"zoomToNormalExit": 2,
+				"zoomToSecretExit": 2,
+				"location": [
+					-7,
+					0,
+					0
+				]
 			},
 			{
 				"worldId": 6,
 				"idInWorld": 2,
-				"location": [
-					-5,
-					0,
-					0
-				],
 				"connections": [
 					{
 						"destinationNodeId": 1,
@@ -5707,16 +6506,25 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [
+					2
+				],
+				"pathsBySecretExit": [
+					13,
+					14
+				],
+				"zoomToNormalExit": 3,
+				"zoomToSecretExit": 5,
+				"location": [
+					-5,
+					0,
+					0
+				]
 			},
 			{
 				"worldId": 6,
 				"idInWorld": 3,
-				"location": [
-					-3,
-					0,
-					0
-				],
 				"connections": [
 					{
 						"destinationNodeId": 2,
@@ -5746,16 +6554,26 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [
+					3,
+					11
+				],
+				"pathsBySecretExit": [
+					3,
+					11
+				],
+				"zoomToNormalExit": 4,
+				"zoomToSecretExit": 4,
+				"location": [
+					-3,
+					0,
+					0
+				]
 			},
 			{
 				"worldId": 6,
 				"idInWorld": 4,
-				"location": [
-					-1,
-					0,
-					0
-				],
 				"connections": [
 					{
 						"destinationNodeId": 3,
@@ -5785,16 +6603,26 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [
+					4,
+					12
+				],
+				"pathsBySecretExit": [
+					4,
+					12
+				],
+				"zoomToNormalExit": 5,
+				"zoomToSecretExit": 5,
+				"location": [
+					-1,
+					0,
+					0
+				]
 			},
 			{
 				"worldId": 6,
 				"idInWorld": 5,
-				"location": [
-					3,
-					0,
-					0
-				],
 				"connections": [
 					{
 						"destinationNodeId": 4,
@@ -5824,16 +6652,24 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [
+					5
+				],
+				"pathsBySecretExit": [
+					5
+				],
+				"zoomToNormalExit": 6,
+				"zoomToSecretExit": 6,
+				"location": [
+					3,
+					0,
+					0
+				]
 			},
 			{
 				"worldId": 6,
 				"idInWorld": 6,
-				"location": [
-					5,
-					0,
-					0
-				],
 				"connections": [
 					{
 						"destinationNodeId": 5,
@@ -5869,16 +6705,26 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [
+					6
+				],
+				"pathsBySecretExit": [
+					15,
+					16,
+					9
+				],
+				"zoomToNormalExit": 7,
+				"zoomToSecretExit": 10,
+				"location": [
+					5,
+					0,
+					0
+				]
 			},
 			{
 				"worldId": 6,
 				"idInWorld": 7,
-				"location": [
-					7,
-					0,
-					0
-				],
 				"connections": [
 					{
 						"destinationNodeId": 6,
@@ -5908,16 +6754,24 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [
+					18
+				],
+				"pathsBySecretExit": [
+					7
+				],
+				"zoomToNormalExit": 16,
+				"zoomToSecretExit": 8,
+				"location": [
+					7,
+					0,
+					0
+				]
 			},
 			{
 				"worldId": 6,
 				"idInWorld": 8,
-				"location": [
-					9,
-					0,
-					0
-				],
 				"connections": [
 					{
 						"destinationNodeId": 7,
@@ -5941,16 +6795,26 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [
+					8,
+					9
+				],
+				"pathsBySecretExit": [
+					8,
+					9
+				],
+				"zoomToNormalExit": 10,
+				"zoomToSecretExit": 10,
+				"location": [
+					9,
+					0,
+					0
+				]
 			},
 			{
 				"worldId": 6,
 				"idInWorld": 9,
-				"location": [
-					11,
-					0,
-					0
-				],
 				"connections": [
 					{
 						"destinationNodeId": 8,
@@ -5986,16 +6850,20 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [],
+				"pathsBySecretExit": [],
+				"zoomToNormalExit": 0,
+				"zoomToSecretExit": 0,
+				"location": [
+					11,
+					0,
+					0
+				]
 			},
 			{
 				"worldId": 6,
 				"idInWorld": 10,
-				"location": [
-					13,
-					0,
-					0
-				],
 				"connections": [
 					{
 						"destinationNodeId": 9,
@@ -6013,16 +6881,20 @@
 				"isLastLevelInWorld": true,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [],
+				"pathsBySecretExit": [],
+				"zoomToNormalExit": 0,
+				"zoomToSecretExit": 0,
+				"location": [
+					13,
+					0,
+					0
+				]
 			},
 			{
 				"worldId": 6,
 				"idInWorld": 11,
-				"location": [
-					-7,
-					0,
-					-2
-				],
 				"connections": [
 					{
 						"destinationNodeId": 1,
@@ -6040,16 +6912,20 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [],
+				"pathsBySecretExit": [],
+				"zoomToNormalExit": 0,
+				"zoomToSecretExit": 0,
+				"location": [
+					-7,
+					0,
+					-2
+				]
 			},
 			{
 				"worldId": 6,
 				"idInWorld": 12,
-				"location": [
-					-3,
-					0,
-					-2
-				],
 				"connections": [
 					{
 						"destinationNodeId": 3,
@@ -6067,16 +6943,20 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [],
+				"pathsBySecretExit": [],
+				"zoomToNormalExit": 0,
+				"zoomToSecretExit": 0,
+				"location": [
+					-3,
+					0,
+					-2
+				]
 			},
 			{
 				"worldId": 6,
 				"idInWorld": 13,
-				"location": [
-					-1,
-					0,
-					-2
-				],
 				"connections": [
 					{
 						"destinationNodeId": 4,
@@ -6094,16 +6974,20 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [],
+				"pathsBySecretExit": [],
+				"zoomToNormalExit": 0,
+				"zoomToSecretExit": 0,
+				"location": [
+					-1,
+					0,
+					-2
+				]
 			},
 			{
 				"worldId": 6,
 				"idInWorld": 14,
-				"location": [
-					1,
-					0,
-					2
-				],
 				"connections": [
 					{
 						"destinationNodeId": 2,
@@ -6127,16 +7011,20 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [],
+				"pathsBySecretExit": [],
+				"zoomToNormalExit": 0,
+				"zoomToSecretExit": 0,
+				"location": [
+					1,
+					0,
+					2
+				]
 			},
 			{
 				"worldId": 6,
 				"idInWorld": 15,
-				"location": [
-					7,
-					0,
-					-2
-				],
 				"connections": [
 					{
 						"destinationNodeId": 6,
@@ -6160,16 +7048,20 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [],
+				"pathsBySecretExit": [],
+				"zoomToNormalExit": 0,
+				"zoomToSecretExit": 0,
+				"location": [
+					7,
+					0,
+					-2
+				]
 			},
 			{
 				"worldId": 6,
 				"idInWorld": 16,
-				"location": [
-					7,
-					0,
-					2
-				],
 				"connections": [
 					{
 						"destinationNodeId": 6,
@@ -6199,16 +7091,24 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [
+					17
+				],
+				"pathsBySecretExit": [
+					19
+				],
+				"zoomToNormalExit": 6,
+				"zoomToSecretExit": 17,
+				"location": [
+					7,
+					0,
+					2
+				]
 			},
 			{
 				"worldId": 6,
 				"idInWorld": 17,
-				"location": [
-					9,
-					0,
-					2
-				],
 				"connections": [
 					{
 						"destinationNodeId": 16,
@@ -6232,7 +7132,22 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [
+					20,
+					9
+				],
+				"pathsBySecretExit": [
+					20,
+					9
+				],
+				"zoomToNormalExit": 10,
+				"zoomToSecretExit": 10,
+				"location": [
+					9,
+					0,
+					2
+				]
 			}
 		],
 		"paths": [
@@ -6484,11 +7399,6 @@
 			{
 				"worldId": 7,
 				"idInWorld": 0,
-				"location": [
-					-9,
-					0,
-					0
-				],
 				"connections": [
 					{
 						"destinationNodeId": 1,
@@ -6506,16 +7416,20 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [],
+				"pathsBySecretExit": [],
+				"zoomToNormalExit": 0,
+				"zoomToSecretExit": 0,
+				"location": [
+					-9,
+					0,
+					0
+				]
 			},
 			{
 				"worldId": 7,
 				"idInWorld": 1,
-				"location": [
-					-7,
-					0,
-					0
-				],
 				"connections": [
 					{
 						"destinationNodeId": 0,
@@ -6539,16 +7453,24 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [
+					1
+				],
+				"pathsBySecretExit": [
+					1
+				],
+				"zoomToNormalExit": 2,
+				"zoomToSecretExit": 2,
+				"location": [
+					-7,
+					0,
+					0
+				]
 			},
 			{
 				"worldId": 7,
 				"idInWorld": 2,
-				"location": [
-					-5,
-					0,
-					0
-				],
 				"connections": [
 					{
 						"destinationNodeId": 1,
@@ -6578,16 +7500,26 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [
+					2,
+					15
+				],
+				"pathsBySecretExit": [
+					2,
+					15
+				],
+				"zoomToNormalExit": 3,
+				"zoomToSecretExit": 3,
+				"location": [
+					-5,
+					0,
+					0
+				]
 			},
 			{
 				"worldId": 7,
 				"idInWorld": 3,
-				"location": [
-					-1,
-					0,
-					0
-				],
 				"connections": [
 					{
 						"destinationNodeId": 2,
@@ -6611,16 +7543,24 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [
+					3
+				],
+				"pathsBySecretExit": [
+					3
+				],
+				"zoomToNormalExit": 4,
+				"zoomToSecretExit": 4,
+				"location": [
+					-1,
+					0,
+					0
+				]
 			},
 			{
 				"worldId": 7,
 				"idInWorld": 4,
-				"location": [
-					1,
-					0,
-					0
-				],
 				"connections": [
 					{
 						"destinationNodeId": 3,
@@ -6650,16 +7590,26 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [
+					4,
+					16
+				],
+				"pathsBySecretExit": [
+					4,
+					16
+				],
+				"zoomToNormalExit": 5,
+				"zoomToSecretExit": 5,
+				"location": [
+					1,
+					0,
+					0
+				]
 			},
 			{
 				"worldId": 7,
 				"idInWorld": 5,
-				"location": [
-					5,
-					0,
-					0
-				],
 				"connections": [
 					{
 						"destinationNodeId": 4,
@@ -6689,16 +7639,26 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [
+					5,
+					12
+				],
+				"pathsBySecretExit": [
+					5,
+					12
+				],
+				"zoomToNormalExit": 6,
+				"zoomToSecretExit": 6,
+				"location": [
+					5,
+					0,
+					0
+				]
 			},
 			{
 				"worldId": 7,
 				"idInWorld": 6,
-				"location": [
-					7,
-					0,
-					0
-				],
 				"connections": [
 					{
 						"destinationNodeId": 5,
@@ -6722,16 +7682,24 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": true
+				"is8DashCastle": true,
+				"pathsByNormalExit": [
+					6
+				],
+				"pathsBySecretExit": [
+					6
+				],
+				"zoomToNormalExit": 7,
+				"zoomToSecretExit": 7,
+				"location": [
+					7,
+					0,
+					0
+				]
 			},
 			{
 				"worldId": 7,
 				"idInWorld": 7,
-				"location": [
-					17,
-					0,
-					0
-				],
 				"connections": [
 					{
 						"destinationNodeId": 6,
@@ -6755,16 +7723,26 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [
+					7,
+					13
+				],
+				"pathsBySecretExit": [
+					7,
+					13
+				],
+				"zoomToNormalExit": 8,
+				"zoomToSecretExit": 8,
+				"location": [
+					17,
+					0,
+					0
+				]
 			},
 			{
 				"worldId": 7,
 				"idInWorld": 8,
-				"location": [
-					19,
-					0,
-					0
-				],
 				"connections": [
 					{
 						"destinationNodeId": 7,
@@ -6788,16 +7766,24 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [
+					8
+				],
+				"pathsBySecretExit": [
+					8
+				],
+				"zoomToNormalExit": 9,
+				"zoomToSecretExit": 9,
+				"location": [
+					19,
+					0,
+					0
+				]
 			},
 			{
 				"worldId": 7,
 				"idInWorld": 9,
-				"location": [
-					21,
-					0,
-					0
-				],
 				"connections": [
 					{
 						"destinationNodeId": 8,
@@ -6821,16 +7807,24 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [
+					9
+				],
+				"pathsBySecretExit": [
+					9
+				],
+				"zoomToNormalExit": 10,
+				"zoomToSecretExit": 10,
+				"location": [
+					21,
+					0,
+					0
+				]
 			},
 			{
 				"worldId": 7,
 				"idInWorld": 10,
-				"location": [
-					23,
-					0,
-					0
-				],
 				"connections": [
 					{
 						"destinationNodeId": 9,
@@ -6854,16 +7848,24 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [
+					10
+				],
+				"pathsBySecretExit": [
+					10
+				],
+				"zoomToNormalExit": 11,
+				"zoomToSecretExit": 11,
+				"location": [
+					23,
+					0,
+					0
+				]
 			},
 			{
 				"worldId": 7,
 				"idInWorld": 11,
-				"location": [
-					25,
-					0,
-					0
-				],
 				"connections": [
 					{
 						"destinationNodeId": 10,
@@ -6887,16 +7889,26 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": true,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [
+					11,
+					17
+				],
+				"pathsBySecretExit": [
+					11,
+					17
+				],
+				"zoomToNormalExit": 12,
+				"zoomToSecretExit": 12,
+				"location": [
+					25,
+					0,
+					0
+				]
 			},
 			{
 				"worldId": 7,
 				"idInWorld": 12,
-				"location": [
-					33,
-					0,
-					0
-				],
 				"connections": [
 					{
 						"destinationNodeId": 11,
@@ -6914,16 +7926,20 @@
 				"isLastLevelInWorld": true,
 				"isSecondTower": false,
 				"isBowserCastle": true,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [],
+				"pathsBySecretExit": [],
+				"zoomToNormalExit": 0,
+				"zoomToSecretExit": 0,
+				"location": [
+					33,
+					0,
+					0
+				]
 			},
 			{
 				"worldId": 7,
 				"idInWorld": 13,
-				"location": [
-					3,
-					0,
-					2
-				],
 				"connections": [
 					{
 						"destinationNodeId": 5,
@@ -6941,16 +7957,20 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [],
+				"pathsBySecretExit": [],
+				"zoomToNormalExit": 0,
+				"zoomToSecretExit": 0,
+				"location": [
+					3,
+					0,
+					2
+				]
 			},
 			{
 				"worldId": 7,
 				"idInWorld": 14,
-				"location": [
-					17,
-					0,
-					-2
-				],
 				"connections": [
 					{
 						"destinationNodeId": 7,
@@ -6968,16 +7988,20 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [],
+				"pathsBySecretExit": [],
+				"zoomToNormalExit": 0,
+				"zoomToSecretExit": 0,
+				"location": [
+					17,
+					0,
+					-2
+				]
 			},
 			{
 				"worldId": 7,
 				"idInWorld": 15,
-				"location": [
-					0,
-					0,
-					0
-				],
 				"connections": [
 					{
 						"destinationNodeId": 9,
@@ -6995,16 +8019,20 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [],
+				"pathsBySecretExit": [],
+				"zoomToNormalExit": 0,
+				"zoomToSecretExit": 0,
+				"location": [
+					0,
+					0,
+					0
+				]
 			},
 			{
 				"worldId": 7,
 				"idInWorld": 16,
-				"location": [
-					-3,
-					0,
-					-2
-				],
 				"connections": [
 					{
 						"destinationNodeId": 2,
@@ -7022,16 +8050,20 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [],
+				"pathsBySecretExit": [],
+				"zoomToNormalExit": 0,
+				"zoomToSecretExit": 0,
+				"location": [
+					-3,
+					0,
+					-2
+				]
 			},
 			{
 				"worldId": 7,
 				"idInWorld": 17,
-				"location": [
-					1,
-					0,
-					-2
-				],
 				"connections": [
 					{
 						"destinationNodeId": 4,
@@ -7049,16 +8081,20 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [],
+				"pathsBySecretExit": [],
+				"zoomToNormalExit": 0,
+				"zoomToSecretExit": 0,
+				"location": [
+					1,
+					0,
+					-2
+				]
 			},
 			{
 				"worldId": 7,
 				"idInWorld": 18,
-				"location": [
-					27,
-					0,
-					2
-				],
 				"connections": [
 					{
 						"destinationNodeId": 11,
@@ -7076,7 +8112,16 @@
 				"isLastLevelInWorld": false,
 				"isSecondTower": false,
 				"isBowserCastle": false,
-				"is8DashCastle": false
+				"is8DashCastle": false,
+				"pathsByNormalExit": [],
+				"pathsBySecretExit": [],
+				"zoomToNormalExit": 0,
+				"zoomToSecretExit": 0,
+				"location": [
+					27,
+					0,
+					2
+				]
 			}
 		],
 		"paths": [

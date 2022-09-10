@@ -35,7 +35,7 @@ nodeDataPtrOffset = 0x00
 nodeDataLength = 0x0C
 pathUnlockPtrOffset = 0x04
 pathUnlockLength = 0x04
-nodeLocationPtrOffset = 0x0C
+nodeMoreDataPtrOffset = 0x0C
 nodeLocationLength = 0x18
 nodeCountOffset = 0x20
 pathCountOffset = 0x22
@@ -57,7 +57,6 @@ class Node:
 	def __init__(self, worldId: int, id: int, fileStream):
 		self.worldId = worldId
 		self.idInWorld = id
-		self.location = []
 		bytes = fileStream.read(0xC)
 
 		fileStream.seek(int.from_bytes(bytes[:4], 'little') - MainRAMBase)
@@ -74,6 +73,7 @@ class Node:
 		self.isSecondTower = bool(bytes[8] & 0x20)
 		self.isBowserCastle = bool(bytes[8] & 0x40)
 		self.is8DashCastle = bool(bytes[8] & 0x80)
+		# Bytes 9-11 appear to be unused.
 
 	# fileStream's position should be at the array of paths connecting this node
 	def AssignPaths(self, fileStream):
@@ -84,6 +84,24 @@ class Node:
 			bytes = fileStream.read(4)
 			if len(self.connections) > 4:
 				raise Exception('Invalid data: too many paths connecting a node.')
+	
+	# fileStream's position should be at the struct pointed to at nodeMoreDataPtrOffset
+	def LoadMoreData(self, fileStream):
+		def ReadPathsByExit(fileStream):
+			b = fileStream.read(4)
+			index = b.find(0)
+			if index == -1:
+				return list(b)
+			else:
+				return list(b)[:index]
+		self.pathsByNormalExit = ReadPathsByExit(fileStream)
+		self.pathsBySecretExit = ReadPathsByExit(fileStream)
+		self.zoomToNormalExit = fileStream.read(2)[0]
+		self.zoomToSecretExit = fileStream.read(2)[0]
+		self.location = []
+		for _ in range(3):
+			value = int.from_bytes(fileStream.read(4), 'little', signed=True)
+			self.location.append(round(value / 32))
 
 class Path:
 	def __init__(self, worldId: int, id: int, bytes: 'list[int]'):
@@ -116,13 +134,11 @@ if __name__ == '__main__':
 			f.seek(nodeDataAddr - MainRAMBase)
 			nodes.append(Node(world, i, f))
 			nodeDataAddr += nodeDataLength
-		# Node locations
-		nodeLocationAddr = ReadUInt32(f, worldInfoAddr + nodeLocationPtrOffset)
+		# More data: locations, which paths/levels are unlocked by clearing
+		nodeLocationAddr = ReadUInt32(f, worldInfoAddr + nodeMoreDataPtrOffset)
+		f.seek(nodeLocationAddr - MainRAMBase)
 		for node in nodes:
-			for i in range(3):
-				value = ReadSInt32(f, nodeLocationAddr + 0x0C + i * 4)
-				node.location.append(round(value / 32))
-			nodeLocationAddr += nodeLocationLength
+			node.LoadMoreData(f)
 
 		# Paths
 		pathUnlockAddr = ReadUInt32(f, worldInfoAddr + pathUnlockPtrOffset)
