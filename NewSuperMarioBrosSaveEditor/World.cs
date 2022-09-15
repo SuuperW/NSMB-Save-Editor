@@ -17,18 +17,19 @@ namespace NewSuperMarioBrosSaveEditor
 
 		public static explicit operator World(JToken j)
 		{
-			World world = new World();
-
-			world.id = (int)j["id"];
-			world.nodes = new List<OverworldNode>();
+			World world = new World
+			{
+				id = (int)j["id"],
+				nodes = new List<OverworldNode>(),
+				paths = new List<OverworldPath>(),
+				cannonDestination = (int)j["cannonDestination"],
+				normalNextWorld = (int)j["normalNextWorld"],
+				secretNextWorld = (int)j["secretNextWorld"]
+			};
 			foreach (JToken n in j["nodes"])
 				world.nodes.Add((OverworldNode)n);
-			world.paths = new List<OverworldPath>();
 			foreach (JToken p in j["paths"])
 				world.paths.Add((OverworldPath)p);
-			world.cannonDestination = (int)j["cannonDestination"];
-			world.normalNextWorld = (int)j["normalNextWorld"];
-			world.secretNextWorld = (int)j["secretNextWorld"];
 
 			return world;
 		}

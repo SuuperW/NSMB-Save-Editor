@@ -20,11 +20,13 @@ namespace NewSuperMarioBrosSaveEditor
 
 			public static explicit operator Connection(JToken j)
 			{
-				Connection c = new Connection();
-				c.destinationNodeId = (int)j["destinationNodeId"];
-				c.pathIdInWorld = (int)j["pathIdInWorld"];
-				c.direction = (string)j["direction"];
-				c.isBackwards = (bool)j["isBackwards"];
+				Connection c = new Connection
+				{
+					destinationNodeId = (int)j["destinationNodeId"],
+					pathIdInWorld = (int)j["pathIdInWorld"],
+					direction = (string)j["direction"],
+					isBackwards = (bool)j["isBackwards"]
+				};
 
 				return c;
 			}
@@ -49,31 +51,33 @@ namespace NewSuperMarioBrosSaveEditor
 
 		public static explicit operator OverworldNode(JToken j)
 		{
-			OverworldNode node = new OverworldNode();
-			node.worldId = (int)j["worldId"];
-			node.idInWorld = (int)j["idInWorld"];
-			node.areaId = (int)j["areaId"];
-			node.name = (string)j["name"];
-			node.connections = new List<Connection>();
+			OverworldNode node = new OverworldNode
+			{
+				worldId = (int)j["worldId"],
+				idInWorld = (int)j["idInWorld"],
+				areaId = (int)j["areaId"],
+				name = (string)j["name"],
+				connections = new List<Connection>(),
+				hasStarCoins = (bool)j["hasStarCoins"],
+				isFirstTower = (bool)j["isFirstTower"],
+				isCastle = (bool)j["isCastle"],
+				isVisible = (bool)j["isVisible"],
+				isLastLevelInWorld = (bool)j["isLastLevelInWorld"],
+				isSecondTower = (bool)j["isSecondTower"],
+				isBowserCastle = (bool)j["isBowserCastle"],
+				is8DashCastle = (bool)j["is8DashCastle"],
+				pathsByNormalExit = new List<int>(),
+				pathsBySecretExit = new List<int>(),
+				zoomToNormalExit = (int)j["zoomToNormalExit"],
+				zoomToSecretExit = (int)j["zoomToSecretExit"],
+				location = new List<int>()
+			};
 			foreach (JToken c in j["connections"])
 				node.connections.Add((Connection)c);
-			node.hasStarCoins = (bool)j["hasStarCoins"];
-			node.isFirstTower = (bool)j["isFirstTower"];
-			node.isCastle = (bool)j["isCastle"];
-			node.isVisible = (bool)j["isVisible"];
-			node.isLastLevelInWorld = (bool)j["isLastLevelInWorld"];
-			node.isSecondTower = (bool)j["isSecondTower"];
-			node.isBowserCastle = (bool)j["isBowserCastle"];
-			node.is8DashCastle = (bool)j["is8DashCastle"];
-			node.pathsByNormalExit = new List<int>();
 			foreach (JToken p in j["pathsByNormalExit"])
 				node.pathsByNormalExit.Add((int)p);
-			node.pathsBySecretExit = new List<int>();
 			foreach (JToken p in j["pathsBySecretExit"])
 				node.pathsBySecretExit.Add((int)p);
-			node.zoomToNormalExit = (int)j["zoomToNormalExit"];
-			node.zoomToSecretExit = (int)j["zoomToSecretExit"];
-			node.location = new List<int>();
 			foreach (JToken l in j["location"])
 				node.location.Add((int)l);
 

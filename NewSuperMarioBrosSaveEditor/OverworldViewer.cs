@@ -73,16 +73,18 @@ namespace NewSuperMarioBrosSaveEditor
 			int maxY = int.MinValue;
 			foreach (OverworldNode node in nodes)
 			{
-				Panel p = new Panel();
-				p.Location = new Point(node.location[0] * nodeSeparation, node.location[2] * nodeSeparation);
-				p.Size = new Size(nodeSize, nodeSize);
-				p.BackColor = Color.Transparent;
-				p.BackgroundImage = node.name == "Start" ? Properties.Resources.Node_Start :Properties.Resources.Node_Locked;
-				p.BackgroundImageLayout = ImageLayout.Zoom;
-				p.Visible = node.isVisible;
-				p.Tag = node.idInWorld;
+				Panel p = new Panel
+				{
+					Location = new Point(node.location[0] * nodeSeparation, node.location[2] * nodeSeparation),
+					Size = new Size(nodeSize, nodeSize),
+					BackColor = Color.Transparent,
+					BackgroundImage = node.name == "Start" ? Properties.Resources.Node_Start : Properties.Resources.Node_Locked,
+					BackgroundImageLayout = ImageLayout.Zoom,
+					Visible = node.isVisible,
+					Tag = node.idInWorld,
+					Parent = mainPanel
+				};
 				ttip.SetToolTip(p, worldPrefix + node.name);
-				p.Parent = mainPanel;
 				p.Click += NodeClicked;
 				p.DoubleClick += NodeDoubleClicked;
 				nodeControls.Add(p);
@@ -131,10 +133,12 @@ namespace NewSuperMarioBrosSaveEditor
 					List<Panel> pathsForConnection = new List<Panel>();
 					Func<int, int, int, int, Panel> makeNewPanel = (x, y, w, h) =>
 					{
-						Panel p = new Panel();
-						p.BackColor = Color.Black;
-						p.Tag = connection.pathIdInWorld;
-						p.Parent = mainPanel;
+						Panel p = new Panel
+						{
+							BackColor = Color.Black,
+							Tag = connection.pathIdInWorld,
+							Parent = mainPanel
+						};
 						ttip.SetToolTip(p, "Path " + p.Tag);
 						pathsForConnection.Add(p);
 						pathControls.Add(p);

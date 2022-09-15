@@ -73,8 +73,10 @@ namespace NewSuperMarioBrosSaveEditor
 		}
 		private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			SaveFileDialog dlg = new SaveFileDialog();
-			dlg.Filter = FileFilter;
+			SaveFileDialog dlg = new SaveFileDialog
+			{
+				Filter = FileFilter
+			};
 
 			if (dlg.ShowDialog() == DialogResult.OK)
 			{
@@ -85,8 +87,10 @@ namespace NewSuperMarioBrosSaveEditor
 		}
 		private void openBtn_Clicked(object sender, EventArgs e)
 		{
-			OpenFileDialog dlg = new OpenFileDialog();
-			dlg.Filter = FileFilter;
+			OpenFileDialog dlg = new OpenFileDialog
+			{
+				Filter = FileFilter
+			};
 
 			if (dlg.ShowDialog() == DialogResult.OK)
 			{

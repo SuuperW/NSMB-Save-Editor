@@ -17,18 +17,17 @@ namespace NewSuperMarioBrosSaveEditor
 
 		public static explicit operator OverworldPath(JToken j)
 		{
-			OverworldPath path = new OverworldPath();
-
-			path.worldId = (int)j["worldId"];
-			path.idInWorld = (int)j["idInWorld"];
-			path.animationId = (int)j["animationId"];
-			path.cost = (int)j["cost"];
-			path.isUnlockedBySecretGoal = (bool)j["isUnlockedBySecretGoal"];
-			path.isUnlockedBySign = (bool)j["isUnlockedBySign"];
-			path.exists = (bool)j["exists"];
-			path.isInvalid = (bool)j["isInvalid"];
-
-			return path;
+			return new OverworldPath
+			{
+				worldId = (int)j["worldId"],
+				idInWorld = (int)j["idInWorld"],
+				animationId = (int)j["animationId"],
+				cost = (int)j["cost"],
+				isUnlockedBySecretGoal = (bool)j["isUnlockedBySecretGoal"],
+				isUnlockedBySign = (bool)j["isUnlockedBySign"],
+				exists = (bool)j["exists"],
+				isInvalid = (bool)j["isInvalid"]
+			};
 		}
 	}
 }
