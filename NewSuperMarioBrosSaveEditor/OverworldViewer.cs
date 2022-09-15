@@ -14,10 +14,11 @@ namespace NewSuperMarioBrosSaveEditor
 		ToolTip ttip;
 		List<Panel> nodeControls = new List<Panel>();
 		List<Panel> pathControls = new List<Panel>();
-		int worldId;
 
 		SaveFile saveFile;
-		JToken world, nodes, paths;
+		World world;
+		List<OverworldNode> nodes;
+		List<OverworldPath> paths;
 		Color unlockedPathColor = Color.Black;
 		Color lockedPathColor = Color.DarkGray;
 
@@ -55,11 +56,14 @@ namespace NewSuperMarioBrosSaveEditor
 			// Scroll to 0, 0 so that locations that are set later on are correct.
 			mainPanel.AutoScrollPosition = new Point(mainPanel.AutoScrollPosition.X, -mainPanel.AutoScrollPosition.Y);
 
-			world = jObject;
-			nodes = jObject["nodes"];
-			paths = jObject["paths"];
-			worldId = (int)jObject["id"];
-			string worldPrefix = (worldId + 1).ToString() + "-";
+			world = (World)jObject;
+			nodes = new List<OverworldNode>();
+			foreach (JToken node in jObject["nodes"])
+				nodes.Add((OverworldNode)node);
+			paths = new List<OverworldPath>();
+			foreach (JToken path in jObject["paths"])
+				paths.Add((OverworldPath)path);
+			string worldPrefix = (world.id + 1).ToString() + "-";
 			// Create nodes
 			const int nodeSeparation = 24;
 			const int nodeSize = 16;
@@ -67,23 +71,23 @@ namespace NewSuperMarioBrosSaveEditor
 			int minY = int.MaxValue;
 			int maxX = int.MinValue;
 			int maxY = int.MinValue;
-			foreach (JToken node in nodes)
+			foreach (OverworldNode node in nodes)
 			{
 				Panel p = new Panel();
-				p.Location = new Point((int)node["location"][0] * nodeSeparation, (int)node["location"][2] * nodeSeparation);
+				p.Location = new Point(node.location[0] * nodeSeparation, node.location[2] * nodeSeparation);
 				p.Size = new Size(nodeSize, nodeSize);
 				p.BackColor = Color.Transparent;
-				p.BackgroundImage = (string)node["name"] == "Start" ? Properties.Resources.Node_Start :Properties.Resources.Node_Locked;
+				p.BackgroundImage = node.name == "Start" ? Properties.Resources.Node_Start :Properties.Resources.Node_Locked;
 				p.BackgroundImageLayout = ImageLayout.Zoom;
-				p.Visible = (bool)node["isVisible"];
-				p.Tag = (int)node["idInWorld"];
-				ttip.SetToolTip(p, worldPrefix + (string)node["name"]);
+				p.Visible = node.isVisible;
+				p.Tag = node.idInWorld;
+				ttip.SetToolTip(p, worldPrefix + node.name);
 				p.Parent = mainPanel;
 				p.Click += NodeClicked;
 				p.DoubleClick += NodeDoubleClicked;
 				nodeControls.Add(p);
 				// Pipes are a bit special, at least to us
-				if ((string)node["name"] == "Pipe")
+				if (node.name == "Pipe")
 				{
 					p.BackgroundImage = Properties.Resources.Pipe2d;
 					p.Visible = true;
@@ -104,13 +108,13 @@ namespace NewSuperMarioBrosSaveEditor
 
 			// Create paths
 			const int lineHalfWidth = 3;
-			foreach (JToken node in nodes)
+			foreach (OverworldNode node in nodes)
 			{
-				int nodeId = (int)node["idInWorld"];
-				foreach (JToken connection in node["connections"].Where((c) => !(bool)c["isBackwards"]))
+				int nodeId = node.idInWorld;
+				foreach (OverworldNode.Connection connection in node.connections.Where((c) => !c.isBackwards))
 				{
-					string direction = (string)connection["direction"];
-					int otherNode = (int)connection["destinationNodeId"];
+					string direction = connection.direction;
+					int otherNode = connection.destinationNodeId;
 
 					if (direction == "Pipe") continue;
 					else if (direction == "Up" || direction == "Down")
@@ -129,7 +133,7 @@ namespace NewSuperMarioBrosSaveEditor
 					{
 						Panel p = new Panel();
 						p.BackColor = Color.Black;
-						p.Tag = (int)connection["pathIdInWorld"];
+						p.Tag = connection.pathIdInWorld;
 						p.Parent = mainPanel;
 						ttip.SetToolTip(p, "Path " + p.Tag);
 						pathsForConnection.Add(p);
@@ -155,7 +159,7 @@ namespace NewSuperMarioBrosSaveEditor
 					makeNewPanel(startX, startY - lineHalfWidth, length, lineHalfWidth * 2);
 					
 					// Sign?
-					if ((bool)paths[(int)connection["pathIdInWorld"]]["isUnlockedBySign"])
+					if (paths[connection.pathIdInWorld].isUnlockedBySign)
 					{
 						Panel p = makeNewPanel(startX - nodeSize / 2 + length / 2, startY - nodeSize / 2, nodeSize, nodeSize);
 						p.BackgroundImage = Properties.Resources.Starcoin_Sign;
@@ -231,12 +235,12 @@ namespace NewSuperMarioBrosSaveEditor
 			}
 
 			// Save file
-			byte flags = saveFile.GetPathFlags(worldId, id);
+			byte flags = saveFile.GetPathFlags(world.id, id);
 			if (unlockStatus)
 				flags |= SaveFile.PathFlags.Unlocked;
 			else
 				flags = 0;
-			saveFile.SetPathFlags(worldId, id, flags);
+			saveFile.SetPathFlags(world.id, id, flags);
 
 			// Tell parent
 			if (LocksChanged != null)
@@ -259,7 +263,7 @@ namespace NewSuperMarioBrosSaveEditor
 			// Get node
 			Panel clicked = sender as Panel;
 			selectedNode = (int)clicked.Tag;
-			byte flags = saveFile.GetNodeFlags(worldId, selectedNode);
+			byte flags = saveFile.GetNodeFlags(world.id, selectedNode);
 			// Are we clearing or unclearing?
 			bool levelWasCompleted = (flags & SaveFile.NodeFlags.Completed) != 0;
 			bool newCompleteStatus;
@@ -268,18 +272,18 @@ namespace NewSuperMarioBrosSaveEditor
 			else if (NodeClickAction == NodeAction.All)
 			{
 				newCompleteStatus = (flags & SaveFile.NodeFlags.AllStarCoins) != SaveFile.NodeFlags.AllStarCoins ||
-					nodes[selectedNode]["connections"]
-					.Where((c) => !(bool)c["isBackwards"])
-					.Where((c) => !(bool)paths[(int)c["pathIdInWorld"]]["isUnlockedBySign"])
-					.Any((c) => !saveFile.IsPathUnlocked(worldId, (int)c["pathIdInWorld"]));
+					nodes[selectedNode].connections
+					.Where((c) => !c.isBackwards)
+					.Where((c) => !paths[c.pathIdInWorld].isUnlockedBySign)
+					.Any((c) => !saveFile.IsPathUnlocked(world.id, c.pathIdInWorld));
 			}
 			else
 			{
-				newCompleteStatus = nodes[selectedNode]["connections"]
-					.Where((c) => !(bool)c["isBackwards"])
-					.Where((c) => !(bool)paths[(int)c["pathIdInWorld"]]["isUnlockedBySign"])
-					.Where((c) => (bool)paths[(int)c["pathIdInWorld"]]["isUnlockedBySecretGoal"] ^ (NodeClickAction == NodeAction.Normal))
-					.Any((c) => !saveFile.IsPathUnlocked(worldId, (int)c["pathIdInWorld"]));
+				newCompleteStatus = nodes[selectedNode].connections
+					.Where((c) => !c.isBackwards)
+					.Where((c) => !paths[c.pathIdInWorld].isUnlockedBySign)
+					.Where((c) => paths[c.pathIdInWorld].isUnlockedBySecretGoal ^ (NodeClickAction == NodeAction.Normal))
+					.Any((c) => !saveFile.IsPathUnlocked(world.id, c.pathIdInWorld));
 			}
 			// Node
 			bool normalExit = NodeClickAction != NodeAction.Secret;
@@ -294,7 +298,7 @@ namespace NewSuperMarioBrosSaveEditor
 		private void SetNodeCompletion(int id, bool completed, bool normalExit, bool secretExit)
 		{
 			// This node/level
-			byte nodeFlags = saveFile.GetNodeFlags(worldId, id);
+			byte nodeFlags = saveFile.GetNodeFlags(world.id, id);
 			if (completed)
 			{
 				nodeFlags |= SaveFile.NodeFlags.Completed;
@@ -303,61 +307,57 @@ namespace NewSuperMarioBrosSaveEditor
 			}
 			else
 				nodeFlags = 0;
-			saveFile.SetNodeFlags(worldId, id, nodeFlags);
+			saveFile.SetNodeFlags(world.id, id, nodeFlags);
 
 			// For special levels, set world flags
-			JToken node = nodes[id];
+			OverworldNode node = nodes[id];
 			// If secretExit it set, check if the node has a secret goal
-			secretExit = secretExit && (!node["pathsByNormalExit"].SequenceEqual(node["pathsBySecretExit"]));
+			secretExit = secretExit && (!node.pathsByNormalExit.SequenceEqual(node.pathsBySecretExit));
 
 			ushort flags = 0;
-			if ((bool)node["isFirstTower"])
+			if (node.isFirstTower)
 			{
 				if (normalExit)
 					flags |= SaveFile.WorldFlags.AllForTower;
-				if (secretExit)
-					flags |= SaveFile.WorldFlags.FireworksHouse;
 			}
-			else if ((bool)node["isCastle"])
+			else if (node.isCastle)
 			{
 				if (normalExit)
 					flags |= SaveFile.WorldFlags.AllForCastle;
-				if (secretExit)
-					flags |= SaveFile.WorldFlags.FireworksHouse;
 			}
-			else if ((bool)node["isSecondTower"])
+			else if (node.isSecondTower)
 			{
 				if (normalExit)
 					flags |= SaveFile.WorldFlags.AllForTower2;
 			}
 			// End of the world
-			if ((bool)node["isLastLevelInWorld"])
+			if (node.isLastLevelInWorld)
 				flags |= SaveFile.WorldFlags.ExitWorldCutscene;
 
 			// Set flags
-			ushort worldFlags = saveFile.GetWorldFlags(worldId);
+			ushort worldFlags = saveFile.GetWorldFlags(world.id);
 			if (completed)
 				worldFlags |= flags;
 			else
 				worldFlags &= (ushort)~flags;
-			saveFile.SetWorldFlags(worldId, worldFlags);
+			saveFile.SetWorldFlags(world.id, worldFlags);
 			// World unlocks are last, because they'll also modify flags for the current world.
-			if ((string)node["name"] == "Cannon")
+			if (node.name == "Cannon")
 			{
 				if (normalExit)
 					//           These are the worlds that each cannon leads to.
 					
-					UnlockWorld((int)world["cannonDestination"]);
+					UnlockWorld(world.cannonDestination);
 				// TODO: Handle re-locking worlds.
 			}
-			else if ((bool)node["isLastLevelInWorld"])
+			else if (node.isLastLevelInWorld)
 			{
-				if (!(bool)node["isBowserCastle"])
+				if (!node.isBowserCastle)
 				{
 					if (normalExit)
-						UnlockWorld((int)world["normalNextWorld"]);
+						UnlockWorld(world.normalNextWorld);
 					if (secretExit)
-						UnlockWorld((int)world["secretNextWorld"]);
+						UnlockWorld(world.secretNextWorld);
 					// TODO: Handle re-locking worlds.
 				}
 				else
@@ -368,20 +368,19 @@ namespace NewSuperMarioBrosSaveEditor
 		}
 		private void UnlockPathsFrom(int id, bool unlocked, bool normalExit, bool secretExit)
 		{ 
-			JToken connections = nodes[id]["connections"];
-			foreach (JToken c in connections.Where((c) => !(bool)c["isBackwards"]))
+			foreach (OverworldNode.Connection c in nodes[id].connections.Where((c) => !c.isBackwards))
 			{
-				int pathId = (int)c["pathIdInWorld"];
-				JToken path = paths[pathId];
+				int pathId = c.pathIdInWorld;
+				OverworldPath path = paths[pathId];
 
 				bool shouldSet;
 				if (unlocked)
 				{
 					// If we're unlocking, only get paths that match the exit we're clearing
-					if (normalExit && !(bool)path["isUnlockedBySecretGoal"] ||
-						secretExit && (bool)path["isUnlockedBySecretGoal"])
+					if (normalExit && !path.isUnlockedBySecretGoal ||
+						secretExit && path.isUnlockedBySecretGoal)
 						// and aren't signs
-						shouldSet = !(bool)path["isUnlockedBySign"];
+						shouldSet = !path.isUnlockedBySign;
 					else
 						shouldSet = false;
 				}
@@ -389,26 +388,26 @@ namespace NewSuperMarioBrosSaveEditor
 					// If we're locking, always lock.
 					shouldSet = true;
 
-				if (!(bool)path["isUnlockedBySign"] || !unlocked)
+				if (!path.isUnlockedBySign || !unlocked)
 				{
 					// Un/lock this path.
 					SetPathLock(pathId, unlocked);
 					// Where does it lead?
-					int destinationId = (int)c["destinationNodeId"];
-					JToken destination = nodes[destinationId];
+					int destinationId = c.destinationNodeId;
+					OverworldNode destination = nodes[destinationId];
 					// If it leads to a main level, we're done. (has star coins should work)
 					// If it leads to a non-playable level, un/lock paths from that one.
-					if (!(bool)destination["hasStarCoins"])
+					if (!destination.hasStarCoins)
 					{
 						// We also need to make sure we're not locking a path that a different level unlocked.
 						// E.g., un-completing 1-3 while 1-2 secret goal is cleared should not lock 1-Tower.
 						bool unlockNext = true;
 						if (!unlocked)
 						{
-							JToken destConnections = destination["connections"];
+							List<OverworldNode.Connection> destConnections = destination.connections;
 							unlockNext = !destConnections
-								.Where((dc) => (bool)dc["isBackwards"])
-								.Any((dc) => (saveFile.GetPathFlags(worldId, (int)dc["pathIdInWorld"]) & SaveFile.PathFlags.Unlocked) != 0);
+								.Where((dc) => dc.isBackwards)
+								.Any((dc) => (saveFile.GetPathFlags(world.id, dc.pathIdInWorld) & SaveFile.PathFlags.Unlocked) != 0);
 						}
 
 						if (unlockNext)
@@ -416,7 +415,7 @@ namespace NewSuperMarioBrosSaveEditor
 							UnlockPathsFrom(destinationId, unlocked, normalExit, secretExit);
 							// We also want to mark this node complete if it's an empty node.
 							// (but not if it's a mushroom house)
-							if ((string)destination["name"] == "dot")
+							if (destination.name == "dot")
 								SetNodeCompletion(destinationId, unlocked, normalExit, secretExit);
 						}
 					}
@@ -451,9 +450,9 @@ namespace NewSuperMarioBrosSaveEditor
 		{
 			if (saveFile != null)
 			{
-				byte flags = saveFile.GetNodeFlags(worldId, selectedNode);
+				byte flags = saveFile.GetNodeFlags(world.id, selectedNode);
 				int starCoinShift = (int)(sender as Control).Tag;
-				saveFile.SetNodeFlags(worldId, selectedNode, (byte)(flags ^ (SaveFile.NodeFlags.StarCoin1 << starCoinShift)));
+				saveFile.SetNodeFlags(world.id, selectedNode, (byte)(flags ^ (SaveFile.NodeFlags.StarCoin1 << starCoinShift)));
 				UpdateDisplay(false);
 			}
 		}
@@ -469,7 +468,7 @@ namespace NewSuperMarioBrosSaveEditor
 				foreach (Panel p in pathControls)
 				{
 					int id = (int)p.Tag;
-					int flags = saveFile.GetPathFlags(worldId, id);
+					int flags = saveFile.GetPathFlags(world.id, id);
 					unlocked[id] = (flags & SaveFile.PathFlags.Unlocked) != 0;
 					if (p.BackgroundImage == null)
 					{
@@ -485,18 +484,17 @@ namespace NewSuperMarioBrosSaveEditor
 				// nodes
 				for (int i = 1; i < nodeControls.Count; i++)
 				{
-					if (!(bool)nodes[i]["isVisible"]) continue;
+					if (!nodes[i].isVisible) continue;
 
 					Panel p = nodeControls[i];
 					// Is it completed? The game checks that first.
-					int flags = saveFile.GetNodeFlags(worldId, i);
+					int flags = saveFile.GetNodeFlags(world.id, i);
 					if ((flags & SaveFile.NodeFlags.Completed) != 0)
 						p.BackgroundImage = Properties.Resources.Node_Complete;
 					else
 					{
 						// Is it unlocked?
-						JToken connections = nodes[i]["connections"];
-						bool levelUnlocked = connections.Any((c) => (bool)c["isBackwards"] == true && unlocked[(int)c["pathIdInWorld"]]);
+						bool levelUnlocked = nodes[i].connections.Any((c) => c.isBackwards == true && unlocked[c.pathIdInWorld]);
 						if (levelUnlocked)
 							p.BackgroundImage = Properties.Resources.Node_Unlocked;
 						else
@@ -506,11 +504,11 @@ namespace NewSuperMarioBrosSaveEditor
 			}
 
 			// node info
-			nodeNameLbl.Text = "W" + (worldId + 1).ToString() + "-" + nodes[selectedNode]["name"];
+			nodeNameLbl.Text = "W" + (world.id + 1).ToString() + "-" + nodes[selectedNode].name;
 			starCoin1Pbx.Visible = starCoin2Pbx.Visible = starCoin3Pbx.Visible =
-				(bool)nodes[selectedNode]["hasStarCoins"];
+				nodes[selectedNode].hasStarCoins;
 
-			byte nodeFlags = saveFile.GetNodeFlags(worldId, selectedNode);
+			byte nodeFlags = saveFile.GetNodeFlags(world.id, selectedNode);
 			starCoin1Pbx.BackgroundImage = (nodeFlags & SaveFile.NodeFlags.StarCoin1) != 0 ? Properties.Resources.StarCoin : Properties.Resources.NoStarCoin;
 			starCoin2Pbx.BackgroundImage = (nodeFlags & SaveFile.NodeFlags.StarCoin2) != 0 ? Properties.Resources.StarCoin : Properties.Resources.NoStarCoin;
 			starCoin3Pbx.BackgroundImage = (nodeFlags & SaveFile.NodeFlags.StarCoin3) != 0 ? Properties.Resources.StarCoin : Properties.Resources.NoStarCoin;
