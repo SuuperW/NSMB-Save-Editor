@@ -38,7 +38,8 @@ namespace NewSuperMarioBrosSaveEditor
 
 		public void LoadOverworld(JObject jObject)
 		{
-			SuspendLayout();
+			this.SuspendLayout();
+			mainPanel.SuspendLayout();
 
 			// Remove previous nodes
 			foreach (Panel p in nodeControls)
@@ -211,7 +212,8 @@ namespace NewSuperMarioBrosSaveEditor
 			if (saveFile != null)
 				UpdateDisplay();
 
-			ResumeLayout();
+			this.ResumeLayout();
+			mainPanel.ResumeLayout();
 		}
 
 		private void PathClicked(object sender, EventArgs e)
@@ -462,8 +464,9 @@ namespace NewSuperMarioBrosSaveEditor
 		}
 
 		private void UpdateDisplay(bool updatePathsAndNodes = true)
-		{ 
-			SuspendLayout();
+		{
+			this.SuspendLayout();
+			mainPanel.SuspendLayout();
 
 			if (updatePathsAndNodes)
 			{
@@ -517,7 +520,8 @@ namespace NewSuperMarioBrosSaveEditor
 			starCoin2Pbx.BackgroundImage = (nodeFlags & SaveFile.NodeFlags.StarCoin2) != 0 ? Properties.Resources.StarCoin : Properties.Resources.NoStarCoin;
 			starCoin3Pbx.BackgroundImage = (nodeFlags & SaveFile.NodeFlags.StarCoin3) != 0 ? Properties.Resources.StarCoin : Properties.Resources.NoStarCoin;
 
-			ResumeLayout();
+			this.ResumeLayout();
+			mainPanel.ResumeLayout();
 		}
 	}
 }
