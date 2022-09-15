@@ -228,6 +228,28 @@ namespace NewSuperMarioBrosSaveEditor
 		{
 			public static byte Unlocked = 0xC0;
 		}
+		public static class WorldFlags
+		{
+			public static ushort Visited = 0x0001;
+			public static ushort CutsceneEnter = 0x0002;
+			public static ushort CutsceneTower = 0x0004;
+			public static ushort CutsceneCastle = 0x0008;
+			public static ushort CutsceneTower2 = 0x0010;
+			public static ushort CutsceneUnused = 0x0020;
+			public static ushort Unlocked = 0x0040;
+			public static ushort ExitWorldCutscene = 0x0080;
+			public static ushort TowerCompleted = 0x0100;
+			public static ushort CastleCompleted = 0x0200;
+			public static ushort Tower2Completed = 0x0400;
+			public static ushort BowserCompletedUnused = 0x0800;
+			public static ushort FireworksHouse = 0x1000;
+
+			public static ushort AllForUnlocked = 0x0043;
+			public static ushort AllForTower = 0x0104;
+			public static ushort AllForCastle = 0x0208;
+			public static ushort AllForTower2 = 0x0410;
+			public static ushort AllBowserJuniorCutscenes = 0x003E;
+		}
 
 		private SaveFile() { }
 

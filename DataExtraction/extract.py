@@ -116,10 +116,14 @@ class Path:
 		self.isInvalid = bool(bytes[2] & 0x80) # ???
 
 if __name__ == '__main__':
+	# I do not know where this data is in-game.
+	cannonDestinations = [4, 4, 5, 6, 7, 0, 0, 0]
+	normalNextWorlds = [1, 2, 4, 4, 5, 7, 7, 0]
+	secretNextWorlds = [0, 3, 0, 0, 6, 0, 0, 0]
+
 	f = open('dump.bin', 'rb')
 
 	worlds: list = []
-
 	for world in range(8):
 		worldInfoAddr = worldsInfoAddr + worldInfoLength * world
 
@@ -152,8 +156,11 @@ if __name__ == '__main__':
 			'id': world,
 			'nodes': nodes,
 			'paths': paths,
+			'cannonDestination': cannonDestinations[world],
+			'normalNextWorld': normalNextWorlds[world],
+			'secretNextWorld': secretNextWorlds[world],
 		})
-
+	
 	f.close()
 
 	f = open('data.json', 'w')
