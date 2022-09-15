@@ -388,7 +388,7 @@ namespace NewSuperMarioBrosSaveEditor
 					// If we're locking, always lock.
 					shouldSet = true;
 
-				if (!path.isUnlockedBySign || !unlocked)
+				if (shouldSet && (!path.isUnlockedBySign || !unlocked))
 				{
 					// Un/lock this path.
 					SetPathLock(pathId, unlocked);
