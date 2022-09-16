@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 using Newtonsoft.Json.Linq;
 
@@ -83,5 +84,8 @@ namespace NewSuperMarioBrosSaveEditor
 
 			return node;
 		}
+
+		public bool HasSecretExit => pathsByNormalExit.SequenceEqual(pathsBySecretExit);
+		public bool UnlocksALevel => pathsByNormalExit.Count != 0 || pathsBySecretExit.Count != 0;
 	}
 }

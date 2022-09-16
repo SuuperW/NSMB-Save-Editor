@@ -17,8 +17,8 @@ namespace NewSuperMarioBrosSaveEditor
 
 		SaveFile saveFile;
 		World world;
-		List<OverworldNode> nodes;
-		List<OverworldPath> paths;
+		List<OverworldNode> nodes => world.nodes;
+		List<OverworldPath> paths => world.paths;
 		Color unlockedPathColor = Color.Black;
 		Color lockedPathColor = Color.DarkGray;
 
@@ -58,12 +58,6 @@ namespace NewSuperMarioBrosSaveEditor
 			mainPanel.AutoScrollPosition = new Point(mainPanel.AutoScrollPosition.X, -mainPanel.AutoScrollPosition.Y);
 
 			world = (World)jObject;
-			nodes = new List<OverworldNode>();
-			foreach (JToken node in jObject["nodes"])
-				nodes.Add((OverworldNode)node);
-			paths = new List<OverworldPath>();
-			foreach (JToken path in jObject["paths"])
-				paths.Add((OverworldPath)path);
 			string worldPrefix = (world.id + 1).ToString() + "-";
 			// Create nodes
 			const int nodeSeparation = 24;
@@ -269,28 +263,35 @@ namespace NewSuperMarioBrosSaveEditor
 			// Get node
 			Panel clicked = sender as Panel;
 			selectedNode = (int)clicked.Tag;
+			OverworldNode node = nodes[selectedNode];
 			byte flags = saveFile.GetNodeFlags(world.id, selectedNode);
 			// Are we clearing or unclearing?
 			bool levelWasCompleted = (flags & SaveFile.NodeFlags.Completed) != 0;
 			bool newCompleteStatus;
 			if (!levelWasCompleted)
 				newCompleteStatus = true;
-			else if (NodeClickAction == NodeAction.All)
-			{
-				newCompleteStatus = (flags & SaveFile.NodeFlags.AllStarCoins) != SaveFile.NodeFlags.AllStarCoins ||
-					nodes[selectedNode].connections
-					.Where((c) => !c.isBackwards)
-					.Where((c) => !paths[c.pathIdInWorld].isUnlockedBySign)
-					.Any((c) => !saveFile.IsPathUnlocked(world.id, c.pathIdInWorld));
-			}
 			else
 			{
-				newCompleteStatus = nodes[selectedNode].connections
-					.Where((c) => !c.isBackwards)
-					.Where((c) => !paths[c.pathIdInWorld].isUnlockedBySign)
-					.Where((c) => paths[c.pathIdInWorld].isUnlockedBySecretGoal ^ (NodeClickAction == NodeAction.Normal))
-					.Any((c) => !saveFile.IsPathUnlocked(world.id, c.pathIdInWorld));
+				if (NodeClickAction == NodeAction.All)
+				{
+					IEnumerable<int> pathsPotentiallyUnlocked = node.pathsByNormalExit.Union(node.pathsBySecretExit)
+						.Where((p) => !paths[p].isUnlockedBySign);
+					// We complete the level if it is not 100% complete. (all star coins, both exits)
+					newCompleteStatus = (flags & SaveFile.NodeFlags.AllStarCoins) != SaveFile.NodeFlags.AllStarCoins ||
+						pathsPotentiallyUnlocked.Any((p) => !saveFile.IsPathUnlocked(world.id, p));
+				}
+				else
+				{
+					// Get the paths that this node would unlock (exclude signs)
+					IEnumerable<int> pathsPotentiallyUnlocked = (NodeClickAction == NodeAction.Normal) ?
+						nodes[selectedNode].pathsByNormalExit :
+						nodes[selectedNode].HasSecretExit ? nodes[selectedNode].pathsBySecretExit : new List<int>();
+					pathsPotentiallyUnlocked = pathsPotentiallyUnlocked.Where((p) => !paths[p].isUnlockedBySign);
+					// We complete the level if any of the paths for this exit are locked.
+					newCompleteStatus = pathsPotentiallyUnlocked.Any((p) => !saveFile.IsPathUnlocked(world.id, p));
+				}
 			}
+
 			// Node
 			bool normalExit = NodeClickAction != NodeAction.Secret;
 			bool secretExit = NodeClickAction != NodeAction.Normal;
@@ -373,33 +374,32 @@ namespace NewSuperMarioBrosSaveEditor
 
 		}
 		private void UnlockPathsFrom(int id, bool unlocked, bool normalExit, bool secretExit)
-		{ 
-			foreach (OverworldNode.Connection c in nodes[id].connections.Where((c) => !c.isBackwards))
+		{
+			// We have to look at the node's connections, and not just the paths that it unlocks.
+			// This is so that we can follow those connections to update intermediate nodes.
+
+			// For regular levels, we want to use only the connections that it unlocks.
+			// But otherwise, we want to use all connections.
+			IEnumerable<OverworldNode.Connection> connections = nodes[id].connections
+				.Where((c) => !c.isBackwards);
+			if (nodes[id].UnlocksALevel)
 			{
-				int pathId = c.pathIdInWorld;
+				IEnumerable<int> pathsToUnlock = normalExit ? nodes[id].pathsByNormalExit : new List<int>();
+				if (secretExit) pathsToUnlock = pathsToUnlock.Union(nodes[id].pathsBySecretExit);
+				connections = connections.Where((c) => pathsToUnlock.Contains(c.pathIdInWorld));
+			}
+
+			foreach (OverworldNode.Connection connection in connections)
+			{
+				int pathId = connection.pathIdInWorld;
 				OverworldPath path = paths[pathId];
-
-				bool shouldSet;
-				if (unlocked)
-				{
-					// If we're unlocking, only get paths that match the exit we're clearing
-					if (normalExit && !path.isUnlockedBySecretGoal ||
-						secretExit && path.isUnlockedBySecretGoal)
-						// and aren't signs
-						shouldSet = !path.isUnlockedBySign;
-					else
-						shouldSet = false;
-				}
-				else
-					// If we're locking, always lock.
-					shouldSet = true;
-
-				if (shouldSet && (!path.isUnlockedBySign || !unlocked))
+				// Lock signs, but don't unlock them
+				if (!unlocked || !path.isUnlockedBySign)
 				{
 					// Un/lock this path.
 					SetPathLock(pathId, unlocked);
 					// Where does it lead?
-					int destinationId = c.destinationNodeId;
+					int destinationId = connection.destinationNodeId;
 					OverworldNode destination = nodes[destinationId];
 					// If it leads to a main level, we're done. (has star coins should work)
 					// If it leads to a non-playable level, un/lock paths from that one.

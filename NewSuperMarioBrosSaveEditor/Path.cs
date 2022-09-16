@@ -8,6 +8,9 @@ namespace NewSuperMarioBrosSaveEditor
 		public int idInWorld;
 		public int animationId;
 		public int cost;
+		/// <summary>
+		/// Note: This is not reliable. Some paths are unlocked by both, and path from 8-Castle is just wrong.
+		/// </summary>
 		public bool isUnlockedBySecretGoal;
 		public bool isUnlockedBySign;
 		public bool exists;
