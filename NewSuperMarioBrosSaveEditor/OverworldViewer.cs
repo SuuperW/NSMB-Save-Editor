@@ -297,7 +297,8 @@ namespace NewSuperMarioBrosSaveEditor
 			bool secretExit = NodeClickAction != NodeAction.Normal;
 			SetNodeCompletion(selectedNode, newCompleteStatus, normalExit, secretExit);
 			// Paths from the node too
-			UnlockPathsFrom(selectedNode, newCompleteStatus, normalExit, secretExit);
+			if (nodes[selectedNode].UnlocksALevel)
+				UnlockPathsFrom(selectedNode, newCompleteStatus, normalExit, secretExit);
 
 			// Display
 			UpdateDisplay();
