@@ -25,6 +25,12 @@ namespace NewSuperMarioBrosSaveEditor
 			set => BitConverter.GetBytes(value ? 1 : 0).CopyTo(data, 0x004 + 0xA);
 		}
 
+		public bool IsNewFile
+		{
+			get => data[0x004 + 0xA] == 0;
+			set => data[0x004 + 0xA] = (byte)(value ? 0 : 1);
+		}
+
 		/// <summary>
 		/// Data about file progress, which is mostly but not all re-calculated upon loading the file.
 		/// Known flags & values have their own properties. Unknown bits, big endian: D8 FF 87 FF 

@@ -46,11 +46,11 @@
 			this.radioButton1 = new System.Windows.Forms.RadioButton();
 			this.radioButton2 = new System.Windows.Forms.RadioButton();
 			this.radioButton3 = new System.Windows.Forms.RadioButton();
-			this.unlockLCheckBox = new System.Windows.Forms.CheckBox();
-			this.unlockWCheckBox = new System.Windows.Forms.CheckBox();
 			this.fileSelectPnl = new System.Windows.Forms.Panel();
+			this.newFileChk = new System.Windows.Forms.CheckBox();
 			this.fileDataPnl = new System.Windows.Forms.Panel();
 			this.label1 = new System.Windows.Forms.Label();
+			this.overworldViewer1 = new NewSuperMarioBrosSaveEditor.OverworldViewer();
 			this.worldNum = new System.Windows.Forms.NumericUpDown();
 			this.BSBPictureBox = new System.Windows.Forms.PictureBox();
 			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -62,7 +62,6 @@
 			this.label2 = new System.Windows.Forms.Label();
 			this.nodeClickCbx = new System.Windows.Forms.ComboBox();
 			this.doubleClickNodeCbx = new System.Windows.Forms.CheckBox();
-			this.overworldViewer1 = new NewSuperMarioBrosSaveEditor.OverworldViewer();
 			((System.ComponentModel.ISupportInitialize)(this.BSBNumUpDown)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.scoreNumUpDown)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.SCNumUpDown)).BeginInit();
@@ -289,30 +288,9 @@
 			this.radioButton3.UseVisualStyleBackColor = true;
 			this.radioButton3.CheckedChanged += new System.EventHandler(this.radioButton_CheckedChanged);
 			// 
-			// unlockLCheckBox
-			// 
-			this.unlockLCheckBox.AutoSize = true;
-			this.unlockLCheckBox.Location = new System.Drawing.Point(269, 89);
-			this.unlockLCheckBox.Margin = new System.Windows.Forms.Padding(2);
-			this.unlockLCheckBox.Name = "unlockLCheckBox";
-			this.unlockLCheckBox.Size = new System.Drawing.Size(107, 17);
-			this.unlockLCheckBox.TabIndex = 51;
-			this.unlockLCheckBox.Text = "Unlock all Levels";
-			this.unlockLCheckBox.UseVisualStyleBackColor = true;
-			// 
-			// unlockWCheckBox
-			// 
-			this.unlockWCheckBox.AutoSize = true;
-			this.unlockWCheckBox.Location = new System.Drawing.Point(156, 89);
-			this.unlockWCheckBox.Margin = new System.Windows.Forms.Padding(2);
-			this.unlockWCheckBox.Name = "unlockWCheckBox";
-			this.unlockWCheckBox.Size = new System.Drawing.Size(109, 17);
-			this.unlockWCheckBox.TabIndex = 52;
-			this.unlockWCheckBox.Text = "Unlock all Worlds";
-			this.unlockWCheckBox.UseVisualStyleBackColor = true;
-			// 
 			// fileSelectPnl
 			// 
+			this.fileSelectPnl.Controls.Add(this.newFileChk);
 			this.fileSelectPnl.Controls.Add(this.radioButton1);
 			this.fileSelectPnl.Controls.Add(this.radioButton2);
 			this.fileSelectPnl.Controls.Add(this.radioButton3);
@@ -323,6 +301,17 @@
 			this.fileSelectPnl.Size = new System.Drawing.Size(482, 37);
 			this.fileSelectPnl.TabIndex = 53;
 			// 
+			// newFileChk
+			// 
+			this.newFileChk.AutoSize = true;
+			this.newFileChk.Location = new System.Drawing.Point(217, 13);
+			this.newFileChk.Name = "newFileChk";
+			this.newFileChk.Size = new System.Drawing.Size(64, 17);
+			this.newFileChk.TabIndex = 55;
+			this.newFileChk.Text = "New file";
+			this.newFileChk.UseVisualStyleBackColor = true;
+			this.newFileChk.CheckedChanged += new System.EventHandler(this.newFileChk_CheckedChanged);
+			// 
 			// fileDataPnl
 			// 
 			this.fileDataPnl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -330,9 +319,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.fileDataPnl.Controls.Add(this.label1);
 			this.fileDataPnl.Controls.Add(this.overworldViewer1);
-			this.fileDataPnl.Controls.Add(this.unlockWCheckBox);
 			this.fileDataPnl.Controls.Add(this.labelLives);
-			this.fileDataPnl.Controls.Add(this.unlockLCheckBox);
 			this.fileDataPnl.Controls.Add(this.livesNumUpDown);
 			this.fileDataPnl.Controls.Add(this.coinsNumUpDown);
 			this.fileDataPnl.Controls.Add(this.SCNumUpDown);
@@ -351,7 +338,7 @@
 			this.fileDataPnl.Enabled = false;
 			this.fileDataPnl.Location = new System.Drawing.Point(0, 60);
 			this.fileDataPnl.Name = "fileDataPnl";
-			this.fileDataPnl.Size = new System.Drawing.Size(482, 313);
+			this.fileDataPnl.Size = new System.Drawing.Size(482, 312);
 			this.fileDataPnl.TabIndex = 54;
 			// 
 			// label1
@@ -362,6 +349,17 @@
 			this.label1.Size = new System.Drawing.Size(38, 13);
 			this.label1.TabIndex = 54;
 			this.label1.Text = "World:";
+			// 
+			// overworldViewer1
+			// 
+			this.overworldViewer1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.overworldViewer1.BackColor = System.Drawing.SystemColors.ControlDark;
+			this.overworldViewer1.Location = new System.Drawing.Point(0, 147);
+			this.overworldViewer1.Name = "overworldViewer1";
+			this.overworldViewer1.Size = new System.Drawing.Size(482, 165);
+			this.overworldViewer1.TabIndex = 53;
 			// 
 			// worldNum
 			// 
@@ -456,8 +454,9 @@
 			// 
 			// label2
 			// 
+			this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
 			this.label2.AutoSize = true;
-			this.label2.Location = new System.Drawing.Point(12, 380);
+			this.label2.Location = new System.Drawing.Point(12, 379);
 			this.label2.Name = "label2";
 			this.label2.Size = new System.Drawing.Size(70, 13);
 			this.label2.TabIndex = 56;
@@ -465,13 +464,14 @@
 			// 
 			// nodeClickCbx
 			// 
+			this.nodeClickCbx.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
 			this.nodeClickCbx.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.nodeClickCbx.FormattingEnabled = true;
 			this.nodeClickCbx.Items.AddRange(new object[] {
             "Clear normal goal",
             "Clear secret goal",
             "100% clear"});
-			this.nodeClickCbx.Location = new System.Drawing.Point(87, 377);
+			this.nodeClickCbx.Location = new System.Drawing.Point(87, 376);
 			this.nodeClickCbx.Name = "nodeClickCbx";
 			this.nodeClickCbx.Size = new System.Drawing.Size(108, 21);
 			this.nodeClickCbx.TabIndex = 57;
@@ -479,25 +479,15 @@
 			// 
 			// doubleClickNodeCbx
 			// 
+			this.doubleClickNodeCbx.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
 			this.doubleClickNodeCbx.AutoSize = true;
-			this.doubleClickNodeCbx.Location = new System.Drawing.Point(201, 379);
+			this.doubleClickNodeCbx.Location = new System.Drawing.Point(201, 378);
 			this.doubleClickNodeCbx.Name = "doubleClickNodeCbx";
 			this.doubleClickNodeCbx.Size = new System.Drawing.Size(118, 17);
 			this.doubleClickNodeCbx.TabIndex = 58;
 			this.doubleClickNodeCbx.Text = "require double-click";
 			this.doubleClickNodeCbx.UseVisualStyleBackColor = true;
 			this.doubleClickNodeCbx.CheckedChanged += new System.EventHandler(this.doubleClickNodeCbx_CheckedChanged);
-			// 
-			// overworldViewer1
-			// 
-			this.overworldViewer1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.overworldViewer1.BackColor = System.Drawing.SystemColors.ControlDark;
-			this.overworldViewer1.Location = new System.Drawing.Point(0, 147);
-			this.overworldViewer1.Name = "overworldViewer1";
-			this.overworldViewer1.Size = new System.Drawing.Size(482, 166);
-			this.overworldViewer1.TabIndex = 53;
 			// 
 			// Form1
 			// 
@@ -555,8 +545,6 @@
         private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.RadioButton radioButton3;
-        private System.Windows.Forms.CheckBox unlockLCheckBox;
-        private System.Windows.Forms.CheckBox unlockWCheckBox;
 		private System.Windows.Forms.Panel fileSelectPnl;
 		private System.Windows.Forms.Panel fileDataPnl;
 		private System.Windows.Forms.Label label1;
@@ -571,6 +559,7 @@
 		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.ComboBox nodeClickCbx;
 		private System.Windows.Forms.CheckBox doubleClickNodeCbx;
+		private System.Windows.Forms.CheckBox newFileChk;
 	}
 }
 

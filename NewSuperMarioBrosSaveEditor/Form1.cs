@@ -124,8 +124,6 @@ namespace NewSuperMarioBrosSaveEditor
 
 		private void radioButton_CheckedChanged(object sender, EventArgs e)
 		{
-			fileDataPnl.Enabled = true;
-
 			// Keep any changes to previously-selected file
 			if (fileIndex != -1 && sender != null && !(sender as RadioButton).Checked)
 				UpdateSaveFileByControls();
@@ -167,6 +165,9 @@ namespace NewSuperMarioBrosSaveEditor
 			inventoryCbx.SelectedIndex = files[fileIndex].Inventory;
 
 			overworldViewer1.ApplySave(files[fileIndex]);
+
+			newFileChk.Checked = file.IsNewFile;
+			fileDataPnl.Enabled = !newFileChk.Checked;
 		}
 
 		private void worldNum_ValueChanged(object sender, EventArgs e)
@@ -200,5 +201,11 @@ namespace NewSuperMarioBrosSaveEditor
 		private void doubleClickNodeCbx_CheckedChanged(object sender, EventArgs e) =>
 			overworldViewer1.NodeActionOnDoubleClickOnly = doubleClickNodeCbx.Checked;
 
+		private void newFileChk_CheckedChanged(object sender, EventArgs e)
+		{
+			files[fileIndex].IsNewFile = newFileChk.Checked;
+			fileDataPnl.Enabled = !newFileChk.Checked;
+			fileModified(sender, e);
+		}
 	}
 }
