@@ -135,7 +135,11 @@ namespace NewSuperMarioBrosSaveEditor
 
 			// Display this file's data
 			if (sender == null || (sender as RadioButton).Checked)
+			{
+				openingFile = true;
 				UpdateControlsBySaveFile();
+				openingFile = false;
+			}
 		}
 		private void UpdateSaveFileByControls()
 		{
