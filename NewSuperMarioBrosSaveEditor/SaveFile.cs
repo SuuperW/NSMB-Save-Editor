@@ -139,7 +139,7 @@ namespace NewSuperMarioBrosSaveEditor
 		public byte OverworldBackground
 		{
 			get => data[0x038 + 0xA];
-			set => data[0x030 + 0xA] = value;
+			set => data[0x038 + 0xA] = value;
 		}
 		// TODO: missing stuff
 		public int Inventory
