@@ -69,11 +69,14 @@ namespace NewSuperMarioBrosSaveEditor
 			file.OverworldBackground = (byte)BSBNumUpDown.Value;
 
 			// Copy data into the file
-			byte[] fileByteRead = File.ReadAllBytes(savFileName);
-			Array.Copy(file.GetData(), 0, fileByteRead, 0x100 + fileIndex * 0x280, SaveFile.SIZE);
-
-			using (FileStream fsWrite = new FileStream(savFileName, FileMode.Open, FileAccess.Write))
-				fsWrite.Write(fileByteRead, 0, fileByteRead.Length);
+			using (FileStream fs = new FileStream(savFileName, FileMode.Open, FileAccess.ReadWrite, FileShare.ReadWrite))
+			{
+				byte[] fileBytes = new byte[fs.Length];
+				fs.Read(fileBytes, 0, fileBytes.Length);
+				Array.Copy(file.GetData(), 0, fileBytes, 0x100 + fileIndex * 0x280, SaveFile.SIZE);
+				fs.Seek(0, SeekOrigin.Begin);
+				fs.Write(fileBytes, 0, fileBytes.Length);
+			}
 
 			// Remove asterisk from title
 			this.Text = WindowTitle + " - " + Path.GetFileName(savFileName);
@@ -113,7 +116,8 @@ namespace NewSuperMarioBrosSaveEditor
 					savFileName = dlg.FileName;
 					this.Text = WindowTitle + " - " + Path.GetFileName(savFileName);
 
-					using (FileStream fs = new FileStream(savFileName, FileMode.Open, FileAccess.Read))
+					// DeSmuME doesn't like to share. (Specifying FileShare.ReadWrite allows us to open the file.)
+					using (FileStream fs = new FileStream(savFileName, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
 					{
 						files = new SaveFile[3];
 						for (int i = 0; i < files.Length; i++)
