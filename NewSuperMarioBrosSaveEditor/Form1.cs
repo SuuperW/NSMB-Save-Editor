@@ -30,7 +30,7 @@ namespace NewSuperMarioBrosSaveEditor
 		}
 
 		private SaveFile[] files = null;
-		private int fileIndex = 0;
+		private int fileIndex = -1;
 
 		private string savFileName = null;
 
@@ -45,35 +45,15 @@ namespace NewSuperMarioBrosSaveEditor
 
 		private void saveBtn_Clicked(object sender, EventArgs e)
 		{
-			SaveFile file = files[fileIndex];
-
-			// Quick 'unlock all' levels/worlds
-			if (unlockLCheckBox.Checked)
-			{
-				for (int i = 0; i < 0xE4; i++)
-					file.SetPathFlags(i, 0xC0);
-			}
-			if (unlockWCheckBox.Checked)
-			{
-				for (int i = 0; i < 8; i++)
-					file.SetWorldFlags(i, 0x43);
-			}
-
-			// Set other file data
-			file.Lives = (int)(livesNumUpDown.Value);
-			file.Coins = (int)(coinsNumUpDown.Value);
-			file.StarCoins = (int)(SCNumUpDown.Value);
-			file.Score = (int)(scoreNumUpDown.Value);
-			file.CurrentPowerup = powerupCbx.SelectedIndex > 2 ? powerupCbx.SelectedIndex + 1 : powerupCbx.SelectedIndex;
-			file.Inventory = inventoryCbx.SelectedIndex;
-			file.OverworldBackground = (byte)BSBNumUpDown.Value;
+			UpdateSaveFileByControls();			
 
 			// Copy data into the file
 			using (FileStream fs = new FileStream(savFileName, FileMode.Open, FileAccess.ReadWrite, FileShare.ReadWrite))
 			{
 				byte[] fileBytes = new byte[fs.Length];
 				fs.Read(fileBytes, 0, fileBytes.Length);
-				Array.Copy(file.GetData(), 0, fileBytes, 0x100 + fileIndex * 0x280, SaveFile.SIZE);
+				for (int i = 0; i < files.Length; i++)
+					Array.Copy(files[i].GetData(), 0, fileBytes, 0x100 + i * 0x280, SaveFile.SIZE);
 				fs.Seek(0, SeekOrigin.Begin);
 				fs.Write(fileBytes, 0, fileBytes.Length);
 			}
@@ -146,9 +126,33 @@ namespace NewSuperMarioBrosSaveEditor
 		{
 			fileDataPnl.Enabled = true;
 
+			// Keep any changes to previously-selected file
+			if (fileIndex != -1 && sender != null && !(sender as RadioButton).Checked)
+				UpdateSaveFileByControls();
+
+			// Update selected file
 			if      (radioButton1.Checked) { fileIndex = 0; }
 			else if (radioButton2.Checked) { fileIndex = 1; }
 			else if (radioButton3.Checked) { fileIndex = 2; }
+
+			// Display this file's data
+			if (sender == null || (sender as RadioButton).Checked)
+				UpdateControlsBySaveFile();
+		}
+		private void UpdateSaveFileByControls()
+		{
+			SaveFile file = files[fileIndex];
+
+			file.Lives = (int)livesNumUpDown.Value;
+			file.Coins = (int)coinsNumUpDown.Value;
+			file.StarCoins = (int)SCNumUpDown.Value;
+			file.Score = (int)scoreNumUpDown.Value;
+			file.CurrentPowerup = powerupCbx.SelectedIndex > 2 ? powerupCbx.SelectedIndex + 1 : powerupCbx.SelectedIndex;
+			file.Inventory = inventoryCbx.SelectedIndex;
+			file.OverworldBackground = (byte)BSBNumUpDown.Value;
+		}
+		private void UpdateControlsBySaveFile()
+		{
 			SaveFile file = files[fileIndex];
 
 			BSBNumUpDown.Value = file.OverworldBackground;
