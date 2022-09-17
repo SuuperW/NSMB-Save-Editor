@@ -117,6 +117,7 @@ namespace NewSuperMarioBrosSaveEditor
 				{
 					fileSelectPnl.Enabled = false;
 					fileDataPnl.Enabled = false;
+					this.Text = WindowTitle;
 					MessageBox.Show("File does not exist.");
 				}
 			}
