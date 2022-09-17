@@ -498,6 +498,7 @@ namespace NewSuperMarioBrosSaveEditor
 		public void ApplySave(SaveFile saveFile)
 		{
 			this.saveFile = saveFile;
+			UpdateDisplay();
 		}
 
 		private void starCoinPbx_Click(object sender, EventArgs e)
