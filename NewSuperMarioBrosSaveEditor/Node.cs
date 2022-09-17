@@ -5,7 +5,7 @@ using Newtonsoft.Json.Linq;
 
 namespace NewSuperMarioBrosSaveEditor
 {
-	class OverworldNode
+	public class OverworldNode
 	{
 		public int worldId;
 		public int idInWorld;

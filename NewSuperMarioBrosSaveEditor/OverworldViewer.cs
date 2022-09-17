@@ -16,9 +16,13 @@ namespace NewSuperMarioBrosSaveEditor
 		List<Panel> pathControls = new List<Panel>();
 
 		SaveFile saveFile;
-		World world;
+
+		public World[] allWorlds;
+		int currentWorld;
+		World world => allWorlds[currentWorld];
 		List<OverworldNode> nodes => world.nodes;
 		List<OverworldPath> paths => world.paths;
+
 		Color unlockedPathColor = Color.Black;
 		Color lockedPathColor = Color.DarkGray;
 
@@ -36,7 +40,7 @@ namespace NewSuperMarioBrosSaveEditor
 			ttip = new ToolTip();
 		}
 
-		public void LoadOverworld(JObject jObject)
+		public void LoadOverworld(int worldId)
 		{
 			this.SuspendLayout();
 			mainPanel.SuspendLayout();
@@ -57,7 +61,7 @@ namespace NewSuperMarioBrosSaveEditor
 			// Scroll to 0, 0 so that locations that are set later on are correct.
 			mainPanel.AutoScrollPosition = new Point(mainPanel.AutoScrollPosition.X, -mainPanel.AutoScrollPosition.Y);
 
-			world = (World)jObject;
+			currentWorld = worldId;
 			string worldPrefix = (world.id + 1).ToString() + "-";
 			// Create nodes
 			const int nodeSeparation = 24;
@@ -353,9 +357,7 @@ namespace NewSuperMarioBrosSaveEditor
 			if (node.name == "Cannon")
 			{
 				if (normalExit)
-					//           These are the worlds that each cannon leads to.
-					
-					UnlockWorld(world.cannonDestination);
+					UnlockWorld(world.cannonDestination, completed);
 				// TODO: Handle re-locking worlds.
 			}
 			else if (node.isLastLevelInWorld)
@@ -363,9 +365,9 @@ namespace NewSuperMarioBrosSaveEditor
 				if (!node.isBowserCastle)
 				{
 					if (normalExit)
-						UnlockWorld(world.normalNextWorld);
+						UnlockWorld(world.normalNextWorld, completed);
 					if (secretExit)
-						UnlockWorld(world.secretNextWorld);
+						UnlockWorld(world.secretNextWorld, completed);
 					// TODO: Handle re-locking worlds.
 				}
 				else
@@ -429,22 +431,67 @@ namespace NewSuperMarioBrosSaveEditor
 				}
 			}
 		}
-		private void UnlockWorld(int id)
+		private void UnlockWorld(int id, bool unlocked)
 		{
-			ushort worldFlags = saveFile.GetWorldFlags(id);
-			worldFlags |= SaveFile.WorldFlags.AllForUnlocked;
-			saveFile.SetWorldFlags(id, worldFlags);
-
-			// Unlocking a world also sets cutscene flags for previous worlds.
-			int lastWorldToSetCutsceneses = id - 1;
-			// Optional worlds do not set cutscene flags for the other optional world.
-			if (id == 3 || id == 6)
-				lastWorldToSetCutsceneses--;
-			for (int i = 0; i <= lastWorldToSetCutsceneses; i++)
+			if (unlocked)
 			{
-				worldFlags = saveFile.GetWorldFlags(i);
-				worldFlags |= SaveFile.WorldFlags.AllBowserJuniorCutscenes;
-				saveFile.SetWorldFlags(i, worldFlags);
+				ushort worldFlags = saveFile.GetWorldFlags(id);
+				worldFlags |= SaveFile.WorldFlags.AllForUnlocked;
+				saveFile.SetWorldFlags(id, worldFlags);
+
+				// Unlocking a world also sets cutscene flags for previous worlds.
+				int lastWorldToSetCutsceneses = id - 1;
+				// Optional worlds do not set cutscene flags for the other optional world.
+				if (id == 3 || id == 6)
+					lastWorldToSetCutsceneses--;
+				for (int i = 0; i <= lastWorldToSetCutsceneses; i++)
+				{
+					worldFlags = saveFile.GetWorldFlags(i);
+					worldFlags |= SaveFile.WorldFlags.AllBowserJuniorCutscenes;
+					saveFile.SetWorldFlags(i, worldFlags);
+				}
+			}
+			else
+			{
+				// We might not want to actually lock it, if a cannon that leads here is still clear.
+				// So what we actually will do is inspect the save file to determine if it should be locked.
+				bool remainUnlocked = false;
+				for (int i = 0; i < allWorlds.Length; i++)
+				{
+					if (allWorlds[i].cannonDestination == id)
+					{
+						int cannonId = allWorlds[i].nodes.FindIndex((n) => n.name == "Cannon");
+						if (saveFile.IsNodeCompleted(id, cannonId))
+						{
+							remainUnlocked = true;
+							break;
+						}
+					}
+					// The game doesn't distinguish between these.
+					// TODO: Handle this correctly when the user un-completes only normal or only secret castle.
+					if (allWorlds[i].normalNextWorld == id || allWorlds[i].secretNextWorld == id)
+					{
+						ushort flags = saveFile.GetWorldFlags(i);
+						if ((flags & SaveFile.WorldFlags.CastleCompleted) != 0)
+						{
+							remainUnlocked = true;
+							break;
+						}
+					}
+				}
+				if (!remainUnlocked)
+				{
+					// This may not be a good idea
+					//saveFile.ResetAllNodesAndPathsInWorld(id);
+					// Now, has this world been skipped by a cannon?
+					ushort nextWorldFlags = id + 1 < allWorlds.Length ? saveFile.GetWorldFlags(id + 1) : (ushort)0;
+					bool wasSkipped = (nextWorldFlags & SaveFile.WorldFlags.CutsceneEnter) != 0;
+					// If it was, we keep the cutscene flags that were set by skipping it.
+					if (wasSkipped)
+						saveFile.SetWorldFlags(id, SaveFile.WorldFlags.AllBowserJuniorCutscenes);
+					else
+						saveFile.SetWorldFlags(id, 0);
+				}
 			}
 		}
 

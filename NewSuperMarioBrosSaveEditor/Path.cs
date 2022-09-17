@@ -2,7 +2,7 @@
 
 namespace NewSuperMarioBrosSaveEditor
 {
-	class OverworldPath
+	public class OverworldPath
 	{
 		public int worldId;
 		public int idInWorld;

@@ -303,6 +303,16 @@ namespace NewSuperMarioBrosSaveEditor
 		}
 
 		public bool IsPathUnlocked(int world, int index) => (GetPathFlags(world, index) & PathFlags.Unlocked) != 0;
+
+		public bool IsNodeCompleted(int world, int index) => (GetNodeFlags(world, index) & NodeFlags.Completed) != 0;
+
+		public void ResetAllNodesAndPathsInWorld(int worldId)
+		{
+			// nodes
+			Array.Clear(data, 0x070 + 0xA + 0x18 * worldId, 0x18);
+			// paths
+			Array.Clear(data, 0x138 + 0xA + 0x1E * worldId, 0x1E);
+		}
 	}
 
 }

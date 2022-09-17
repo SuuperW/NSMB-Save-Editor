@@ -18,7 +18,14 @@ namespace NewSuperMarioBrosSaveEditor
 		public Form1()
 		{
 			InitializeComponent();
+
 			overworldViewer1.LocksChanged += () => fileModified(overworldViewer1, null);
+			JToken jArray = JToken.Parse(File.ReadAllText("data.json"));
+			World[] worlds = new World[8];
+			for (int i = 0; i < 8; i++)
+				worlds[i] = (World)jArray[i];
+			overworldViewer1.allWorlds = worlds;
+
 			nodeClickCbx.SelectedIndex = 2;
 		}
 
@@ -118,7 +125,7 @@ namespace NewSuperMarioBrosSaveEditor
 					}
 
 					radioButton_CheckedChanged(null, null);
-					worldNum_ValueChanged(null, null);
+					worldNum_ValueChanged(null, null); // will update the viewer's display
 
 					openingFile = false;
 				}
@@ -156,8 +163,7 @@ namespace NewSuperMarioBrosSaveEditor
 
 		private void worldNum_ValueChanged(object sender, EventArgs e)
 		{
-			JToken jArray = JToken.Parse(File.ReadAllText("data.json"));
-			overworldViewer1.LoadOverworld((JObject)jArray[(int)worldNum.Value - 1]);
+			overworldViewer1.LoadOverworld((int)worldNum.Value - 1);
 		}
 
 		private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
