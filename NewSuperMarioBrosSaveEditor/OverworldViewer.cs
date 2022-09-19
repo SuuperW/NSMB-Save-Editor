@@ -269,11 +269,14 @@ namespace NewSuperMarioBrosSaveEditor
 			selectedNode = (int)clicked.Tag;
 			OverworldNode node = nodes[selectedNode];
 			byte flags = saveFile.GetNodeFlags(world.id, selectedNode);
-			// Are we clearing or unclearing?
-			bool levelWasCompleted = (flags & SaveFile.NodeFlags.Completed) != 0;
-			bool newCompleteStatus;
-			if (!levelWasCompleted)
-				newCompleteStatus = true;
+			// Are we completing or uncompleting?
+			CompletionAction action = new CompletionAction()
+			{
+				NormalExit = NodeClickAction != NodeAction.Secret,
+				SecretExit = NodeClickAction != NodeAction.Normal,
+			};
+			if ((flags & SaveFile.NodeFlags.Completed) == 0)
+				action.Complete = true;
 			else
 			{
 				if (NodeClickAction == NodeAction.All)
@@ -281,7 +284,7 @@ namespace NewSuperMarioBrosSaveEditor
 					IEnumerable<int> pathsPotentiallyUnlocked = node.pathsByNormalExit.Union(node.pathsBySecretExit)
 						.Where((p) => !paths[p].isUnlockedBySign);
 					// We complete the level if it is not 100% complete. (all star coins, both exits)
-					newCompleteStatus = (flags & SaveFile.NodeFlags.AllStarCoins) != SaveFile.NodeFlags.AllStarCoins ||
+					action.Complete = (flags & SaveFile.NodeFlags.AllStarCoins) != SaveFile.NodeFlags.AllStarCoins ||
 						pathsPotentiallyUnlocked.Any((p) => !saveFile.IsPathUnlocked(world.id, p));
 				}
 				else
@@ -292,91 +295,17 @@ namespace NewSuperMarioBrosSaveEditor
 						nodes[selectedNode].HasSecretExit ? nodes[selectedNode].pathsBySecretExit : new List<int>();
 					pathsPotentiallyUnlocked = pathsPotentiallyUnlocked.Where((p) => !paths[p].isUnlockedBySign);
 					// We complete the level if any of the paths for this exit are locked.
-					newCompleteStatus = pathsPotentiallyUnlocked.Any((p) => !saveFile.IsPathUnlocked(world.id, p));
+					action.Complete = pathsPotentiallyUnlocked.Any((p) => !saveFile.IsPathUnlocked(world.id, p));
 				}
 			}
-
-			// Node
-			bool normalExit = NodeClickAction != NodeAction.Secret;
-			bool secretExit = NodeClickAction != NodeAction.Normal;
-			SetNodeCompletion(selectedNode, newCompleteStatus, normalExit, secretExit);
-			// Paths from the node too
+			
 			if (nodes[selectedNode].UnlocksALevel)
-				UnlockPathsFrom(selectedNode, newCompleteStatus, normalExit, secretExit);
+				PerformNodeAction(selectedNode, action);
 
 			// Display
 			UpdateDisplay();
 		}
-		private void SetNodeCompletion(int id, bool completed, bool normalExit, bool secretExit)
-		{
-			// This node/level
-			byte nodeFlags = saveFile.GetNodeFlags(world.id, id);
-			if (completed)
-			{
-				nodeFlags |= SaveFile.NodeFlags.Completed;
-				if (NodeClickAction == NodeAction.All)
-					nodeFlags |= SaveFile.NodeFlags.AllStarCoins;
-			}
-			else
-				nodeFlags = 0;
-			saveFile.SetNodeFlags(world.id, id, nodeFlags);
-
-			// For special levels, set world flags
-			OverworldNode node = nodes[id];
-			// If secretExit it set, check if the node has a secret goal
-			secretExit = secretExit && (!node.pathsByNormalExit.SequenceEqual(node.pathsBySecretExit));
-
-			ushort flags = 0;
-			if (node.isFirstTower)
-			{
-				if (normalExit)
-					flags |= SaveFile.WorldFlags.AllForTower;
-			}
-			else if (node.isCastle)
-			{
-				if (normalExit)
-					flags |= SaveFile.WorldFlags.AllForCastle;
-			}
-			else if (node.isSecondTower)
-			{
-				if (normalExit)
-					flags |= SaveFile.WorldFlags.AllForTower2;
-			}
-			// End of the world
-			if (node.isLastLevelInWorld)
-				flags |= SaveFile.WorldFlags.ExitWorldCutscene;
-
-			// Set flags
-			ushort worldFlags = saveFile.GetWorldFlags(world.id);
-			if (completed)
-				worldFlags |= flags;
-			else
-				worldFlags &= (ushort)~flags;
-			saveFile.SetWorldFlags(world.id, worldFlags);
-			// World unlocks are last, because they'll also modify flags for the current world.
-			if (node.name == "Cannon")
-			{
-				if (normalExit)
-					UnlockWorld(world.cannonDestination, completed);
-				// TODO: Handle re-locking worlds.
-			}
-			else if (node.isLastLevelInWorld)
-			{
-				if (!node.isBowserCastle)
-				{
-					if (normalExit)
-						UnlockWorld(world.normalNextWorld, completed);
-					if (secretExit)
-						UnlockWorld(world.secretNextWorld, completed);
-					// TODO: Handle re-locking worlds.
-				}
-				else
-					saveFile.PlayerHasSeenCredits = completed;
-			}
-
-
-		}
-		private void UnlockPathsFrom(int id, bool unlocked, bool normalExit, bool secretExit)
+		private void PerformNodeAction(int id, CompletionAction action, bool pathsOnly = false)
 		{
 			// We have to look at the node's connections, and not just the paths that it unlocks.
 			// This is so that we can follow those connections to update intermediate nodes.
@@ -387,8 +316,8 @@ namespace NewSuperMarioBrosSaveEditor
 				.Where((c) => !c.isBackwards);
 			if (nodes[id].UnlocksALevel)
 			{
-				IEnumerable<int> pathsToUnlock = normalExit ? nodes[id].pathsByNormalExit : new List<int>();
-				if (secretExit) pathsToUnlock = pathsToUnlock.Union(nodes[id].pathsBySecretExit);
+				IEnumerable<int> pathsToUnlock = action.NormalExit ? nodes[id].pathsByNormalExit : new List<int>();
+				if (action.SecretExit) pathsToUnlock = pathsToUnlock.Union(nodes[id].pathsBySecretExit);
 				connections = connections.Where((c) => pathsToUnlock.Contains(c.pathIdInWorld));
 			}
 
@@ -397,10 +326,10 @@ namespace NewSuperMarioBrosSaveEditor
 				int pathId = connection.pathIdInWorld;
 				OverworldPath path = paths[pathId];
 				// Lock signs, but don't unlock them
-				if (!unlocked || !path.isUnlockedBySign)
+				if (!action.Complete || !path.isUnlockedBySign)
 				{
 					// Un/lock this path.
-					SetPathLock(pathId, unlocked);
+					SetPathLock(pathId, action.Complete);
 					// Where does it lead?
 					int destinationId = connection.destinationNodeId;
 					OverworldNode destination = nodes[destinationId];
@@ -411,7 +340,7 @@ namespace NewSuperMarioBrosSaveEditor
 						// We also need to make sure we're not locking a path that a different level unlocked.
 						// E.g., un-completing 1-3 while 1-2 secret goal is cleared should not lock 1-Tower.
 						bool unlockNext = true;
-						if (!unlocked)
+						if (!action.Complete)
 						{
 							List<OverworldNode.Connection> destConnections = destination.connections;
 							unlockNext = !destConnections
@@ -421,16 +350,90 @@ namespace NewSuperMarioBrosSaveEditor
 
 						if (unlockNext)
 						{
-							UnlockPathsFrom(destinationId, unlocked, normalExit, secretExit);
-							// We also want to mark this node complete if it's an empty node.
-							// (but not if it's a mushroom house)
-							if (destination.name == "dot")
-								SetNodeCompletion(destinationId, unlocked, normalExit, secretExit);
+							// We will only unlock paths if we're passing through a mushroom house.
+							PerformNodeAction(destinationId, action, destination.name != "dot");
 						}
 					}
 				}
 			}
+
+			if (!pathsOnly)
+				SetNodeCompletion(id, action);
 		}
+		private void SetNodeCompletion(int id, CompletionAction action)
+		{
+			OverworldNode node = nodes[id];
+	
+			// The node's actual completion should depend on whether any paths are unlocked.
+			// This is because if our action is to uncomplete secret exit only, we want to leave the node complete if the normal exit is complete.
+			IEnumerable<int> pathsPotentiallyUnlocked = node.pathsByNormalExit.Union(node.pathsBySecretExit)
+				.Where((p) => !paths[p].isUnlockedBySign);
+			bool completeNode = pathsPotentiallyUnlocked.Any((p) => saveFile.IsPathUnlocked(world.id, p));
+
+			byte nodeFlags = saveFile.GetNodeFlags(world.id, id);
+			if (completeNode)
+			{
+				nodeFlags |= SaveFile.NodeFlags.Completed;
+				if (NodeClickAction == NodeAction.All)
+					nodeFlags |= SaveFile.NodeFlags.AllStarCoins;
+			}
+			else
+				nodeFlags = 0;
+			saveFile.SetNodeFlags(world.id, id, nodeFlags);
+
+			// For special levels, set world flags
+			// If secretExit it set, check if the node has a secret goal
+			action.SecretExit = action.SecretExit && (!node.pathsByNormalExit.SequenceEqual(node.pathsBySecretExit));
+
+			// Towers, Castle
+			ushort worldFlags = saveFile.GetWorldFlags(world.id);
+			ushort newFlags = 0;
+			if (action.NormalExit)
+			{
+				if (node.isFirstTower)
+					newFlags |= SaveFile.WorldFlags.AllForTower;
+				else if (node.isCastle)
+					newFlags |= SaveFile.WorldFlags.AllForCastle;
+				else if (node.isSecondTower)
+					newFlags |= SaveFile.WorldFlags.AllForTower2;
+			}
+			if (action.Complete)
+				worldFlags |= newFlags;
+			else
+				worldFlags &= (ushort)~newFlags;
+
+			// End of the world
+			if (node.isLastLevelInWorld)
+			{
+				if (completeNode)
+					worldFlags |= SaveFile.WorldFlags.ExitWorldCutscene;
+				else
+					worldFlags &= (ushort)~SaveFile.WorldFlags.ExitWorldCutscene;
+			}
+			saveFile.SetWorldFlags(world.id, worldFlags);
+
+			// World unlocks are last, because they'll also modify flags for the current world.
+			if (node.name == "Cannon")
+			{
+				if (action.NormalExit)
+					UnlockWorld(world.cannonDestination, action.Complete);
+				// TODO: Handle re-locking worlds.
+			}
+			else if (node.isLastLevelInWorld)
+			{
+				if (!node.isBowserCastle)
+				{
+					if (action.NormalExit)
+						UnlockWorld(world.normalNextWorld, action.Complete);
+					if (action.SecretExit)
+						UnlockWorld(world.secretNextWorld, action.Complete);
+					// TODO: Handle re-locking worlds.
+				}
+				else
+					saveFile.PlayerHasSeenCredits = action.Complete;
+			}
+		}
+
 		private void UnlockWorld(int id, bool unlocked)
 		{
 			if (unlocked)
