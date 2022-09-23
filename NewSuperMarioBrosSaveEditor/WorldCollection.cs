@@ -144,14 +144,13 @@ namespace NewSuperMarioBrosSaveEditor
 
 			OverworldNode node = worlds[worldId].nodes[nodeId];
 
-			// The node's actual completion should depend on whether any paths are unlocked.
-			// This is because if our action is to uncomplete secret exit only, we want to leave the node complete if the normal exit is complete.
-			IEnumerable<int> pathsPotentiallyUnlocked = node.pathsByNormalExit.Union(node.pathsBySecretExit)
-				.Where((p) => !worlds[worldId].paths[p].isUnlockedBySign);
-			bool completeNode = pathsPotentiallyUnlocked.Any((p) => saveFile.IsPathUnlocked(worldId, p));
+			// Will the node be completed after this action?
+			bool nodeIsCompleted = action.Complete ||
+				(IsNormalExitComplete(saveFile, worldId, nodeId) && !action.NormalExit) ||
+				(IsSecretExitComplete(saveFile, worldId, nodeId) && !action.SecretExit);
 
 			byte nodeFlags = saveFile.GetNodeFlags(worldId, nodeId);
-			if (completeNode)
+			if (nodeIsCompleted)
 			{
 				nodeFlags |= SaveFile.NodeFlags.Completed;
 				if (action.StarCoins)
@@ -185,7 +184,7 @@ namespace NewSuperMarioBrosSaveEditor
 			// End of the world
 			if (node.isLastLevelInWorld)
 			{
-				if (completeNode)
+				if (nodeIsCompleted)
 					worldFlags |= SaveFile.WorldFlags.ExitWorldCutscene;
 				else
 					worldFlags &= (ushort)~SaveFile.WorldFlags.ExitWorldCutscene;
