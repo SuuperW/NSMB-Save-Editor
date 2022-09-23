@@ -1,5 +1,6 @@
 .vs
 packages
+TestResults
 **/bin
 **/obj
 **/dump.bin
