@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 using Newtonsoft.Json.Linq;
 
@@ -32,6 +33,21 @@ namespace NewSuperMarioBrosSaveEditor
 				world.paths.Add((OverworldPath)p);
 
 			return world;
+		}
+
+
+		public bool IsUnlocked(SaveFile saveFile)
+		{
+			return (saveFile.GetWorldFlags(id) & SaveFile.WorldFlags.Unlocked) != 0;
+		}
+
+		public bool NodeHasSecretExit(OverworldNode n)
+		{
+			bool secretPath = !n.pathsByNormalExit.SequenceEqual(n.pathsBySecretExit);
+			if (secretPath)
+				return true;
+			else
+				return n.isLastLevelInWorld && secretNextWorld != 0;
 		}
 	}
 }

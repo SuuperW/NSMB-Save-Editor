@@ -20,11 +20,8 @@ namespace NewSuperMarioBrosSaveEditor
 			InitializeComponent();
 
 			overworldViewer1.LocksChanged += () => fileModified(overworldViewer1, null);
-			JToken jArray = JToken.Parse(File.ReadAllText("data.json"));
-			World[] worlds = new World[8];
-			for (int i = 0; i < 8; i++)
-				worlds[i] = (World)jArray[i];
-			overworldViewer1.allWorlds = worlds;
+			JArray jArray = JArray.Parse(File.ReadAllText("data.json"));
+			overworldViewer1.allWorlds = (WorldCollection)jArray;
 
 			nodeClickCbx.SelectedIndex = 2;
 		}

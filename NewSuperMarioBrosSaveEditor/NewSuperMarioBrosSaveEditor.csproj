@@ -68,6 +68,7 @@
     <Compile Include="SaveFile.cs" />
     <Compile Include="Util.cs" />
     <Compile Include="World.cs" />
+    <Compile Include="WorldCollection.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

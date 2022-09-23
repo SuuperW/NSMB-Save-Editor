@@ -17,7 +17,7 @@ namespace NewSuperMarioBrosSaveEditor
 
 		SaveFile saveFile;
 
-		public World[] allWorlds;
+		public WorldCollection allWorlds;
 		int currentWorld;
 		World world => allWorlds[currentWorld];
 		List<OverworldNode> nodes => world.nodes;
@@ -292,7 +292,7 @@ namespace NewSuperMarioBrosSaveEditor
 					// Get the paths that this node would unlock (exclude signs)
 					IEnumerable<int> pathsPotentiallyUnlocked = (NodeClickAction == NodeAction.Normal) ?
 						nodes[selectedNode].pathsByNormalExit :
-						nodes[selectedNode].HasSecretExit ? nodes[selectedNode].pathsBySecretExit : new List<int>();
+						nodes[selectedNode].HasSecretPaths ? nodes[selectedNode].pathsBySecretExit : new List<int>();
 					pathsPotentiallyUnlocked = pathsPotentiallyUnlocked.Where((p) => !paths[p].isUnlockedBySign);
 					// We complete the level if any of the paths for this exit are locked.
 					action.Complete = pathsPotentiallyUnlocked.Any((p) => !saveFile.IsPathUnlocked(world.id, p));
@@ -459,7 +459,7 @@ namespace NewSuperMarioBrosSaveEditor
 				// We might not want to actually lock it, if a cannon that leads here is still clear.
 				// So what we actually will do is inspect the save file to determine if it should be locked.
 				bool remainUnlocked = false;
-				for (int i = 0; i < allWorlds.Length; i++)
+				for (int i = 0; i < allWorlds.Count; i++)
 				{
 					if (allWorlds[i].cannonDestination == id)
 					{
@@ -487,7 +487,7 @@ namespace NewSuperMarioBrosSaveEditor
 					// This may not be a good idea
 					//saveFile.ResetAllNodesAndPathsInWorld(id);
 					// Now, has this world been skipped by a cannon?
-					ushort nextWorldFlags = id + 1 < allWorlds.Length ? saveFile.GetWorldFlags(id + 1) : (ushort)0;
+					ushort nextWorldFlags = id + 1 < allWorlds.Count ? saveFile.GetWorldFlags(id + 1) : (ushort)0;
 					bool wasSkipped = (nextWorldFlags & SaveFile.WorldFlags.CutsceneEnter) != 0;
 					// If it was, we keep the cutscene flags that were set by skipping it.
 					if (wasSkipped)

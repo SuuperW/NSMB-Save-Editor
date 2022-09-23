@@ -85,7 +85,11 @@ namespace NewSuperMarioBrosSaveEditor
 			return node;
 		}
 
-		public bool HasSecretExit => pathsByNormalExit.SequenceEqual(pathsBySecretExit);
 		public bool UnlocksALevel => pathsByNormalExit.Count != 0 || pathsBySecretExit.Count != 0;
+		/// <summary>
+		/// pathsBySecretExit is normally the same as pathsByNormalExit when there is no secret exit.
+		/// However, this is not always the case. For example, 5-Tower's pathsBySecretExit is empty.
+		/// </summary>
+		public bool HasSecretPaths => pathsBySecretExit.Count != 0 && !pathsByNormalExit.SequenceEqual(pathsBySecretExit);
 	}
 }
