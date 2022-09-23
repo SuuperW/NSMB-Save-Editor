@@ -253,5 +253,30 @@ namespace SaveEditorTests
 			// World 6 should remain unlocked
 			assert((saveFile.GetWorldFlags(5) & SaveFile.WorldFlags.AllForUnlocked) == SaveFile.WorldFlags.AllForUnlocked);
 		}
+
+		[TestMethod]
+		public void TestUnclearingCastleSecretWhenCannonHasAlsoUnlockedWorld()
+		{
+			// Unlock world 7 by cannon
+			worlds.PerformNodeAction(saveFile, 3, 0x10, completeNormal);
+			// Unlock world 7 by castle, then unclear castle
+			worlds.PerformNodeAction(saveFile, 4, 0x0B, completeSecret);
+			worlds.PerformNodeAction(saveFile, 4, 0x0B, uncompleteSecret);
+			// World 7 should remain unlocked
+			assert((saveFile.GetWorldFlags(6) & SaveFile.WorldFlags.AllForUnlocked) == SaveFile.WorldFlags.AllForUnlocked);
+		}
+
+		[TestMethod]
+		public void TestUnclearingCannonWhenCastleHasAlsoUnlockedWorldSecret()
+		{
+			// Unlock world 7 by castle
+			worlds.PerformNodeAction(saveFile, 4, 0x0B, completeSecret);
+			assert((saveFile.GetWorldFlags(6) & SaveFile.WorldFlags.AllForUnlocked) == SaveFile.WorldFlags.AllForUnlocked);
+			// Unlock world 7 by cannon, then unclear cannon
+			worlds.PerformNodeAction(saveFile, 3, 0x10, completeNormal);
+			worlds.PerformNodeAction(saveFile, 3, 0x10, uncompleteNormal);
+			// World 7 should remain unlocked
+			assert((saveFile.GetWorldFlags(6) & SaveFile.WorldFlags.AllForUnlocked) == SaveFile.WorldFlags.AllForUnlocked);
+		}
 	}
 }
