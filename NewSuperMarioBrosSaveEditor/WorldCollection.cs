@@ -267,9 +267,6 @@ namespace NewSuperMarioBrosSaveEditor
 					}
 				}
 			}
-
-			if (!pathsOnly)
-				PerformNodeAction(saveFile, worldId, id, action);
 		}
 
 	}
