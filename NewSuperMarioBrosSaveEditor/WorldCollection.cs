@@ -274,7 +274,7 @@ namespace NewSuperMarioBrosSaveEditor
 			if (node.name == "Cannon")
 			{
 				if (action.NormalExit)
-					UpdateWorldFlagsAfterClearingNode(saveFile, worlds[worldId].cannonDestination, action);
+					UpdateWorldFlagsAfterClearingNode(saveFile, worlds[worldId].cannonDestination);
 				// TODO: Handle re-locking worlds.
 			}
 			else if (node.isLastLevelInWorld)
