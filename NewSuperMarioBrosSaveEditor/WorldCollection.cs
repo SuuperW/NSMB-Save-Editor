@@ -183,7 +183,7 @@ namespace NewSuperMarioBrosSaveEditor
 		/// </summary>
 		private bool ShouldWorldBeUnlocked(SaveFile saveFile, int id, CompletionAction action)
 		{
-			if (id == 0)
+			if (id == 0 || (action != null && action.Complete))
 				return true;
 
 			List<int> previousWorlds = new List<int>();
@@ -241,7 +241,7 @@ namespace NewSuperMarioBrosSaveEditor
 
 			// For special levels, set world flags
 			// If secretExit it set, check if the node has a secret goal
-			action.SecretExit = action.SecretExit && (!node.pathsByNormalExit.SequenceEqual(node.pathsBySecretExit));
+			action.SecretExit = action.SecretExit && worlds[worldId].NodeHasSecretExit(node);
 
 			// Towers, Castle
 			ushort worldFlags = saveFile.GetWorldFlags(worldId);
