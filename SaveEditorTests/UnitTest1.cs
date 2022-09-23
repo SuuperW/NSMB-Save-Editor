@@ -217,5 +217,17 @@ namespace SaveEditorTests
 			// But world 1 should still have entrance cutscene set
 			assert((saveFile.GetWorldFlags(0) & SaveFile.WorldFlags.CutsceneEnter) == SaveFile.WorldFlags.CutsceneEnter);
 		}
+
+		[TestMethod]
+		public void TestUnlockingSecretWorld()
+		{
+			// When a normal world is unlocked, all previous worlds have cutscene flags set.
+			// When a secret world is unlocked, it should be the same except for the corresponding normal world.
+			worlds.PerformNodeAction(saveFile, 1, 0x0A, completeSecret);
+			// World 4 should be unlocked
+			assert((saveFile.GetWorldFlags(3) & SaveFile.WorldFlags.AllForUnlocked) == SaveFile.WorldFlags.AllForUnlocked);
+			// World 3 should have no flags
+			assert(saveFile.GetWorldFlags(2) == 0);
+		}
 	}
 }
