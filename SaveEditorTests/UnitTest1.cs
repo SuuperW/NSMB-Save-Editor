@@ -229,5 +229,29 @@ namespace SaveEditorTests
 			// World 3 should have no flags
 			assert(saveFile.GetWorldFlags(2) == 0);
 		}
+
+		[TestMethod]
+		public void TestUnclearingCastleNormalWhenCannonHasAlsoUnlockedWorld()
+		{
+			// Unlock world 6 by cannon
+			worlds.PerformNodeAction(saveFile, 2, 0x11, completeNormal);
+			// Unlock world 6 by castle, then unclear castle
+			worlds.PerformNodeAction(saveFile, 4, 0x0B, completeNormal);
+			worlds.PerformNodeAction(saveFile, 4, 0x0B, uncompleteNormal);
+			// World 6 should remain unlocked
+			assert((saveFile.GetWorldFlags(5) & SaveFile.WorldFlags.AllForUnlocked) == SaveFile.WorldFlags.AllForUnlocked);
+		}
+
+		[TestMethod]
+		public void TestUnclearingCannonWhenCastleHasAlsoUnlockedWorld()
+		{
+			// Unlock world 6 by castle
+			worlds.PerformNodeAction(saveFile, 4, 0x0B, completeNormal);
+			// Unlock world 6 by cannon, then unclear cannon
+			worlds.PerformNodeAction(saveFile, 2, 0x11, completeNormal);
+			worlds.PerformNodeAction(saveFile, 2, 0x11, uncompleteNormal);
+			// World 6 should remain unlocked
+			assert((saveFile.GetWorldFlags(5) & SaveFile.WorldFlags.AllForUnlocked) == SaveFile.WorldFlags.AllForUnlocked);
+		}
 	}
 }
