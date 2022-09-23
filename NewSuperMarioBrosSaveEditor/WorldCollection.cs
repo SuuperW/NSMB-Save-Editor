@@ -243,15 +243,13 @@ namespace NewSuperMarioBrosSaveEditor
 			// If secretExit it set, check if the node has a secret goal
 			action.SecretExit = action.SecretExit && worlds[worldId].NodeHasSecretExit(node);
 
-			// Towers, Castle
+			// Towers only set flags for normal exit
 			ushort worldFlags = saveFile.GetWorldFlags(worldId);
 			ushort newFlags = 0;
 			if (action.NormalExit)
 			{
 				if (node.isFirstTower)
 					newFlags |= SaveFile.WorldFlags.AllForTower;
-				else if (node.isCastle)
-					newFlags |= SaveFile.WorldFlags.AllForCastle;
 				else if (node.isSecondTower)
 					newFlags |= SaveFile.WorldFlags.AllForTower2;
 			}
@@ -260,14 +258,16 @@ namespace NewSuperMarioBrosSaveEditor
 			else
 				worldFlags &= (ushort)~newFlags;
 
-			// End of the world
+			// Castles set flags for either exit
+			newFlags = 0;
+			if (node.isCastle)
+				newFlags |= SaveFile.WorldFlags.AllForCastle;
 			if (node.isLastLevelInWorld)
-			{
-				if (nodeIsCompleted)
-					worldFlags |= SaveFile.WorldFlags.ExitWorldCutscene;
-				else
-					worldFlags &= (ushort)~SaveFile.WorldFlags.ExitWorldCutscene;
-			}
+				newFlags |= SaveFile.WorldFlags.ExitWorldCutscene;
+			if (nodeIsCompleted)
+				worldFlags |= newFlags;
+			else
+				worldFlags &= (ushort)~newFlags;
 			saveFile.SetWorldFlags(worldId, worldFlags);
 
 			// World unlocks are last, because they'll also modify flags for the current world.
@@ -275,7 +275,6 @@ namespace NewSuperMarioBrosSaveEditor
 			{
 				if (action.NormalExit)
 					UpdateWorldFlagsAfterClearingNode(saveFile, worlds[worldId].cannonDestination);
-				// TODO: Handle re-locking worlds.
 			}
 			else if (node.isLastLevelInWorld)
 			{
@@ -285,7 +284,6 @@ namespace NewSuperMarioBrosSaveEditor
 						UpdateWorldFlagsAfterClearingNode(saveFile, worlds[worldId].normalNextWorld, action);
 					if (action.SecretExit)
 						UpdateWorldFlagsAfterClearingNode(saveFile, worlds[worldId].secretNextWorld, action);
-					// TODO: Handle re-locking worlds.
 				}
 				else
 					saveFile.PlayerHasSeenCredits = action.Complete;
