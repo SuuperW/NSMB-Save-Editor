@@ -163,5 +163,59 @@ namespace SaveEditorTests
 			assert((saveFile.GetWorldFlags(0) & SaveFile.WorldFlags.AllBowserJuniorCutscenes) == SaveFile.WorldFlags.AllBowserJuniorCutscenes);
 			assert((saveFile.GetWorldFlags(0) & SaveFile.WorldFlags.ExitWorldCutscene) == SaveFile.WorldFlags.ExitWorldCutscene);
 		}
+
+		[TestMethod]
+		public void TestUnclearingTower()
+		{
+			worlds.PerformNodeAction(saveFile, 0, 4, completeAll);
+			// After uncompleting secret, tower flags should still be set
+			worlds.PerformNodeAction(saveFile, 0, 4, uncompleteSecret);
+			assert((saveFile.GetWorldFlags(0) & SaveFile.WorldFlags.AllForTower) == SaveFile.WorldFlags.AllForTower);
+			// After uncompleting normal, tower flags should not be set
+			worlds.PerformNodeAction(saveFile, 0, 4, uncompleteNormal);
+			assert((saveFile.GetWorldFlags(0) & SaveFile.WorldFlags.AllForTower) == 0);
+		}
+
+		[TestMethod]
+		public void TestUnclearingW1Castle()
+		{
+			// Clear 1-Tower so ensure that unclearing 1-Castle is checking that completion
+			worlds.PerformNodeAction(saveFile, 0, 4, completeNormal);
+			worlds.PerformNodeAction(saveFile, 0, 7, completeNormal);
+			worlds.PerformNodeAction(saveFile, 0, 7, uncompleteNormal);
+			assert((saveFile.GetWorldFlags(1) & SaveFile.WorldFlags.AllForUnlocked) == 0);
+			assert((saveFile.GetWorldFlags(0) & SaveFile.WorldFlags.AllForCastle) == 0);
+			assert((saveFile.GetWorldFlags(0) & SaveFile.WorldFlags.ExitWorldCutscene) == 0);
+			assert((saveFile.GetWorldFlags(0) & SaveFile.WorldFlags.AllForTower) == SaveFile.WorldFlags.AllForTower);
+		}
+
+		[TestMethod]
+		public void TestClearingCannon()
+		{
+			worlds.PerformNodeAction(saveFile, 0, 9, completeNormal);
+			// World 5 should be unlocked
+			assert((saveFile.GetWorldFlags(4) & SaveFile.WorldFlags.AllForUnlocked) == SaveFile.WorldFlags.AllForUnlocked);
+			// Worlds before that should have cutscene flags set
+			assert((saveFile.GetWorldFlags(3) & SaveFile.WorldFlags.AllBowserJuniorCutscenes) == SaveFile.WorldFlags.AllBowserJuniorCutscenes);
+			assert((saveFile.GetWorldFlags(2) & SaveFile.WorldFlags.AllBowserJuniorCutscenes) == SaveFile.WorldFlags.AllBowserJuniorCutscenes);
+			assert((saveFile.GetWorldFlags(1) & SaveFile.WorldFlags.AllBowserJuniorCutscenes) == SaveFile.WorldFlags.AllBowserJuniorCutscenes);
+			assert((saveFile.GetWorldFlags(0) & SaveFile.WorldFlags.AllBowserJuniorCutscenes) == SaveFile.WorldFlags.AllBowserJuniorCutscenes);
+		}
+
+		[TestMethod]
+		public void TestUnclearingCannon()
+		{
+			worlds.PerformNodeAction(saveFile, 0, 9, completeNormal);
+			worlds.PerformNodeAction(saveFile, 0, 9, uncompleteNormal);
+			// World 5 should be locked
+			assert((saveFile.GetWorldFlags(4) & SaveFile.WorldFlags.AllForUnlocked) == 0);
+			// Worlds before that should have cutscene flags set
+			assert((saveFile.GetWorldFlags(3) & SaveFile.WorldFlags.AllBowserJuniorCutscenes) == 0);
+			assert((saveFile.GetWorldFlags(2) & SaveFile.WorldFlags.AllBowserJuniorCutscenes) == 0);
+			assert((saveFile.GetWorldFlags(1) & SaveFile.WorldFlags.AllBowserJuniorCutscenes) == 0);
+			assert((saveFile.GetWorldFlags(0) & SaveFile.WorldFlags.BowserCompletedUnused) == 0);
+			// But world 1 should still have entrance cutscene set
+			assert((saveFile.GetWorldFlags(0) & SaveFile.WorldFlags.CutsceneEnter) == SaveFile.WorldFlags.CutsceneEnter);
+		}
 	}
 }
