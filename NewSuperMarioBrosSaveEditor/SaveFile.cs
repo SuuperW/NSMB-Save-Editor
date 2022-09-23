@@ -309,6 +309,7 @@ namespace NewSuperMarioBrosSaveEditor
 		}
 
 		public bool IsPathUnlocked(int world, int index) => (GetPathFlags(world, index) & PathFlags.Unlocked) != 0;
+		public void SetPathUnlocked(int world, int index, bool value) => SetPathFlags(world, index, value ? PathFlags.Unlocked : (byte)0);
 
 		public bool IsNodeCompleted(int world, int index) => (GetNodeFlags(world, index) & NodeFlags.Completed) != 0;
 

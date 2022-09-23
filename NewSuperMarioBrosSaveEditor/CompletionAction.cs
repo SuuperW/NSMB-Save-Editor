@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace NewSuperMarioBrosSaveEditor
+﻿namespace NewSuperMarioBrosSaveEditor
 {
-	class CompletionAction
+	public class CompletionAction
 	{
 		public bool Complete;
+		public bool StarCoins;
 		public bool NormalExit;
 		public bool SecretExit;
 	}
