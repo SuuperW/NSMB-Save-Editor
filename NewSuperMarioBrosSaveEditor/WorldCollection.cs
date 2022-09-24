@@ -84,10 +84,10 @@ namespace NewSuperMarioBrosSaveEditor
 						starCoinsSpent += path.cost;
 				}
 			}
-			if (saveFile.BlueBricksBackgroundBought) starCoinsSpent += 20;
-			if (saveFile.MarioBackgroundBought) starCoinsSpent += 20;
-			if (saveFile.StarsBackgroundBought) starCoinsSpent += 20;
-			if (saveFile.RetroBackgroundBought) starCoinsSpent += 20;
+			if (saveFile.BackgroundsBought.HasFlag(SaveFile.BackgroundPurchases.BlueBricks)) starCoinsSpent += 20;
+			if (saveFile.BackgroundsBought.HasFlag(SaveFile.BackgroundPurchases.Stars)) starCoinsSpent += 20;
+			if (saveFile.BackgroundsBought.HasFlag(SaveFile.BackgroundPurchases.Mario)) starCoinsSpent += 20;
+			if (saveFile.BackgroundsBought.HasFlag(SaveFile.BackgroundPurchases.Retro)) starCoinsSpent += 20;
 			saveFile.SpentStarCoins = starCoinsSpent;
 		}
 

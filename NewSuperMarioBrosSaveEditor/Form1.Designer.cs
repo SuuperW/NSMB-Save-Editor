@@ -49,7 +49,6 @@
 			this.newFileChk = new System.Windows.Forms.CheckBox();
 			this.fileDataPnl = new System.Windows.Forms.Panel();
 			this.label1 = new System.Windows.Forms.Label();
-			this.overworldViewer1 = new NewSuperMarioBrosSaveEditor.OverworldViewer();
 			this.worldNum = new System.Windows.Forms.NumericUpDown();
 			this.BSBPictureBox = new System.Windows.Forms.PictureBox();
 			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -62,6 +61,9 @@
 			this.nodeClickCbx = new System.Windows.Forms.ComboBox();
 			this.doubleClickNodeCbx = new System.Windows.Forms.CheckBox();
 			this.starCoinCountsLbl = new System.Windows.Forms.Label();
+			this.backgroundsChk = new System.Windows.Forms.CheckedListBox();
+			this.label3 = new System.Windows.Forms.Label();
+			this.overworldViewer1 = new NewSuperMarioBrosSaveEditor.OverworldViewer();
 			((System.ComponentModel.ISupportInitialize)(this.BSBNumUpDown)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.scoreNumUpDown)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.coinsNumUpDown)).BeginInit();
@@ -303,6 +305,8 @@
 			this.fileDataPnl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+			this.fileDataPnl.Controls.Add(this.label3);
+			this.fileDataPnl.Controls.Add(this.backgroundsChk);
 			this.fileDataPnl.Controls.Add(this.label1);
 			this.fileDataPnl.Controls.Add(this.overworldViewer1);
 			this.fileDataPnl.Controls.Add(this.labelLives);
@@ -335,17 +339,6 @@
 			this.label1.Size = new System.Drawing.Size(38, 13);
 			this.label1.TabIndex = 54;
 			this.label1.Text = "World:";
-			// 
-			// overworldViewer1
-			// 
-			this.overworldViewer1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.overworldViewer1.BackColor = System.Drawing.SystemColors.ControlDark;
-			this.overworldViewer1.Location = new System.Drawing.Point(0, 147);
-			this.overworldViewer1.Name = "overworldViewer1";
-			this.overworldViewer1.Size = new System.Drawing.Size(482, 165);
-			this.overworldViewer1.TabIndex = 53;
 			// 
 			// worldNum
 			// 
@@ -485,6 +478,40 @@
 			this.starCoinCountsLbl.TabIndex = 40;
 			this.starCoinCountsLbl.Text = "0 (0)";
 			// 
+			// backgroundsChk
+			// 
+			this.backgroundsChk.FormattingEnabled = true;
+			this.backgroundsChk.Items.AddRange(new object[] {
+            "Blue Bricks",
+            "Stars",
+            "Mario",
+            "1-1"});
+			this.backgroundsChk.Location = new System.Drawing.Point(372, 110);
+			this.backgroundsChk.Name = "backgroundsChk";
+			this.backgroundsChk.Size = new System.Drawing.Size(101, 34);
+			this.backgroundsChk.TabIndex = 55;
+			this.backgroundsChk.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.backgroundsChk_ItemCheck);
+			// 
+			// label3
+			// 
+			this.label3.AutoSize = true;
+			this.label3.Location = new System.Drawing.Point(307, 129);
+			this.label3.Name = "label3";
+			this.label3.Size = new System.Drawing.Size(61, 13);
+			this.label3.TabIndex = 56;
+			this.label3.Text = "Purchased:";
+			// 
+			// overworldViewer1
+			// 
+			this.overworldViewer1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.overworldViewer1.BackColor = System.Drawing.SystemColors.ControlDark;
+			this.overworldViewer1.Location = new System.Drawing.Point(0, 147);
+			this.overworldViewer1.Name = "overworldViewer1";
+			this.overworldViewer1.Size = new System.Drawing.Size(482, 165);
+			this.overworldViewer1.TabIndex = 53;
+			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -555,6 +582,8 @@
 		private System.Windows.Forms.CheckBox doubleClickNodeCbx;
 		private System.Windows.Forms.CheckBox newFileChk;
 		private System.Windows.Forms.Label starCoinCountsLbl;
+		private System.Windows.Forms.CheckedListBox backgroundsChk;
+		private System.Windows.Forms.Label label3;
 	}
 }
 

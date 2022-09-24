@@ -76,25 +76,20 @@ namespace NewSuperMarioBrosSaveEditor
 		{
 			get => (data[0x008 + 0xA] & 0x02) != 0;
 		}
-		public bool BlueBricksBackgroundBought
+		public BackgroundPurchases BackgroundsBought
 		{
-			get => (data[0x00A + 0xA] & 0x08) != 0;
-			set => data[0x00A + 0xA] = (byte)((data[0x00A + 0xA] & 0xF7) | (value ? 0x08 : 0));
+			get => (BackgroundPurchases)data[0x00A + 0xA] & BackgroundPurchases.All;
+			set => data[0x00A + 0xA] = (byte)(((BackgroundPurchases)data[0x00A + 0xA] & ~BackgroundPurchases.All) | value);
 		}
-		public bool StarsBackgroundBought
+		[Flags]
+		public enum BackgroundPurchases
 		{
-			get => (data[0x00A + 0xA] & 0x10) != 0;
-			set => data[0x00A + 0xA] = (byte)((data[0x00A + 0xA] & 0xEF) | (value ? 0x10 : 0));
-		}
-		public bool MarioBackgroundBought
-		{
-			get => (data[0x00A + 0xA] & 0x20) != 0;
-			set => data[0x00A + 0xA] = (byte)((data[0x00A + 0xA] & 0xDF) | (value ? 0x20 : 0));
-		}
-		public bool RetroBackgroundBought
-		{
-			get => (data[0x00A + 0xA] & 0x40) != 0;
-			set => data[0x00A + 0xA] = (byte)((data[0x00A + 0xA] & 0xBF) | (value ? 0x40 : 0));
+			First = 0x08,
+			BlueBricks = 0x08,
+			Stars = 0x10,
+			Mario = 0x20,
+			Retro = 0x40,
+			All = 0x78,
 		}
 		public WorldPathHighlightsEnum WorldPathHighlights
 		{

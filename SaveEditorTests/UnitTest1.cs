@@ -303,5 +303,13 @@ namespace SaveEditorTests
 			worlds.PerformSaveFileLoadCalculations(saveFile);
 			assert(saveFile.SpentStarCoins == 5);
 		}
+
+		[TestMethod]
+		public void TestUnlockingBackgroundSpendsStarCoins()
+		{
+			saveFile.BackgroundsBought = SaveFile.BackgroundPurchases.BlueBricks;
+			worlds.PerformSaveFileLoadCalculations(saveFile);
+			assert(saveFile.SpentStarCoins == 20);
+		}
 	}
 }

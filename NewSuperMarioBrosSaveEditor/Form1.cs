@@ -149,7 +149,18 @@ namespace NewSuperMarioBrosSaveEditor
 			file.Score = (int)scoreNumUpDown.Value;
 			file.CurrentPowerup = powerupCbx.SelectedIndex > 2 ? powerupCbx.SelectedIndex + 1 : powerupCbx.SelectedIndex;
 			file.Inventory = inventoryCbx.SelectedIndex;
+
 			file.OverworldBackground = (byte)BSBNumUpDown.Value;
+			uint nextFlag = (uint)SaveFile.BackgroundPurchases.First;
+			uint purchased = 0;
+			for (int i = 0; i < 4; i++)
+			{
+				if (backgroundsChk.GetItemChecked(i))
+					purchased |= nextFlag;
+				nextFlag <<= 1;
+			}
+			file.BackgroundsBought = (SaveFile.BackgroundPurchases)purchased;
+
 		}
 		private void UpdateControlsBySaveFile()
 		{
@@ -157,6 +168,12 @@ namespace NewSuperMarioBrosSaveEditor
 
 			BSBNumUpDown.Value = file.OverworldBackground;
 			BSBPictureBox.Image = BGs[file.OverworldBackground];
+			uint nextFlag = (uint)SaveFile.BackgroundPurchases.First;
+			for (int i = 0; i < 4; i++)
+			{
+				backgroundsChk.SetItemChecked(i, ((uint)files[fileIndex].BackgroundsBought & nextFlag) != 0);
+				nextFlag <<= 1;
+			}
 
 			livesNumUpDown.Value = file.Lives;
 			coinsNumUpDown.Value = file.Coins;
@@ -209,6 +226,10 @@ namespace NewSuperMarioBrosSaveEditor
 			files[fileIndex].IsNewFile = newFileChk.Checked;
 			fileDataPnl.Enabled = !newFileChk.Checked;
 			fileModified(sender, e);
+		}
+
+		private void backgroundsChk_ItemCheck(object sender, ItemCheckEventArgs e)
+		{
 		}
 	}
 }
