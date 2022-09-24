@@ -96,6 +96,29 @@ namespace NewSuperMarioBrosSaveEditor
 			get => (data[0x00A + 0xA] & 0x40) != 0;
 			set => data[0x00A + 0xA] = (byte)((data[0x00A + 0xA] & 0xBF) | (value ? 0x40 : 0));
 		}
+		public WorldPathHighlightsEnum WorldPathHighlights
+		{
+			get => (WorldPathHighlightsEnum)BitConverter.ToUInt16(data, 0x00A + 0xA) & WorldPathHighlightsEnum.All;
+			set
+			{
+				uint oldValue = BitConverter.ToUInt16(data, 0x00A + 0xA) & ~(uint)WorldPathHighlightsEnum.All;
+				BitConverter.GetBytes((ushort)((uint)value | oldValue)).CopyTo(data, 0x00A + 0xA);
+			}
+		}
+		[Flags]
+		public enum WorldPathHighlightsEnum
+		{
+			W1toW2 = 0x0080,
+			W2toW3 = 0x0100,
+			W2toW4 = 0x0200,
+			W3toW5 = 0x0400,
+			W4toW5 = 0x0800,
+			W5toW6 = 0x1000,
+			W5toW7 = 0x2000,
+			W6toW8 = 0x4000,
+			W7toW8 = 0x8000,
+			All = 0xFF80,
+		}
 
 		public int Lives
 		{
@@ -311,6 +334,8 @@ namespace NewSuperMarioBrosSaveEditor
 		public void SetPathUnlocked(int world, int index, bool value) => SetPathFlags(world, index, value ? PathFlags.Unlocked : (byte)0);
 
 		public bool IsNodeCompleted(int world, int index) => (GetNodeFlags(world, index) & NodeFlags.Completed) != 0;
+		private int[] starCoinCounts = new int[] { 0, 1, 1, 2, 1, 2, 2, 3 };
+		public int CountStarCoins(int world, int index) => starCoinCounts[GetNodeFlags(world, index) & NodeFlags.AllStarCoins];
 
 		public void ResetAllNodesAndPathsInWorld(int worldId)
 		{

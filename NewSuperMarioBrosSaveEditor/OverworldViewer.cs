@@ -221,6 +221,8 @@ namespace NewSuperMarioBrosSaveEditor
 			bool newUnlockStatus = clicked.BackColor != unlockedPathColor;
 			SetPathLock(id, newUnlockStatus);
 
+			allWorlds.PerformSaveFileLoadCalculations(saveFile); // for star coins spent
+
 			if (LocksChanged != null)
 				LocksChanged.Invoke();
 		}

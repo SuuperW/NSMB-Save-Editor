@@ -24,6 +24,74 @@ namespace NewSuperMarioBrosSaveEditor
 		}
 
 		/// <summary>
+		/// NSMB sets various save file properties after a file is loaded. This method does that.
+		/// </summary>
+		public void PerformSaveFileLoadCalculations(SaveFile saveFile)
+		{
+			// Bottom screen, highlight lines between worlds
+			uint highlightFlags = 0;
+			uint nextFlag = (uint)SaveFile.WorldPathHighlightsEnum.W1toW2;
+			for (int i = 0; i < worlds.Count; i++)
+			{
+				if (worlds[i].normalNextWorld != 0)
+				{
+					// Note: NSMB actually checks if the castle node is completed, not world flags.
+					// But checking world flags is easier and should give the same results.
+					if ((saveFile.GetWorldFlags(i) & SaveFile.WorldFlags.CastleCompleted) != 0
+						&& (saveFile.GetWorldFlags(worlds[i].normalNextWorld) & SaveFile.WorldFlags.Unlocked) != 0)
+					{
+						highlightFlags |= nextFlag;
+					}
+					nextFlag <<= 1;
+				}
+				if (worlds[i].secretNextWorld != 0)
+				{
+					// Note: NSMB actually checks if the castle node is completed, not world flags.
+					// But checking world flags is easier and should give the same results.
+					if ((saveFile.GetWorldFlags(i) & SaveFile.WorldFlags.CastleCompleted) != 0
+						&& (saveFile.GetWorldFlags(worlds[i].secretNextWorld) & SaveFile.WorldFlags.Unlocked) != 0)
+					{
+						highlightFlags |= nextFlag;
+					}
+					nextFlag <<= 1;
+				}
+			}
+			saveFile.WorldPathHighlights = (SaveFile.WorldPathHighlightsEnum)highlightFlags;
+
+			// Star coins
+			int starCoinsCollected = 0;
+			for (int iw = 0; iw < worlds.Count; iw++)
+			{
+				World world = worlds[iw];
+				for (int i = 0; i < world.nodes.Count; i++)
+				{
+					OverworldNode node = world.nodes[i];
+					if (node.hasStarCoins)
+						starCoinsCollected += saveFile.CountStarCoins(iw, i);
+				}
+			}
+			saveFile.StarCoins = starCoinsCollected;
+
+			// Star coins spent
+			int starCoinsSpent = 0;
+			for (int iw = 0; iw < worlds.Count; iw++)
+			{
+				World world = worlds[iw];
+				for (int i = 0; i < world.paths.Count; i++)
+				{
+					OverworldPath path = world.paths[i];
+					if (path.isUnlockedBySign && saveFile.IsPathUnlocked(iw, i))
+						starCoinsSpent += path.cost;
+				}
+			}
+			if (saveFile.BlueBricksBackgroundBought) starCoinsSpent += 20;
+			if (saveFile.MarioBackgroundBought) starCoinsSpent += 20;
+			if (saveFile.StarsBackgroundBought) starCoinsSpent += 20;
+			if (saveFile.RetroBackgroundBought) starCoinsSpent += 20;
+			saveFile.SpentStarCoins = starCoinsSpent;
+		}
+
+		/// <summary>
 		/// A normal exit is a flagpole with a black flag, or normal completion of a tower/castle.
 		/// This method will return false if the level does not have a normal exit.
 		/// </summary>
@@ -288,6 +356,8 @@ namespace NewSuperMarioBrosSaveEditor
 				else
 					saveFile.PlayerHasSeenCredits = action.Complete;
 			}
+
+			PerformSaveFileLoadCalculations(saveFile);
 		}
 		private void UnlockPaths(SaveFile saveFile, int worldId, int id, CompletionAction action, bool pathsOnly = false)
 		{

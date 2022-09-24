@@ -99,6 +99,7 @@ namespace SaveEditorTests
 			assert(!saveFile.IsPathUnlocked(0, 21));
 			// Star coins
 			assert((saveFile.GetNodeFlags(0, 1) & SaveFile.NodeFlags.AllStarCoins) == SaveFile.NodeFlags.AllStarCoins);
+			assert(saveFile.StarCoins == 3);
 		}
 
 		[TestMethod]
@@ -113,6 +114,8 @@ namespace SaveEditorTests
 			assert(saveFile.IsPathUnlocked(0, 0x0A));
 			assert(saveFile.IsPathUnlocked(0, 0x16));
 			assert(saveFile.IsPathUnlocked(0, 0x04));
+			// star coins
+			assert(saveFile.StarCoins == 3);
 		}
 
 		[TestMethod]
@@ -126,6 +129,7 @@ namespace SaveEditorTests
 			assert(!saveFile.IsPathUnlocked(0, 1));
 			// Star coins
 			assert((saveFile.GetNodeFlags(0, 1) & SaveFile.NodeFlags.AllStarCoins) == 0);
+			assert(saveFile.StarCoins == 0);
 		}
 
 		[TestMethod]
@@ -133,7 +137,9 @@ namespace SaveEditorTests
 		{
 			// A path with a sign on it should not be unlocked when the relevant level is completed
 			worlds.PerformNodeAction(saveFile, 0, 3, completeAll);
-			assert(!saveFile.IsPathUnlocked(0, 0x0B));	
+			assert(!saveFile.IsPathUnlocked(0, 0x0B));
+			assert(saveFile.StarCoins == 3);
+			assert(saveFile.SpentStarCoins == 0);
 		}
 
 		[TestMethod]
@@ -281,6 +287,21 @@ namespace SaveEditorTests
 			worlds.PerformNodeAction(saveFile, 3, 0x10, uncompleteNormal);
 			// World 7 should remain unlocked
 			assert((saveFile.GetWorldFlags(6) & SaveFile.WorldFlags.AllForUnlocked) == SaveFile.WorldFlags.AllForUnlocked);
+		}
+
+		[TestMethod]
+		public void TestNoStarCoinsFromEmptyNode()
+		{
+			worlds.PerformNodeAction(saveFile, 0, 0x0E, completeAll);
+			assert(saveFile.StarCoins == 0);
+		}
+
+		[TestMethod]
+		public void TestOpeningSignPathSpendsStarCoins()
+		{
+			saveFile.SetPathUnlocked(0, 0x0B, true);
+			worlds.PerformSaveFileLoadCalculations(saveFile);
+			assert(saveFile.SpentStarCoins == 5);
 		}
 	}
 }
