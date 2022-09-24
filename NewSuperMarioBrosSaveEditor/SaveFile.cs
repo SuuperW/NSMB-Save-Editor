@@ -168,8 +168,7 @@ namespace NewSuperMarioBrosSaveEditor
 				throw new IndexOutOfRangeException();
 		}
 		/// <summary>
-		/// There are 0x18 per world, though not all worlds actually have 0x18 nodes.
-		/// Also, there are an extra 8 at the end, Idk why. First 4 are 0xD7, last 4 0xC0 on a 100% file.
+		/// There are 0x19 per world, though not all worlds actually have 0x19 nodes.
 		/// </summary>
 		public byte GetNodeFlags(int index)
 		{
@@ -178,7 +177,7 @@ namespace NewSuperMarioBrosSaveEditor
 			else
 				throw new IndexOutOfRangeException();
 		}
-		public byte GetNodeFlags(int world, int index) => GetNodeFlags(0x18 * world + index);
+		public byte GetNodeFlags(int world, int index) => GetNodeFlags(0x19 * world + index);
 		public void SetNodeFlags(int index, byte flags)
 		{
 			if (index >= 0 && index < 0xC8)
@@ -186,7 +185,7 @@ namespace NewSuperMarioBrosSaveEditor
 			else
 				throw new IndexOutOfRangeException();
 		}
-		public void SetNodeFlags(int world, int index, byte flags) => SetNodeFlags(0x18 * world + index, flags);
+		public void SetNodeFlags(int world, int index, byte flags) => SetNodeFlags(0x19 * world + index, flags);
 		// Note: The link above says this begins at 0x137. It's off by one.
 		// There are 0x1E per world, though not all worlds actually have 0x1E paths.
 		public byte GetPathFlags(int index)
@@ -316,7 +315,7 @@ namespace NewSuperMarioBrosSaveEditor
 		public void ResetAllNodesAndPathsInWorld(int worldId)
 		{
 			// nodes
-			Array.Clear(data, 0x070 + 0xA + 0x18 * worldId, 0x18);
+			Array.Clear(data, 0x070 + 0xA + 0x19 * worldId, 0x19);
 			// paths
 			Array.Clear(data, 0x138 + 0xA + 0x1E * worldId, 0x1E);
 		}
