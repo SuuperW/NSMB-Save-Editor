@@ -78,9 +78,13 @@ namespace SaveEditorTests
 			// Some nodes
 			assert(saveFile.IsNodeCompleted(0, 0));
 			assert(!saveFile.IsNodeCompleted(0, 1));
+			assert(saveFile.IsNodeCompleted(7, 0));
+			assert(!saveFile.IsNodeCompleted(7, 1));
 			// Some paths
 			assert(saveFile.IsPathUnlocked(0, 0));
 			assert(!saveFile.IsPathUnlocked(0, 1));
+			assert(saveFile.IsPathUnlocked(7, 0));
+			assert(!saveFile.IsPathUnlocked(7, 1));
 			// Brand-new file doesn't have world 1 unlocked
 			assert((saveFile.GetWorldFlags(0) & SaveFile.WorldFlags.AllForUnlocked) == 0);
 		}
