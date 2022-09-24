@@ -20,6 +20,7 @@ namespace NewSuperMarioBrosSaveEditor
 			InitializeComponent();
 
 			overworldViewer1.LocksChanged += () => fileModified(overworldViewer1, null);
+			overworldViewer1.LocksChanged += UpdateControlsBySaveFile;
 			JArray jArray = JArray.Parse(File.ReadAllText("data.json"));
 			overworldViewer1.allWorlds = (WorldCollection)jArray;
 
@@ -145,7 +146,6 @@ namespace NewSuperMarioBrosSaveEditor
 
 			file.Lives = (int)livesNumUpDown.Value;
 			file.Coins = (int)coinsNumUpDown.Value;
-			file.StarCoins = (int)SCNumUpDown.Value;
 			file.Score = (int)scoreNumUpDown.Value;
 			file.CurrentPowerup = powerupCbx.SelectedIndex > 2 ? powerupCbx.SelectedIndex + 1 : powerupCbx.SelectedIndex;
 			file.Inventory = inventoryCbx.SelectedIndex;
@@ -160,13 +160,14 @@ namespace NewSuperMarioBrosSaveEditor
 
 			livesNumUpDown.Value = file.Lives;
 			coinsNumUpDown.Value = file.Coins;
-			SCNumUpDown.Value = file.StarCoins;
 			scoreNumUpDown.Value = file.Score;
 
 			powerupCbx.SelectedIndex = files[fileIndex].CurrentPowerup;
 			inventoryCbx.SelectedIndex = files[fileIndex].Inventory;
 
 			overworldViewer1.ApplySave(files[fileIndex]);
+
+			starCoinCountsLbl.Text = files[fileIndex].StarCoins.ToString() + " (" + files[fileIndex].SpentStarCoins + ")";
 
 			newFileChk.Checked = file.IsNewFile;
 			fileDataPnl.Enabled = !newFileChk.Checked;

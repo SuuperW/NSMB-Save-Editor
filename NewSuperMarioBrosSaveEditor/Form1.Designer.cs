@@ -40,7 +40,6 @@
 			this.BSBNumUpDown = new System.Windows.Forms.NumericUpDown();
 			this.scoreNumUpDown = new System.Windows.Forms.NumericUpDown();
 			this.powerupCbx = new System.Windows.Forms.ComboBox();
-			this.SCNumUpDown = new System.Windows.Forms.NumericUpDown();
 			this.coinsNumUpDown = new System.Windows.Forms.NumericUpDown();
 			this.livesNumUpDown = new System.Windows.Forms.NumericUpDown();
 			this.radioButton1 = new System.Windows.Forms.RadioButton();
@@ -62,9 +61,9 @@
 			this.label2 = new System.Windows.Forms.Label();
 			this.nodeClickCbx = new System.Windows.Forms.ComboBox();
 			this.doubleClickNodeCbx = new System.Windows.Forms.CheckBox();
+			this.starCoinCountsLbl = new System.Windows.Forms.Label();
 			((System.ComponentModel.ISupportInitialize)(this.BSBNumUpDown)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.scoreNumUpDown)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.SCNumUpDown)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.coinsNumUpDown)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.livesNumUpDown)).BeginInit();
 			this.fileSelectPnl.SuspendLayout();
@@ -120,9 +119,9 @@
 			this.labelSC.Location = new System.Drawing.Point(11, 81);
 			this.labelSC.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
 			this.labelSC.Name = "labelSC";
-			this.labelSC.Size = new System.Drawing.Size(58, 13);
+			this.labelSC.Size = new System.Drawing.Size(138, 13);
 			this.labelSC.TabIndex = 40;
-			this.labelSC.Text = "Star Coins:";
+			this.labelSC.Text = "Star coins collected (spent):";
 			// 
 			// labelCoins
 			// 
@@ -208,19 +207,6 @@
 			this.powerupCbx.Size = new System.Drawing.Size(102, 21);
 			this.powerupCbx.TabIndex = 31;
 			this.powerupCbx.SelectedIndexChanged += new System.EventHandler(this.fileModified);
-			// 
-			// SCNumUpDown
-			// 
-			this.SCNumUpDown.Location = new System.Drawing.Point(73, 78);
-			this.SCNumUpDown.Margin = new System.Windows.Forms.Padding(2);
-			this.SCNumUpDown.Maximum = new decimal(new int[] {
-            240,
-            0,
-            0,
-            0});
-			this.SCNumUpDown.Name = "SCNumUpDown";
-			this.SCNumUpDown.Size = new System.Drawing.Size(79, 20);
-			this.SCNumUpDown.TabIndex = 29;
 			// 
 			// coinsNumUpDown
 			// 
@@ -322,7 +308,6 @@
 			this.fileDataPnl.Controls.Add(this.labelLives);
 			this.fileDataPnl.Controls.Add(this.livesNumUpDown);
 			this.fileDataPnl.Controls.Add(this.coinsNumUpDown);
-			this.fileDataPnl.Controls.Add(this.SCNumUpDown);
 			this.fileDataPnl.Controls.Add(this.labelBSB);
 			this.fileDataPnl.Controls.Add(this.powerupCbx);
 			this.fileDataPnl.Controls.Add(this.labelInventory);
@@ -332,6 +317,7 @@
 			this.fileDataPnl.Controls.Add(this.BSBNumUpDown);
 			this.fileDataPnl.Controls.Add(this.labelScore);
 			this.fileDataPnl.Controls.Add(this.BSBPictureBox);
+			this.fileDataPnl.Controls.Add(this.starCoinCountsLbl);
 			this.fileDataPnl.Controls.Add(this.labelSC);
 			this.fileDataPnl.Controls.Add(this.inventoryCbx);
 			this.fileDataPnl.Controls.Add(this.labelCoins);
@@ -489,6 +475,16 @@
 			this.doubleClickNodeCbx.UseVisualStyleBackColor = true;
 			this.doubleClickNodeCbx.CheckedChanged += new System.EventHandler(this.doubleClickNodeCbx_CheckedChanged);
 			// 
+			// starCoinCountsLbl
+			// 
+			this.starCoinCountsLbl.AutoSize = true;
+			this.starCoinCountsLbl.Location = new System.Drawing.Point(153, 81);
+			this.starCoinCountsLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+			this.starCoinCountsLbl.Name = "starCoinCountsLbl";
+			this.starCoinCountsLbl.Size = new System.Drawing.Size(28, 13);
+			this.starCoinCountsLbl.TabIndex = 40;
+			this.starCoinCountsLbl.Text = "0 (0)";
+			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -509,7 +505,6 @@
 			this.Text = "NSMB Save Editor";
 			((System.ComponentModel.ISupportInitialize)(this.BSBNumUpDown)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.scoreNumUpDown)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.SCNumUpDown)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.coinsNumUpDown)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.livesNumUpDown)).EndInit();
 			this.fileSelectPnl.ResumeLayout(false);
@@ -539,7 +534,6 @@
         private System.Windows.Forms.NumericUpDown BSBNumUpDown;
         private System.Windows.Forms.NumericUpDown scoreNumUpDown;
         private System.Windows.Forms.ComboBox powerupCbx;
-        private System.Windows.Forms.NumericUpDown SCNumUpDown;
         private System.Windows.Forms.NumericUpDown coinsNumUpDown;
         private System.Windows.Forms.NumericUpDown livesNumUpDown;
         private System.Windows.Forms.RadioButton radioButton1;
@@ -560,6 +554,7 @@
 		private System.Windows.Forms.ComboBox nodeClickCbx;
 		private System.Windows.Forms.CheckBox doubleClickNodeCbx;
 		private System.Windows.Forms.CheckBox newFileChk;
+		private System.Windows.Forms.Label starCoinCountsLbl;
 	}
 }
 
