@@ -311,5 +311,22 @@ namespace SaveEditorTests
 			worlds.PerformSaveFileLoadCalculations(saveFile);
 			assert(saveFile.SpentStarCoins == 20);
 		}
+
+		[TestMethod]
+		public void TestClearingW52Secret()
+		{
+			// The connection from the 2nd pipe to 5-3 is considered "backwards".
+			worlds.PerformNodeAction(saveFile, 4, 3, completeSecret);
+			assert(saveFile.IsPathUnlocked(4, 11));
+			assert(saveFile.IsPathUnlocked(4, 15));
+			assert(saveFile.IsPathUnlocked(4, 25));
+		}
+
+		[TestMethod]
+		public void TestClearingW5Castle()
+		{
+			worlds.PerformNodeAction(saveFile, 4, 11, completeNormal);
+			assert(!saveFile.IsPathUnlocked(4, 0x18));
+		}
 	}
 }

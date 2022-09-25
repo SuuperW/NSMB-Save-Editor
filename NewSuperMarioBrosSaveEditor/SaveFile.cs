@@ -33,7 +33,7 @@ namespace NewSuperMarioBrosSaveEditor
 
 		/// <summary>
 		/// Data about file progress, which is mostly but not all re-calculated upon loading the file.
-		/// Known flags & values have their own properties. Unknown bits, big endian: D8 FF 87 FF 
+		/// Known flags & values have their own properties. Unknown bits, big endian: D8 FF 07 00
 		/// Thus, many of the flags here wouldn't actually do anything if we set them here.
 		/// </summary>
 		public uint StarsByFileSelect
