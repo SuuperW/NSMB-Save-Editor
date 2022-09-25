@@ -357,8 +357,7 @@ namespace NewSuperMarioBrosSaveEditor
 
 					Panel p = nodeControls[i];
 					// Is it completed? The game checks that first.
-					int flags = saveFile.GetNodeFlags(world.id, i);
-					if ((flags & SaveFile.NodeFlags.Completed) != 0)
+					if (saveFile.IsNodeCompleted(world.id, i))
 						p.BackgroundImage = Properties.Resources.Node_Complete;
 					else
 					{

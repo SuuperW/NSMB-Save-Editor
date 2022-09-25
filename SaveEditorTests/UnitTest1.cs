@@ -100,6 +100,8 @@ namespace SaveEditorTests
 			// Star coins
 			assert((saveFile.GetNodeFlags(0, 1) & SaveFile.NodeFlags.AllStarCoins) == SaveFile.NodeFlags.AllStarCoins);
 			assert(saveFile.StarCoins == 3);
+			// We should also verify that it sets the other flag, because 8-Castle bridge
+			assert((saveFile.GetNodeFlags(0, 1) & SaveFile.NodeFlags.OtherCompleted) == SaveFile.NodeFlags.OtherCompleted);
 		}
 
 		[TestMethod]

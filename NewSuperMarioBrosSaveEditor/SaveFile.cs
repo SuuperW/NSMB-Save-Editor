@@ -245,7 +245,13 @@ namespace NewSuperMarioBrosSaveEditor
 			public static byte StarCoin2 = 0x02;
 			public static byte StarCoin3 = 0x04;
 			public static byte AllStarCoins = 0x07;
+			// NSMB will set this flag upon loading the world if the level is completed.
+			// There's at least one case where it matters if it is set before loading the world:
+			//	The bridge in world 8 will only be visible if this flag was already set.
+			public static byte OtherCompleted = 0x40;
 			public static byte Completed = 0x80;
+
+			public static byte AllForCompleted = 0xC0;
 		}
 		public static class PathFlags
 		{

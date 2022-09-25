@@ -299,7 +299,7 @@ namespace NewSuperMarioBrosSaveEditor
 			byte nodeFlags = saveFile.GetNodeFlags(worldId, nodeId);
 			if (nodeIsCompleted)
 			{
-				nodeFlags |= SaveFile.NodeFlags.Completed;
+				nodeFlags |= SaveFile.NodeFlags.AllForCompleted;
 				if (action.StarCoins)
 					nodeFlags |= SaveFile.NodeFlags.AllStarCoins;
 			}
