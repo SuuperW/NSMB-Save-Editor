@@ -33,7 +33,7 @@ namespace NewSuperMarioBrosSaveEditor
 
 		/// <summary>
 		/// Data about file progress, which is mostly but not all re-calculated upon loading the file.
-		/// Known flags & values have their own properties. Unknown bits, big endian: D8 FF 07 00
+		/// Known flags & values have their own properties. Unknown bits, big endian: 4A FF 07 00
 		/// Thus, many of the flags here wouldn't actually do anything if we set them here.
 		/// </summary>
 		public uint StarsByFileSelect
@@ -47,17 +47,16 @@ namespace NewSuperMarioBrosSaveEditor
 		public bool PlayerHasSeenCredits
 		{
 			get => (data[0x008 + 0xA] & 0x20) != 0;
-			set => data[0x008 + 0xA] = (byte)((data[0x008 + 0xA] & 0xDF) | (value ? 0x20 : 0));
+			set => data[0x008 + 0xA] = (byte)((data[0x008 + 0xA] & ~0x20) | (value ? 0x20 : 0));
 		}
 		/// <summary>
-		/// The second star is awarded when all star coins have been collected.
-		/// The game will re-calculate this after loading the file, so if you only set this you will lose the star upon re-saving the file.
-		/// TODO: Actually... this is NOT based on having collected all star coins. A hacked file can have not all star coins but keep 2 stars.
+		/// The second star is awarded when all (star coin containing) levels have been cleared.
+		/// Secret exits are not required.
 		/// </summary>
 		public bool SecondStar
 		{
 			get => (data[0x008 + 0xA] & 0x01) != 0;
-			set => data[0x008 + 0xA] = (byte)((data[0x008 + 0xA] & 0xFE) | (value ? 0x01 : 0));
+			set => data[0x008 + 0xA] = (byte)((data[0x008 + 0xA] & ~0x01) | (value ? 0x01 : 0));
 		}
 		/// <summary>
 		/// The third star is awarded when all star coins have been collected and spent.
@@ -65,8 +64,13 @@ namespace NewSuperMarioBrosSaveEditor
 		/// </summary>
 		public bool ThirdStar
 		{
-			get => (data[0x008 + 0xA] & 0x02) != 0;
-			set => data[0x008 + 0xA] = (byte)((data[0x008 + 0xA] & 0xFD) | (value ? 0x02 : 0));
+			get => (data[0x008 + 0xA] & 0x10) != 0;
+			set => data[0x008 + 0xA] = (byte)((data[0x008 + 0xA] & ~0x10) | (value ? 0x10 : 0));
+		}
+		public bool AllStarCoinsSpentFlag
+		{
+			get => (data[0x008 + 0xA] & 0x80) != 0;
+			set => data[0x008 + 0xA] = (byte)((data[0x008 + 0xA] & ~0x80) | (value ? 0x80 : 0));
 		}
 		/// <summary>
 		/// The last overworld background must be unlocked. (by completing all levels?)
