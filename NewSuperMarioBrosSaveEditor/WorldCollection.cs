@@ -364,53 +364,28 @@ namespace NewSuperMarioBrosSaveEditor
 			List<OverworldNode> nodes = worlds[worldId].nodes;
 			List<OverworldPath> paths = worlds[worldId].paths;
 
-			// We have to look at the node's connections, and not just the paths that it unlocks.
-			// This is so that we can follow those connections to update intermediate nodes.
+			IEnumerable<int> pathsToUnlock = action.NormalExit ? nodes[id].pathsByNormalExit : new List<int>();
+			if (action.SecretExit) pathsToUnlock = pathsToUnlock.Union(nodes[id].pathsBySecretExit);
 
-			// For regular levels, we want to use only the connections that it unlocks.
-			// But otherwise, we want to use all connections.
-			IEnumerable<OverworldNode.Connection> connections = nodes[id].connections
-				.Where((c) => !c.isBackwards);
-			if (nodes[id].UnlocksALevel)
+			foreach (int pid in pathsToUnlock)
 			{
-				IEnumerable<int> pathsToUnlock = action.NormalExit ? nodes[id].pathsByNormalExit : new List<int>();
-				if (action.SecretExit) pathsToUnlock = pathsToUnlock.Union(nodes[id].pathsBySecretExit);
-				connections = connections.Where((c) => pathsToUnlock.Contains(c.pathIdInWorld));
-			}
-
-			foreach (OverworldNode.Connection connection in connections)
-			{
-				int pathId = connection.pathIdInWorld;
-				OverworldPath path = paths[pathId];
+				OverworldPath path = paths[pid];
 				// Lock signs, but don't unlock them
 				if (!action.Complete || !path.isUnlockedBySign)
 				{
-					// Un/lock this path.
-					saveFile.SetPathUnlocked(worldId, pathId, action.Complete);
-					// Where does it lead?
-					int destinationId = connection.destinationNodeId;
-					OverworldNode destination = nodes[destinationId];
-					// If it leads to a main level, we're done. (has star coins should work)
-					// If it leads to a non-playable level, un/lock paths from that one.
-					if (!destination.hasStarCoins)
-					{
-						// We also need to make sure we're not locking a path that a different level unlocked.
-						// E.g., un-completing 1-3 while 1-2 secret goal is cleared should not lock 1-Tower.
-						bool unlockNext = true;
-						if (!action.Complete)
-						{
-							List<OverworldNode.Connection> destConnections = destination.connections;
-							unlockNext = !destConnections
-								.Where((dc) => dc.isBackwards)
-								.Any((dc) => (saveFile.GetPathFlags(worldId, dc.pathIdInWorld) & SaveFile.PathFlags.Unlocked) != 0);
-						}
-
-						if (unlockNext)
-						{
-							// We will only unlock paths if we're passing through a mushroom house.
-							UnlockPaths(saveFile, worldId, destinationId, action, destination.name != "dot");
-						}
-					}
+					// Unlock this path, but don't lock if another level has unlocked it.
+					if (action.Complete || !nodes.Any((n) => {
+						// We will assume that every level exit that unlocks a path has at least one unique path. (That is, a path that no other exit unlocks.)
+						// So, a path has been unlocked by a level if all paths that it unlocks are unlocked.
+						if (n.idInWorld == id)
+							return false;
+						if (n.pathsByNormalExit.Contains(pid) && n.pathsByNormalExit.All((p) => paths[p].isUnlockedBySign || saveFile.IsPathUnlocked(worldId, p)))
+							return true;
+						if (n.pathsBySecretExit.Contains(pid) && n.pathsBySecretExit.All((p) => paths[p].isUnlockedBySign || saveFile.IsPathUnlocked(worldId, p)))
+							return true;
+						return false;
+					}))
+						saveFile.SetPathUnlocked(worldId, pid, action.Complete);
 				}
 			}
 		}
