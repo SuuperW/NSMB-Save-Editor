@@ -363,7 +363,7 @@ namespace NewSuperMarioBrosSaveEditor
 					else
 					{
 						// Is it unlocked?
-						bool levelUnlocked = nodes[i].connections.Any((c) => c.isBackwards == true && unlocked[c.pathIdInWorld]);
+						bool levelUnlocked = nodes[i].connections.Any((c) => unlocked[c.pathIdInWorld]);
 						if (levelUnlocked)
 							p.BackgroundImage = Properties.Resources.Node_Unlocked;
 						else
