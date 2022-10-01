@@ -391,6 +391,17 @@ namespace NewSuperMarioBrosSaveEditor
 			return saveFile;
 		}
 
+		public static SaveFile NewFile()
+		{
+			SaveFile file = new SaveFile();
+			new byte[] { 0x4D, 0x61, 0x72, 0x69, 0x6F, 0x32, 0x64, 0x00, 0x37, 0x30, 0x30, 0x30 }.CopyTo(file.data, 2);
+			for (int i = 0; i < 8; i++)
+			{
+				file.SetNodeFlags(i, 0, 0xD0);
+				file.SetPathFlags(i, 0, 0xD0);
+			}
+			return file;
+		}
 
 		public byte[] GetData()
 		{

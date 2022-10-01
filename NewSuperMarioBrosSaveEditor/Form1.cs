@@ -224,6 +224,9 @@ namespace NewSuperMarioBrosSaveEditor
 		private void newFileChk_CheckedChanged(object sender, EventArgs e)
 		{
 			files[fileIndex].IsNewFile = newFileChk.Checked;
+			if (files[fileIndex].IsNewFile)
+				files[fileIndex] = SaveFile.NewFile();
+
 			fileDataPnl.Enabled = !newFileChk.Checked;
 			fileModified(sender, e);
 		}
