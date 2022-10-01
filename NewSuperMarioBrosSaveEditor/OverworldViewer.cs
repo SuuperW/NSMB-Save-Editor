@@ -16,8 +16,9 @@ namespace NewSuperMarioBrosSaveEditor
 		List<Panel> pathControls = new List<Panel>();
 
 		SaveFile saveFile;
+		WorldCollection allWorlds;
+		SaveFileWithWorlds file;
 
-		public WorldCollection allWorlds;
 		int currentWorld;
 		World world => allWorlds[currentWorld];
 		List<OverworldNode> nodes => world.nodes;
@@ -221,7 +222,7 @@ namespace NewSuperMarioBrosSaveEditor
 			bool newUnlockStatus = clicked.BackColor != unlockedPathColor;
 			SetPathLock(id, newUnlockStatus);
 
-			allWorlds.PerformSaveFileLoadCalculations(saveFile); // for star coins spent
+			file.PerformSaveFileLoadCalculations(); // for star coins spent
 
 			if (LocksChanged != null)
 				LocksChanged.Invoke();
@@ -302,15 +303,23 @@ namespace NewSuperMarioBrosSaveEditor
 				}
 			}
 			
-			allWorlds.PerformNodeAction(saveFile, currentWorld, selectedNode, action);
+			file.PerformNodeAction(currentWorld, selectedNode, action);
 
 			// Display
 			UpdateDisplay();
 		}
 
+		public void SetWorldCollection(WorldCollection worlds)
+		{
+			allWorlds = worlds;
+			if (saveFile != null)
+				file = new SaveFileWithWorlds(saveFile, worlds);
+		}
 		public void ApplySave(SaveFile saveFile)
 		{
 			this.saveFile = saveFile;
+			if (allWorlds != null)
+				file = new SaveFileWithWorlds(saveFile, allWorlds);
 			UpdateDisplay();
 		}
 
@@ -327,6 +336,9 @@ namespace NewSuperMarioBrosSaveEditor
 
 		private void UpdateDisplay(bool updatePathsAndNodes = true)
 		{
+			if (file == null)
+				return;
+
 			this.SuspendLayout();
 			mainPanel.SuspendLayout();
 

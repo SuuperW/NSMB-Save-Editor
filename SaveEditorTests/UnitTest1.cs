@@ -16,6 +16,7 @@ namespace SaveEditorTests
 
 		private SaveFile saveFile;
 		private WorldCollection worlds;
+		private SaveFileWithWorlds file;
 
 		private CompletionAction completeAll = new CompletionAction()
 		{
@@ -70,6 +71,7 @@ namespace SaveEditorTests
 		public void PreTest()
 		{
 			saveFile = SaveFile.FromSav(ms, 0);
+			file = new SaveFileWithWorlds(saveFile, worlds);
 		}
 
 		[TestMethod]
@@ -92,7 +94,7 @@ namespace SaveEditorTests
 		[TestMethod]
 		public void TestClearingW11()
 		{
-			worlds.PerformNodeAction(saveFile, 0, 1, completeAll);
+			file.PerformNodeAction(0, 1, completeAll);
 			assert(saveFile.IsNodeCompleted(0, 1));
 			assert(saveFile.IsPathUnlocked(0, 1));
 			// Path to purple mushroom
@@ -107,7 +109,7 @@ namespace SaveEditorTests
 		[TestMethod]
 		public void TestClearingWithMultiplePaths()
 		{
-			worlds.PerformNodeAction(saveFile, 0, 2, completeAll);
+			file.PerformNodeAction(0, 2, completeAll);
 			// 1-2 node
 			assert(saveFile.IsNodeCompleted(0, 2));
 			// Path to 1-3
@@ -123,8 +125,8 @@ namespace SaveEditorTests
 		[TestMethod]
 		public void TestUnclearW11()
 		{
-			worlds.PerformNodeAction(saveFile, 0, 1, completeAll);
-			worlds.PerformNodeAction(saveFile, 0, 1, uncompleteAll);
+			file.PerformNodeAction(0, 1, completeAll);
+			file.PerformNodeAction(0, 1, uncompleteAll);
 			// node
 			assert(!saveFile.IsNodeCompleted(0, 1));
 			// path
@@ -138,7 +140,7 @@ namespace SaveEditorTests
 		public void TestClearNodeWithSign()
 		{
 			// A path with a sign on it should not be unlocked when the relevant level is completed
-			worlds.PerformNodeAction(saveFile, 0, 3, completeAll);
+			file.PerformNodeAction(0, 3, completeAll);
 			assert(!saveFile.IsPathUnlocked(0, 0x0B));
 			assert(saveFile.StarCoins == 3);
 			assert(saveFile.SpentStarCoins == 0);
@@ -147,9 +149,9 @@ namespace SaveEditorTests
 		[TestMethod]
 		public void TestUnclearLevelWhenAnotherLevelHasUnlockedSamePath()
 		{
-			worlds.PerformNodeAction(saveFile, 0, 3, completeNormal);
-			worlds.PerformNodeAction(saveFile, 0, 2, completeSecret);
-			worlds.PerformNodeAction(saveFile, 0, 2, uncompleteSecret);
+			file.PerformNodeAction(0, 3, completeNormal);
+			file.PerformNodeAction(0, 2, completeSecret);
+			file.PerformNodeAction(0, 2, uncompleteSecret);
 			// Path from 1-dot to 1-Tower should remain unlocked
 			assert(saveFile.IsPathUnlocked(0, 4));
 		}
@@ -158,10 +160,10 @@ namespace SaveEditorTests
 		public void TestClearingTower()
 		{
 			// The secret goal should not set world flags
-			worlds.PerformNodeAction(saveFile, 0, 4, completeSecret);
+			file.PerformNodeAction(0, 4, completeSecret);
 			assert((saveFile.GetWorldFlags(0) & SaveFile.WorldFlags.AllForTower) == 0);
 			// But the normal goal should
-			worlds.PerformNodeAction(saveFile, 0, 4, completeNormal);
+			file.PerformNodeAction(0, 4, completeNormal);
 			assert((saveFile.GetWorldFlags(0) & SaveFile.WorldFlags.AllForTower) == SaveFile.WorldFlags.AllForTower);
 		}
 
@@ -169,7 +171,7 @@ namespace SaveEditorTests
 		public void TestClearingW1Castle()
 		{
 			// We should unlock world 2, and have world 1 flags set
-			worlds.PerformNodeAction(saveFile, 0, 7, completeNormal);
+			file.PerformNodeAction(0, 7, completeNormal);
 			assert((saveFile.GetWorldFlags(1) & SaveFile.WorldFlags.AllForUnlocked) == SaveFile.WorldFlags.AllForUnlocked);
 			assert((saveFile.GetWorldFlags(0) & SaveFile.WorldFlags.AllForCastle) == SaveFile.WorldFlags.AllForCastle);
 			assert((saveFile.GetWorldFlags(0) & SaveFile.WorldFlags.AllBowserJuniorCutscenes) == SaveFile.WorldFlags.AllBowserJuniorCutscenes);
@@ -179,12 +181,12 @@ namespace SaveEditorTests
 		[TestMethod]
 		public void TestUnclearingTower()
 		{
-			worlds.PerformNodeAction(saveFile, 0, 4, completeAll);
+			file.PerformNodeAction(0, 4, completeAll);
 			// After uncompleting secret, tower flags should still be set
-			worlds.PerformNodeAction(saveFile, 0, 4, uncompleteSecret);
+			file.PerformNodeAction(0, 4, uncompleteSecret);
 			assert((saveFile.GetWorldFlags(0) & SaveFile.WorldFlags.AllForTower) == SaveFile.WorldFlags.AllForTower);
 			// After uncompleting normal, tower flags should not be set
-			worlds.PerformNodeAction(saveFile, 0, 4, uncompleteNormal);
+			file.PerformNodeAction(0, 4, uncompleteNormal);
 			assert((saveFile.GetWorldFlags(0) & SaveFile.WorldFlags.AllForTower) == 0);
 		}
 
@@ -192,9 +194,9 @@ namespace SaveEditorTests
 		public void TestUnclearingW1Castle()
 		{
 			// Clear 1-Tower so ensure that unclearing 1-Castle is checking that completion
-			worlds.PerformNodeAction(saveFile, 0, 4, completeNormal);
-			worlds.PerformNodeAction(saveFile, 0, 7, completeNormal);
-			worlds.PerformNodeAction(saveFile, 0, 7, uncompleteNormal);
+			file.PerformNodeAction(0, 4, completeNormal);
+			file.PerformNodeAction(0, 7, completeNormal);
+			file.PerformNodeAction(0, 7, uncompleteNormal);
 			assert((saveFile.GetWorldFlags(1) & SaveFile.WorldFlags.AllForUnlocked) == 0);
 			assert((saveFile.GetWorldFlags(0) & SaveFile.WorldFlags.AllForCastle) == 0);
 			assert((saveFile.GetWorldFlags(0) & SaveFile.WorldFlags.ExitWorldCutscene) == 0);
@@ -204,7 +206,7 @@ namespace SaveEditorTests
 		[TestMethod]
 		public void TestClearingCannon()
 		{
-			worlds.PerformNodeAction(saveFile, 0, 9, completeNormal);
+			file.PerformNodeAction(0, 9, completeNormal);
 			// World 5 should be unlocked
 			assert((saveFile.GetWorldFlags(4) & SaveFile.WorldFlags.AllForUnlocked) == SaveFile.WorldFlags.AllForUnlocked);
 			// Worlds before that should have cutscene flags set
@@ -217,8 +219,8 @@ namespace SaveEditorTests
 		[TestMethod]
 		public void TestUnclearingCannon()
 		{
-			worlds.PerformNodeAction(saveFile, 0, 9, completeNormal);
-			worlds.PerformNodeAction(saveFile, 0, 9, uncompleteNormal);
+			file.PerformNodeAction(0, 9, completeNormal);
+			file.PerformNodeAction(0, 9, uncompleteNormal);
 			// World 5 should be locked
 			assert((saveFile.GetWorldFlags(4) & SaveFile.WorldFlags.AllForUnlocked) == 0);
 			// Worlds before that should have cutscene flags set
@@ -235,7 +237,7 @@ namespace SaveEditorTests
 		{
 			// When a normal world is unlocked, all previous worlds have cutscene flags set.
 			// When a secret world is unlocked, it should be the same except for the corresponding normal world.
-			worlds.PerformNodeAction(saveFile, 1, 0x0A, completeSecret);
+			file.PerformNodeAction(1, 0x0A, completeSecret);
 			// World 4 should be unlocked
 			assert((saveFile.GetWorldFlags(3) & SaveFile.WorldFlags.AllForUnlocked) == SaveFile.WorldFlags.AllForUnlocked);
 			// World 3 should have no flags
@@ -246,10 +248,10 @@ namespace SaveEditorTests
 		public void TestUnclearingCastleNormalWhenCannonHasAlsoUnlockedWorld()
 		{
 			// Unlock world 6 by cannon
-			worlds.PerformNodeAction(saveFile, 2, 0x11, completeNormal);
+			file.PerformNodeAction(2, 0x11, completeNormal);
 			// Unlock world 6 by castle, then unclear castle
-			worlds.PerformNodeAction(saveFile, 4, 0x0B, completeNormal);
-			worlds.PerformNodeAction(saveFile, 4, 0x0B, uncompleteNormal);
+			file.PerformNodeAction(4, 0x0B, completeNormal);
+			file.PerformNodeAction(4, 0x0B, uncompleteNormal);
 			// World 6 should remain unlocked
 			assert((saveFile.GetWorldFlags(5) & SaveFile.WorldFlags.AllForUnlocked) == SaveFile.WorldFlags.AllForUnlocked);
 		}
@@ -258,10 +260,10 @@ namespace SaveEditorTests
 		public void TestUnclearingCannonWhenCastleHasAlsoUnlockedWorld()
 		{
 			// Unlock world 6 by castle
-			worlds.PerformNodeAction(saveFile, 4, 0x0B, completeNormal);
+			file.PerformNodeAction(4, 0x0B, completeNormal);
 			// Unlock world 6 by cannon, then unclear cannon
-			worlds.PerformNodeAction(saveFile, 2, 0x11, completeNormal);
-			worlds.PerformNodeAction(saveFile, 2, 0x11, uncompleteNormal);
+			file.PerformNodeAction(2, 0x11, completeNormal);
+			file.PerformNodeAction(2, 0x11, uncompleteNormal);
 			// World 6 should remain unlocked
 			assert((saveFile.GetWorldFlags(5) & SaveFile.WorldFlags.AllForUnlocked) == SaveFile.WorldFlags.AllForUnlocked);
 		}
@@ -270,10 +272,10 @@ namespace SaveEditorTests
 		public void TestUnclearingCastleSecretWhenCannonHasAlsoUnlockedWorld()
 		{
 			// Unlock world 7 by cannon
-			worlds.PerformNodeAction(saveFile, 3, 0x10, completeNormal);
+			file.PerformNodeAction(3, 0x10, completeNormal);
 			// Unlock world 7 by castle, then unclear castle
-			worlds.PerformNodeAction(saveFile, 4, 0x0B, completeSecret);
-			worlds.PerformNodeAction(saveFile, 4, 0x0B, uncompleteSecret);
+			file.PerformNodeAction(4, 0x0B, completeSecret);
+			file.PerformNodeAction(4, 0x0B, uncompleteSecret);
 			// World 7 should remain unlocked
 			assert((saveFile.GetWorldFlags(6) & SaveFile.WorldFlags.AllForUnlocked) == SaveFile.WorldFlags.AllForUnlocked);
 		}
@@ -282,11 +284,11 @@ namespace SaveEditorTests
 		public void TestUnclearingCannonWhenCastleHasAlsoUnlockedWorldSecret()
 		{
 			// Unlock world 7 by castle
-			worlds.PerformNodeAction(saveFile, 4, 0x0B, completeSecret);
+			file.PerformNodeAction(4, 0x0B, completeSecret);
 			assert((saveFile.GetWorldFlags(6) & SaveFile.WorldFlags.AllForUnlocked) == SaveFile.WorldFlags.AllForUnlocked);
 			// Unlock world 7 by cannon, then unclear cannon
-			worlds.PerformNodeAction(saveFile, 3, 0x10, completeNormal);
-			worlds.PerformNodeAction(saveFile, 3, 0x10, uncompleteNormal);
+			file.PerformNodeAction(3, 0x10, completeNormal);
+			file.PerformNodeAction(3, 0x10, uncompleteNormal);
 			// World 7 should remain unlocked
 			assert((saveFile.GetWorldFlags(6) & SaveFile.WorldFlags.AllForUnlocked) == SaveFile.WorldFlags.AllForUnlocked);
 		}
@@ -294,7 +296,7 @@ namespace SaveEditorTests
 		[TestMethod]
 		public void TestNoStarCoinsFromEmptyNode()
 		{
-			worlds.PerformNodeAction(saveFile, 0, 0x0E, completeAll);
+			file.PerformNodeAction(0, 0x0E, completeAll);
 			assert(saveFile.StarCoins == 0);
 		}
 
@@ -302,7 +304,7 @@ namespace SaveEditorTests
 		public void TestOpeningSignPathSpendsStarCoins()
 		{
 			saveFile.SetPathUnlocked(0, 0x0B, true);
-			worlds.PerformSaveFileLoadCalculations(saveFile);
+			file.PerformSaveFileLoadCalculations();
 			assert(saveFile.SpentStarCoins == 5);
 		}
 
@@ -310,7 +312,7 @@ namespace SaveEditorTests
 		public void TestUnlockingBackgroundSpendsStarCoins()
 		{
 			saveFile.BackgroundsBought = SaveFile.BackgroundPurchases.BlueBricks;
-			worlds.PerformSaveFileLoadCalculations(saveFile);
+			file.PerformSaveFileLoadCalculations();
 			assert(saveFile.SpentStarCoins == 20);
 		}
 
@@ -318,7 +320,7 @@ namespace SaveEditorTests
 		public void TestClearingW52Secret()
 		{
 			// The connection from the 2nd pipe to 5-3 is considered "backwards".
-			worlds.PerformNodeAction(saveFile, 4, 3, completeSecret);
+			file.PerformNodeAction(4, 3, completeSecret);
 			assert(saveFile.IsPathUnlocked(4, 11));
 			assert(saveFile.IsPathUnlocked(4, 15));
 			assert(saveFile.IsPathUnlocked(4, 25));
@@ -327,7 +329,7 @@ namespace SaveEditorTests
 		[TestMethod]
 		public void TestClearingW5Castle()
 		{
-			worlds.PerformNodeAction(saveFile, 4, 11, completeNormal);
+			file.PerformNodeAction(4, 11, completeNormal);
 			assert(!saveFile.IsPathUnlocked(4, 0x18));
 		}
 	}

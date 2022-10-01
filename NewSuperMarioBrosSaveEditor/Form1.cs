@@ -22,7 +22,7 @@ namespace NewSuperMarioBrosSaveEditor
 			overworldViewer1.LocksChanged += () => fileModified(overworldViewer1, null);
 			overworldViewer1.LocksChanged += UpdateControlsBySaveFile;
 			JArray jArray = JArray.Parse(File.ReadAllText("data.json"));
-			overworldViewer1.allWorlds = (WorldCollection)jArray;
+			overworldViewer1.SetWorldCollection((WorldCollection)jArray);
 
 			nodeClickCbx.SelectedIndex = 2;
 		}

@@ -66,6 +66,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SaveFile.cs" />
+    <Compile Include="SaveFileWithWorlds.cs" />
     <Compile Include="Util.cs" />
     <Compile Include="World.cs" />
     <Compile Include="WorldCollection.cs" />
