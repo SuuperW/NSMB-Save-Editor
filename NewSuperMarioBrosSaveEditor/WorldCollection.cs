@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,11 +9,14 @@ using Newtonsoft.Json.Linq;
 
 namespace NewSuperMarioBrosSaveEditor
 {
-	public class WorldCollection
+	public class WorldCollection : IEnumerable<World>
 	{
 		private List<World> worlds = new List<World>();
 		public World this[int index] => worlds[index];
 		public int Count => worlds.Count;
+
+		public IEnumerator<World> GetEnumerator() => worlds.GetEnumerator();
+		IEnumerator IEnumerable.GetEnumerator() => worlds.GetEnumerator();
 
 		public static explicit operator WorldCollection(JArray j)
 		{
@@ -22,6 +26,5 @@ namespace NewSuperMarioBrosSaveEditor
 
 			return wc;
 		}
-
 	}
 }

@@ -49,5 +49,14 @@ namespace NewSuperMarioBrosSaveEditor
 			else
 				return n.isLastLevelInWorld && secretNextWorld != 0;
 		}
+
+		public IEnumerable<OverworldNode> GetAllNodesToClearFor100()
+		{
+			return nodes.Where((n) => n.UnlocksALevel || n.isLastLevelInWorld);
+		}
+		public IEnumerable<OverworldPath> GetAllSignPaths()
+		{
+			return paths.Where((p) => p.isUnlockedBySign);
+		}
 	}
 }

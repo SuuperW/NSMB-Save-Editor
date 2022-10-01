@@ -332,5 +332,28 @@ namespace SaveEditorTests
 			file.PerformNodeAction(4, 11, completeNormal);
 			assert(!saveFile.IsPathUnlocked(4, 0x18));
 		}
+
+		[TestMethod]
+		public void TestPerformingActionDoesNotChangeAction()
+		{
+			file.PerformNodeAction(0, 1, completeAll);
+			assert(completeAll.SecretExit);
+		}
+
+		[TestMethod]
+		public void TestClear100HasThreeStars()
+		{
+			file.Clear100();
+			assert(file.file.PlayerHasSeenCredits);
+			assert(file.file.SecondStar);
+			assert(file.file.ThirdStar);
+		}
+
+		[TestMethod]
+		public void TestClearBowserCastleUnlocksPurpleMushroom()
+		{
+			file.PerformNodeAction(7, 12, completeNormal);
+			assert(file.file.IsPathUnlocked(0, 21));
+		}
 	}
 }

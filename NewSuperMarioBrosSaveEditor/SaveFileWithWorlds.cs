@@ -11,6 +11,8 @@ namespace NewSuperMarioBrosSaveEditor
 		public SaveFile file;
 		public WorldCollection worlds;
 
+		private bool suspendSaveFileLoadCalculations = false;
+
 		public SaveFileWithWorlds(SaveFile file, WorldCollection worlds)
 		{
 			this.file = file;
@@ -22,6 +24,9 @@ namespace NewSuperMarioBrosSaveEditor
 		/// </summary>
 		public void PerformSaveFileLoadCalculations()
 		{
+			if (suspendSaveFileLoadCalculations)
+				return;
+
 			// Bottom screen, highlight lines between worlds
 			uint highlightFlags = 0;
 			uint nextFlag = (uint)SaveFile.WorldPathHighlightsEnum.W1toW2;
@@ -83,6 +88,15 @@ namespace NewSuperMarioBrosSaveEditor
 			if (file.BackgroundsBought.HasFlag(SaveFile.BackgroundPurchases.Mario)) starCoinsSpent += 20;
 			if (file.BackgroundsBought.HasFlag(SaveFile.BackgroundPurchases.Retro)) starCoinsSpent += 20;
 			file.SpentStarCoins = starCoinsSpent;
+
+			// In the game, the purple mushroom is actually unlocked upon loading world 1.
+			// But this should be close enough.
+			file.SetPathUnlocked(0, 21, file.PlayerHasSeenCredits);
+
+			// Save file 2nd and 3rd stars (1st is done in a node completion)
+			file.SecondStar = !worlds.Any((w) => w.nodes.Any((n) =>
+				n.hasStarCoins && !file.IsNodeCompleted(n.worldId, n.idInWorld)));
+			file.ThirdStar = file.SpentStarCoins == 240;
 		}
 
 		/// <summary>
@@ -303,7 +317,7 @@ namespace NewSuperMarioBrosSaveEditor
 
 			// For special levels, set world flags
 			// If secretExit it set, check if the node has a secret goal
-			action.SecretExit = action.SecretExit && worlds[worldId].NodeHasSecretExit(node);
+			bool secret = action.SecretExit && worlds[worldId].NodeHasSecretExit(node);
 
 			// Towers only set flags for normal exit
 			ushort worldFlags = file.GetWorldFlags(worldId);
@@ -344,7 +358,7 @@ namespace NewSuperMarioBrosSaveEditor
 				{
 					if (action.NormalExit)
 						UpdateWorldFlagsAfterClearingNode(worlds[worldId].normalNextWorld, action);
-					if (action.SecretExit)
+					if (secret)
 						UpdateWorldFlagsAfterClearingNode(worlds[worldId].secretNextWorld, action);
 				}
 				else
@@ -384,6 +398,28 @@ namespace NewSuperMarioBrosSaveEditor
 			}
 		}
 
+		public void Clear100()
+		{
+			suspendSaveFileLoadCalculations = true;
 
+			CompletionAction action = new CompletionAction()
+			{
+				Complete = true,
+				NormalExit = true,
+				SecretExit = true,
+				StarCoins = true,
+			};
+			for (int i = 0; i < 8; i++)
+			{
+				foreach (OverworldNode n in worlds[i].GetAllNodesToClearFor100())
+					PerformNodeAction(i, n.idInWorld, action);
+				foreach (OverworldPath p in worlds[i].GetAllSignPaths())
+					file.SetPathUnlocked(i, p.idInWorld, true);
+			}
+			file.BackgroundsBought = SaveFile.BackgroundPurchases.All;
+
+			suspendSaveFileLoadCalculations = false;
+			PerformSaveFileLoadCalculations();
+		}
 	}
 }

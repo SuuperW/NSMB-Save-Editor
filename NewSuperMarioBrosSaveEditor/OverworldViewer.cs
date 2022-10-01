@@ -15,12 +15,34 @@ namespace NewSuperMarioBrosSaveEditor
 		List<Panel> nodeControls = new List<Panel>();
 		List<Panel> pathControls = new List<Panel>();
 
-		SaveFile saveFile;
-		WorldCollection allWorlds;
+		private SaveFile _saveFile;
+		public SaveFile SaveFile
+		{
+			get => _saveFile;
+			set
+			{
+				_saveFile = value;
+				if (AllWorlds != null)
+					file = new SaveFileWithWorlds(SaveFile, AllWorlds);
+				UpdateDisplay();
+			}
+		}
+		private WorldCollection _allWorlds;
+		public WorldCollection AllWorlds
+		{
+			get => _allWorlds;
+			set
+			{
+				_allWorlds = value;
+				if (SaveFile != null)
+					file = new SaveFileWithWorlds(SaveFile, _allWorlds);
+				LoadOverworld(currentWorld);
+			}
+		}
 		SaveFileWithWorlds file;
 
-		int currentWorld;
-		World world => allWorlds[currentWorld];
+		int currentWorld = 0;
+		World world => AllWorlds[currentWorld];
 		List<OverworldNode> nodes => world.nodes;
 		List<OverworldPath> paths => world.paths;
 
@@ -208,7 +230,7 @@ namespace NewSuperMarioBrosSaveEditor
 				}
 			}
 
-			if (saveFile != null)
+			if (SaveFile != null)
 				UpdateDisplay();
 
 			this.ResumeLayout();
@@ -242,12 +264,12 @@ namespace NewSuperMarioBrosSaveEditor
 			}
 
 			// Save file
-			byte flags = saveFile.GetPathFlags(world.id, id);
+			byte flags = SaveFile.GetPathFlags(world.id, id);
 			if (unlockStatus)
 				flags |= SaveFile.PathFlags.Unlocked;
 			else
 				flags = 0;
-			saveFile.SetPathFlags(world.id, id, flags);
+			SaveFile.SetPathFlags(world.id, id, flags);
 
 			// Tell parent
 			if (LocksChanged != null)
@@ -271,7 +293,7 @@ namespace NewSuperMarioBrosSaveEditor
 			Panel clicked = sender as Panel;
 			selectedNode = (int)clicked.Tag;
 			OverworldNode node = nodes[selectedNode];
-			byte flags = saveFile.GetNodeFlags(world.id, selectedNode);
+			byte flags = SaveFile.GetNodeFlags(world.id, selectedNode);
 			// Are we completing or uncompleting?
 			CompletionAction action = new CompletionAction()
 			{
@@ -289,7 +311,7 @@ namespace NewSuperMarioBrosSaveEditor
 						.Where((p) => !paths[p].isUnlockedBySign);
 					// We complete the level if it is not 100% complete. (all star coins, both exits)
 					action.Complete = (flags & SaveFile.NodeFlags.AllStarCoins) != SaveFile.NodeFlags.AllStarCoins ||
-						pathsPotentiallyUnlocked.Any((p) => !saveFile.IsPathUnlocked(world.id, p));
+						pathsPotentiallyUnlocked.Any((p) => !SaveFile.IsPathUnlocked(world.id, p));
 				}
 				else
 				{
@@ -299,7 +321,7 @@ namespace NewSuperMarioBrosSaveEditor
 						nodes[selectedNode].HasSecretPaths ? nodes[selectedNode].pathsBySecretExit : new List<int>();
 					pathsPotentiallyUnlocked = pathsPotentiallyUnlocked.Where((p) => !paths[p].isUnlockedBySign);
 					// We complete the level if any of the paths for this exit are locked.
-					action.Complete = pathsPotentiallyUnlocked.Any((p) => !saveFile.IsPathUnlocked(world.id, p));
+					action.Complete = pathsPotentiallyUnlocked.Any((p) => !SaveFile.IsPathUnlocked(world.id, p));
 				}
 			}
 			
@@ -309,27 +331,14 @@ namespace NewSuperMarioBrosSaveEditor
 			UpdateDisplay();
 		}
 
-		public void SetWorldCollection(WorldCollection worlds)
-		{
-			allWorlds = worlds;
-			if (saveFile != null)
-				file = new SaveFileWithWorlds(saveFile, worlds);
-		}
-		public void ApplySave(SaveFile saveFile)
-		{
-			this.saveFile = saveFile;
-			if (allWorlds != null)
-				file = new SaveFileWithWorlds(saveFile, allWorlds);
-			UpdateDisplay();
-		}
 
 		private void starCoinPbx_Click(object sender, EventArgs e)
 		{
-			if (saveFile != null)
+			if (SaveFile != null)
 			{
-				byte flags = saveFile.GetNodeFlags(world.id, selectedNode);
+				byte flags = SaveFile.GetNodeFlags(world.id, selectedNode);
 				int starCoinShift = (int)(sender as Control).Tag;
-				saveFile.SetNodeFlags(world.id, selectedNode, (byte)(flags ^ (SaveFile.NodeFlags.StarCoin1 << starCoinShift)));
+				SaveFile.SetNodeFlags(world.id, selectedNode, (byte)(flags ^ (SaveFile.NodeFlags.StarCoin1 << starCoinShift)));
 				UpdateDisplay(false);
 			}
 		}
@@ -349,7 +358,7 @@ namespace NewSuperMarioBrosSaveEditor
 				foreach (Panel p in pathControls)
 				{
 					int id = (int)p.Tag;
-					int flags = saveFile.GetPathFlags(world.id, id);
+					int flags = SaveFile.GetPathFlags(world.id, id);
 					unlocked[id] = (flags & SaveFile.PathFlags.Unlocked) != 0;
 					if (p.BackgroundImage == null)
 					{
@@ -369,7 +378,7 @@ namespace NewSuperMarioBrosSaveEditor
 
 					Panel p = nodeControls[i];
 					// Is it completed? The game checks that first.
-					if (saveFile.IsNodeCompleted(world.id, i))
+					if (SaveFile.IsNodeCompleted(world.id, i))
 						p.BackgroundImage = Properties.Resources.Node_Complete;
 					else
 					{
@@ -388,7 +397,7 @@ namespace NewSuperMarioBrosSaveEditor
 			starCoin1Pbx.Visible = starCoin2Pbx.Visible = starCoin3Pbx.Visible =
 				nodes[selectedNode].hasStarCoins;
 
-			byte nodeFlags = saveFile.GetNodeFlags(world.id, selectedNode);
+			byte nodeFlags = SaveFile.GetNodeFlags(world.id, selectedNode);
 			starCoin1Pbx.BackgroundImage = (nodeFlags & SaveFile.NodeFlags.StarCoin1) != 0 ? Properties.Resources.StarCoin : Properties.Resources.NoStarCoin;
 			starCoin2Pbx.BackgroundImage = (nodeFlags & SaveFile.NodeFlags.StarCoin2) != 0 ? Properties.Resources.StarCoin : Properties.Resources.NoStarCoin;
 			starCoin3Pbx.BackgroundImage = (nodeFlags & SaveFile.NodeFlags.StarCoin3) != 0 ? Properties.Resources.StarCoin : Properties.Resources.NoStarCoin;

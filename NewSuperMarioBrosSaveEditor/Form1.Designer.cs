@@ -64,6 +64,7 @@
 			this.backgroundsChk = new System.Windows.Forms.CheckedListBox();
 			this.label3 = new System.Windows.Forms.Label();
 			this.overworldViewer1 = new NewSuperMarioBrosSaveEditor.OverworldViewer();
+			this.unlockEverythingBtn = new System.Windows.Forms.Button();
 			((System.ComponentModel.ISupportInitialize)(this.BSBNumUpDown)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.scoreNumUpDown)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.coinsNumUpDown)).BeginInit();
@@ -305,6 +306,7 @@
 			this.fileDataPnl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+			this.fileDataPnl.Controls.Add(this.unlockEverythingBtn);
 			this.fileDataPnl.Controls.Add(this.label3);
 			this.fileDataPnl.Controls.Add(this.backgroundsChk);
 			this.fileDataPnl.Controls.Add(this.label1);
@@ -490,7 +492,6 @@
 			this.backgroundsChk.Name = "backgroundsChk";
 			this.backgroundsChk.Size = new System.Drawing.Size(101, 34);
 			this.backgroundsChk.TabIndex = 55;
-			this.backgroundsChk.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.backgroundsChk_ItemCheck);
 			// 
 			// label3
 			// 
@@ -511,6 +512,16 @@
 			this.overworldViewer1.Name = "overworldViewer1";
 			this.overworldViewer1.Size = new System.Drawing.Size(482, 165);
 			this.overworldViewer1.TabIndex = 53;
+			// 
+			// unlockEverythingBtn
+			// 
+			this.unlockEverythingBtn.Location = new System.Drawing.Point(98, 119);
+			this.unlockEverythingBtn.Name = "unlockEverythingBtn";
+			this.unlockEverythingBtn.Size = new System.Drawing.Size(110, 23);
+			this.unlockEverythingBtn.TabIndex = 57;
+			this.unlockEverythingBtn.Text = "Unlock Everything";
+			this.unlockEverythingBtn.UseVisualStyleBackColor = true;
+			this.unlockEverythingBtn.Click += new System.EventHandler(this.unlockEverythingBtn_Click);
 			// 
 			// Form1
 			// 
@@ -584,6 +595,7 @@
 		private System.Windows.Forms.Label starCoinCountsLbl;
 		private System.Windows.Forms.CheckedListBox backgroundsChk;
 		private System.Windows.Forms.Label label3;
+		private System.Windows.Forms.Button unlockEverythingBtn;
 	}
 }
 

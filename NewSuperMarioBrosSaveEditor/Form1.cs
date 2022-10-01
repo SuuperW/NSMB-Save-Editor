@@ -22,7 +22,7 @@ namespace NewSuperMarioBrosSaveEditor
 			overworldViewer1.LocksChanged += () => fileModified(overworldViewer1, null);
 			overworldViewer1.LocksChanged += UpdateControlsBySaveFile;
 			JArray jArray = JArray.Parse(File.ReadAllText("data.json"));
-			overworldViewer1.SetWorldCollection((WorldCollection)jArray);
+			overworldViewer1.AllWorlds = ((WorldCollection)jArray);
 
 			nodeClickCbx.SelectedIndex = 2;
 		}
@@ -182,7 +182,7 @@ namespace NewSuperMarioBrosSaveEditor
 			powerupCbx.SelectedIndex = files[fileIndex].CurrentPowerup;
 			inventoryCbx.SelectedIndex = files[fileIndex].Inventory;
 
-			overworldViewer1.ApplySave(files[fileIndex]);
+			overworldViewer1.SaveFile = files[fileIndex];
 
 			starCoinCountsLbl.Text = files[fileIndex].StarCoins.ToString() + " (" + files[fileIndex].SpentStarCoins + ")";
 
@@ -228,8 +228,10 @@ namespace NewSuperMarioBrosSaveEditor
 			fileModified(sender, e);
 		}
 
-		private void backgroundsChk_ItemCheck(object sender, ItemCheckEventArgs e)
+		private void unlockEverythingBtn_Click(object sender, EventArgs e)
 		{
+			SaveFileWithWorlds file = new SaveFileWithWorlds(files[fileIndex], overworldViewer1.AllWorlds);
+			file.Clear100();
 		}
 	}
 }
