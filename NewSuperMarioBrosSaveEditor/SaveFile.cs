@@ -149,27 +149,74 @@ namespace NewSuperMarioBrosSaveEditor
 		public int WorldId
 		{
 			get => BitConverter.ToInt32(data, 0x020 + 0xA);
-			set => BitConverter.GetBytes(value).CopyTo(data, 0x020 + 0xA);
+			set
+			{
+				BitConverter.GetBytes(value).CopyTo(data, 0x020 + 0xA);
+				WorldId2 = value;
+			}
 		}
-		// TODO: 0x024 + 0xA unknown
+		/// <summary>
+		/// Mario will be placed on the most recently played level upon entering that world.
+		/// </summary>
+		public int LastPlayedWorld
+		{
+			get => BitConverter.ToInt32(data, 0x024 + 0xA);
+			set => BitConverter.GetBytes(value).CopyTo(data, 0x024 + 0xA);
+		}
 		public int LevelIdByWorld
 		{
 			get => BitConverter.ToInt32(data, 0x028 + 0xA);
 			set => BitConverter.GetBytes(value).CopyTo(data, 0x028 + 0xA);
 		}
-		// TODO: missing stuff
+		/// <summary>
+		/// Mario will be placed on the most recently played level upon entering that world.
+		/// </summary>
+		public int LastPlayedLevel
+		{
+			get => BitConverter.ToInt32(data, 0x02C + 0xA);
+			set => BitConverter.GetBytes(value).CopyTo(data, 0x02C + 0xA);
+		}
 		public int CurrentPowerup
 		{
 			get => BitConverter.ToInt32(data, 0x030 + 0xA);
 			set => BitConverter.GetBytes(value).CopyTo(data, 0x030 + 0xA);
 		}
-		// TODO: 0x034 + 0xA unknown
+		/// <summary>
+		/// If this is above 50,000 when a level is completed, red ? blocks and hammer bros may re-appear.
+		/// </summary>
+		public int ScoreForEnemyReappearing
+		{
+			get => BitConverter.ToInt32(data, 0x034 + 0xA);
+			set => BitConverter.GetBytes(value).CopyTo(data, 0x034 + 0xA);
+		}
 		public byte OverworldBackground
 		{
 			get => data[0x038 + 0xA];
 			set => data[0x038 + 0xA] = value;
 		}
-		// TODO: missing stuff
+		/// <summary>
+		/// This is set the first time a mini mushroom is collected, and allows minis to be in red ? blocks.
+		/// </summary>
+		public bool MiniWasCollected
+		{
+			get => data[0x03C + 0xA] != 0;
+			set => data[0x03C + 0xA] = (byte)(value ? 1 : 0);
+		}
+		/// <summary>
+		/// Related to red ? blocks? Idk how it's used.
+		/// </summary>
+		public int WorldId2
+		{
+			get => BitConverter.ToInt32(data, 0x040 + 0xA);
+			set => BitConverter.GetBytes(value).CopyTo(data, 0x040 + 0xA);
+		}
+		// 0x044-0x052 seem to be flags that are set after credits, based on which levels have been played
+		// Perhaps corresponding to which images were seen in the credits.
+		// However, I can't find anything that actually uses that info.
+		// They're also not nicely in order, and many bits are skipped. So it doesn't seem worthwhile to implement this.
+
+		// 0x053-0x05B: Unused?
+
 		public int Inventory
 		{
 			get => BitConverter.ToInt32(data, 0x05C + 0xA);
@@ -226,20 +273,37 @@ namespace NewSuperMarioBrosSaveEditor
 				throw new IndexOutOfRangeException();
 		}
 		public void SetPathFlags(int world, int index, byte flags) => SetPathFlags(0x1E * world + index, flags);
-		// TODO: What's after this?
-		/*0x00 - 0x04   "7000" in ASCII. (7001 in NewerDS)
-0x24 - 0x28   Unknown.
-0x2C - 0x30   Unknown.
-0x3C - 0x40   Current world possible duplicate.This value changes when 0x20 changes, and cannot be edited because 0x20 automatically sets it back to the previous value.
-0x40 - 0x44   Unknown.
-0x44 - 0x48   Unknown.
-0x48 - 0x4C   Unknown.
-0x4C - 0x50   Unknown.
-0x50 - 0x54   Unknown.
-0x54 - 0x58   Unknown.
-0x58 - 0x5C   Unknown.
-0x70 - 0x137  StarCoins[200]
-*/
+
+		public byte GetEnemyNode(int world, int enemy)
+		{
+			if (world >= 0 && world < 8 && enemy >= 0 && enemy < 2)
+				return data[0x228 + 0xA + world * 4 + enemy * 2];
+			else
+				throw new IndexOutOfRangeException();
+		}
+		public void SetEnemyNode(int world, int enemy, byte value)
+		{
+			if (world >= 0 && world < 8 && enemy >= 0 && enemy < 2)
+				data[0x228 + 0xA + world * 4 + enemy * 2] = value;
+			else
+				throw new IndexOutOfRangeException();
+		}
+
+		// Last thing in the save file
+		public bool GetEnemyIsHammerBro(int world, int enemy)
+		{
+			if (world >= 0 && world < 8 && enemy >= 0 && enemy < 2)
+				return data[0x228 + 0xA + world * 4 + enemy * 2 + 1] == 0;
+			else
+				throw new IndexOutOfRangeException();
+		}
+		public void GetEnemyIsHammerBro(int world, int enemy, bool value)
+		{
+			if (world >= 0 && world < 8 && enemy >= 0 && enemy < 2)
+				data[0x228 + 0xA + world * 4 + enemy * 2 + 1] = (byte)(value ? 0 : 1);
+			else
+				throw new IndexOutOfRangeException();
+		}
 
 		private byte[] data = new byte[0x252];
 		
