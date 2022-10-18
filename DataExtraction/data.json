@@ -1000,7 +1000,11 @@
 		],
 		"cannonDestination": 4,
 		"normalNextWorld": 1,
-		"secretNextWorld": 0
+		"secretNextWorld": 0,
+		"enemyLocation1": 3,
+		"enemyIsBlock1": 1,
+		"enemyLocation2": 6,
+		"enemyIsBlock2": 1
 	},
 	{
 		"id": 1,
@@ -2048,7 +2052,11 @@
 		],
 		"cannonDestination": 4,
 		"normalNextWorld": 2,
-		"secretNextWorld": 3
+		"secretNextWorld": 3,
+		"enemyLocation1": 4,
+		"enemyIsBlock1": 1,
+		"enemyLocation2": 9,
+		"enemyIsBlock2": 1
 	},
 	{
 		"id": 2,
@@ -3006,7 +3014,11 @@
 		],
 		"cannonDestination": 5,
 		"normalNextWorld": 4,
-		"secretNextWorld": 0
+		"secretNextWorld": 0,
+		"enemyLocation1": 4,
+		"enemyIsBlock1": 1,
+		"enemyLocation2": 8,
+		"enemyIsBlock2": 1
 	},
 	{
 		"id": 3,
@@ -4014,7 +4026,11 @@
 		],
 		"cannonDestination": 6,
 		"normalNextWorld": 4,
-		"secretNextWorld": 0
+		"secretNextWorld": 0,
+		"enemyLocation1": 3,
+		"enemyIsBlock1": 1,
+		"enemyLocation2": 9,
+		"enemyIsBlock2": 1
 	},
 	{
 		"id": 4,
@@ -5292,7 +5308,11 @@
 		],
 		"cannonDestination": 7,
 		"normalNextWorld": 5,
-		"secretNextWorld": 6
+		"secretNextWorld": 6,
+		"enemyLocation1": 5,
+		"enemyIsBlock1": 1,
+		"enemyLocation2": 10,
+		"enemyIsBlock2": 0
 	},
 	{
 		"id": 5,
@@ -6407,7 +6427,11 @@
 		],
 		"cannonDestination": 0,
 		"normalNextWorld": 7,
-		"secretNextWorld": 0
+		"secretNextWorld": 0,
+		"enemyLocation1": 8,
+		"enemyIsBlock1": 1,
+		"enemyLocation2": 10,
+		"enemyIsBlock2": 0
 	},
 	{
 		"id": 6,
@@ -7412,7 +7436,11 @@
 		],
 		"cannonDestination": 0,
 		"normalNextWorld": 7,
-		"secretNextWorld": 0
+		"secretNextWorld": 0,
+		"enemyLocation1": 3,
+		"enemyIsBlock1": 1,
+		"enemyLocation2": 7,
+		"enemyIsBlock2": 0
 	},
 	{
 		"id": 7,
@@ -8369,6 +8397,10 @@
 		],
 		"cannonDestination": 0,
 		"normalNextWorld": 0,
-		"secretNextWorld": 0
+		"secretNextWorld": 0,
+		"enemyLocation1": 2,
+		"enemyIsBlock1": 1,
+		"enemyLocation2": 5,
+		"enemyIsBlock2": 0
 	}
 ]

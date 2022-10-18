@@ -28,6 +28,9 @@ def ReadUInt32(fileStream, location):
 def ReadUInt16(fileStream, location):
 	fileStream.seek(location - MainRAMBase)
 	return int.from_bytes(fileStream.read(2), 'little')
+def ReadUInt8(fileStream, location):
+	fileStream.seek(location - MainRAMBase)
+	return fileStream.read(1)[0]
 
 # Pointers, offsets, sizes
 worldsInfoAddr = 0x020E79C4
@@ -35,6 +38,8 @@ nodeDataPtrOffset = 0x00
 nodeDataLength = 0x0C
 pathUnlockPtrOffset = 0x04
 pathUnlockLength = 0x04
+enemyDataPtrOffset = 0x08
+enemyDataLength = 0x04
 nodeMoreDataPtrOffset = 0x0C
 nodeLocationLength = 0x18
 nodeCountOffset = 0x20
@@ -151,6 +156,9 @@ if __name__ == '__main__':
 		for i in range(pathCount):
 			path = Path(world, i, f.read(pathUnlockLength))
 			paths.append(path)
+
+		# Enemys
+		enemyDataAddr = ReadUInt32(f, worldInfoAddr + enemyDataPtrOffset)
 		
 		worlds.append({
 			'id': world,
@@ -159,6 +167,10 @@ if __name__ == '__main__':
 			'cannonDestination': cannonDestinations[world],
 			'normalNextWorld': normalNextWorlds[world],
 			'secretNextWorld': secretNextWorlds[world],
+			'enemyLocation1': ReadUInt8(f, enemyDataAddr + 0),
+			'enemyIsBlock1': ReadUInt8(f, enemyDataAddr + 1),
+			'enemyLocation2': ReadUInt8(f, enemyDataAddr + 2),
+			'enemyIsBlock2': ReadUInt8(f, enemyDataAddr + 3),
 		})
 	
 	f.close()
