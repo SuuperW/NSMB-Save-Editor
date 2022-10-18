@@ -36,7 +36,8 @@ namespace NewSuperMarioBrosSaveEditor
 				_allWorlds = value;
 				if (SaveFile != null)
 					file = new SaveFileWithWorlds(SaveFile, _allWorlds);
-				LoadOverworld(currentWorld);
+				if (value != null)
+					LoadOverworld(currentWorld);
 			}
 		}
 		SaveFileWithWorlds file;
