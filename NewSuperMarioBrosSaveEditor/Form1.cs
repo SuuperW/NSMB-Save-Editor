@@ -147,7 +147,7 @@ namespace NewSuperMarioBrosSaveEditor
 			file.Lives = (int)livesNumUpDown.Value;
 			file.Coins = (int)coinsNumUpDown.Value;
 			file.Score = (int)scoreNumUpDown.Value;
-			file.CurrentPowerup = powerupCbx.SelectedIndex > 2 ? powerupCbx.SelectedIndex + 1 : powerupCbx.SelectedIndex;
+			file.CurrentPowerup = powerupCbx.SelectedIndex;
 			file.Inventory = inventoryCbx.SelectedIndex;
 
 			file.OverworldBackground = (byte)BSBNumUpDown.Value;
@@ -213,7 +213,11 @@ namespace NewSuperMarioBrosSaveEditor
 		private void fileModified(object sender, EventArgs e)
 		{
 			if (!openingFile)
+			{
 				this.Text = WindowTitle + " - *" + Path.GetFileName(savFileName);
+				if (sender is NumericUpDown || sender is ComboBox || sender is CheckedListBox)
+					UpdateSaveFileByControls();
+			}
 		}
 
 		private void nodeClickCbx_SelectedIndexChanged(object sender, EventArgs e) =>
