@@ -46,7 +46,7 @@ namespace NewSuperMarioBrosSaveEditor
 			UpdateSaveFileByControls();			
 
 			// Copy data into the file
-			using (FileStream fs = new FileStream(savFileName, FileMode.Open, FileAccess.ReadWrite, FileShare.ReadWrite))
+			using (FileStream fs = new FileStream(savFileName, FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.ReadWrite))
 			{
 				byte[] fileBytes = new byte[fs.Length];
 				fs.Read(fileBytes, 0, fileBytes.Length);
