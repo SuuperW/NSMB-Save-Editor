@@ -13,6 +13,10 @@ namespace NewSuperMarioBrosSaveEditor
 		public int cannonDestination;
 		public int normalNextWorld;
 		public int secretNextWorld;
+		public int enemyLocation1;
+		public bool enemyIsBlock1;
+		public int enemyLocation2;
+		public bool enemyIsBlock2;
 
 		private World() { }
 
@@ -25,7 +29,11 @@ namespace NewSuperMarioBrosSaveEditor
 				paths = new List<OverworldPath>(),
 				cannonDestination = (int)j["cannonDestination"],
 				normalNextWorld = (int)j["normalNextWorld"],
-				secretNextWorld = (int)j["secretNextWorld"]
+				secretNextWorld = (int)j["secretNextWorld"],
+				enemyLocation1 = (int)j["enemyLocation1"],
+				enemyIsBlock1 = (int)j["enemyIsBlock1"] == 1,
+				enemyLocation2 = (int)j["enemyLocation2"],
+				enemyIsBlock2 = (int)j["enemyIsBlock2"] == 1,
 			};
 			foreach (JToken n in j["nodes"])
 				world.nodes.Add((OverworldNode)n);

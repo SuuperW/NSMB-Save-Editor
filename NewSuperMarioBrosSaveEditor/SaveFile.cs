@@ -297,7 +297,7 @@ namespace NewSuperMarioBrosSaveEditor
 			else
 				throw new IndexOutOfRangeException();
 		}
-		public void GetEnemyIsHammerBro(int world, int enemy, bool value)
+		public void SetEnemyIsHammerBro(int world, int enemy, bool value)
 		{
 			if (world >= 0 && world < 8 && enemy >= 0 && enemy < 2)
 				data[0x228 + 0xA + world * 4 + enemy * 2 + 1] = (byte)(value ? 0 : 1);

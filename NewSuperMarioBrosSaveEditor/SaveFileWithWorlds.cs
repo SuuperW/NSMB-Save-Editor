@@ -167,6 +167,12 @@ namespace NewSuperMarioBrosSaveEditor
 				worldFlags |= SaveFile.WorldFlags.AllBowserJuniorCutscenes;
 				file.SetWorldFlags(i, worldFlags);
 			}
+
+			// Enemys aren't set prior to unlocking the world
+			file.SetEnemyNode(id, 0, (byte)worlds[id].enemyLocation1);
+			file.SetEnemyNode(id, 1, (byte)worlds[id].enemyLocation2);
+			file.SetEnemyIsHammerBro(id, 0, !worlds[id].enemyIsBlock1);
+			file.SetEnemyIsHammerBro(id, 1, !worlds[id].enemyIsBlock2);
 		}
 		/// <summary>
 		/// This method relies on some flags of other worlds already being set correctly.

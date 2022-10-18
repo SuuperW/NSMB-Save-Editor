@@ -355,5 +355,22 @@ namespace SaveEditorTests
 			file.PerformNodeAction(7, 12, completeNormal);
 			assert(file.file.IsPathUnlocked(0, 21));
 		}
+
+		[TestMethod]
+		public void TestInitialEnemyLocationsAndTypes()
+		{
+			// Test world 1
+			file.UnlockWorld(0);
+			assert(file.file.GetEnemyNode(0, 0) == 3);
+			assert(file.file.GetEnemyNode(0, 1) == 6);
+			assert(!file.file.GetEnemyIsHammerBro(0, 0));
+			assert(!file.file.GetEnemyIsHammerBro(0, 1));
+			// and world 5
+			file.UnlockWorld(4);
+			assert(file.file.GetEnemyNode(4, 0) == 5);
+			assert(file.file.GetEnemyNode(4, 1) == 10);
+			assert(!file.file.GetEnemyIsHammerBro(4, 0));
+			assert(file.file.GetEnemyIsHammerBro(4, 1));
+		}
 	}
 }
