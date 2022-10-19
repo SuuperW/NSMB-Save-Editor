@@ -88,6 +88,7 @@ namespace NewSuperMarioBrosSaveEditor
 			currentWorld = worldId;
 			string worldPrefix = (world.id + 1).ToString() + "-";
 			// Create nodes
+			selectedNode = 0;
 			const int nodeSeparation = 24;
 			const int nodeSize = 16;
 			int minX = int.MaxValue;
