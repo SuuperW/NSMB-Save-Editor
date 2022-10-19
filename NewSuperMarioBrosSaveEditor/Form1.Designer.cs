@@ -48,9 +48,13 @@
 			this.fileSelectPnl = new System.Windows.Forms.Panel();
 			this.newFileChk = new System.Windows.Forms.CheckBox();
 			this.fileDataPnl = new System.Windows.Forms.Panel();
+			this.unlockEverythingBtn = new System.Windows.Forms.Button();
+			this.label3 = new System.Windows.Forms.Label();
+			this.backgroundsChk = new System.Windows.Forms.CheckedListBox();
 			this.label1 = new System.Windows.Forms.Label();
 			this.worldNum = new System.Windows.Forms.NumericUpDown();
 			this.BSBPictureBox = new System.Windows.Forms.PictureBox();
+			this.starCoinCountsLbl = new System.Windows.Forms.Label();
 			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
 			this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -60,11 +64,7 @@
 			this.label2 = new System.Windows.Forms.Label();
 			this.nodeClickCbx = new System.Windows.Forms.ComboBox();
 			this.doubleClickNodeCbx = new System.Windows.Forms.CheckBox();
-			this.starCoinCountsLbl = new System.Windows.Forms.Label();
-			this.backgroundsChk = new System.Windows.Forms.CheckedListBox();
-			this.label3 = new System.Windows.Forms.Label();
 			this.overworldViewer1 = new NewSuperMarioBrosSaveEditor.OverworldViewer();
-			this.unlockEverythingBtn = new System.Windows.Forms.Button();
 			((System.ComponentModel.ISupportInitialize)(this.BSBNumUpDown)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.scoreNumUpDown)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.coinsNumUpDown)).BeginInit();
@@ -176,7 +176,7 @@
 			this.BSBNumUpDown.Name = "BSBNumUpDown";
 			this.BSBNumUpDown.Size = new System.Drawing.Size(39, 20);
 			this.BSBNumUpDown.TabIndex = 33;
-			this.BSBNumUpDown.ValueChanged += new System.EventHandler(this.fileModified);
+			this.BSBNumUpDown.ValueChanged += new System.EventHandler(this.BSBNumUpDown_ValueChanged);
 			// 
 			// scoreNumUpDown
 			// 
@@ -333,6 +333,38 @@
 			this.fileDataPnl.Size = new System.Drawing.Size(482, 312);
 			this.fileDataPnl.TabIndex = 54;
 			// 
+			// unlockEverythingBtn
+			// 
+			this.unlockEverythingBtn.Location = new System.Drawing.Point(98, 119);
+			this.unlockEverythingBtn.Name = "unlockEverythingBtn";
+			this.unlockEverythingBtn.Size = new System.Drawing.Size(110, 23);
+			this.unlockEverythingBtn.TabIndex = 57;
+			this.unlockEverythingBtn.Text = "Unlock Everything";
+			this.unlockEverythingBtn.UseVisualStyleBackColor = true;
+			this.unlockEverythingBtn.Click += new System.EventHandler(this.unlockEverythingBtn_Click);
+			// 
+			// label3
+			// 
+			this.label3.AutoSize = true;
+			this.label3.Location = new System.Drawing.Point(307, 129);
+			this.label3.Name = "label3";
+			this.label3.Size = new System.Drawing.Size(61, 13);
+			this.label3.TabIndex = 56;
+			this.label3.Text = "Purchased:";
+			// 
+			// backgroundsChk
+			// 
+			this.backgroundsChk.FormattingEnabled = true;
+			this.backgroundsChk.Items.AddRange(new object[] {
+            "Blue Bricks",
+            "Stars",
+            "Mario",
+            "1-1"});
+			this.backgroundsChk.Location = new System.Drawing.Point(372, 110);
+			this.backgroundsChk.Name = "backgroundsChk";
+			this.backgroundsChk.Size = new System.Drawing.Size(101, 34);
+			this.backgroundsChk.TabIndex = 55;
+			// 
 			// label1
 			// 
 			this.label1.AutoSize = true;
@@ -368,6 +400,7 @@
 			// 
 			// BSBPictureBox
 			// 
+			this.BSBPictureBox.BackgroundImage = global::NewSuperMarioBrosSaveEditor.Properties.Resources.NSMB_BG1;
 			this.BSBPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
 			this.BSBPictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.BSBPictureBox.Location = new System.Drawing.Point(343, 5);
@@ -377,6 +410,16 @@
 			this.BSBPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
 			this.BSBPictureBox.TabIndex = 34;
 			this.BSBPictureBox.TabStop = false;
+			// 
+			// starCoinCountsLbl
+			// 
+			this.starCoinCountsLbl.AutoSize = true;
+			this.starCoinCountsLbl.Location = new System.Drawing.Point(153, 81);
+			this.starCoinCountsLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+			this.starCoinCountsLbl.Name = "starCoinCountsLbl";
+			this.starCoinCountsLbl.Size = new System.Drawing.Size(28, 13);
+			this.starCoinCountsLbl.TabIndex = 40;
+			this.starCoinCountsLbl.Text = "0 (0)";
 			// 
 			// menuStrip1
 			// 
@@ -470,58 +513,18 @@
 			this.doubleClickNodeCbx.UseVisualStyleBackColor = true;
 			this.doubleClickNodeCbx.CheckedChanged += new System.EventHandler(this.doubleClickNodeCbx_CheckedChanged);
 			// 
-			// starCoinCountsLbl
-			// 
-			this.starCoinCountsLbl.AutoSize = true;
-			this.starCoinCountsLbl.Location = new System.Drawing.Point(153, 81);
-			this.starCoinCountsLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-			this.starCoinCountsLbl.Name = "starCoinCountsLbl";
-			this.starCoinCountsLbl.Size = new System.Drawing.Size(28, 13);
-			this.starCoinCountsLbl.TabIndex = 40;
-			this.starCoinCountsLbl.Text = "0 (0)";
-			// 
-			// backgroundsChk
-			// 
-			this.backgroundsChk.FormattingEnabled = true;
-			this.backgroundsChk.Items.AddRange(new object[] {
-            "Blue Bricks",
-            "Stars",
-            "Mario",
-            "1-1"});
-			this.backgroundsChk.Location = new System.Drawing.Point(372, 110);
-			this.backgroundsChk.Name = "backgroundsChk";
-			this.backgroundsChk.Size = new System.Drawing.Size(101, 34);
-			this.backgroundsChk.TabIndex = 55;
-			// 
-			// label3
-			// 
-			this.label3.AutoSize = true;
-			this.label3.Location = new System.Drawing.Point(307, 129);
-			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(61, 13);
-			this.label3.TabIndex = 56;
-			this.label3.Text = "Purchased:";
-			// 
 			// overworldViewer1
 			// 
+			this.overworldViewer1.AllWorlds = null;
 			this.overworldViewer1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.overworldViewer1.BackColor = System.Drawing.SystemColors.ControlDark;
 			this.overworldViewer1.Location = new System.Drawing.Point(0, 147);
 			this.overworldViewer1.Name = "overworldViewer1";
+			this.overworldViewer1.SaveFile = null;
 			this.overworldViewer1.Size = new System.Drawing.Size(482, 165);
 			this.overworldViewer1.TabIndex = 53;
-			// 
-			// unlockEverythingBtn
-			// 
-			this.unlockEverythingBtn.Location = new System.Drawing.Point(98, 119);
-			this.unlockEverythingBtn.Name = "unlockEverythingBtn";
-			this.unlockEverythingBtn.Size = new System.Drawing.Size(110, 23);
-			this.unlockEverythingBtn.TabIndex = 57;
-			this.unlockEverythingBtn.Text = "Unlock Everything";
-			this.unlockEverythingBtn.UseVisualStyleBackColor = true;
-			this.unlockEverythingBtn.Click += new System.EventHandler(this.unlockEverythingBtn_Click);
 			// 
 			// Form1
 			// 

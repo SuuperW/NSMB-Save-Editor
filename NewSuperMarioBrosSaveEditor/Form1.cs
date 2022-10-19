@@ -167,7 +167,6 @@ namespace NewSuperMarioBrosSaveEditor
 			SaveFile file = files[fileIndex];
 
 			BSBNumUpDown.Value = file.OverworldBackground;
-			BSBPictureBox.Image = BGs[file.OverworldBackground];
 			uint nextFlag = (uint)SaveFile.BackgroundPurchases.First;
 			for (int i = 0; i < 4; i++)
 			{
@@ -255,6 +254,13 @@ namespace NewSuperMarioBrosSaveEditor
 		{
 			SaveFileWithWorlds file = new SaveFileWithWorlds(files[fileIndex], overworldViewer1.AllWorlds);
 			file.Clear100();
+		}
+
+		private void BSBNumUpDown_ValueChanged(object sender, EventArgs e)
+		{
+			files[fileIndex].OverworldBackground = (byte)BSBNumUpDown.Value;
+			BSBPictureBox.Image = BGs[files[fileIndex].OverworldBackground];
+			fileModified(sender, e);
 		}
 	}
 }
