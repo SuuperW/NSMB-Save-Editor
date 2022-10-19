@@ -235,7 +235,14 @@ namespace NewSuperMarioBrosSaveEditor
 				UpdateControlsBySaveFile();
 			}
 			else
+			{
 				new SaveFileWithWorlds(files[fileIndex], overworldViewer1.AllWorlds).UnlockWorld(0);
+				// We need to show the red ? blocks
+				if (worldNum.Value == 1)
+					worldNum_ValueChanged(worldNum, null);
+				else
+					worldNum.Value = 1;
+			}
 
 			fileDataPnl.Enabled = !newFileChk.Checked;
 			fileModified(sender, e);
