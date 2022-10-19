@@ -243,9 +243,10 @@ namespace NewSuperMarioBrosSaveEditor
 					worldNum.Value = 1;
 			}
 
+			bool wasOpening = openingFile;
 			openingFile = true;
 			UpdateControlsBySaveFile();
-			openingFile = false;
+			openingFile = wasOpening;
 
 			fileModified(sender, e);
 		}
