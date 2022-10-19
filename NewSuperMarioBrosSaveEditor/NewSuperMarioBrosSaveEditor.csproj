@@ -119,6 +119,10 @@
     <None Include="Resources\NSMB_BG5.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\RedBlock.png" />
+    <None Include="Resources\hammer.png" />
+    <None Include="Resources\LastPlayedIcon.png" />
+    <None Include="Resources\MarioIcon.png" />
     <Content Include="Resources\Node_Locked.png" />
     <Content Include="Resources\Node_Complete.png" />
     <Content Include="Resources\Node_Unlocked.png" />

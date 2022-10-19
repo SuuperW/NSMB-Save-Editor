@@ -63,6 +63,36 @@ namespace NewSuperMarioBrosSaveEditor.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Hammer {
+            get {
+                object obj = ResourceManager.GetObject("Hammer", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap LastPlayedIcon {
+            get {
+                object obj = ResourceManager.GetObject("LastPlayedIcon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap MarioIcon {
+            get {
+                object obj = ResourceManager.GetObject("MarioIcon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Node_Complete {
             get {
                 object obj = ResourceManager.GetObject("Node_Complete", resourceCulture);
@@ -166,6 +196,16 @@ namespace NewSuperMarioBrosSaveEditor.Properties {
         internal static System.Drawing.Bitmap Pipe2d {
             get {
                 object obj = ResourceManager.GetObject("Pipe2d", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap RedBlock {
+            get {
+                object obj = ResourceManager.GetObject("RedBlock", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -14,6 +14,9 @@ namespace NewSuperMarioBrosSaveEditor
 		ToolTip ttip;
 		List<Panel> nodeControls = new List<Panel>();
 		List<Panel> pathControls = new List<Panel>();
+		// red ? blocks, hammer bros, mario, last played level
+		List<Panel> tokenControls = new List<Panel>();
+		static string[] tokenNames = new string[] { "Enemy1", "Enemy2", "Mario", "Last Played" };
 
 		private SaveFile _saveFile;
 		public SaveFile SaveFile
@@ -70,18 +73,15 @@ namespace NewSuperMarioBrosSaveEditor
 			mainPanel.SuspendLayout();
 
 			// Remove previous nodes
-			foreach (Panel p in nodeControls)
+			foreach (List<Panel> controlList in new List<Panel>[] { nodeControls, pathControls, tokenControls })
 			{
-				p.Dispose();
-				Controls.Remove(p);
+				foreach (Panel p in controlList)
+				{
+					p.Dispose();
+					Controls.Remove(p);
+				}
+				controlList.Clear();
 			}
-			nodeControls.Clear();
-			foreach (Panel p in pathControls)
-			{
-				p.Dispose();
-				Controls.Remove(p);
-			}
-			pathControls.Clear();
 			// Scroll to 0, 0 so that locations that are set later on are correct.
 			mainPanel.AutoScrollPosition = new Point(mainPanel.AutoScrollPosition.X, -mainPanel.AutoScrollPosition.Y);
 
@@ -110,6 +110,9 @@ namespace NewSuperMarioBrosSaveEditor
 				ttip.SetToolTip(p, worldPrefix + node.name);
 				p.Click += NodeClicked;
 				p.DoubleClick += NodeDoubleClicked;
+				p.AllowDrop = true;
+				p.DragOver += DragTokenOverNode;
+				p.DragDrop += DropTokenOnNode;
 				nodeControls.Add(p);
 				// Pipes are a bit special, at least to us
 				if (node.name == "Pipe")
@@ -231,11 +234,59 @@ namespace NewSuperMarioBrosSaveEditor
 				}
 			}
 
+			// Enemys, Mario
+			for (int i = 0; i < 4; i++)
+			{
+				Panel p = new Panel
+				{
+					Location = new Point(-20, -20),
+					Size = new Size(nodeSize * 3 / 4, nodeSize * 3 / 4),
+					BackColor = Color.Transparent,
+					BackgroundImageLayout = ImageLayout.Zoom,
+					Visible = true,
+					Tag = tokenNames[i],
+					Parent = mainPanel
+				};
+				ttip.SetToolTip(p, p.Tag.ToString());
+				p.MouseDown += BeginDragToken;
+				tokenControls.Add(p);
+			}
+			if (file != null)
+			{
+				tokenControls[0].BackgroundImage = file.file.GetEnemyIsHammerBro(world.id, 0) ? Properties.Resources.Hammer : Properties.Resources.RedBlock;
+				tokenControls[1].BackgroundImage = file.file.GetEnemyIsHammerBro(world.id, 1) ? Properties.Resources.Hammer : Properties.Resources.RedBlock;
+				tokenControls[2].BackgroundImage = Properties.Resources.MarioIcon;
+				tokenControls[3].BackgroundImage = Properties.Resources.LastPlayedIcon;
+				PlaceTokens();
+			}
+
 			if (SaveFile != null)
 				UpdateDisplay();
 
 			this.ResumeLayout();
 			mainPanel.ResumeLayout();
+		}
+
+		private void PlaceTokens()
+		{
+			tokenControls[0].Top = nodeControls[file.file.GetEnemyNode(world.id, 0)].Top - 12;
+			tokenControls[0].Left = nodeControls[file.file.GetEnemyNode(world.id, 0)].Left - 12;
+			tokenControls[1].Top = nodeControls[file.file.GetEnemyNode(world.id, 1)].Top - 12;
+			tokenControls[1].Left = nodeControls[file.file.GetEnemyNode(world.id, 1)].Right + 12 - nodeControls[1].Width;
+			if (file.file.WorldId == world.id)
+			{
+				tokenControls[2].Top = nodeControls[file.file.LevelIdByWorld].Bottom + 12 - nodeControls[2].Height;
+				tokenControls[2].Left = nodeControls[file.file.LevelIdByWorld].Left - 12;
+			}
+			else
+				tokenControls[2].Location = new Point(10, Height - 50);
+			if (file.file.LastPlayedWorld == world.id)
+			{
+				tokenControls[3].Top = nodeControls[file.file.LastPlayedLevel].Bottom + 12 - nodeControls[3].Height;
+				tokenControls[3].Left = nodeControls[file.file.LastPlayedLevel].Right + 12 - nodeControls[3].Width;
+			}
+			else
+				tokenControls[3].Location = new Point(30, Height - 50);
 		}
 
 		private void PathClicked(object sender, EventArgs e)
@@ -403,8 +454,39 @@ namespace NewSuperMarioBrosSaveEditor
 			starCoin2Pbx.BackgroundImage = (nodeFlags & SaveFile.NodeFlags.StarCoin2) != 0 ? Properties.Resources.StarCoin : Properties.Resources.NoStarCoin;
 			starCoin3Pbx.BackgroundImage = (nodeFlags & SaveFile.NodeFlags.StarCoin3) != 0 ? Properties.Resources.StarCoin : Properties.Resources.NoStarCoin;
 
+			// enemys
+			PlaceTokens();
+
 			this.ResumeLayout();
 			mainPanel.ResumeLayout();
+		}
+
+		// Drag and drop operations
+		private void BeginDragToken(object sender, MouseEventArgs e)
+		{
+			(sender as Control).DoDragDrop((sender as Control).Tag.ToString(), DragDropEffects.Move);
+		}
+		private void DragTokenOverNode(object sender, DragEventArgs e) => e.Effect = DragDropEffects.Move;
+		private void DropTokenOnNode(object sender, DragEventArgs e)
+		{
+			string data = e.Data.GetData(typeof(string))?.ToString();
+			if (data == "Enemy1")
+				file.file.SetEnemyNode(world.id, 0, (byte)(int)(sender as Control).Tag);
+			else if (data == "Enemy2")
+				file.file.SetEnemyNode(world.id, 1, (byte)(int)(sender as Control).Tag);
+			else if (data == "Mario")
+			{
+				file.file.LevelIdByWorld = (byte)(int)(sender as Control).Tag;
+				file.file.WorldId = world.id;
+				file.file.WorldId2 = world.id;
+			}
+			else if (data == "Last Played")
+			{
+				file.file.LastPlayedLevel = (byte)(int)(sender as Control).Tag;
+				file.file.LastPlayedWorld = world.id;
+			}
+
+			PlaceTokens();
 		}
 	}
 }

@@ -230,6 +230,8 @@ namespace NewSuperMarioBrosSaveEditor
 			files[fileIndex].IsNewFile = newFileChk.Checked;
 			if (files[fileIndex].IsNewFile)
 				files[fileIndex] = SaveFile.NewFile();
+			else
+				new SaveFileWithWorlds(files[fileIndex], overworldViewer1.AllWorlds).UnlockWorld(0);
 
 			fileDataPnl.Enabled = !newFileChk.Checked;
 			fileModified(sender, e);
