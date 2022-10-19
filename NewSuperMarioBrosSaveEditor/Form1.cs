@@ -232,11 +232,11 @@ namespace NewSuperMarioBrosSaveEditor
 			{
 				files[fileIndex] = SaveFile.NewFile();
 				overworldViewer1.SaveFile = files[fileIndex];
-				UpdateControlsBySaveFile();
 			}
 			else
 			{
 				new SaveFileWithWorlds(files[fileIndex], overworldViewer1.AllWorlds).UnlockWorld(0);
+				files[fileIndex].Lives = 5;
 				// We need to show the red ? blocks
 				if (worldNum.Value == 1)
 					worldNum_ValueChanged(worldNum, null);
@@ -244,7 +244,10 @@ namespace NewSuperMarioBrosSaveEditor
 					worldNum.Value = 1;
 			}
 
-			fileDataPnl.Enabled = !newFileChk.Checked;
+			openingFile = true;
+			UpdateControlsBySaveFile();
+			openingFile = false;
+
 			fileModified(sender, e);
 		}
 
