@@ -53,7 +53,7 @@ namespace NewSuperMarioBrosSaveEditor
 		Color unlockedPathColor = Color.Black;
 		Color lockedPathColor = Color.DarkGray;
 
-		public event Action LocksChanged;
+		public event Action SaveFileChanged;
 
 		public enum NodeAction { Normal = 0, Secret, All }
 		public NodeAction NodeClickAction;
@@ -319,8 +319,8 @@ namespace NewSuperMarioBrosSaveEditor
 
 			file.PerformSaveFileLoadCalculations(); // for star coins spent
 
-			if (LocksChanged != null)
-				LocksChanged.Invoke();
+			if (SaveFileChanged != null)
+				SaveFileChanged.Invoke();
 		}
 		private void SetPathLock(int id, bool unlockStatus)
 		{
@@ -345,8 +345,8 @@ namespace NewSuperMarioBrosSaveEditor
 			SaveFile.SetPathFlags(world.id, id, flags);
 
 			// Tell parent
-			if (LocksChanged != null)
-				LocksChanged.Invoke();
+			if (SaveFileChanged != null)
+				SaveFileChanged.Invoke();
 		}
 
 		private void NodeClicked(object sender, EventArgs e)
@@ -406,11 +406,20 @@ namespace NewSuperMarioBrosSaveEditor
 
 		private void TokenClicked(object sender, DragEventArgs e)
 		{
+			if (SaveFile == null)
+				return;
+
 			string data = (sender as Control).Tag.ToString();
-			if (data == "Enemy1")
-				file.file.SetEnemyNode(world.id, 0, 0xFF);
-			else if (data == "Enemy2")
-				file.file.SetEnemyNode(world.id, 1, 0xFF);
+			if (data.StartsWith("Enemy"))
+			{
+				if (data.EndsWith("1"))
+					file.file.SetEnemyNode(world.id, 0, 0xFF);
+				else
+					file.file.SetEnemyNode(world.id, 1, 0xFF);
+				// Tell parent
+				if (SaveFileChanged != null)
+					SaveFileChanged.Invoke();
+			}
 
 			PlaceTokens();
 		}
@@ -423,6 +432,10 @@ namespace NewSuperMarioBrosSaveEditor
 				int starCoinShift = (int)(sender as Control).Tag;
 				SaveFile.SetNodeFlags(world.id, selectedNode, (byte)(flags ^ (SaveFile.NodeFlags.StarCoin1 << starCoinShift)));
 				UpdateDisplay(false);
+
+				// Tell parent
+				if (SaveFileChanged != null)
+					SaveFileChanged.Invoke();
 			}
 		}
 
@@ -518,6 +531,10 @@ namespace NewSuperMarioBrosSaveEditor
 			}
 
 			PlaceTokens();
+
+			// Tell parent
+			if (SaveFileChanged != null)
+				SaveFileChanged.Invoke();
 		}
 	}
 }

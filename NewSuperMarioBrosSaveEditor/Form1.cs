@@ -19,8 +19,8 @@ namespace NewSuperMarioBrosSaveEditor
 		{
 			InitializeComponent();
 
-			overworldViewer1.LocksChanged += () => fileModified(overworldViewer1, null);
-			overworldViewer1.LocksChanged += UpdateControlsBySaveFile;
+			overworldViewer1.SaveFileChanged += () => fileModified(overworldViewer1, null);
+			overworldViewer1.SaveFileChanged += UpdateControlsBySaveFile;
 			JArray jArray = JArray.Parse(File.ReadAllText("data.json"));
 			overworldViewer1.AllWorlds = ((WorldCollection)jArray);
 
