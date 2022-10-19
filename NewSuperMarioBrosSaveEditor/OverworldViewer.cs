@@ -249,6 +249,15 @@ namespace NewSuperMarioBrosSaveEditor
 				};
 				ttip.SetToolTip(p, p.Tag.ToString());
 				p.MouseDown += BeginDragToken;
+				// .NET doesn't recognize clicks or mouse ups while a drag is in effect.
+				// I also can't find any way to reliably detect the end of a drag.
+				// So, we have a very hacky work-around to allow clicking.
+				p.AllowDrop = true;
+				p.DragOver += (s, e) => {
+					if (e.Data.GetData(typeof(string))?.ToString() == (s as Control).Tag.ToString())
+						e.Effect = DragDropEffects.Move;
+				};
+				p.DragDrop += TokenClicked;
 				tokenControls.Add(p);
 			}
 			if (file != null)
@@ -269,10 +278,22 @@ namespace NewSuperMarioBrosSaveEditor
 
 		private void PlaceTokens()
 		{
-			tokenControls[0].Top = nodeControls[file.file.GetEnemyNode(world.id, 0)].Top - 12;
-			tokenControls[0].Left = nodeControls[file.file.GetEnemyNode(world.id, 0)].Left - 12;
-			tokenControls[1].Top = nodeControls[file.file.GetEnemyNode(world.id, 1)].Top - 12;
-			tokenControls[1].Left = nodeControls[file.file.GetEnemyNode(world.id, 1)].Right + 12 - nodeControls[1].Width;
+			int enemyNode1 = file.file.GetEnemyNode(world.id, 0);
+			int enemyNode2 = file.file.GetEnemyNode(world.id, 1);
+			if (enemyNode1 != 0xFF)
+			{
+				tokenControls[0].Top = nodeControls[enemyNode1].Top - 12;
+				tokenControls[0].Left = nodeControls[enemyNode1].Left - 12;
+			}
+			else
+				tokenControls[0].Location = new Point(10, Height - 70);
+			if (enemyNode2 != 0xFF)
+			{
+				tokenControls[1].Top = nodeControls[enemyNode2].Top - 12;
+				tokenControls[1].Left = nodeControls[enemyNode2].Right + 12 - nodeControls[1].Width;
+			}
+			else
+				tokenControls[1].Location = new Point(30, Height - 70);
 			if (file.file.WorldId == world.id)
 			{
 				tokenControls[2].Top = nodeControls[file.file.LevelIdByWorld].Bottom + 12 - nodeControls[2].Height;
@@ -383,6 +404,16 @@ namespace NewSuperMarioBrosSaveEditor
 			UpdateDisplay();
 		}
 
+		private void TokenClicked(object sender, DragEventArgs e)
+		{
+			string data = (sender as Control).Tag.ToString();
+			if (data == "Enemy1")
+				file.file.SetEnemyNode(world.id, 0, 0xFF);
+			else if (data == "Enemy2")
+				file.file.SetEnemyNode(world.id, 1, 0xFF);
+
+			PlaceTokens();
+		}
 
 		private void starCoinPbx_Click(object sender, EventArgs e)
 		{
