@@ -278,6 +278,8 @@ namespace NewSuperMarioBrosSaveEditor
 
 		private void PlaceTokens()
 		{
+			int scrollXOffset = mainPanel.AutoScrollPosition.X;
+
 			int enemyNode1 = file.file.GetEnemyNode(world.id, 0);
 			int enemyNode2 = file.file.GetEnemyNode(world.id, 1);
 			if (enemyNode1 != 0xFF)
@@ -286,28 +288,28 @@ namespace NewSuperMarioBrosSaveEditor
 				tokenControls[0].Left = nodeControls[enemyNode1].Left - 12;
 			}
 			else
-				tokenControls[0].Location = new Point(10, Height - 70);
+				tokenControls[0].Location = new Point(10 + scrollXOffset, Height - 70);
 			if (enemyNode2 != 0xFF)
 			{
 				tokenControls[1].Top = nodeControls[enemyNode2].Top - 12;
 				tokenControls[1].Left = nodeControls[enemyNode2].Right + 12 - nodeControls[1].Width;
 			}
 			else
-				tokenControls[1].Location = new Point(30, Height - 70);
+				tokenControls[1].Location = new Point(30 + scrollXOffset, Height - 70);
 			if (file.file.WorldId == world.id)
 			{
 				tokenControls[2].Top = nodeControls[file.file.LevelIdByWorld].Bottom + 12 - nodeControls[2].Height;
 				tokenControls[2].Left = nodeControls[file.file.LevelIdByWorld].Left - 12;
 			}
 			else
-				tokenControls[2].Location = new Point(10, Height - 50);
+				tokenControls[2].Location = new Point(10 + scrollXOffset, Height - 50);
 			if (file.file.LastPlayedWorld == world.id)
 			{
 				tokenControls[3].Top = nodeControls[file.file.LastPlayedLevel].Bottom + 12 - nodeControls[3].Height;
 				tokenControls[3].Left = nodeControls[file.file.LastPlayedLevel].Right + 12 - nodeControls[3].Width;
 			}
 			else
-				tokenControls[3].Location = new Point(30, Height - 50);
+				tokenControls[3].Location = new Point(30 + scrollXOffset, Height - 50);
 		}
 
 		private void PathClicked(object sender, EventArgs e)
