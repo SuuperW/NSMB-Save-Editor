@@ -59,13 +59,18 @@ namespace NewSuperMarioBrosSaveEditor
 			set => data[0x008 + 0xA] = (byte)((data[0x008 + 0xA] & ~0x01) | (value ? 0x01 : 0));
 		}
 		/// <summary>
-		/// The third star is awarded when all star coins have been collected and spent.
-		/// The game will re-calculate this after loading the file, so if you only set this you will lose the star upon re-saving the file.
+		/// The third star is awarded when all star coins have been collected and spent, and all cannons are cleared.
+		/// The game will re-calculate some requirements after loading the file, so if you only set this you will likely lose the star upon re-saving the file.
+		/// Actually, it seems there's more than one bit involved in the third star.
+		/// 0x009 & 0x01 is for all levels+cannons cleared
+		/// 0x008 & 0x02 is all paths
+		/// 0x008 & 0x04 is all paths that are unlocked by signs
+		/// 0x008 & 0x10 is something related to star coin spend
 		/// </summary>
 		public bool ThirdStar
 		{
-			get => (data[0x008 + 0xA] & 0x10) != 0;
-			set => data[0x008 + 0xA] = (byte)((data[0x008 + 0xA] & ~0x10) | (value ? 0x10 : 0));
+			get => (data[0x009 + 0xA] & 0x01) != 0;
+			set => data[0x009 + 0xA] = (byte)((data[0x009 + 0xA] & ~0x01) | (value ? 0x01 : 0));
 		}
 		public bool AllStarCoinsSpentFlag
 		{
